@@ -9,7 +9,7 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-22.04
+    runs-on: [self-hosted]
 
     strategy:
       matrix:
@@ -17,43 +17,59 @@ jobs:
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
     steps:
-      - uses: actions/checkout@v3
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v3
-        with:
-          node-version: ${{ matrix.node-version }}
+      # - uses: actions/checkout@v3
+      # - name: Use Node.js ${{ matrix.node-version }}
 
-      - name: frontend npm ci and build
-        run: npm ci
-        working-directory: ./frontend
+      - name: stop old server (ignore error)
+        run: |
+          killall -9 node || true
+
+      - name: git pull
+        run: |
+          cd /home/ubuntu/Development-Support
+          git pull
+
+      # - name: Use Node.js ${{ matrix.node-version }}
+      #   uses: actions/setup-node@v3
+      #   with:
+      #     node-version: ${{ matrix.node-version }}
+
+      - name: frontend npm install
+        run: npm install
+        working-directory: /home/ubuntu/Development-Support/frontend
 
       - name: backend npm install
-        run: npm ci
-        working-directory: ./backend
+        run: npm install
+        working-directory: /home/ubuntu/Development-Support/backend
 
       - name: frontend npm build
         run: npm run build --if-present
-        working-directory: ./frontend
+        working-directory: /home/ubuntu/Development-Support/frontend
 
       - name: backend npm build
         run: npm run build --if-present
-        working-directory: ./backend
+        working-directory: /home/ubuntu/Development-Support/backend
 
-      - name: SSH Action
+      - name: run new server (in background)
         env:
-          RUNNER_TRACKING_ID: "" # background 로 띄워둔 서버도 같이 닫히게 된다. 비공식적인 부분이지만, 위 값을 등록해서 이를 방지한다.
-        uses: appleboy/ssh-action@master
-        with:
-          host: ${{ secrets.SSH_HOST }}
-          username: ${{ secrets.SSH_USERNAME }}
-          key: ${{ secrets.SSH_KEY }}
-          port: ${{ secrets.SSH_PORT }}
-          script: |
-            cd /home/ubuntu/Development-Support
-            git pull
-            cd /home/ubuntu/Development-Support/frontend
-            npm install
-            npm run build
-            cd /home/ubuntu/Development-Support/backend
-            npm install
-            nohup npm run start </dev/null >/dev/null 2>&1 &
+          RUNNER_TRACKING_ID: ""
+        run: |
+          cd /home/ubuntu/Development-Support/backend
+          nohup npm run start </dev/null >/dev/null 2>&1 &
+
+      # - name: SSH Action
+      #   uses: appleboy/ssh-action@master
+      #   with:
+      #     host: ${{ secrets.SSH_HOST }}
+      #     username: ${{ secrets.SSH_USERNAME }}
+      #     key: ${{ secrets.SSH_KEY }}
+      #     port: ${{ secrets.SSH_PORT }}
+      #     script: |
+      #       cd /home/ubuntu/Development-Support
+      #       git pull
+      #       cd /home/ubuntu/Development-Support/frontend
+      #       npm install
+      #       npm run build
+      #       cd /home/ubuntu/Development-Support/backend
+      #       npm install
+      #       nohup npm run start </dev/null >/dev/null 2>&1 &
