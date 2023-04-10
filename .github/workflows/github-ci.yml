@@ -55,4 +55,4 @@ jobs:
             cd /home/ubuntu/Development-Support/backend
             npm install
             npm run build
-            npm run start
+            nohup npm run start </dev/null >/dev/null 2>&1 &
