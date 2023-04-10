@@ -18,9 +18,9 @@ Frontend Framework : Vue
 
 CSS Framework : Tailwind CSS
 
-Database : MongoDB
+Database : SQLite
 
-CI/CD : GitHub Action
+CI/CD : GitHub Action (Self-hosted Runner)
 
 ---
 
