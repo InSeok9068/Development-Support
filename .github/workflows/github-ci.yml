@@ -40,6 +40,8 @@ jobs:
         working-directory: ./backend
 
       - name: SSH Action
+        env:
+          RUNNER_TRACKING_ID: "" # background 로 띄워둔 서버도 같이 닫히게 된다. 비공식적인 부분이지만, 위 값을 등록해서 이를 방지한다.
         uses: appleboy/ssh-action@master
         with:
           host: ${{ secrets.SSH_HOST }}
@@ -54,5 +56,4 @@ jobs:
             npm run build
             cd /home/ubuntu/Development-Support/backend
             npm install
-            npm run build
             nohup npm run start </dev/null >/dev/null 2>&1 &
