@@ -22,7 +22,6 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
-          cache: "npm"
 
       - name: frontend npm install
         run: npm install
@@ -39,7 +38,6 @@ jobs:
       - name: backend npm build
         run: npm run build
         working-directory: ./backend
-
 #      - name: SSH Action
 #        uses: appleboy/ssh-action@master
 #        with:
