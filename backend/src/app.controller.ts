@@ -1,6 +1,6 @@
-import { Controller, Get, Res } from '@nestjs/common';
-import * as path from 'path';
-import { AppService } from './app.service';
+import { Controller, Get, Res } from "@nestjs/common";
+import * as path from "path";
+import { AppService } from "./app.service";
 
 @Controller()
 export class AppController {
@@ -8,6 +8,6 @@ export class AppController {
 
   @Get()
   root(@Res() res) {
-    res.sendFile(path.join(__dirname, '..', 'public', 'index.html'));
+    res.sendFile(path.join(__dirname, "..", "public", "index.html"));
   }
 }
