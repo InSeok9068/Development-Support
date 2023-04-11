@@ -1,4 +1,4 @@
-import { Translation } from "./interfaces/translation.interface";
+import { Translation } from './interfaces/translation.interface';
 
 export class NaverTranslation implements Translation {
   getTranslatedCharacters(word: string): string {
