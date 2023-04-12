@@ -6,7 +6,7 @@ export class TranslationController {
   constructor(private readonly googleTranslation: GoogleTranslation) {}
 
   @Get('word')
-  translationWord(@Query('word') word: string): string {
+  translationWord(@Query('word') word: string): Promise<string> {
     return this.googleTranslation.getTranslatedCharacters(word);
   }
 }

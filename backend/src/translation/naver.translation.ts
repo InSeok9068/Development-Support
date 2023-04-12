@@ -3,7 +3,7 @@ import { Injectable } from '@nestjs/common';
 
 @Injectable()
 export class NaverTranslation implements Translation {
-  getTranslatedCharacters(word: string): string {
+  async getTranslatedCharacters(word: string): Promise<string> {
     return word;
   }
 }

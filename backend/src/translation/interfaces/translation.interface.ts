@@ -1,3 +1,3 @@
 export interface Translation {
-  getTranslatedCharacters(word: string): string;
+  getTranslatedCharacters(word: string): Promise<string>;
 }
