@@ -1,10 +1,16 @@
+import { LogLevel } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import { AppModule } from './app.module';
 import { LoggingInterceptor } from './logging/logging.interceptor';
 
 async function bootstrap() {
-  const app = await NestFactory.create(AppModule);
+  const loggerLevel: LogLevel[] =
+    process.env.NODE_ENV == 'dev' ? ['log', 'debug', 'error', 'verbose', 'warn'] : ['error', 'warn'];
+
+  const app = await NestFactory.create(AppModule, {
+    logger: loggerLevel,
+  });
 
   // 스웨거 설정
   const config = new DocumentBuilder()

@@ -2,7 +2,7 @@
 
 [TOC]
 
-[Notion Link]()
+[Notion Link](https://www.notion.so/4d3b8c7aeb0b4b149da887c6dbdc609b)
 
 ### 환경구성
 
@@ -22,6 +22,8 @@ Database : SQLite
 
 CI/CD : GitHub Action (Self-hosted Runner)
 
+Notification : Telegram
+
 ---
 
 ### 하고 싶은 거
@@ -33,9 +35,10 @@ CI/CD : GitHub Action (Self-hosted Runner)
 - [ ] 주간보고서 자동으로 써주는 시스템
 
   - 레드마인 연동?
+    - 레드마인에서 가져오기
   - 일일 보고서 입력 폼
 
-- [ ] 메이저 채용공고 알림 시스템
+- [ ] 메이저 IT기업 채용공고 알림 시스템
 
   - 텔레그램
 
@@ -46,4 +49,8 @@ CI/CD : GitHub Action (Self-hosted Runner)
   - (ID, PW), (TOKEN)
   - IP 인증
 
+- [ ] favicon.ico 변경
+
 - [ ] 텔레그램 연동
+
+- [ ] 스크래핑 시스템
