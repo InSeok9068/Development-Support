@@ -20,6 +20,10 @@ CSS Framework : Tailwind CSS
 
 Database : SQLite
 
+Cache System : Redis
+
+Message Queue : Redis Pub/Sub
+
 CI/CD : GitHub Action (Self-hosted Runner)
 
 Notification : Telegram
