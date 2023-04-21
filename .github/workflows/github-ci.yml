@@ -27,12 +27,12 @@ jobs:
           cd /home/ubuntu/Development-Support
           git pull
 
-      - name: frontend npm install
-        run: npm install
+      - name: frontend pnpm install
+        run: pnpm install
         working-directory: /home/ubuntu/Development-Support/frontend
 
-      - name: backend npm install
-        run: npm install
+      - name: backend pnpm install
+        run: pnpm install
         working-directory: /home/ubuntu/Development-Support/backend
 
       - name: frontend npm build
