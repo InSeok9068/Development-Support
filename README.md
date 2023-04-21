@@ -62,3 +62,4 @@ API Interface Spec : Postman
 - [ ] 스크래핑 시스템
 
 - [ ] Vue 어드민 (오픈 소스 연동)
+  - https://github.com/vbenjs/vue-vben-admin
