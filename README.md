@@ -28,6 +28,8 @@ CI/CD : GitHub Action (Self-hosted Runner)
 
 Notification : Telegram
 
+API Interface Spec : Postman
+
 ---
 
 ### 하고 싶은 거
