@@ -16,7 +16,7 @@ Backend Framework : NestJS
 
 Frontend Framework : Vue
 
-CSS Framework : Tailwind CSS
+CSS Framework : ???
 
 Database : SQLite
 
@@ -54,3 +54,5 @@ Notification : Telegram
 - [ ] 텔레그램 연동
 
 - [ ] 스크래핑 시스템
+
+- [ ] Vue 어드민 (오픈 소스 연동)
