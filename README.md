@@ -16,7 +16,7 @@ Backend Framework : NestJS
 
 Frontend Framework : Vue
 
-CSS Framework : ???
+CSS Framework : Ant Design Vue
 
 Database : SQLite
 
@@ -36,30 +36,32 @@ API Interface Spec : Postman
 
 - [ ] 메서드명, 변수명 추천 시스템
 
-  - 구글, 파파고, ChatGPT 연동
+    - 구글, 파파고, ChatGPT 연동
 
 - [ ] 주간보고서 자동으로 써주는 시스템
 
-  - 레드마인 연동?
-    - 레드마인에서 가져오기
-  - 일일 보고서 입력 폼
+    - 레드마인 연동?
+        - 레드마인에서 가져오기
+    - 일일 보고서 입력 폼
 
 - [ ] 메이저 IT기업 채용공고 알림 시스템
 
-  - 텔레그램
+    - 텔레그램
 
 ### 기술적 구현
 
 - [ ] 모든 요청에 인증 필수
 
-  - (ID, PW), (TOKEN)
-  - IP 인증
+    - (ID, PW), (TOKEN)
+    - IP 인증
 
 - [ ] favicon.ico 변경
 
-- [ ] 텔레그램 연동
+- [ ] 텔레그램 연동 (백엔드 및 배포 시스템)
 
 - [ ] 스크래핑 시스템
 
-- [ ] Vue 어드민 (오픈 소스 연동)
-  - https://github.com/vbenjs/vue-vben-admin
+- [ ] 프론트 엔드 서버 경량화
+    - 불필요한 패키지 제거
+
+- [ ] 다국어 적용??
