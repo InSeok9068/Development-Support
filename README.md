@@ -65,3 +65,10 @@ API Interface Spec : Postman
     - 불필요한 패키지 제거
 
 - [ ] 다국어 적용??
+
+- [ ] 백엔드, 프론트 엔드 코드 컨벤션 통일
+  - 타입스크립트
+  - Prettier
+  - ESLint
+
+- [ ] 커밋 컨벤션 적용?
