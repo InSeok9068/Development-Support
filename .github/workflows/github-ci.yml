@@ -35,6 +35,10 @@ jobs:
         run: pnpm install
         working-directory: ${{ env.frontend-working-directory }}
 
+      - name: Install dependencies
+        run: pnpm install
+        working-directory: ${{ env.frontend-working-directory }}
+
       - name: frontend npm build
         run: npm run build --if-present
         working-directory: ${{ env.frontend-working-directory }}
