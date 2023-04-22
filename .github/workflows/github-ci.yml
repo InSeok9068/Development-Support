@@ -51,14 +51,13 @@ jobs:
           port: ${{ secrets.SSH_PORT }}
           source: "backend/public.tar"
           target: "deploy"
-          rm: true
 
   backend-build-run:
     needs: front-build
     runs-on: [self-hosted]
     env:
-      backend-working-directory: ./backend
-      frontend-working-directory: ./frontend
+      backend-working-directory: /home/ubuntu/Development-Support/backend
+      frontend-working-directory: /home/ubuntu/Development-Support/frontend
 
     strategy:
       matrix:
@@ -85,11 +84,11 @@ jobs:
         working-directory: ${{ env.backend-working-directory }}
 
       - name : frontend deploy unzip
-        run : tar -xvf ../deploy/backend/public.tar -C /home/ubuntu/Development-Support/backend/public
+        run : tar -xvf deploy/backend/public.tar -C /home/ubuntu/Development-Support/backend/public
 
       - name: run new server (in background)
         env:
           RUNNER_TRACKING_ID: ""
         run: |
           cd /home/ubuntu/Development-Support/backend
-          nohup npm run start:prod </dev/null >/dev/null 2>&1 &
+          nohup npm run start:prod </dev/null >/dev/null 2>&1 &          
