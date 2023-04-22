@@ -33,15 +33,15 @@ jobs:
 
       - name: Install dependencies
         run: pnpm install
-        working-directory: ${{ frontend-working-directory }}
+        working-directory: ${{ env.frontend-working-directory }}
 
       - name: frontend npm build
         run: npm run build --if-present
-        working-directory: ${{ frontend-working-directory }}
+        working-directory: ${{ env.frontend-working-directory }}
 
       - name: zip public
         run: tar -cvf public.tar public
-        working-directory: ${{ backend-working-directory }}
+        working-directory: ${{ env.backend-working-directory }}
 
       - name: SCP Action
         uses: appleboy/scp-action@master
