@@ -5,47 +5,92 @@ name: CI_Development-Support
 
 on:
   push:
-    branches: ["release"]
+    branches: [ "release" ]
 
 jobs:
-  build:
-    runs-on: [self-hosted]
+  front-build:
+    runs-on: ubuntu-22.04
+    env:
+      backend-working-directory: ./backend
+      frontend-working-directory: ./frontend
 
     strategy:
       matrix:
-        node-version: [18.15.0]
-        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
+        node-version: [ 18.15.0 ]
 
     steps:
-      # 참고 https://velog.io/@ron/Github-Action-%EC%9C%BC%EB%A1%9C-%EB%AC%BC%EB%A6%AC%EC%84%9C%EB%B2%84%EC%97%90-%EC%9E%90%EB%8F%99%EB%B0%B0%ED%8F%AC%ED%95%98%EA%B8%B0
-      - name: stop old server (ignore error)
-        run: |
-          killall -9 node || true
+      - uses: actions/checkout@v3
 
-      - name: git pull
-        run: |
-          cd /home/ubuntu/Development-Support
-          git pull
+      - uses: pnpm/action-setup@v2
+        with:
+          version: 8
 
-      - name: frontend pnpm install
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'pnpm'
+
+      - name: Install dependencies
         run: pnpm install
-        working-directory: /home/ubuntu/Development-Support/frontend
-
-      - name: backend pnpm install
-        run: pnpm install
-        working-directory: /home/ubuntu/Development-Support/backend
+        working-directory: ${{ frontend-working-directory }}
 
       - name: frontend npm build
         run: npm run build --if-present
-        working-directory: /home/ubuntu/Development-Support/frontend
+        working-directory: ${{ frontend-working-directory }}
 
-      - name: backend npm build
-        run: npm run build --if-present
-        working-directory: /home/ubuntu/Development-Support/backend
+      - name: zip public
+        run: tar -cvf public.tar public
+        working-directory: ${{ backend-working-directory }}
 
-      - name: run new server (in background)
-        env:
-          RUNNER_TRACKING_ID: ""
-        run: |
-          cd /home/ubuntu/Development-Support/backend
-          nohup npm run start:prod </dev/null >/dev/null 2>&1 &
+      - name: SCP Action
+        uses: appleboy/scp-action@master
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USERNAME }}
+          key: ${{ secrets.SSH_KEY }}
+          port: ${{ secrets.SSH_PORT }}
+          source: "backend/public.tar"
+          target: "/"
+
+
+#    runs-on: [self-hosted]
+#
+#    strategy:
+#      matrix:
+#        node-version: [18.15.0]
+#        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
+#
+#    steps:
+#      # 참고 https://velog.io/@ron/Github-Action-%EC%9C%BC%EB%A1%9C-%EB%AC%BC%EB%A6%AC%EC%84%9C%EB%B2%84%EC%97%90-%EC%9E%90%EB%8F%99%EB%B0%B0%ED%8F%AC%ED%95%98%EA%B8%B0
+#      - name: stop old server (ignore error)
+#        run: |
+#          killall -9 node || true
+#
+#      - name: git pull
+#        run: |
+#          cd /home/ubuntu/Development-Support
+#          git pull
+#
+#      - name: frontend pnpm install
+#        run: pnpm install
+#        working-directory: /home/ubuntu/Development-Support/frontend
+#
+#      - name: backend pnpm install
+#        run: pnpm install
+#        working-directory: /home/ubuntu/Development-Support/backend
+#
+#      - name: frontend npm build
+#        run: npm run build --if-present
+#        working-directory: /home/ubuntu/Development-Support/frontend
+#
+#      - name: backend npm build
+#        run: npm run build --if-present
+#        working-directory: /home/ubuntu/Development-Support/backend
+#
+#      - name: run new server (in background)
+#        env:
+#          RUNNER_TRACKING_ID: ""
+#        run: |
+#          cd /home/ubuntu/Development-Support/backend
+#          nohup npm run start:prod </dev/null >/dev/null 2>&1 &
