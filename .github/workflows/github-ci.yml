@@ -24,7 +24,6 @@ jobs:
       - uses: pnpm/action-setup@v2
         with:
           version: 8
-        working-directory: ${{ env.frontend-working-directory }}
 
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v3
