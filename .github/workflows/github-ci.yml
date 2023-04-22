@@ -29,12 +29,6 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
-          cache: 'pnpm'
-        working-directory: ${{ env.frontend-working-directory }}
-
-      - name: Install dependencies
-        run: pnpm install
-        working-directory: ${{ env.frontend-working-directory }}
 
       - name: Install dependencies
         run: pnpm install
