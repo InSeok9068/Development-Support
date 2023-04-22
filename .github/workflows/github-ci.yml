@@ -84,7 +84,7 @@ jobs:
         working-directory: ${{ env.backend-working-directory }}
 
       - name : frontend deploy unzip
-        run : tar -xvf deploy/backend/public.tar -C /home/ubuntu/Development-Support/backend/public
+        run : tar -xvf /home/ubuntu/deploy/backend/public.tar -C /home/ubuntu/Development-Support/backend
 
       - name: run new server (in background)
         env:
