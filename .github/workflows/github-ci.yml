@@ -50,7 +50,7 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           port: ${{ secrets.SSH_PORT }}
           source: "backend/public.tar"
-          target: "/"
+          target: "deploy"
 
 
 
