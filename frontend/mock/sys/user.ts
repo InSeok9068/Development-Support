@@ -5,11 +5,11 @@ export function createFakeUserList() {
   return [
     {
       userId: '1',
-      username: 'vben',
-      realName: 'Vben Admin',
+      username: 'dlstjr9068',
+      realName: 'Lee In Seok',
       avatar: '',
       desc: 'manager',
-      password: '123456',
+      password: '9068',
       token: 'fakeToken1',
       homePath: '/dashboard/analysis',
       roles: [

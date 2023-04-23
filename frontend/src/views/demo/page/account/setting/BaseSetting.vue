@@ -1,5 +1,5 @@
 <template>
-  <CollapseContainer title="基本设置" :canExpan="false">
+  <CollapseContainer title="기본 설정" :canExpan="false">
     <a-row :gutter="24">
       <a-col :span="14">
         <BasicForm @register="register" />
@@ -10,7 +10,7 @@
           <CropperAvatar
             :uploadApi="uploadApi"
             :value="avatar"
-            btnText="更换头像"
+            btnText="아바타 변경"
             :btnProps="{ preIcon: 'ant-design:cloud-upload-outlined' }"
             @change="updateAvatar"
             width="150"
@@ -18,7 +18,7 @@
         </div>
       </a-col>
     </a-row>
-    <Button type="primary" @click="handleSubmit"> 更新基本信息 </Button>
+    <Button type="primary" @click="handleSubmit"> 기본 정보 업데이트 </Button>
   </CollapseContainer>
 </template>
 <script lang="ts">
@@ -79,7 +79,7 @@
         uploadApi: uploadApi as any,
         updateAvatar,
         handleSubmit: () => {
-          createMessage.success('更新成功！');
+          createMessage.success('업데이트 완료！');
         },
       };
     },

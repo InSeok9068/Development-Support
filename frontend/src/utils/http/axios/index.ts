@@ -70,8 +70,8 @@ const transform: AxiosTransform = {
       return result;
     }
 
-    // 在此处根据自己项目的实际情况对不同的code执行不同的操作
-    // 如果不希望中断当前请求，请return数据，否则直接抛出异常即可
+    // 여기에서 프로젝트의 실제 상황에 따라 다른 코드에서 다른 작업을 수행하십시오.
+    // 현재 요청을 중단하지 않으려면 데이터를 반환하고 그렇지 않으면 직접 예외를 발생시킵니다.
     let timeoutMsg = '';
     switch (code) {
       case ResultEnum.TIMEOUT:
@@ -86,8 +86,8 @@ const transform: AxiosTransform = {
         }
     }
 
-    // errorMessageMode='modal'的时候会显示modal错误弹窗，而不是消息提示，用于一些比较重要的错误
-    // errorMessageMode='none' 一般是调用时明确表示不希望自动弹出错误提示
+    // errorMessageMode='modal' 일부 중요한 오류에 사용되는 메시지 프롬프트 대신 모달 오류 팝업이 표시됩니다.
+    // errorMessageMode='none' 一일반적으로 전화를 걸 때 오류 메시지가 자동으로 팝업되는 것을 원하지 않는 것이 분명합니다.
     if (options.errorMessageMode === 'modal') {
       createErrorModal({ title: t('sys.api.errorTip'), content: timeoutMsg });
     } else if (options.errorMessageMode === 'message') {
@@ -97,7 +97,7 @@ const transform: AxiosTransform = {
     throw new Error(timeoutMsg || t('sys.api.apiRequestFailed'));
   },
 
-  // 请求之前处理config
+  // 요청 전 처리 config
   beforeRequestHook: (config, options) => {
     const { apiUrl, joinPrefix, joinParamsToUrl, formatDate, joinTime = true, urlPrefix } = options;
 
@@ -113,7 +113,7 @@ const transform: AxiosTransform = {
     formatDate && data && !isString(data) && formatRequestDate(data);
     if (config.method?.toUpperCase() === RequestEnum.GET) {
       if (!isString(params)) {
-        // 给 get 请求加上时间戳参数，避免从缓存中拿数据。
+        // 캐시에서 데이터를 가져오지 않도록 get 요청에 타임스탬프 매개변수를 추가합니다.
         config.params = Object.assign(params || {}, joinTimestamp(joinTime, false));
       } else {
         // 兼容restful风格

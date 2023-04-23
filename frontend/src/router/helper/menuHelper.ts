@@ -11,7 +11,7 @@ export function getAllParentPath<T = Recordable>(treeData: T[], path: string) {
   return (menuList || []).map((item) => item.path);
 }
 
-// 路径处理
+// 경로 처리
 function joinParentPath(menus: Menu[], parentPath = '') {
   for (let index = 0; index < menus.length; index++) {
     const menu = menus[index];
@@ -41,7 +41,7 @@ export function transformMenuModule(menuModule: MenuModule): Menu {
   return menuList[0];
 }
 
-// 将路由转换成菜单
+// 경로를 메뉴로 전환
 export function transformRouteToMenu(routeModList: AppRouteModule[], routerMapping = false) {
   // 借助 lodash 深拷贝
   const cloneRouteModList = cloneDeep(routeModList);
@@ -75,7 +75,7 @@ export function transformRouteToMenu(routeModList: AppRouteModule[], routerMappi
       };
     },
   });
-  // 路径处理
+  // 경로 처리
   joinParentPath(list);
   return cloneDeep(list);
 }
