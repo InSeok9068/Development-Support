@@ -1,9 +1,16 @@
 {
   "name": "backend",
   "version": "0.0.1",
-  "description": "",
-  "author": "",
-  "private": true,
+  "homepage": "http://193.123.225.216/",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/InSeok9068/Development-Support"
+  },
+  "author": {
+    "name": "Lee In Seok",
+    "email": "dlstjr9068@gmail.com",
+    "url": "https://github.com/InSeok9068"
+  },
   "license": "UNLICENSED",
   "scripts": {
     "build": "nest build",

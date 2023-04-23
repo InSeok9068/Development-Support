@@ -1,20 +1,17 @@
 {
-  "name": "vben-admin",
-  "version": "2.10.0",
-  "homepage": "https://github.com/vbenjs/vue-vben-admin",
-  "bugs": {
-    "url": "https://github.com/vbenjs/vue-vben-admin/issues"
-  },
+  "name": "frontend",
+  "version": "0.0.1",
+  "homepage": "http://193.123.225.216/",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/vbenjs/vue-vben-admin.git"
+    "url": "git+https://github.com/InSeok9068/Development-Support"
   },
-  "license": "MIT",
   "author": {
-    "name": "vben",
-    "email": "anncwb@126.com",
-    "url": "https://github.com/anncwb"
+    "name": "Lee In Seok",
+    "email": "dlstjr9068@gmail.com",
+    "url": "https://github.com/InSeok9068"
   },
+  "license": "UNLICENSED",
   "scripts": {
     "bootstrap": "pnpm install",
     "build": "cross-env NODE_ENV=production NODE_OPTIONS=--max-old-space-size=8192 pnpm vite build",
