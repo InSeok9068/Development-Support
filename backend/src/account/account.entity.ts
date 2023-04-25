@@ -1,13 +1,9 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
-
-interface Tag {
-  key: string;
-  label: string;
-}
+import { Column, Entity, OneToMany, PrimaryColumn } from 'typeorm';
+import { Tag } from './account.tag.entity';
 
 @Entity()
 export class Account {
-  @PrimaryGeneratedColumn()
+  @PrimaryColumn()
   userid: string;
 
   @Column()
@@ -28,7 +24,7 @@ export class Account {
   @Column()
   group: string;
 
-  @Column()
+  @OneToMany(() => Tag, (tag) => tag.account)
   tags: Tag[];
 
   @Column()

@@ -1,14 +1,10 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
-
-interface RoleInfo {
-  roleName: string;
-  value: string;
-}
+import { Column, Entity, OneToMany, PrimaryColumn } from 'typeorm';
+import { RoleInfo } from './role/role.info.entity';
 
 @Entity()
 export class User {
   // 사용자 아이디
-  @PrimaryGeneratedColumn()
+  @PrimaryColumn()
   userId: string;
 
   // 사용자 이름
@@ -23,8 +19,8 @@ export class User {
   @Column()
   avatar: string;
 
-  // 권한
-  @Column()
+  // 권한;
+  @OneToMany(() => RoleInfo, (role) => role.user)
   roles: RoleInfo[];
 
   // 소개
