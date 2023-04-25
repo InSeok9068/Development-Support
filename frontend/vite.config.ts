@@ -30,6 +30,12 @@ export default defineApplicationConfig({
           ws: true,
           rewrite: (path) => path.replace(new RegExp(`^/upload`), ''),
         },
+        '/api': {
+          target: 'http://localhost:4000',
+          changeOrigin: true,
+          ws: true,
+          rewrite: (path) => path.replace(new RegExp(`^/api`), ''),
+        },
       },
     },
     build: {

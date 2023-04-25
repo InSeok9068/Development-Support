@@ -6,6 +6,7 @@ import { join } from 'path';
 import { AppController } from './app.controller';
 import { TranslationModule } from './translation/translation.module';
 import { UsersModule } from './users/users.module';
+import { AccountsModule } from './account/accounts.module';
 
 @Module({
   imports: [
@@ -28,6 +29,7 @@ import { UsersModule } from './users/users.module';
     }),
     TranslationModule,
     UsersModule,
+    AccountsModule,
   ],
   controllers: [AppController],
 })

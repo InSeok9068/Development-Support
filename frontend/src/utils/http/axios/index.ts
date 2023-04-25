@@ -151,10 +151,10 @@ const transform: AxiosTransform = {
   },
 
   /**
-   * @description: 请求拦截器处理
+   * @description: 요청 인터셉터 처리
    */
   requestInterceptors: (config, options) => {
-    // 请求之前处理config
+    // 요청 전 처리 config
     const token = getToken();
     if (token && (config as Recordable)?.requestOptions?.withToken !== false) {
       // jwt token
@@ -166,14 +166,14 @@ const transform: AxiosTransform = {
   },
 
   /**
-   * @description: 响应拦截器处理
+   * @description: 응답 인터셉터 처리
    */
   responseInterceptors: (res: AxiosResponse<any>) => {
     return res;
   },
 
   /**
-   * @description: 响应错误处理
+   * @description: 응답 오류 처리
    */
   responseInterceptorsCatch: (axiosInstance: AxiosResponse, error: any) => {
     const { t } = useI18n();
@@ -211,7 +211,7 @@ const transform: AxiosTransform = {
 
     checkStatus(error?.response?.status, msg, errorMessageMode);
 
-    // 添加自动重试机制 保险起见 只针对GET请求
+    // GET 요청에 대해서만 안전하도록 자동 재시도 메커니즘 추가
     const retryRequest = new AxiosRetry();
     const { isOpenRetry } = config.requestOptions.retryRequest;
     config.method?.toUpperCase() === RequestEnum.GET &&
@@ -232,7 +232,7 @@ function createAxios(opt?: Partial<CreateAxiosOptions>) {
         // authenticationScheme: 'Bearer',
         authenticationScheme: '',
         timeout: 10 * 1000,
-        // 基础接口地址
+        // 기본 인터페이스 주소
         // baseURL: globSetting.apiUrl,
 
         headers: { 'Content-Type': ContentTypeEnum.JSON },
