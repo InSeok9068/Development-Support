@@ -72,3 +72,5 @@ API Interface Spec : Postman
   - ESLint
 
 - [ ] 커밋 컨벤션 적용?
+
+- [ ] 테이블에 맞게 초기데이터 삽입
