@@ -54,7 +54,7 @@ export interface requestParams {
 }
 
 /**
- * @description 本函数用于从request数据中获取token，请根据项目的实际情况修改
+ * @description 이 기능은 요청 데이터에서 토큰을 가져오는 데 사용됩니다. 프로젝트의 실제 상황에 따라 수정하십시오.
  *
  */
 export function getRequestToken({ headers }: requestParams): string | undefined {

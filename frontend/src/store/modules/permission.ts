@@ -26,18 +26,18 @@ import { PageEnum } from '/@/enums/pageEnum';
 
 interface PermissionState {
   // Permission code list
-  // 权限代码列表
+  // 권한 코드 목록
   permCodeList: string[] | number[];
   // Whether the route has been dynamically added
-  // 路由是否动态添加
+  // 경로가 동적으로 추가되는지 여부
   isDynamicAddedRoute: boolean;
   // To trigger a menu update
-  // 触发菜单更新
+  // 트리거 메뉴 업데이트
   lastBuildMenuTime: number;
   // Backstage menu list
-  // 后台菜单列表
+  // 배경 메뉴 목록
   backMenuList: Menu[];
-  // 菜单列表
+  // 메뉴 목록
   frontMenuList: Menu[];
 }
 
