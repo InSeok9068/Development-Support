@@ -14,21 +14,21 @@ Language : TypeScript
 
 Backend Framework : NestJS
 
-ORM Framework : Prisma
-
 Frontend Framework : Vue
 
 CSS Framework : Ant Design Vue
 
 Database : SQLite
 
+Database ORM Framework : Prisma
+
 Cache System : Redis
 
 Message Queue : Redis Pub/Sub
 
-CI/CD : GitHub Action (Self-hosted Runner)
+Package Manager : pnpm
 
-Package : pnpm
+CI/CD : GitHub Action (+Self-hosted Runner)
 
 Notification : Telegram
 
@@ -76,5 +76,3 @@ API Interface Spec : Postman
   - ESLint
 
 - [ ] 커밋 컨벤션 적용?
-
-- [ ] 테이블에 맞게 초기데이터 삽입
