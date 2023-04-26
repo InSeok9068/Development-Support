@@ -14,6 +14,8 @@ Language : TypeScript
 
 Backend Framework : NestJS
 
+ORM Framework : Prisma
+
 Frontend Framework : Vue
 
 CSS Framework : Ant Design Vue
@@ -25,6 +27,8 @@ Cache System : Redis
 Message Queue : Redis Pub/Sub
 
 CI/CD : GitHub Action (Self-hosted Runner)
+
+Package : pnpm
 
 Notification : Telegram
 
