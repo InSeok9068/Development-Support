@@ -10,35 +10,35 @@ async function main() {
       name: 'Vben',
       userid: '00000001',
       email: 'test@gmail.com',
-      signature: '海纳百川，有容乃大',
-      introduction: '微笑着，努力着，欣赏着',
-      title: '交互专家',
-      group: '某某某事业群－某某平台部－某某技术部－UED',
+      signature: '다양성을 포용하라, 포용은 미덕이다',
+      introduction: '웃다, 노력하다, 감사하다',
+      title: '상호 작용 전문가',
+      group: '특정 비즈니스 그룹 - 특정 플랫폼 부서 - 특정 기술 부서 - UED',
       tags: {
         create: [
           {
             key: '0',
-            label: '很有想法的',
+            label: '매우 사려 깊은',
           },
           {
             key: '1',
-            label: '专注设计',
+            label: '디자인에 집중',
           },
           {
             key: '2',
-            label: '辣~',
+            label: '맵다~',
           },
           {
             key: '3',
-            label: '大长腿',
+            label: '긴 다리',
           },
           {
             key: '4',
-            label: '川妹子',
+            label: '추안메이즈',
           },
           {
             key: '5',
-            label: '海纳百川',
+            label: '모든 강 포함',
           },
         ],
       },

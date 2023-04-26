@@ -2,6 +2,7 @@
 // The axios configuration can be changed according to the project, just change the file, other files can be left unchanged
 
 import type { AxiosResponse } from 'axios';
+import axios from 'axios';
 import { clone } from 'lodash-es';
 import type { RequestOptions, Result } from '/#/axios';
 import type { AxiosTransform, CreateAxiosOptions } from './axiosTransform';
@@ -9,21 +10,21 @@ import { VAxios } from './Axios';
 import { checkStatus } from './checkStatus';
 import { useGlobSetting } from '/@/hooks/setting';
 import { useMessage } from '/@/hooks/web/useMessage';
-import { RequestEnum, ResultEnum, ContentTypeEnum } from '/@/enums/httpEnum';
-import { isString, isUnDef, isNull, isEmpty } from '/@/utils/is';
+import { ContentTypeEnum, RequestEnum, ResultEnum } from '/@/enums/httpEnum';
+import { isEmpty, isNull, isString, isUnDef } from '/@/utils/is';
 import { getToken } from '/@/utils/auth';
-import { setObjToUrlParams, deepMerge } from '/@/utils';
+import { deepMerge, setObjToUrlParams } from '/@/utils';
 import { useErrorLogStoreWithOut } from '/@/store/modules/errorLog';
 import { useI18n } from '/@/hooks/web/useI18n';
-import { joinTimestamp, formatRequestDate } from './helper';
+import { formatRequestDate, joinTimestamp } from './helper';
 import { useUserStoreWithOut } from '/@/store/modules/user';
 import { AxiosRetry } from '/@/utils/http/axios/axiosRetry';
-import axios from 'axios';
 
 const globSetting = useGlobSetting();
 const urlPrefix = globSetting.urlPrefix;
 const { createMessage, createErrorModal, createSuccessModal } = useMessage();
 
+// @ts-ignore
 /**
  * @description: 数据处理，方便区分多种处理方式
  */
@@ -224,7 +225,7 @@ const transform: AxiosTransform = {
 
 function createAxios(opt?: Partial<CreateAxiosOptions>) {
   return new VAxios(
-    // 深度合并
+    // 깊은 병합
     deepMerge(
       {
         // See https://developer.mozilla.org/en-US/docs/Web/HTTP/Authentication#authentication_schemes
@@ -238,31 +239,31 @@ function createAxios(opt?: Partial<CreateAxiosOptions>) {
         headers: { 'Content-Type': ContentTypeEnum.JSON },
         // 如果是form-data格式
         // headers: { 'Content-Type': ContentTypeEnum.FORM_URLENCODED },
-        // 数据处理方式
+        // 데이터 처리 방법
         transform: clone(transform),
-        // 配置项，下面的选项都可以在独立的接口请求中覆盖
+        // 구성 항목, 다음 옵션은 독립 인터페이스 요청에서 재정의할 수 있습니다.
         requestOptions: {
-          // 默认将prefix 添加到url
+          // 기본적으로 URL에 접두어 추가
           joinPrefix: true,
-          // 是否返回原生响应头 比如：需要获取响应头时使用该属性
+          // 원래 응답 헤더를 반환할지 여부 예: 응답 헤더를 가져와야 하는 경우 이 특성을 사용합니다.
           isReturnNativeResponse: false,
-          // 需要对返回数据进行处理
+          // 반환된 데이터 처리 필요
           isTransformResponse: true,
-          // post请求的时候添加参数到url
+          // 게시 요청 시 URL에 매개변수 추가
           joinParamsToUrl: false,
-          // 格式化提交参数时间
+          // 형식 제출 매개변수 시간
           formatDate: true,
-          // 消息提示类型
+          // 메시지 프롬프트 유형
           errorMessageMode: 'message',
-          // 接口地址
+          // 인터페이스 주소
           apiUrl: globSetting.apiUrl,
-          // 接口拼接地址
+          // 인터페이스 스플라이싱 주소
           urlPrefix: urlPrefix,
-          //  是否加入时间戳
+          //  타임스탬프 추가 여부
           joinTime: true,
-          // 忽略重复请求
+          // 중복 요청 무시
           ignoreCancelToken: true,
-          // 是否携带token
+          // 토큰 소지 여부
           withToken: true,
           retryRequest: {
             isOpenRetry: true,
@@ -276,11 +277,3 @@ function createAxios(opt?: Partial<CreateAxiosOptions>) {
   );
 }
 export const defHttp = createAxios();
-
-// other api url
-// export const otherHttp = createAxios({
-//   requestOptions: {
-//     apiUrl: 'xxx',
-//     urlPrefix: 'xxx',
-//   },
-// });

@@ -1,9 +1,13 @@
 <template>
   <PageWrapper
-    title="登录过期示例"
-    content="用户登录过期示例，不再跳转登录页，直接生成页面覆盖当前页面，方便保持过期前的用户状态！"
+    title="로그인 만료 예"
+    content="사용자 로그인 만료의 예, 더 이상 로그인 페이지로 건너뛰지 않고 현재 페이지를 덮어쓰는 페이지를 직접 생성하여
+    만료 전에 사용자 상태를 유지하는 데 편리합니다!"
   >
-    <a-card title="请点击下面的按钮访问测试接口" extra="所访问的接口会返回Token过期响应">
+    <a-card
+      title="테스트 인터페이스에 액세스하려면 아래 버튼을 클릭하십시오."
+      extra="액세스된 인터페이스는 토큰 만료 응답을 반환합니다."
+    >
       <a-card-grid style="width: 50%; text-align: center">
         <a-button type="primary" @click="test1">HttpStatus == 401</a-button>
       </a-card-grid>
@@ -28,23 +32,23 @@
     setup() {
       const userStore = useUserStore();
       async function test1() {
-        // 示例网站生产环境用的是mock数据，不能返回Http状态码，
-        // 所以在生产环境直接改变状态来达到测试效果
+        // 샘플 웹 사이트의 프로덕션 환경은 모의 데이터를 사용하며 Http 상태 코드를 반환할 수 없습니다.
+        // 따라서 테스트 효과를 달성하기 위해 프로덕션 환경에서 상태를 직접 변경하십시오.
         if (import.meta.env.PROD) {
           userStore.setToken(undefined);
           userStore.setSessionTimeout(true);
         } else {
-          // 这个api会返回状态码为401的响应
+          // 이 API는 상태 코드 401로 응답을 반환합니다.
           await sessionTimeoutApi();
         }
       }
 
       async function test2() {
-        // 这个api会返回code为401的json数据，Http状态码为200
+        // 이 API는 코드 401 및 Http 상태 코드 200으로 json 데이터를 반환합니다.
         try {
           await tokenExpiredApi();
         } catch (err) {
-          console.log('接口访问错误：', (err as Error).message || '错误');
+          console.log('인터페이스 액세스 오류：', (err as Error).message || '실수');
         }
       }
 
