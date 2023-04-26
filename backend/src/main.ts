@@ -1,7 +1,8 @@
 import { LogLevel } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
-import { LoggingInterceptor } from './logging/logging.interceptor';
+import { LoggingInterceptor } from './middleware/intercepor/logging/logging.interceptor';
+import { PrismaService } from './config/prisma/prisma.service';
 
 async function bootstrap() {
   const loggerLevel: LogLevel[] =
@@ -13,6 +14,9 @@ async function bootstrap() {
 
   // 인터셉터 전역 설정
   app.useGlobalInterceptors(new LoggingInterceptor());
+
+  const prismaService = app.get(PrismaService);
+  await prismaService.enableShutdownHooks(app);
 
   await app.listen(4000);
 }
