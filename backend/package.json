@@ -25,7 +25,13 @@
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "test:e2e": "jest --config ./test/jest-e2e.json",
-    "preinstall": "npx only-allow pnpm"
+    "preinstall": "npx only-allow pnpm",
+    "prisma:migrate" : "npx prisma migrate dev --name init",
+    "prisma:generate" : "npx prisma generate",
+    "prisma:seed" : "prisma db seed",
+    "prisma:pull" : "npx prisma db pull",
+    "prisma:push" : "npx prisma db push",
+    "prisma:studio" : "npx prisma studio"
   },
   "dependencies": {
     "@google-cloud/translate": "^7.2.0",

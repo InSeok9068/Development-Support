@@ -1,5 +1,3 @@
-// https://www.prisma.io/docs/concepts/components/prisma-schema
-
 generator client {
   provider = "prisma-client-js"
 }
@@ -9,18 +7,46 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model User {
-  id    Int     @id @default(autoincrement())
-  // email String  @unique
-  name  String?
-  // posts Post[]
+model Account {
+  userid       String  @id
+  name         String
+  email        String
+  signature    String?
+  introduction String?
+  title        String?
+  group        String?
+  notifyCount  Int?
+  unreadCount  Int?
+  country      String?
+  address      String?
+  phone        String?
+  tags         Tag[]
 }
 
-// model Post {
-//   id        Int     @id @default(autoincrement())
-//   title     String
-//   content   String?
-//   published Boolean @default(false)
-//   authorId  Int
-//   author    User    @relation(fields: [authorId], references: [id])
-// }
+model Tag {
+  key       String
+  label     String
+  accountId String
+  account   Account @relation(fields: [accountId], references: [userid])
+
+  @@id([key, accountId])
+}
+
+model User {
+  userId   String  @id
+  password String
+  username String
+  realName String
+  avatar   String?
+  desc     String
+  token    String
+  homePath String
+  roles    Role[]
+}
+
+model Role {
+  roleName String @id
+  value    String
+  userId   String
+  user     User   @relation(fields: [userId], references: [userId])
+}

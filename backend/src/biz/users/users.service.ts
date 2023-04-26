@@ -9,4 +9,15 @@ export class UsersService {
   async getUserList(): Promise<User[] | null> {
     return this.prisma.user.findMany();
   }
+
+  async getUser(userId: string): Promise<User | null> {
+    return this.prisma.user.findUnique({
+      where: {
+        userId,
+      },
+      include: {
+        roles: true,
+      },
+    });
+  }
 }

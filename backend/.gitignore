@@ -4,6 +4,7 @@ node_modules
 public/*
 .env
 db/
+prisma/migrations/**/*
 
 # IDE - VSCode
 .vscode/*
