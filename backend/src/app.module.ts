@@ -5,6 +5,7 @@ import { join } from 'path';
 import { AppController } from './app.controller';
 import { TranslationModule } from './biz/translation/translation.module';
 import { UsersModule } from './biz/users/users.module';
+import { PrismaModule } from './config/prisma/prisma.module';
 
 @Module({
   imports: [
@@ -16,6 +17,7 @@ import { UsersModule } from './biz/users/users.module';
     ConfigModule.forRoot({
       isGlobal: true,
     }),
+    PrismaModule,
     TranslationModule,
     UsersModule,
   ],
