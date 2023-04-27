@@ -16,6 +16,10 @@ const createRequestLogging = (request: any): string => {
   if (request) {
     const method = request.method;
     const url = request.url;
-    return `${method} ${url} \n ${request.body} \n ${request.params} \n ${request.query}`;
+    return `
+    ${method} ${url} 
+    request.body : ${JSON.stringify(request.body)} 
+    request.params : ${JSON.stringify(request.params)} 
+    request.query : ${JSON.stringify(request.query)}`;
   }
 };

@@ -1,13 +1,13 @@
 import type {
-  AxiosRequestConfig,
-  AxiosInstance,
-  AxiosResponse,
   AxiosError,
+  AxiosInstance,
+  AxiosRequestConfig,
+  AxiosResponse,
   InternalAxiosRequestConfig,
 } from 'axios';
+import axios from 'axios';
 import type { RequestOptions, Result, UploadFileParams } from '/#/axios';
 import type { CreateAxiosOptions } from './axiosTransform';
-import axios from 'axios';
 import qs from 'qs';
 import { AxiosCanceler } from './axiosCancel';
 import { isFunction } from '/@/utils/is';
@@ -198,7 +198,7 @@ export class VAxios {
 
   request<T = any>(config: AxiosRequestConfig, options?: RequestOptions): Promise<T> {
     let conf: CreateAxiosOptions = cloneDeep(config);
-    // cancelToken 如果被深拷贝，会导致最外层无法使用cancel方法来取消请求
+    // cancelToken이 깊게 복사되면 가장 바깥쪽 레이어는 취소 메서드를 사용하여 요청을 취소할 수 없습니다.
     if (config.cancelToken) {
       conf.cancelToken = config.cancelToken;
     }

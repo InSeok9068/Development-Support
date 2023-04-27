@@ -1,15 +1,19 @@
 import { defHttp } from '/@/utils/http/axios';
-import { LoginParams, LoginResultModel, GetUserInfoModel } from './model/userModel';
+import { GetUserInfoModel, LoginParams, LoginResultModel } from './model/userModel';
 
 import { ErrorMessageMode } from '/#/axios';
+import { getAppEnvConfig } from '@/utils/env';
 
 enum Api {
   Login = '/login',
   Logout = '/logout',
-  GetUserInfo = '/getUserInfo',
+  GetUserInfo = '/users/',
   GetPermCode = '/getPermCode',
   TestRetry = '/testRetry',
 }
+
+const { VITE_GLOB_BACKEND_API_URL } = getAppEnvConfig();
+const apiUrl = VITE_GLOB_BACKEND_API_URL;
 
 /**
  * @description: user login api
@@ -29,8 +33,11 @@ export function loginApi(params: LoginParams, mode: ErrorMessageMode = 'modal') 
 /**
  * @description: getUserInfo
  */
-export function getUserInfo() {
-  return defHttp.get<GetUserInfoModel>({ url: Api.GetUserInfo }, { errorMessageMode: 'none' });
+export function getUserInfo(userId: string) {
+  return defHttp.get<GetUserInfoModel>(
+    { url: Api.GetUserInfo, params: { userId } },
+    { errorMessageMode: 'none', apiUrl },
+  );
 }
 
 export function getPermCode() {
