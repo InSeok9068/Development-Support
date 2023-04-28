@@ -1,4 +1,4 @@
-import { Controller, Get, HttpCode, Param, Post } from '@nestjs/common';
+import { Controller, Get, HttpCode, Post, Query } from '@nestjs/common';
 import { UsersService } from './users.service';
 import { Result } from '../common/result';
 
@@ -11,9 +11,9 @@ export class UsersController {
     return await this.usersService.getUserList();
   }
 
-  @Get(':userId')
-  async getUser(@Param('userId') userId: string) {
-    return await this.usersService.getUser(userId);
+  @Get()
+  async getUser(@Query('userId') userId: string) {
+    return await this.usersService.getUserByUserId(userId);
   }
 
   @HttpCode(401)

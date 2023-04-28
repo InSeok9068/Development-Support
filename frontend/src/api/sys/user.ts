@@ -7,7 +7,7 @@ import { getAppEnvConfig } from '@/utils/env';
 enum Api {
   Login = '/login',
   Logout = '/logout',
-  GetUserInfo = '/users/',
+  GetUserInfo = '/users',
   GetPermCode = '/getPermCode',
   TestRetry = '/testRetry',
 }
@@ -25,6 +25,7 @@ export function loginApi(params: LoginParams, mode: ErrorMessageMode = 'modal') 
       params,
     },
     {
+      apiUrl,
       errorMessageMode: mode,
     },
   );

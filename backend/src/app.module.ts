@@ -6,6 +6,7 @@ import { AppController } from './app.controller';
 import { TranslationModule } from './biz/translation/translation.module';
 import { UsersModule } from './biz/users/users.module';
 import { PrismaModule } from './config/prisma/prisma.module';
+import { LoginModule } from './biz/login/login.module';
 
 @Module({
   imports: [
@@ -20,6 +21,7 @@ import { PrismaModule } from './config/prisma/prisma.module';
     PrismaModule,
     TranslationModule,
     UsersModule,
+    LoginModule,
   ],
   controllers: [AppController],
 })
