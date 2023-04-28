@@ -3,7 +3,7 @@ import { User } from '@prisma/client';
 import { PrismaService } from '../../config/prisma/prisma.service';
 import { Result } from '../common/result';
 
-export interface UserParam {
+export interface LoginDto {
   userId: string;
   password: string;
 }
@@ -43,14 +43,14 @@ export class UsersService {
     }
   }
 
-  async getUserForLogin(userParam: UserParam): Promise<Result<User>> {
+  async getUserForLogin(loginDto: LoginDto): Promise<Result<User>> {
     const user = await this.prisma.user.findFirst({
       where: {
         userId: {
-          equals: userParam.userId,
+          equals: loginDto.userId,
         },
         password: {
-          equals: userParam.password,
+          equals: loginDto.password,
         },
       },
       include: {
