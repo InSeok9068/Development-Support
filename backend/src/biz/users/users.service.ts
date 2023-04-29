@@ -15,11 +15,7 @@ export class UsersService {
       },
     });
 
-    if (users.length > 0) {
-      return Result.success(users);
-    } else {
-      return Result.error('No users found');
-    }
+    return users.length > 0 ? Result.success(users) : Result.error('No users found');
   }
 
   async getUserByUserId(userId: string): Promise<Result<User>> {
@@ -32,11 +28,7 @@ export class UsersService {
       },
     });
 
-    if (user) {
-      return Result.success(user);
-    } else {
-      return Result.error('User not found');
-    }
+    return user ? Result.success(user) : Result.error('User not found');
   }
 
   async getUserForLogin(loginDto: LoginDto): Promise<Result<User>> {
@@ -54,10 +46,6 @@ export class UsersService {
       },
     });
 
-    if (user) {
-      return Result.success(user);
-    } else {
-      return Result.error('Fail login');
-    }
+    return user ? Result.success(user) : Result.error('Fail login');
   }
 }
