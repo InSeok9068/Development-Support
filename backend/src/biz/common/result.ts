@@ -31,10 +31,10 @@ export class Result<T> {
   }
 
   isSuccess() {
-    return this.type === ResultEnum.SUCCESS.toString();
+    return this.type === ResultTypeEnum.SUCCESS.toString();
   }
 
   isError() {
-    return this.type === ResultEnum.ERROR.toString();
+    return this.type === ResultTypeEnum.ERROR.toString();
   }
 }

@@ -2,11 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { User } from '@prisma/client';
 import { PrismaService } from '../../config/prisma/prisma.service';
 import { Result } from '../common/result';
-
-export interface LoginDto {
-  userId: string;
-  password: string;
-}
+import { LoginDto } from '../login/login.service';
 
 @Injectable()
 export class UsersService {
@@ -46,8 +42,8 @@ export class UsersService {
   async getUserForLogin(loginDto: LoginDto): Promise<Result<User>> {
     const user = await this.prisma.user.findFirst({
       where: {
-        userId: {
-          equals: loginDto.userId,
+        username: {
+          equals: loginDto.username,
         },
         password: {
           equals: loginDto.password,
