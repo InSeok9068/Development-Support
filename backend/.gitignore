@@ -5,7 +5,7 @@ public/*
 .env
 db/
 prisma/migrations/**/*
-src/test.ts
+src/run.ts
 
 
 # IDE - VSCode
