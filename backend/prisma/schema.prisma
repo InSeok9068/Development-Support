@@ -52,26 +52,28 @@ model Role {
 }
 
 model Menu {
-  id        Int        @id @default(autoincrement())
+  id        Int       @id @default(autoincrement())
   path      String
   name      String
   component String?
   redirect  String?
-  MenuMetas MenuMeta[]
-  children  Menu[]     @relation("ChildMenus")
-  parentId  Int?       @default(0)
-  parent    Menu?      @relation("ChildMenus", fields: [parentId], references: [id])
+  meta      MenuMeta?
+  parentId  Int?
+  parent    Menu?     @relation("ChildMenus", fields: [parentId], references: [id])
+  children  Menu[]    @relation("ChildMenus")
 }
 
 model MenuMeta {
-  menuId            Int
-  metaId            Int
-  Menu              Menu    @relation(fields: [menuId], references: [id])
-  hideMenu          Boolean @default(false)
-  hideBreadcrumb    Boolean @default(false)
-  title             String
-  currentActiveMenu String?
-  icon              String?
-
-  @@id([menuId, metaId])
+  metaId             Int     @id @default(autoincrement())
+  menuId             Int     @unique
+  Menu               Menu    @relation(fields: [menuId], references: [id])
+  title              String
+  frameSrc           String?
+  currentActiveMenu  String?
+  icon               String?
+  showMenu           Boolean @default(false)
+  hideMenu           Boolean @default(false)
+  hideBreadcrumb     Boolean @default(false)
+  hideChildrenInMenu Boolean @default(false)
+  ignoreKeepAlive    Boolean @default(false)
 }

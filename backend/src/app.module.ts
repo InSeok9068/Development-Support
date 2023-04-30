@@ -8,6 +8,7 @@ import { UsersModule } from './biz/users/users.module';
 import { LoginModule } from './biz/login/login.module';
 import { GPrismaModule } from './config/prisma/prisma.module';
 import { GJwtModule } from './biz/core/jwt.module';
+import { MenusModule } from './biz/menus/menus.module';
 
 @Module({
   imports: [
@@ -24,6 +25,7 @@ import { GJwtModule } from './biz/core/jwt.module';
     TranslationModule,
     UsersModule,
     LoginModule,
+    MenusModule,
   ],
   controllers: [AppController],
 })

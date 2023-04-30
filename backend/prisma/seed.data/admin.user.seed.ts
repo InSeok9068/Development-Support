@@ -21,4 +21,27 @@ const AdminUserSeed = {
   },
 };
 
-export { AdminUserSeed };
+const TestUserSeed = {
+  where: { userId: '2' },
+  update: {},
+  create: {
+    userId: '2',
+    username: 'test',
+    password: '123456',
+    realName: 'test user',
+    avatar: '',
+    desc: 'tester',
+    token: 'fakeToken2',
+    homePath: '/dashboard/workbench',
+    roles: {
+      create: [
+        {
+          roleName: 'Tester',
+          value: 'test',
+        },
+      ],
+    },
+  },
+};
+
+export { AdminUserSeed, TestUserSeed };
