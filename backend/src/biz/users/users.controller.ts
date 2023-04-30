@@ -1,7 +1,7 @@
 import { Controller, Get, HttpCode, Post, Query, UseGuards } from '@nestjs/common';
 import { UsersService } from './users.service';
-import { Result } from '../common/result';
-import { AuthGuard } from '../login/auth/auth.guard';
+import { Result } from '../util/result';
+import { AuthGuard } from '../auth/auth.guard';
 
 @Controller('users')
 export class UsersController {
@@ -19,12 +19,12 @@ export class UsersController {
   }
 
   @HttpCode(401)
-  @Post(':userId/session-timeout')
+  @Post('/session-timeout')
   userSessionTimeout() {
     return Result.success();
   }
 
-  @Post(':userId/token-expired')
+  @Post('/token-expired')
   userTokenExpired() {
     return Result.timeout('Token Expired!');
   }

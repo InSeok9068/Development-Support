@@ -10,9 +10,9 @@ export const LOCALE: { [key: string]: LocaleType } = {
 export const localeSetting: LocaleSetting = {
   showPicker: true,
   // Locale
-  locale: LOCALE.EN_US,
+  locale: LOCALE.ZH_CN,
   // Default locale
-  fallback: LOCALE.EN_US,
+  fallback: LOCALE.ZH_CN,
   // available Locales
   availableLocales: [LOCALE.EN_US, LOCALE.KO_KR, LOCALE.ZH_CN],
 };

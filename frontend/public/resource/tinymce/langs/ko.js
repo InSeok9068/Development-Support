@@ -1,4 +1,4 @@
-tinymce.addI18n('es', {
+tinymce.addI18n('ko', {
   Redo: '실행',
   Undo: '실행취소',
   Cut: '잘라내기',

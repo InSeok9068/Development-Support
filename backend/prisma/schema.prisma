@@ -50,3 +50,28 @@ model Role {
   userId   String
   user     User   @relation(fields: [userId], references: [userId])
 }
+
+model Menu {
+  id        Int        @id @default(autoincrement())
+  path      String
+  name      String
+  component String?
+  redirect  String?
+  MenuMetas MenuMeta[]
+  children  Menu[]     @relation("ChildMenus")
+  parentId  Int?       @default(0)
+  parent    Menu?      @relation("ChildMenus", fields: [parentId], references: [id])
+}
+
+model MenuMeta {
+  menuId            Int
+  metaId            Int
+  Menu              Menu    @relation(fields: [menuId], references: [id])
+  hideMenu          Boolean @default(false)
+  hideBreadcrumb    Boolean @default(false)
+  title             String
+  currentActiveMenu String?
+  icon              String?
+
+  @@id([menuId, metaId])
+}
