@@ -10,7 +10,7 @@
     "preview": "vite preview",
     "build-only": "vite build",
     "build-only:dev": "vite build --mode development",
-    "type-check": "vue-tsc --noEmit -p tsconfig.vitest.json --composite false",
+    "type-check": "vue-tsc --noEmit -p tsconfig.app.json --composite false",
     "lint:fix": "eslint \"src/**/*.{ts,tsx,js,jsx}\" --fix",
     "lint:format": "prettier --write ."
   },
@@ -26,8 +26,9 @@
     "vue-router": "^4.2.4"
   },
   "devDependencies": {
+    "@tsconfig/node18": "^18.2.0",
     "@types/lodash": "^4.14.197",
-    "@types/node": "^20.5.1",
+    "@types/node": "^18.17.6",
     "@typescript-eslint/eslint-plugin": "^6.4.0",
     "@typescript-eslint/parser": "^6.4.0",
     "@vitejs/plugin-vue": "^4.3.2",
