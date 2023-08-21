@@ -15,31 +15,31 @@ export class DefaultError extends Error {
 }
 
 export class AuthError extends DefaultError {
-  constructor(message: string = "Unauthorized") {
-    super({ name: "AuthError", code: 401, message });
+  constructor(message: string = 'Unauthorized') {
+    super({ name: 'AuthError', code: 401, message });
   }
 }
 
 export class ForbiddenError extends DefaultError {
   constructor(message: string) {
-    super({ name: "ForbiddenError", code: 403, message });
+    super({ name: 'ForbiddenError', code: 403, message });
   }
 }
 
 export class NotFoundError extends DefaultError {
   constructor(message: string) {
-    super({ name: "NotFoundError", code: 404, message });
+    super({ name: 'NotFoundError', code: 404, message });
   }
 }
 
 export class ValidationError extends DefaultError {
   constructor(message: string) {
-    super({ name: "ValidationError", code: 422, message });
+    super({ name: 'ValidationError', code: 422, message });
   }
 }
 
 export class UnknownError extends DefaultError {
   constructor() {
-    super({ name: "UnknownError", code: 418, message: "Unknown error" });
+    super({ name: 'UnknownError', code: 418, message: 'Unknown error' });
   }
 }

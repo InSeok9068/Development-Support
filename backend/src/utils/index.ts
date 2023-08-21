@@ -1,3 +1,3 @@
-import * as errorUtil from "./error.util";
+import * as errorUtil from './error.util';
 
 export { errorUtil };

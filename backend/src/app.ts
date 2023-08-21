@@ -21,10 +21,6 @@ app.get('/', (req: Request, res: Response) => {
   res.send('Typescript + Node.js + Functional Programing + Express Server');
 });
 
-app.get('/home', (req: Request, res: Response) => {
-  res.render('home');
-});
-
 app.listen(port, () => {
   logger.info('App Start');
   console.log(`[server]: Server is running at <http://localhost:${port}>`);

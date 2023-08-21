@@ -1,4 +1,4 @@
-import { PrismaClient } from "@prisma/client";
+import { PrismaClient } from '@prisma/client';
 
 const prisma = new PrismaClient();
 
@@ -7,9 +7,9 @@ async function seed() {
     where: { id: 1 },
     update: {},
     create: {
-      username: "이인석",
-      email: "dlstjr9068@gmail.com",
-      password: "1111",
+      username: '이인석',
+      email: 'dlstjr9068@gmail.com',
+      password: '1111',
     },
   });
 
@@ -17,7 +17,7 @@ async function seed() {
     user,
   });
 
-  console.log("Example data upsert successfully!");
+  console.log('Example data upsert successfully!');
 }
 
 seed()

@@ -1,20 +1,20 @@
 const AdminUserSeed = {
-  where: { userId: "1" },
+  where: { userId: '1' },
   update: {},
   create: {
-    userId: "1",
-    username: "dlstjr9068",
-    realName: "Lee In Seok",
-    avatar: "",
-    desc: "manager",
-    password: "9068",
-    token: "fakeToken1",
-    homePath: "/dashboard/analysis",
+    userId: '1',
+    username: 'dlstjr9068',
+    realName: 'Lee In Seok',
+    avatar: '',
+    desc: 'manager',
+    password: '9068',
+    token: 'fakeToken1',
+    homePath: '/dashboard/analysis',
     roles: {
       create: [
         {
-          roleName: "Super Admin",
-          value: "super",
+          roleName: 'Super Admin',
+          value: 'super',
         },
       ],
     },
@@ -22,22 +22,22 @@ const AdminUserSeed = {
 };
 
 const TestUserSeed = {
-  where: { userId: "2" },
+  where: { userId: '2' },
   update: {},
   create: {
-    userId: "2",
-    username: "test",
-    password: "123456",
-    realName: "test user",
-    avatar: "",
-    desc: "tester",
-    token: "fakeToken2",
-    homePath: "/dashboard/workbench",
+    userId: '2',
+    username: 'test',
+    password: '123456',
+    realName: 'test user',
+    avatar: '',
+    desc: 'tester',
+    token: 'fakeToken2',
+    homePath: '/dashboard/workbench',
     roles: {
       create: [
         {
-          roleName: "Tester",
-          value: "test",
+          roleName: 'Tester',
+          value: 'test',
         },
       ],
     },
