@@ -5,7 +5,7 @@ import { userRoute } from './routes';
 import { logger, morganMiddleware } from './configs';
 
 const app: Express = express();
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 4000;
 
 // 설정
 app.use(express.json());

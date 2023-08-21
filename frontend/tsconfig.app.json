@@ -1,0 +1,15 @@
+{
+  "extends": "@vue/tsconfig/tsconfig.dom.json",
+  "include": ["env.d.ts", "src/**/*", "src/**/*.vue", "NotFoundView.vue.ts", "package.json"],
+  "exclude": ["src/**/__tests__/*"],
+  "compilerOptions": {
+    "ignoreDeprecations": "5.0",
+    "target": "ES6",
+    //"module": "es2015", //설정하면 dynamic import(코드분할) 사용 불가
+    "composite": true,
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"]
+    }
+  }
+}
