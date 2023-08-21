@@ -1,0 +1,79 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Account {
+  userid       String  @id
+  name         String
+  email        String
+  signature    String?
+  introduction String?
+  title        String?
+  group        String?
+  notifyCount  Int?
+  unreadCount  Int?
+  country      String?
+  address      String?
+  phone        String?
+  tags         Tag[]
+}
+
+model Tag {
+  key       String
+  label     String
+  accountId String
+  account   Account @relation(fields: [accountId], references: [userid])
+
+  @@id([key, accountId])
+}
+
+model User {
+  userId   String  @id
+  password String
+  username String
+  realName String
+  avatar   String?
+  desc     String
+  token    String
+  homePath String
+  roles    Role[]
+}
+
+model Role {
+  roleName String @id
+  value    String
+  userId   String
+  user     User   @relation(fields: [userId], references: [userId])
+}
+
+model Menu {
+  id        Int       @id @default(autoincrement())
+  path      String
+  name      String
+  component String?
+  redirect  String?
+  meta      MenuMeta?
+  parentId  Int?
+  parent    Menu?     @relation("ChildMenus", fields: [parentId], references: [id])
+  children  Menu[]    @relation("ChildMenus")
+}
+
+model MenuMeta {
+  metaId             Int     @id @default(autoincrement())
+  menuId             Int     @unique
+  Menu               Menu    @relation(fields: [menuId], references: [id])
+  title              String
+  frameSrc           String?
+  currentActiveMenu  String?
+  icon               String?
+  showMenu           Boolean @default(false)
+  hideMenu           Boolean @default(false)
+  hideBreadcrumb     Boolean @default(false)
+  hideChildrenInMenu Boolean @default(false)
+  ignoreKeepAlive    Boolean @default(false)
+}
