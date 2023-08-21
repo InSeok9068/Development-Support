@@ -1,0 +1,11 @@
+{
+  "name": "development-support-fronted",
+  "version": "1.0.0",
+  "description": "개발 도우미 (프론트엔드)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
