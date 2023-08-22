@@ -13,7 +13,7 @@ export default defineConfig({
       dts: true,
     }),
     splitVendorChunkPlugin(),
-    removeConsole,
+    removeConsole(),
   ],
   build: {
     chunkSizeWarningLimit: 600,
