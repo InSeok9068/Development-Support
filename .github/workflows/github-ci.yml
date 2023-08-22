@@ -5,7 +5,7 @@ name: CI_Development-Support
 
 on:
   push:
-    branches: [ "release" ]
+    branches: ['release']
 
 jobs:
   build:
@@ -16,14 +16,10 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [ 18.15.0 ]
+        node-version: [18.15.0]
 
     steps:
       - uses: actions/checkout@v3
-
-      - uses: pnpm/action-setup@v2
-        with:
-          version: 8
 
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v3
@@ -31,7 +27,7 @@ jobs:
           node-version: ${{ matrix.node-version }}
 
       - name: frontend install dependencies
-        run: pnpm install
+        run: npm install
         working-directory: ${{ env.frontend-working-directory }}
 
       - name: frontend npm build
@@ -39,7 +35,7 @@ jobs:
         working-directory: ${{ env.frontend-working-directory }}
 
       - name: zip frontend build folder
-        run: tar -cvf public.tar public
+        run: tar -cvf dist.tar dist
         working-directory: ${{ env.backend-working-directory }}
 
       - name: scp action
@@ -49,8 +45,8 @@ jobs:
           username: ${{ secrets.SSH_USERNAME }}
           key: ${{ secrets.SSH_KEY }}
           port: ${{ secrets.SSH_PORT }}
-          source: "backend/public.tar"
-          target: "deploy"
+          source: 'backend/dist.tar'
+          target: 'deploy'
 
   deploy-run:
     needs: build
@@ -83,15 +79,15 @@ jobs:
         run: npm run build --if-present
         working-directory: ${{ env.backend-working-directory }}
 
-      - name : frontend deploy unzip
-        run : tar -xvf /home/ubuntu/deploy/backend/public.tar -C /home/ubuntu/Development-Support/backend
+      - name: frontend deploy unzip
+        run: tar -xvf /home/ubuntu/deploy/backend/dist.tar -C /home/ubuntu/Development-Support/backend
 
       - name: run new server (in background)
         env:
-          RUNNER_TRACKING_ID: ""
+          RUNNER_TRACKING_ID: ''
         run: |
           cd /home/ubuntu/Development-Support/backend
-          nohup npm run start:prod </dev/null >/dev/null 2>&1 &   
+          nohup npm run start:prod </dev/null >/dev/null 2>&1 &
 
   deploy-message:
     needs: deploy-run
@@ -108,12 +104,12 @@ jobs:
           format: markdown
           message: |
             Author: ${{github.actor}}
-            
+
             Status: 😚 **Success**
-            
+
             Commit message: ${{ github.event.commits[0].message }}
-            
-            [See changes](https://github.com/${{ github.repository }}/commit/${{github.sha}}) 
+
+            [See changes](https://github.com/${{ github.repository }}/commit/${{github.sha}})
 
       # 빌드 실패 메세지 발송
       - name: Send Build Success Message
@@ -125,9 +121,9 @@ jobs:
           format: markdown
           message: |
             Author: ${{github.actor}}
-            
+
             Status: 😱 **Failure**
-            
+
             Commit message: ${{ github.event.commits[0].message }}
-            
+
             [link](https://github.com/${{ github.repository }}/actions)
