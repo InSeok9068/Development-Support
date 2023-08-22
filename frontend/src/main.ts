@@ -5,6 +5,9 @@ import { createApp } from 'vue';
 
 import { name, version } from '../package.json';
 
+// Tailwind CSS
+import '@/assets/index.css';
+
 //앱 정보 출력
 console.log(`*******************************************************`);
 console.log(`* ${name} (ver.${version})`);
