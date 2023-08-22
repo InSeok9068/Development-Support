@@ -14,9 +14,9 @@ Language : TypeScript
 
 Backend Framework : Express
 
-Frontend Framework : Vue
+Frontend Framework : VueJS
 
-CSS Framework : Ant Design Vue
+CSS Framework : Tailwind CSS + Daisy UI
 
 Database : SQLite
 
@@ -26,9 +26,11 @@ Cache System : Redis
 
 Message Queue : Redis Pub/Sub
 
-Package Manager : npm
+Package Manager : Npm
 
-CI/CD : GitHub Action (+Self-hosted Runner)
+Front Build Tool : Vite
+
+CI/CD : GitHub Action (+ Self-hosted Runner)
 
 Notification : Telegram
 

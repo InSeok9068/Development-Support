@@ -1,7 +1,9 @@
 <template>
-  <button class="btn btn-primary">버튼</button>
+  <TheView></TheView>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import TheView from '@/layouts/TheView.vue';
+</script>
 
 <style scoped></style>

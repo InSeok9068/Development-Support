@@ -4,10 +4,9 @@
   "description": "개발 도우미 (백엔드)",
   "main": "dist/app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "tsc",
-    "start": "tsc && node dist/app.js",
     "dev": "nodemon --exec ts-node src/app.ts",
+    "start": "tsc && node dist/app.js",
+    "build": "tsc",
     "lint": "eslint \"src/**/*.{ts,tsx,js,jsx}\"",
     "lint:fix": "eslint \"src/**/*.{ts,tsx,js,jsx}\" --fix",
     "lint:format": "prettier --write .",

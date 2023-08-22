@@ -1,9 +1,5 @@
 <template>
-  <div id="wrap">
-    <router-view v-slot="{ Component }">
-      <component :is="Component" />
-    </router-view>
-  </div>
+  <div class="w-full h-screen text-gray-300 dark:text-gray-200 bg-base-100"></div>
 </template>
 
 <script setup lang="ts"></script>
