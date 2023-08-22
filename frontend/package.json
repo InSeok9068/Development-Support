@@ -2,7 +2,7 @@
   "name": "development-support-fronted",
   "version": "1.0.0",
   "description": "개발 도우미 (프론트엔드)",
-  "main": "index.js",
+  "main": "dist/index.html",
   "scripts": {
     "dev": "vite --host --port 3000",
     "preview": "vite preview",
