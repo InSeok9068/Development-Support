@@ -1,9 +1,3 @@
-/**
- * 스크립트 main 파일로서 프레임웍, 미들웨어, 플러그인 등록
- * @author jtmoon
- * @copyright 한국선불카드(주)
- * @see None
- */
 import App from '@/App.vue';
 import { createPinia } from 'pinia';
 import piniaPluginPersistedstate from 'pinia-plugin-persistedstate';
