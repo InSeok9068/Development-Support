@@ -1,8 +1,7 @@
 import { fileURLToPath, URL } from 'node:url';
-import Components from 'unplugin-vue-components/vite';
-
 import { defineConfig, splitVendorChunkPlugin } from 'vite';
 import vue from '@vitejs/plugin-vue';
+import Components from 'unplugin-vue-components/vite';
 import removeConsole from 'vite-plugin-remove-console';
 
 // https://vitejs.dev/config/
@@ -14,7 +13,7 @@ export default defineConfig({
       dts: true,
     }),
     splitVendorChunkPlugin(),
-    removeConsole(),
+    removeConsole,
   ],
   build: {
     chunkSizeWarningLimit: 600,
