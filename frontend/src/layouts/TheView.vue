@@ -1,7 +1,7 @@
 <template>
-  <div class="w-full h-screen text-gray-300 dark:text-gray-200 bg-base-100"></div>
+  <router-view v-slot="{ Component }">
+    <component :is="Component" />
+  </router-view>
 </template>
 
 <script setup lang="ts"></script>
-
-<style scoped></style>

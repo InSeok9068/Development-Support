@@ -5,5 +5,3 @@
 <script setup lang="ts">
 import TheView from '@/layouts/TheView.vue';
 </script>
-
-<style scoped></style>
