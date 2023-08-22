@@ -1,7 +1,7 @@
 <template>
-  <TheView></TheView>
+  <TheLayout></TheLayout>
 </template>
 
 <script setup lang="ts">
-import TheView from '@/layouts/TheView.vue';
+import TheLayout from '@/layouts/TheLayout.vue';
 </script>
