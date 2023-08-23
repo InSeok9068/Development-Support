@@ -1,8 +1,9 @@
 <template>
-  <div class="container h-screen">
-    <div class="flex space-x-4 p-5">
+  <div class="mx-auto h-screen w-full p-5">
+    <div class="flex space-x-4">
       <AppCard v-for="(item, index) in cardArgsList" :key="index" v-model="cardArgsList[index]" />
     </div>
+    <div class="divider"></div>
     <div>
       <router-view></router-view>
     </div>

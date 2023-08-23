@@ -1,5 +1,5 @@
 <template>
-  <div class="card bg-base-100 w-96 shadow-xl">
+  <div class="card bg-base-100 w-52 shadow-xl">
     <div class="card-body">
       <h2 class="card-title">{{ theArgs.title }}</h2>
       <div class="card-actions justify-end">
