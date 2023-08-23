@@ -1,6 +1,5 @@
 import * as db from '../models';
-import { errorUtil } from '../utils';
 
-const getUser = (id: number) => {};
+const getUser = (id: number) => db.getUserDB(id);
 
 export { getUser };
