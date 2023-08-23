@@ -1,7 +1,9 @@
 <template>
   <div class="card w-52 bg-base-100 shadow-xl">
     <div class="card-body">
-      <h2 class="card-title">{{ theArgs.title }}</h2>
+      <h2 class="card-title">
+        {{ theArgs.title }}
+      </h2>
       <div class="card-actions justify-end">
         <button class="btn btn-primary" @click="theArgs.move">이동</button>
       </div>

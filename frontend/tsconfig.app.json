@@ -5,7 +5,8 @@
     "ignoreDeprecations": "5.0",
     "composite": true,
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": ["./src/*"],
+      "@backend/types/*": ["../backend/src/types/*"]
     }
   }
 }

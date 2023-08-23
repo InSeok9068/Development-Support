@@ -1,11 +1,8 @@
 module.exports = {
   root: true,
-  env: {
-    browser: true,
-  },
-  parser: 'vue-eslint-parser',
+  env: {},
   plugins: ['@typescript-eslint'],
-  extends: ['plugin:vue/vue3-recommended', 'plugin:@typescript-eslint/recommended', 'prettier'],
+  extends: ['plugin:@typescript-eslint/recommended', 'prettier'],
   parserOptions: {
     ecmaVersion: '2022',
     sourceType: 'module',
