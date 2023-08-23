@@ -1,6 +1,5 @@
 import * as db from '../models';
-import { UserDto } from '../types/user.type';
 
-const getUser = (id: number) => db.getUserDB(id);
+const getUser = (id: number) => db.getUserById(id);
 
 export { getUser };

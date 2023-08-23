@@ -1,9 +1,15 @@
 import { prisma } from '../configs';
 
-const getUserDB = async (id: number) => {
+const getUserById = async (id: number) => {
   return prisma.user.findUnique({
     where: { id },
   });
 };
 
-export { getUserDB };
+const getUserByUserIdAndPassword = async (userId: string, password: string) => {
+  return prisma.user.findUnique({
+    where: { userId, password },
+  });
+};
+
+export { getUserById, getUserByUserIdAndPassword };

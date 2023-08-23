@@ -11,5 +11,13 @@
   },
   "[prisma]": {
     "editor.defaultFormatter": "Prisma.prisma"
+  },
+  "search.exclude": {
+    "**/node_modules": true,
+    "**/bower_components": true,
+    "**/*.code-search": true,
+    "**/package*.json": true,
+    "**/.gitignore": true,
+    "**/README.md": true
   }
 }
