@@ -1,8 +1,13 @@
 import express, { Express, Request, Response } from 'express';
+import dotenv from 'dotenv';
 import cors from 'cors';
 import helmet from 'helmet';
+import session from 'express-session';
+import passport from 'passport';
 import { userRoute } from './routes';
 import { logger, morganMiddleware } from './configs';
+
+dotenv.config({ path: `.env.${process.env.NODE_ENV}` });
 
 const app: Express = express();
 const port = process.env.PORT || 4000;
@@ -13,6 +18,15 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 app.use(helmet());
 app.use(morganMiddleware);
+app.use(
+  session({
+    secret: process.env.PASSPORT_SECURT as string,
+    resave: false, // fasle 권장
+    saveUninitialized: false, // fasle 권장
+  }),
+);
+app.use(passport.initialize());
+app.use(passport.session());
 
 // Route
 app.use(userRoute);

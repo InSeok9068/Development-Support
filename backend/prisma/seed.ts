@@ -7,9 +7,10 @@ async function seed() {
     where: { id: 1 },
     update: {},
     create: {
+      userId: 'dlstjr9068',
+      password: '9068',
       username: '이인석',
       email: 'dlstjr9068@gmail.com',
-      password: '1111',
     },
   });
 
