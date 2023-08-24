@@ -1,13 +1,12 @@
-import express, { Express, Request, Response } from 'express';
-import dotenv from 'dotenv';
 import cors from 'cors';
-import helmet from 'helmet';
+import dotenv from 'dotenv';
+import express, { Express, Request, Response } from 'express';
 import session from 'express-session';
+import helmet from 'helmet';
 import passport from 'passport';
-import { userRoute } from './routes';
 import { logger, morganMiddleware } from './configs';
-import { authMiddleware } from './middlewares/auth.middleware';
 import { passportConfigInit } from './configs/passport.config';
+import { userRoute } from './routes';
 
 dotenv.config({ path: `.env.${process.env.NODE_ENV}` });
 
@@ -20,7 +19,6 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 app.use(helmet());
 app.use(morganMiddleware);
-app.use(authMiddleware);
 app.use(
   session({
     secret: process.env.PASSPORT_SECURT as string,
