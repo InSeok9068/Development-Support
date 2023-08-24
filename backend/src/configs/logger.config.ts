@@ -1,5 +1,4 @@
 import winston from 'winston';
-import morgan, { StreamOptions } from 'morgan';
 
 // winstrom 설정
 const levels = {
@@ -48,17 +47,4 @@ const logger = winston.createLogger({
   transports,
 });
 
-// morgan 설정
-const stream: StreamOptions = {
-  // Use the http severity
-  write: (message) => logger.http(message),
-};
-
-const skip = () => {
-  const env = process.env.NODE_ENV || 'development';
-  return env !== 'development';
-};
-
-const morganMiddleware = morgan(':method :url :status :res[content-length] - :response-time ms', { stream, skip });
-
-export { logger, morganMiddleware };
+export { logger };

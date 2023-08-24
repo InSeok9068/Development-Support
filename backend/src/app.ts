@@ -4,8 +4,9 @@ import express, { Express, Request, Response } from 'express';
 import session from 'express-session';
 import helmet from 'helmet';
 import passport from 'passport';
-import { logger, morganMiddleware } from './configs';
+import { logger } from './configs';
 import { passportConfigInit } from './configs/passport.config';
+import { morganMiddleware } from './middlewares';
 import { userRoute } from './routes';
 
 dotenv.config({ path: `.env.${process.env.NODE_ENV}` });
