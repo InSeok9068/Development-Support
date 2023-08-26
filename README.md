@@ -4,7 +4,7 @@
 
 [Notion Link](https://www.notion.so/4d3b8c7aeb0b4b149da887c6dbdc609b)
 
-### 환경구성
+## 환경구성
 
 Server OS : Ubuntu
 
@@ -38,10 +38,18 @@ API Interface Spec : Postman
 
 ---
 
-### 기능 구현 (예정)
+## 기능 구현
 
-- [ ] 테스트 1
+### 예정
 
-### 기능 구현 (완료)
+- [ ] 테스트1
 
-#### 테스트 2
+### 완료
+
+- 테스트1
+
+---
+
+## 기타 작업
+
+- favicon 적용 (vite?, vue?, express?)

@@ -11,7 +11,8 @@
       "args": ["${workspaceFolder}/backend/src/app.ts"],
       "runtimeArgs": ["--nolazy", "-r", "ts-node/register", "-r"],
       "sourceMaps": true,
-      "cwd": "${workspaceRoot}/backend"
+      "cwd": "${workspaceRoot}/backend",
+      "console": "integratedTerminal"
     }
   ]
 }
