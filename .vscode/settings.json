@@ -17,7 +17,6 @@
     "**/bower_components": true,
     "**/*.code-search": true,
     "**/package-lock.json": true,
-    "**/.gitignore": true,
-    "**/README.md": true
+    "**/.gitignore": true
   }
 }

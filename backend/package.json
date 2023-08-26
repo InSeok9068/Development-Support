@@ -4,7 +4,7 @@
   "description": "개발 도우미 (백엔드)",
   "main": "dist/app.js",
   "scripts": {
-    "dev": "cross-env NODE_ENV=local nodemon --exec ts-node src/app.ts",
+    "dev": "cross-env NODE_ENV=development nodemon --exec ts-node src/app.ts",
     "start": "tsc && node dist/app.js",
     "build": "tsc",
     "lint": "eslint \"src/**/*.{ts,tsx,js,jsx}\"",

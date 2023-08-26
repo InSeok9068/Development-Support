@@ -6,7 +6,7 @@
       "request": "launch",
       "name": "Server Debug",
       "env": {
-        "NODE_ENV": "local"
+        "NODE_ENV": "development"
       },
       "args": ["${workspaceFolder}/backend/src/app.ts"],
       "runtimeArgs": ["--nolazy", "-r", "ts-node/register", "-r"],
