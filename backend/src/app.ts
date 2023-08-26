@@ -8,6 +8,7 @@ import { logger } from './configs';
 import { passportConfigInit } from './configs/passport.config';
 import { morganMiddleware } from './middlewares';
 import { userRoute } from './routes';
+import path from 'path';
 
 dotenv.config({ path: `.env.${process.env.NODE_ENV}` });
 
@@ -19,6 +20,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 app.use(helmet());
+app.use(express.static(path.join(__dirname, '../public')));
 app.use(morganMiddleware);
 app.use(
   session({
@@ -35,7 +37,7 @@ passportConfigInit();
 app.use(userRoute);
 
 app.get('/', (req: Request, res: Response) => {
-  res.send('Typescript + Node.js + Functional Programing + Express Server');
+  res.sendFile(path.join(__dirname, '../public/index.html'));
 });
 
 app.listen(port, () => {

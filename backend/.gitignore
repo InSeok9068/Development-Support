@@ -136,3 +136,6 @@ dist
 # Prisma
 db/
 prisma/migrations/**/*
+
+# public
+public/*

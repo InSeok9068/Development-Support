@@ -16,6 +16,7 @@ export default defineConfig({
     removeConsole(),
   ],
   build: {
+    outDir: '../backend/public',
     chunkSizeWarningLimit: 600,
   },
   //개발시 CORS 회피를 위해서 프록시 사용
