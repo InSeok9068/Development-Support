@@ -21,7 +21,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 app.use(
   helmet({
-    strictTransportSecurity: false,
+    contentSecurityPolicy: false,
   }),
 );
 app.use('/assets', express.static('public/assets'));
