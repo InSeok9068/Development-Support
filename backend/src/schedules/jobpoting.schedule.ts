@@ -34,7 +34,7 @@ const siteScraping = () => {
     switch (site.name) {
       case 'LINE':
         {
-          const browser = await puppeteer.launch({ headless: false });
+          const browser = await puppeteer.launch({ headless: true });
           const page = await browser.newPage();
           await page.goto(site.url);
           await delay(1000);
@@ -44,7 +44,7 @@ const siteScraping = () => {
         break;
       case 'WOOWAHAN':
         {
-          const browser = await puppeteer.launch({ headless: false });
+          const browser = await puppeteer.launch({ headless: true });
           const page = await browser.newPage();
           await page.goto(site.url);
           await delay(1000);
@@ -56,7 +56,6 @@ const siteScraping = () => {
         {
           const { data } = await axios.get(site.url);
           const $ = load(data);
-          // TODO 리스트로 받아서 구현 해야함
           const jobList = $('.job-listing .stretched-link');
           console.log(`[${site.name}] ${jobList.text()}`);
         }
@@ -70,7 +69,7 @@ const siteScraping = () => {
 const delay = (milliseconds: number) => new Promise((resolve) => setTimeout(resolve, milliseconds));
 
 const jobPostingAction = () => {
-  console.log('테스트');
+  siteScraping();
 };
 
 const jobPostingSchedule = new CronJob('* * * * * *', jobPostingAction, null, true, 'Asia/Seoul');
