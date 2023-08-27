@@ -5,7 +5,7 @@
   "main": "dist/app.js",
   "scripts": {
     "dev": "cross-env NODE_ENV=development nodemon --exec ts-node src/app.ts",
-    "start": "tsc && node dist/app.js",
+    "start": "tsc && cross-env NODE_ENV=production node dist/app.js",
     "build": "tsc",
     "lint": "eslint \"src/**/*.{ts,tsx,js,jsx}\"",
     "lint:fix": "eslint \"src/**/*.{ts,tsx,js,jsx}\" --fix",
