@@ -11,6 +11,7 @@ import { morganMiddleware } from './middlewares';
 import { userRoute } from './routes';
 
 dotenv.config({ path: `.env.${process.env.NODE_ENV}` });
+dotenv.config({ path: `.env.secret.${process.env.NODE_ENV}` });
 
 const app: Express = express();
 const port = process.env.PORT || 4000;
@@ -28,7 +29,7 @@ app.use('/assets', express.static('public/assets'));
 app.use(morganMiddleware);
 app.use(
   session({
-    secret: process.env.PASSPORT_SECURT as string,
+    secret: process.env.PASSPORT_SECRET as string,
     resave: false, // fasle 권장
     saveUninitialized: false, // fasle 권장
   }),
