@@ -1,1 +1,34 @@
+### Common
+
+# IntelliJ
 .idea
+
+# Node Modules
+**/node_modules
+
+# Secret Env
+**/.env.secret*
+
+# Build OutPut
+**/dist
+
+# Logs
+**/logs
+**/*.log
+**/npm-debug.log*
+**/yarn-debug.log*
+**/yarn-error.log*
+**/lerna-debug.log*
+**/.pnpm-debug.log*
+
+### Backend
+
+# Prisma
+backend/db
+backend/prisma/migrations
+
+# Public
+backend/public
+
+### Frontend
+
