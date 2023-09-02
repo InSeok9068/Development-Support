@@ -1,11 +1,23 @@
 {
+  "name": "development-support",
+  "description": "개발 도우미",
   "scripts": {
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "preinstall": "npx only-allow pnpm",
+    "build": "turbo run build",
+    "dev": "turbo run dev",
+    "lint": "turbo run lint",
+    "lint:fix": "turbo run lint:fix",
+    "lint:format": "turbo run lint:format",
+    "clean": "turbo run clean"
   },
   "devDependencies": {
+    "eslint": "^8.48.0",
     "husky": "^8.0.3",
     "lint-staged": "^14.0.1",
-    "prettier": "^3.0.3"
+    "prettier": "^3.0.3",
+    "prettier-config-custom": "workspace:*",
+    "turbo": "latest"
   },
   "lint-staged": {
     "*.{js,ts}": [
@@ -15,5 +27,6 @@
     "*.vue": [
       "prettier --write"
     ]
-  }
+  },
+  "packageManager": "pnpm@8.7.1"
 }
