@@ -38,6 +38,8 @@ app.use(passport.initialize());
 app.use(passport.session());
 passportConfigInit();
 
+const a = 1;
+
 // Route
 app.use(userRoute);
 
