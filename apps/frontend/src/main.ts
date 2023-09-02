@@ -4,7 +4,7 @@ import { createPinia } from 'pinia';
 import piniaPluginPersistedstate from 'pinia-plugin-persistedstate';
 import { createApp } from 'vue';
 
-import { name, version } from '../package.json';
+import { name } from '../package.json';
 
 // Tailwind CSS
 import '@/assets/index.css';
@@ -14,7 +14,7 @@ import navigator from '@/plugins/navigatorPlugin';
 
 //앱 정보 출력
 console.log(`*******************************************************`);
-console.log(`* ${name} (ver.${version})`);
+console.log(`* ${name}`);
 console.log(`* User Agent : ${window.navigator.userAgent}`);
 console.log(`*******************************************************`);
 for (const key in import.meta.env) {
