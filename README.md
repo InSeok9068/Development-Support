@@ -26,7 +26,7 @@ Cache System : Redis
 
 Message Queue : Redis Pub/Sub
 
-Package Manager : Npm
+Package Manager : Pnpm
 
 Front Build Tool : Vite
 

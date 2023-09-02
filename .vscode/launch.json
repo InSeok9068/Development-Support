@@ -8,7 +8,7 @@
       "env": {
         "NODE_ENV": "development"
       },
-      "args": ["${workspaceFolder}/backend/src/app.ts"],
+      "args": ["${workspaceFolder}/app/backend/src/app.ts"],
       "runtimeArgs": ["--nolazy", "-r", "ts-node/register", "-r"],
       "sourceMaps": true,
       "cwd": "${workspaceRoot}/backend",

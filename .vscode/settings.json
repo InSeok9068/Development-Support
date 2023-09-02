@@ -6,7 +6,7 @@
   "explorer.fileNesting.expand": false,
   "explorer.fileNesting.patterns": {
     ".env": ".env*",
-    "package.json": "package-lock.json",
+    "package.json": "package-lock.json, pnpm*",
     "tailwind.config.js": "postcss.config.js"
   },
   "[prisma]": {

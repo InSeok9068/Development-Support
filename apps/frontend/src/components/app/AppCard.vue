@@ -26,4 +26,6 @@ const theArgs = computed({
   get: () => props.modelValue,
   set: (value) => emit('update:modelValue', { ...props.modelValue, ...value }),
 });
+
+const a = 'a';
 </script>
