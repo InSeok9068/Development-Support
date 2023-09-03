@@ -8,12 +8,13 @@
     "lint": "eslint \"src/**/*.{ts,js}\"",
     "lint:fix": "eslint \"src/**/*.{ts,js}\" --fix",
     "lint:format": "prettier --write .",
-    "prisma:migrate": "npx prisma migrate dev --name init",
-    "prisma:generate": "npx prisma generate",
+    "prisma:migrate": "prisma migrate dev --name init",
+    "prisma:generate": "prisma generate",
     "prisma:seed": "ts-node prisma/seed.ts",
-    "prisma:pull": "npx prisma db pull",
-    "prisma:push": "npx prisma db push",
-    "prisma:studio": "npx prisma studio"
+    "prisma:pull": "prisma db pull",
+    "prisma:push": "prisma db push",
+    "prisma:studio": "prisma studio",
+    "clean": "rimraf node_modules"
   },
   "dependencies": {
     "@prisma/client": "^5.2.0",

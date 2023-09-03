@@ -11,7 +11,8 @@
     "type-check": "vue-tsc --noEmit -p tsconfig.app.json --composite false",
     "lint": "eslint \"src/**/*.{ts,js,vue}\"",
     "lint:fix": "eslint \"src/**/*.{ts,js,vue}\" --fix",
-    "lint:format": "prettier --write ."
+    "lint:format": "prettier --write .",
+    "clean": "rimraf node_modules"
   },
   "dependencies": {
     "pinia": "^2.1.6",
