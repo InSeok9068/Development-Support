@@ -30,11 +30,27 @@ Package Manager : Pnpm
 
 Front Build Tool : Vite
 
+Monorepo Tool : Turborepo
+
 CI/CD : GitHub Action (+ Self-hosted Runner)
 
 Notification : Telegram
 
 API Interface Spec : Postman
+
+## 실행
+
+### 다운로드
+
+```shell
+pnpm install
+```
+
+### 개발 환경 실행 (프론트엔드, 백엔드 동시)
+
+```shell
+pnpm dev
+```
 
 ---
 
