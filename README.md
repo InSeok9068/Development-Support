@@ -40,7 +40,13 @@ API Interface Spec : Postman
 
 ## 실행
 
-### 다운로드
+### 글로벌 패키지 다운로드
+
+```shell
+npm i -g pnpm turbo rimraf
+```
+
+### 패키지 다운로드
 
 ```shell
 pnpm install
