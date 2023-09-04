@@ -64,7 +64,7 @@ pnpm dev
 
 ### 예정
 
-- [ ] 테스트1
+- [ ] 메이저 IT 기업 채용 공고 알림 서비스
 
 ### 완료
 
@@ -75,3 +75,8 @@ pnpm dev
 ## 기타 작업
 
 - favicon 적용 (vite?, vue?, express?)
+- 문자열 유틸, 날짜 유틸, 기타 유틸 공통화 (@toss/utils)
+- GitHub Action CI/CI 구축 (Turorepo, Docker)
+- 프론트엔드, 백엔드 API 통신 타입 DTO 선언 (zod 이용)
+- 로그인 기능 구현 (미사용 예정)
+- 금일 업무 작성 기능 -> 자동으로 주간보고서 엑셀 작성 후 이메일 전송
