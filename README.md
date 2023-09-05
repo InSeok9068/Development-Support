@@ -38,6 +38,8 @@ Notification : Telegram
 
 API Interface Spec : Postman
 
+---
+
 ## 실행
 
 ### 글로벌 패키지 다운로드
