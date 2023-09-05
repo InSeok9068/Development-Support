@@ -21,12 +21,13 @@
   "devDependencies": {
     "@types/lodash": "^4.14.197",
     "@types/node": "^20.5.9",
+    "@support/eslint-config-custom": "workspace:*",
+    "@support/prettier-config-custom": "workspace:*",
+    "@support/shared": "workspace:*",
     "eslint": "^8.48.0",
-    "eslint-config-custom": "workspace:*",
     "husky": "^8.0.3",
     "lint-staged": "^14.0.1",
     "prettier": "^3.0.3",
-    "prettier-config-custom": "workspace:*",
     "ts-node": "^10.9.1",
     "turbo": "latest",
     "typescript": "^5.2.2"

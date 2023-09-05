@@ -18,6 +18,15 @@ importers:
         specifier: ^4.17.21
         version: 4.17.21
     devDependencies:
+      '@support/eslint-config-custom':
+        specifier: workspace:*
+        version: link:packages/eslint-config-custom
+      '@support/prettier-config-custom':
+        specifier: workspace:*
+        version: link:packages/prettier-config-custom
+      '@support/shared':
+        specifier: workspace:*
+        version: link:packages/shared
       '@types/lodash':
         specifier: ^4.14.197
         version: 4.14.197
@@ -27,9 +36,6 @@ importers:
       eslint:
         specifier: ^8.48.0
         version: 8.48.0
-      eslint-config-custom:
-        specifier: workspace:*
-        version: link:packages/eslint-config-custom
       husky:
         specifier: ^8.0.3
         version: 8.0.3
@@ -39,9 +45,6 @@ importers:
       prettier:
         specifier: ^3.0.3
         version: 3.0.3
-      prettier-config-custom:
-        specifier: workspace:*
-        version: link:packages/prettier-config-custom
       ts-node:
         specifier: ^10.9.1
         version: 10.9.1(@types/node@20.5.9)(typescript@5.2.2)
@@ -96,9 +99,6 @@ importers:
       winston:
         specifier: ^3.10.0
         version: 3.10.0
-      zod:
-        specifier: ^3.22.2
-        version: 3.22.2
     devDependencies:
       '@types/cors':
         specifier: ^2.8.13
@@ -208,6 +208,12 @@ importers:
         version: 9.0.0(eslint@8.48.0)
 
   packages/prettier-config-custom: {}
+
+  packages/shared:
+    dependencies:
+      zod:
+        specifier: ^3.22.2
+        version: 3.22.2
 
 packages:
 

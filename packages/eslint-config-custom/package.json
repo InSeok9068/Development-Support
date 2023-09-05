@@ -1,5 +1,5 @@
 {
-  "name": "eslint-config-custom",
+  "name": "@support/eslint-config-custom",
   "scripts": {
     "clean": "rimraf node_modules"
   },

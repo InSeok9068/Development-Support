@@ -1,3 +1,3 @@
 module.exports = {
-  ...require('prettier-config-custom/base'),
+  ...require('@support/prettier-config-custom/base'),
 };
