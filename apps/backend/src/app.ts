@@ -1,3 +1,4 @@
+import { stringUtil } from '@support/shared/utils';
 import cors from 'cors';
 import dotenv from 'dotenv';
 import express, { Express, Request, Response } from 'express';
@@ -9,6 +10,8 @@ import { logger } from './configs';
 import { passportConfigInit } from './configs/passport.config';
 import { morganMiddleware } from './middlewares';
 import { userRoute } from './routes';
+
+console.log(stringUtil.toCsvString('1', '2', '3'));
 
 dotenv.config({ path: `.env.${process.env.NODE_ENV}` });
 dotenv.config({ path: `.env.secret.${process.env.NODE_ENV}` });
@@ -26,6 +29,7 @@ app.use(
   }),
 );
 app.use('/assets', express.static('public/assets'));
+app.use('/favicon.ico', express.static('public/favicon.ico'));
 app.use(morganMiddleware);
 app.use(
   session({

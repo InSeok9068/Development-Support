@@ -76,7 +76,6 @@ pnpm dev
 
 ## 기타 작업
 
-- favicon 적용 (vite?, vue?, express?)
 - 문자열 유틸, 날짜 유틸, 기타 유틸 공통화 (@toss/utils)
 - GitHub Action CI/CI 구축 (Turorepo, Docker)
 - 프론트엔드, 백엔드 API 통신 타입 DTO 선언 (zod 이용)
