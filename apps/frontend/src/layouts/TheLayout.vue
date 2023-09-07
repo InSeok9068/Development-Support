@@ -14,7 +14,7 @@
 <script setup lang="ts">
 import AppCard from '@/components/app/AppCard.vue';
 import { usePlugin } from '@/composables/plugin';
-import type { UiCardArgs } from '@/ui/uiCommon';
+import type { UiCardArgs } from '@/ui/common.ui';
 import { useRouter } from 'vue-router';
 const router = useRouter();
 const { $navi } = usePlugin();
@@ -27,6 +27,9 @@ const cardArgsList: UiCardArgs[] = [
     title: '대시보드',
     move: () => $navi.dashboard(router).dashboard().go(),
   },
+  {
+    title: '오늘 한일',
+    move: () => $navi.todayWork(router).todayWork().go(),
+  },
 ];
 </script>
-@/ui/common.ui

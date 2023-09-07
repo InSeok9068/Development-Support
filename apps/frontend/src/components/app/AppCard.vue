@@ -11,7 +11,7 @@
   </div>
 </template>
 <script setup lang="ts">
-import type { UiCardArgs } from '@/ui/uiCommon';
+import type { UiCardArgs } from '@/ui/common.ui';
 import { computed } from 'vue';
 
 const props = defineProps<{

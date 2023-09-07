@@ -1,21 +1,21 @@
 import { NAVI_GO, URL_DIR, type GoResult, type UrlRoute } from '@/router/url/common.url';
 import type { Router } from 'vue-router';
 
-type MainRoute = UrlRoute;
+type TodayWorkRoute = UrlRoute;
 
-export const MAIN_URL = '/main';
+export const TODAY_WORK_URL = '/today-work';
 
-export interface UrlMain {
-  main: () => MainRoute;
+export interface UrlTodayWork {
+  todayWork: () => TodayWorkRoute;
 }
 
-export const urlMain = (router?: Router): UrlMain => {
+export const urlTodayWork = (router?: Router): UrlTodayWork => {
   return {
-    main: function (): MainRoute {
+    todayWork: function (): TodayWorkRoute {
       return {
-        path: MAIN_URL,
-        component: () => import('@/views/main/MainView.vue'),
-        desc: '메인화면',
+        path: TODAY_WORK_URL,
+        component: () => import('@/views/todayWork/TodayWorkView.vue'),
+        desc: '오늘 한일',
         dir: function () {
           return URL_DIR(this.path);
         },

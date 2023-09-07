@@ -1,6 +1,7 @@
 import type { RouteRecordRaw } from 'vue-router';
 import { urlDashBoard } from './url/dashboard.url';
 import { urlMain } from './url/main.url';
+import { urlTodayWork } from './url/today.work.url';
 
 /**
  * Route 합성
@@ -32,6 +33,7 @@ export const routes: Readonly<RouteRecordRaw[]> = [
   ...makeRoutes(
     urlDashBoard(),
     urlMain(),
+    urlTodayWork(),
     // MUST BE: 기능별 URL route를 반들면 아래에 반드시 등록해야 url이 동작합니다.
   ),
   // {
