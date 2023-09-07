@@ -1,5 +1,5 @@
-import { urlDashBoard, type UrlDashBoard } from '@/router/url/urlDashboard';
-import { urlMain, type UrlMain } from '@/router/url/urlMain';
+import { urlDashBoard, type UrlDashBoard } from '@/router/url/dashboard.url';
+import { urlMain, type UrlMain } from '@/router/url/main.url';
 import type { App } from 'vue';
 import type { Router } from 'vue-router';
 

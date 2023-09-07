@@ -9,8 +9,8 @@ import { name } from '../package.json';
 // Tailwind CSS
 import '@/assets/index.css';
 
-import str from '@/plugins/stringPlugin';
-import navigator from '@/plugins/navigatorPlugin';
+import navigator from '@/plugins/navigator.plugin';
+import str from '@/plugins/string.plugin';
 
 //앱 정보 출력
 console.log(`*******************************************************`);

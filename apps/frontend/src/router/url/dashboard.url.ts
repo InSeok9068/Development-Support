@@ -1,35 +1,35 @@
-import type { LocationQueryRaw, Router } from 'vue-router';
-import { NAVI_GO, type GoResult, URL_DIR, type UrlRoute } from '@/router/url/urlCommon';
+import { NAVI_GO, URL_DIR, type GoResult, type UrlRoute } from '@/router/url/common.url';
+import type { Router } from 'vue-router';
 
 //--------------------------------------------------------------------------------------------
 // 각 URL별 타입들
 //--------------------------------------------------------------------------------------------
-type MainRoute = UrlRoute;
+type DashboardRoute = UrlRoute;
 
 //--------------------------------------------------------------------------------------------
 // URL 빌더
 //--------------------------------------------------------------------------------------------
-export const MAIN_URL = '/main';
+export const DASHBOARD_URL = '/dashboard';
 
 /**
  * URL Routes의 타입
  */
-export interface UrlMain {
-  main: () => MainRoute;
+export interface UrlDashBoard {
+  dashboard: () => DashboardRoute;
 }
 
 /**
  * 최초 진입
  * @param router 라우터 핸들
- * @returns UrlMain
+ * @returns UrlDashBoard
  */
-export const urlMain = (router?: Router): UrlMain => {
+export const urlDashBoard = (router?: Router): UrlDashBoard => {
   return {
-    main: function (): MainRoute {
+    dashboard: function (): DashboardRoute {
       return {
-        path: MAIN_URL,
-        component: () => import('@/views/main/MainView.vue'),
-        desc: '메인화면',
+        path: DASHBOARD_URL,
+        component: () => import('@/views/dashboard/DashboardView.vue'),
+        desc: '대시보드',
         dir: function () {
           return URL_DIR(this.path);
         },
@@ -37,6 +37,6 @@ export const urlMain = (router?: Router): UrlMain => {
           return NAVI_GO({ path: this.dir() }, router, isReplace);
         },
       };
-    } /* End of main */,
+    } /* End of dashboard */,
   };
-}; /* End of UrlMain */
+}; /* End of UrlDashBoard */

@@ -19,11 +19,11 @@
     "lodash": "^4.17.21"
   },
   "devDependencies": {
-    "@types/lodash": "^4.14.197",
-    "@types/node": "^20.5.9",
     "@support/eslint-config-custom": "workspace:*",
     "@support/prettier-config-custom": "workspace:*",
     "@support/shared": "workspace:*",
+    "@types/lodash": "^4.14.198",
+    "@types/node": "^20.5.9",
     "eslint": "^8.48.0",
     "husky": "^8.0.3",
     "lint-staged": "^14.0.1",

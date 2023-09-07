@@ -29,3 +29,4 @@ const theArgs = computed({
 
 const a = 'a';
 </script>
+@/ui/common.ui

@@ -1,8 +1,8 @@
 /**
  * 문자열 관련 유틸
  */
+import { stringUtil } from '@/utils/string.util';
 import type { App } from 'vue';
-import { stringUtil } from '@/utils/stringUtil';
 
 //플러그인 종류
 export const PLUGIN_STRING_NAME = 'str';

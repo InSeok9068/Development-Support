@@ -12,10 +12,10 @@
 </template>
 
 <script setup lang="ts">
-import { useRouter } from 'vue-router';
-import { usePlugin } from '@/composables/plugin';
 import AppCard from '@/components/app/AppCard.vue';
+import { usePlugin } from '@/composables/plugin';
 import type { UiCardArgs } from '@/ui/uiCommon';
+import { useRouter } from 'vue-router';
 const router = useRouter();
 const { $navi } = usePlugin();
 const cardArgsList: UiCardArgs[] = [
@@ -29,3 +29,4 @@ const cardArgsList: UiCardArgs[] = [
   },
 ];
 </script>
+@/ui/common.ui

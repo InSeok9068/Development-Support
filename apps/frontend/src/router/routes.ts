@@ -1,6 +1,6 @@
 import type { RouteRecordRaw } from 'vue-router';
-import { urlDashBoard } from './url/urlDashboard';
-import { urlMain } from './url/urlMain';
+import { urlDashBoard } from './url/dashboard.url';
+import { urlMain } from './url/main.url';
 
 /**
  * Route 합성

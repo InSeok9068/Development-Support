@@ -1,8 +1,7 @@
 /**
  * custom 속성들의 글로벌 선언
  */
-import type { IStringUtil } from './utils/stringUtil';
-import type { IStringUtil } from './utils/';
+import type { IStringUtil } from './utils/string.util';
 
 export {};
 declare module 'vue' {
