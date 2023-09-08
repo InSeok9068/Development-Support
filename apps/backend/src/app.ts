@@ -2,13 +2,13 @@ import cors from 'cors';
 import dotenv from 'dotenv';
 import express, { Express, Request, Response } from 'express';
 import session from 'express-session';
+import { createHandler } from 'graphql-http/lib/use/express';
 import helmet from 'helmet';
 import passport from 'passport';
 import path from 'path';
-import { logger } from './configs';
-import { passportConfigInit } from './configs/passport.config';
+import { logger, passportConfigInit } from './configs';
+import { schema } from './graphql/schema';
 import { morganMiddleware } from './middlewares';
-import { userRoute } from './routes';
 
 dotenv.config({ path: `.env.${process.env.NODE_ENV}` });
 dotenv.config({ path: `.env.secret.${process.env.NODE_ENV}` });
@@ -39,8 +39,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 passportConfigInit();
 
-// Route
-app.use(userRoute);
+app.all('/graphql', createHandler({ schema }));
 
 app.get('/', (req: Request, res: Response) => {
   res.sendFile(path.join(__dirname, '../public/index.html'));
