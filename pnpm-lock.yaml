@@ -129,7 +129,7 @@ importers:
         version: 3.0.1
       prettier-plugin-tailwindcss:
         specifier: ^0.5.3
-        version: 0.5.4(prettier-plugin-organize-attributes@1.0.0)(prettier@3.0.3)
+        version: 0.5.4(prettier@3.0.3)
       prisma:
         specifier: ^5.2.0
         version: 5.2.0
@@ -173,12 +173,9 @@ importers:
       postcss:
         specifier: ^8.4.28
         version: 8.4.29
-      prettier-plugin-organize-attributes:
-        specifier: ^1.0.0
-        version: 1.0.0(prettier@3.0.3)
       prettier-plugin-tailwindcss:
         specifier: ^0.5.3
-        version: 0.5.4(prettier-plugin-organize-attributes@1.0.0)(prettier@3.0.3)
+        version: 0.5.4(prettier@3.0.3)
       tailwindcss:
         specifier: ^3.3.3
         version: 3.3.3(ts-node@10.9.1)
@@ -3815,16 +3812,7 @@ packages:
     engines: {node: '>= 0.8.0'}
     dev: true
 
-  /prettier-plugin-organize-attributes@1.0.0(prettier@3.0.3):
-    resolution: {integrity: sha512-+NmameaLxbCcylEXsKPmawtzla5EE6ECqvGkpfQz4KM847fXDifB1gFnPQEpoADAq6IXg+cMI8Z0ISJEXa6fhg==}
-    engines: {node: '>=14.0.0'}
-    peerDependencies:
-      prettier: ^3.0.0
-    dependencies:
-      prettier: 3.0.3
-    dev: true
-
-  /prettier-plugin-tailwindcss@0.5.4(prettier-plugin-organize-attributes@1.0.0)(prettier@3.0.3):
+  /prettier-plugin-tailwindcss@0.5.4(prettier@3.0.3):
     resolution: {integrity: sha512-QZzzB1bID6qPsKHTeA9qPo1APmmxfFrA5DD3LQ+vbTmAnY40eJI7t9Q1ocqel2EKMWNPLJqdTDWZj1hKYgqSgg==}
     engines: {node: '>=14.21.3'}
     peerDependencies:
@@ -3877,7 +3865,6 @@ packages:
         optional: true
     dependencies:
       prettier: 3.0.3
-      prettier-plugin-organize-attributes: 1.0.0(prettier@3.0.3)
     dev: true
 
   /prettier@3.0.3:
