@@ -22,6 +22,8 @@ Database : SQLite
 
 Database ORM Framework : Prisma
 
+API Interface : GraphQL
+
 Cache System : Redis
 
 Message Queue : Redis Pub/Sub
