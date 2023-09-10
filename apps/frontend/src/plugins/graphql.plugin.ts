@@ -5,7 +5,7 @@ import type { App } from 'vue';
 export const PLUGIN_GRAPHQL_NAME = 'graphql';
 
 const apolloClient = new ApolloClient({
-  uri: import.meta.env.GRAPHQL_URL,
+  uri: import.meta.env.VITE_GRAPHQL_URL,
   cache: new InMemoryCache(),
 });
 
