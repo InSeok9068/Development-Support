@@ -14,13 +14,13 @@
     "prisma:pull": "prisma db pull",
     "prisma:push": "prisma db push",
     "prisma:studio": "prisma studio",
+    "codegen": "graphql-codegen",
     "clean": "rimraf node_modules"
   },
   "dependencies": {
     "@graphql-tools/load-files": "^7.0.0",
     "@graphql-tools/merge": "^9.0.0",
     "@graphql-tools/schema": "^10.0.0",
-    "@graphql-tools/utils": "^10.0.6",
     "@prisma/client": "^5.2.0",
     "cheerio": "1.0.0-rc.12",
     "cors": "^2.8.5",
@@ -39,6 +39,8 @@
     "winston": "^3.10.0"
   },
   "devDependencies": {
+    "@graphql-codegen/cli": "^5.0.0",
+    "@graphql-codegen/typescript": "^4.0.1",
     "@types/cors": "^2.8.14",
     "@types/express": "^4.17.17",
     "@types/express-session": "^1.17.7",
