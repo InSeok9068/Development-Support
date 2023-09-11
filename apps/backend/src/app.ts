@@ -11,7 +11,6 @@ import { schema } from './graphql/schema';
 import { morganMiddleware } from './middlewares';
 
 dotenv.config({ path: `.env.${process.env.NODE_ENV}` });
-dotenv.config({ path: `.env.secret.${process.env.NODE_ENV}` });
 
 const app: Express = express();
 const port = process.env.PORT || 4000;

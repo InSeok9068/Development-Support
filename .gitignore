@@ -7,7 +7,7 @@
 node_modules
 
 # Secret Env
-**/.env.secret*
+**/.env*
 
 # Build OutPut
 dist
