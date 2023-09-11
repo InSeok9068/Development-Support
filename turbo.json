@@ -8,6 +8,9 @@
     "lint": {},
     "lint:fix": {},
     "lint:format": {},
+    "codegen": {
+      "cache": false
+    },
     "dev": {
       "cache": false,
       "persistent": true

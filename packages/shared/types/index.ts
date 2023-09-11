@@ -14,17 +14,56 @@ export type Scalars = {
   Float: { input: number; output: number };
 };
 
+export type CreateTodayWorkInput = {
+  content: Scalars['String']['input'];
+  tag?: InputMaybe<Scalars['String']['input']>;
+  title: Scalars['String']['input'];
+};
+
+export type DeleteTodayWorkInput = {
+  id: Scalars['ID']['input'];
+};
+
+export type Mutation = {
+  __typename?: 'Mutation';
+  createTodayWork: Scalars['Boolean']['output'];
+  deleteTodayWork: Scalars['Boolean']['output'];
+};
+
+export type MutationCreateTodayWorkArgs = {
+  input: CreateTodayWorkInput;
+};
+
+export type MutationDeleteTodayWorkArgs = {
+  input: DeleteTodayWorkInput;
+};
+
 export type Query = {
   __typename?: 'Query';
   user?: Maybe<User>;
   users?: Maybe<Array<Maybe<User>>>;
+  works?: Maybe<Array<Maybe<Work>>>;
 };
 
 export type User = {
   __typename?: 'User';
   email: Scalars['String']['output'];
-  id: Scalars['Int']['output'];
+  id: Scalars['ID']['output'];
   password: Scalars['String']['output'];
   userId: Scalars['String']['output'];
   username: Scalars['String']['output'];
+};
+
+export type Work = {
+  __typename?: 'Work';
+  id: Scalars['ID']['output'];
+  tag?: Maybe<Scalars['String']['output']>;
+  title: Scalars['String']['output'];
+  workItems?: Maybe<Array<Maybe<WorkItem>>>;
+};
+
+export type WorkItem = {
+  __typename?: 'WorkItem';
+  content: Scalars['String']['output'];
+  id: Scalars['ID']['output'];
 };
