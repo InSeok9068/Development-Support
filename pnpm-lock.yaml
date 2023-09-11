@@ -66,6 +66,9 @@ importers:
       '@prisma/client':
         specifier: ^5.2.0
         version: 5.2.0(prisma@5.2.0)
+      axios:
+        specifier: ^1.5.0
+        version: 1.5.0
       cheerio:
         specifier: 1.0.0-rc.12
         version: 1.0.0-rc.12
