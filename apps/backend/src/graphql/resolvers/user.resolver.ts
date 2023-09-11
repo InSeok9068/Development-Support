@@ -6,7 +6,11 @@ const resolvers = {
       return prisma.user.findMany();
     },
     user: () => {
-      return prisma.user.findFirst();
+      return prisma.user.findUnique({
+        where: {
+          id: 1,
+        },
+      });
     },
   },
 };
