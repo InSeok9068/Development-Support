@@ -8,7 +8,7 @@ import passport from 'passport';
 import path from 'path';
 import { logger, passportConfigInit } from './configs';
 import { schema } from './graphql/schema';
-import { morganMiddleware } from './middlewares';
+import { errorMiddleware, morganMiddleware } from './middlewares';
 
 dotenv.config({ path: `.env.${process.env.NODE_ENV}` });
 
@@ -27,6 +27,7 @@ app.use(
 app.use('/assets', express.static('public/assets'));
 app.use('/favicon.ico', express.static('public/favicon.ico'));
 app.use(morganMiddleware);
+app.use(errorMiddleware);
 app.use(
   session({
     secret: process.env.PASSPORT_SECRET as string,
