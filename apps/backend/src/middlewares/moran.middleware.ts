@@ -1,3 +1,4 @@
+import { Request } from 'express';
 import morgan, { StreamOptions } from 'morgan';
 import { logger } from '../configs';
 
@@ -12,6 +13,13 @@ const skip = () => {
   return env !== 'development';
 };
 
-const morganMiddleware = morgan(':method :url :status :res[content-length] - :response-time ms', { stream, skip });
+morgan.token('body', (req: Request) => {
+  return JSON.stringify(req.body);
+});
+
+const morganMiddleware = morgan(':method :url :body :status - :response-time ms', {
+  stream,
+  skip,
+});
 
 export { morganMiddleware };
