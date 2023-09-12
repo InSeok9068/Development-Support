@@ -9,7 +9,6 @@ import { name } from '../package.json';
 // Tailwind CSS
 import '@/assets/index.css';
 
-import graphql from '@/plugins/graphql.plugin';
 import navigator from '@/plugins/navigator.plugin';
 import str from '@/plugins/string.plugin';
 
@@ -36,6 +35,5 @@ pinia.use(piniaPluginPersistedstate);
 app.use(pinia);
 app.use(str); //문자열 플러그인 등록
 app.use(navigator); //URL Navigator 플러그인
-app.use(graphql); //GraphQL 플러그인
 
 app.mount('#app');

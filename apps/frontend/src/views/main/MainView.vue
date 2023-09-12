@@ -4,21 +4,40 @@
 </template>
 
 <script setup lang="ts">
-// console.log(this.msg);
-import { usePlugin } from '@/composables/plugin';
+// import { ApolloClient, InMemoryCache, gql } from '@apollo/client/core';
+
+import { apolloClient } from '@/composables/use.grahpql.client';
 import { gql } from '@apollo/client/core';
-const { $graphql } = usePlugin();
+import { provideApolloClient, useQuery } from '@vue/apollo-composable';
+
 const apiTest = () => {
-  $graphql.client
-    .query({
-      query: gql`
-        query users {
-          user {
-            username
-          }
+  // const apolloClient = new ApolloClient({
+  //   uri: import.meta.env.VITE_GRAPHQL_URL,
+  //   cache: new InMemoryCache(),
+  // });
+
+  // apolloClient
+  //   .query({
+  //     query: gql`
+  //       query users {
+  //         user {
+  //           username
+  //         }
+  //       }
+  //     `,
+  //   })
+  //   .then((result) => console.log(result));
+
+  const { result } = provideApolloClient(apolloClient)(() =>
+    useQuery(gql`
+      query users {
+        user {
+          username
         }
-      `,
-    })
-    .then((result) => console.log(result));
+      }
+    `),
+  );
+
+  console.log(result.value);
 };
 </script>
