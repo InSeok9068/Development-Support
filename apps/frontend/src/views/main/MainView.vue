@@ -6,11 +6,16 @@
 <script setup lang="ts">
 import { apolloClient } from '@/composables/use.grahpql.client';
 import { gql } from '@apollo/client/core';
+import { type User } from '@support/shared/types';
 import { provideApolloClient, useQuery } from '@vue/apollo-composable';
+
+interface Data<T> {
+  user: T;
+}
 
 const apiTest = () => {
   const { result } = provideApolloClient(apolloClient)(() =>
-    useQuery(gql`
+    useQuery<Data<User>>(gql`
       query users {
         user {
           username
@@ -19,6 +24,6 @@ const apiTest = () => {
     `),
   );
 
-  console.log(result.value);
+  console.log(result.value?.user.username);
 };
 </script>
