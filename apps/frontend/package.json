@@ -12,6 +12,7 @@
     "lint": "eslint \"src/**/*.{ts,js,vue}\"",
     "lint:fix": "eslint \"src/**/*.{ts,js,vue}\" --fix",
     "lint:format": "prettier --write .",
+    "codegen": "graphql-codegen",
     "clean": "rimraf node_modules"
   },
   "dependencies": {
@@ -25,6 +26,9 @@
     "vue-router": "^4.2.4"
   },
   "devDependencies": {
+    "@graphql-codegen/cli": "^5.0.0",
+    "@graphql-codegen/typescript": "^4.0.1",
+    "@graphql-codegen/typescript-operations": "^4.0.1",
     "@tsconfig/node18": "^18.2.2",
     "@vitejs/plugin-vue": "^4.3.4",
     "@vue/tsconfig": "^0.4.0",

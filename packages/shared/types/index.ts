@@ -67,3 +67,7 @@ export type WorkItem = {
   content: Scalars['String']['output'];
   id: Scalars['ID']['output'];
 };
+
+export type GetUsersQueryVariables = Exact<{ [key: string]: never }>;
+
+export type GetUsersQuery = { __typename?: 'Query'; user?: { __typename?: 'User'; username: string } | null };
