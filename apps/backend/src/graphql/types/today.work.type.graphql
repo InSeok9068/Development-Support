@@ -11,12 +11,14 @@ type WorkItem {
 }
 
 type Query {
+  work(id: ID!): Work
   works: [Work]
 }
 
 type Mutation {
-  createTodayWork(input: CreateTodayWorkInput!): Boolean!
-  deleteTodayWork(input: DeleteTodayWorkInput!): Boolean!
+  createTodayWork(input: CreateTodayWorkInput!): Work!
+  deleteTodayWork(input: DeleteTodayWorkInput!): Work!
+  deleteTodayWorkItem(input: DeleteTodayWorkItemInput!): WorkItem!
 }
 
 input CreateTodayWorkInput {
@@ -26,5 +28,9 @@ input CreateTodayWorkInput {
 }
 
 input DeleteTodayWorkInput {
+  id: ID!
+}
+
+input DeleteTodayWorkItemInput {
   id: ID!
 }

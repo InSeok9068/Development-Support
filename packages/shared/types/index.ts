@@ -24,10 +24,15 @@ export type DeleteTodayWorkInput = {
   id: Scalars['ID']['input'];
 };
 
+export type DeleteTodayWorkItemInput = {
+  id: Scalars['ID']['input'];
+};
+
 export type Mutation = {
   __typename?: 'Mutation';
-  createTodayWork: Scalars['Boolean']['output'];
-  deleteTodayWork: Scalars['Boolean']['output'];
+  createTodayWork: Work;
+  deleteTodayWork: Work;
+  deleteTodayWorkItem: WorkItem;
 };
 
 export type MutationCreateTodayWorkArgs = {
@@ -38,11 +43,20 @@ export type MutationDeleteTodayWorkArgs = {
   input: DeleteTodayWorkInput;
 };
 
+export type MutationDeleteTodayWorkItemArgs = {
+  input: DeleteTodayWorkItemInput;
+};
+
 export type Query = {
   __typename?: 'Query';
   user?: Maybe<User>;
   users?: Maybe<Array<Maybe<User>>>;
+  work?: Maybe<Work>;
   works?: Maybe<Array<Maybe<Work>>>;
+};
+
+export type QueryWorkArgs = {
+  id: Scalars['ID']['input'];
 };
 
 export type User = {
