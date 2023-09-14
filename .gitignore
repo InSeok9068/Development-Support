@@ -33,6 +33,7 @@ apps/backend/prisma/migrations
 
 # Public
 apps/backend/public
+apps/backend/mergeSchema.graphql
 
 ### Frontend
-
+apps/frontend/apollo.config.js

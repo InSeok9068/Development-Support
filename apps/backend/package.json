@@ -14,6 +14,7 @@
     "prisma:pull": "prisma db pull",
     "prisma:push": "prisma db push",
     "prisma:studio": "prisma studio",
+    "codegen": "ts-node codegen.ts",
     "clean": "rimraf node_modules"
   },
   "dependencies": {
