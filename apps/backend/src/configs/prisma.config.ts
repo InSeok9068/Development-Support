@@ -22,7 +22,16 @@ const prisma = new PrismaClient({
   ],
 });
 
-prisma.$on('query', (e) => {
+// https://www.prisma.io/docs/reference/api-reference/prisma-client-reference#event-types
+type QueryEvent = {
+  timestamp: Date;
+  query: string;
+  params: string;
+  duration: number;
+  target: string;
+};
+
+prisma.$on('query', (e: QueryEvent) => {
   logger.debug('Query: ' + e.query);
   logger.debug('Params: ' + e.params);
   logger.debug('Duration: ' + e.duration + 'ms');
