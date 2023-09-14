@@ -81,5 +81,4 @@ pnpm dev
 
 - GitHub Action CI/CI 구축 (Turorepo, Docker)
 - 로그인 기능 구현 (미사용 예정)
-- Prisma 쿼리 실행 로깅
 - GraphQL 로깅
