@@ -6,12 +6,14 @@
     "preinstall": "npx only-allow pnpm",
     "build": "turbo run build",
     "dev": "turbo run dev",
-    "dev:backend": "turbo run dev --filter=./apps/backend",
-    "dev:frontend": "turbo run dev --filter=./apps/frontend",
+    "dev:b": "turbo run dev --filter=./apps/backend",
+    "dev:f": "turbo run dev --filter=./apps/frontend",
     "lint": "turbo run lint",
     "lint:fix": "turbo run lint:fix",
     "lint:format": "turbo run lint:format",
     "codegen": "turbo run codegen",
+    "codegen:b": "turbo run codegen --filter=./apps/backend",
+    "codegen:f": "turbo run codegen --filter=./apps/frontend",
     "clean": "turbo run clean && rimraf node_modules"
   },
   "dependencies": {

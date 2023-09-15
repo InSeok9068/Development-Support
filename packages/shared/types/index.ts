@@ -14,37 +14,29 @@ export type Scalars = {
   Float: { input: number; output: number };
 };
 
-export type CreateTodayWorkInput = {
+export type CreateTodayWorkItemInput = {
   content: Scalars['String']['input'];
   tag?: InputMaybe<Scalars['String']['input']>;
   title: Scalars['String']['input'];
 };
 
-export type DeleteTodayWorkInput = {
-  id: Scalars['ID']['input'];
-};
-
-export type DeleteTodayWorkItemInput = {
-  id: Scalars['ID']['input'];
-};
-
 export type Mutation = {
   __typename?: 'Mutation';
-  createTodayWork: Work;
+  createTodayWorkItem: Work;
   deleteTodayWork: Work;
   deleteTodayWorkItem: WorkItem;
 };
 
-export type MutationCreateTodayWorkArgs = {
-  input: CreateTodayWorkInput;
+export type MutationCreateTodayWorkItemArgs = {
+  input: CreateTodayWorkItemInput;
 };
 
 export type MutationDeleteTodayWorkArgs = {
-  input: DeleteTodayWorkInput;
+  id: Scalars['ID']['input'];
 };
 
 export type MutationDeleteTodayWorkItemArgs = {
-  input: DeleteTodayWorkItemInput;
+  id: Scalars['ID']['input'];
 };
 
 export type Query = {
@@ -85,3 +77,24 @@ export type WorkItem = {
 export type GetUsersQueryVariables = Exact<{ [key: string]: never }>;
 
 export type GetUsersQuery = { __typename?: 'Query'; user?: { __typename?: 'User'; username: string } | null };
+
+export type WorksQueryVariables = Exact<{ [key: string]: never }>;
+
+export type WorksQuery = {
+  __typename?: 'Query';
+  works?: Array<{
+    __typename?: 'Work';
+    id: string;
+    title: string;
+    workItems?: Array<{ __typename?: 'WorkItem'; id: string; content: string } | null> | null;
+  } | null> | null;
+};
+
+export type CreateTodayWorkItemMutationVariables = Exact<{
+  input: CreateTodayWorkItemInput;
+}>;
+
+export type CreateTodayWorkItemMutation = {
+  __typename?: 'Mutation';
+  createTodayWorkItem: { __typename?: 'Work'; title: string };
+};

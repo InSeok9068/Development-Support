@@ -1,47 +1,30 @@
-import { DeleteTodayWorkInput, MutationCreateTodayWorkArgs } from '@support/shared/types';
-import dayjs from 'dayjs';
+import { MutationCreateTodayWorkItemArgs, MutationDeleteTodayWorkArgs, QueryWorkArgs } from '@support/shared/types';
 import { prisma } from '../../configs';
+import { createTodayWorkItem, deleteTodayWork, deleteTodayWorkItem } from '../../service/today.work.service';
 
 const resolvers = {
   Query: {
+    work: (_: unknown, args: QueryWorkArgs) => {
+      return prisma.work.findUnique({
+        where: {
+          id: Number(args.id),
+        },
+      });
+    },
     works: () => {
       return prisma.work.findMany();
     },
   },
 
   Mutation: {
-    createTodayWork: async (_: any, args: MutationCreateTodayWorkArgs) => {
-      const now = dayjs();
-      const work = await prisma.work.create({
-        data: {
-          title: args.input.title,
-          tag: args.input.tag,
-          day: now.get('D'),
-          month: now.get('M'),
-          year: now.get('y'),
-          week: now.get('d'),
-        },
-      });
-      const workItem = await prisma.workItem.create({
-        data: {
-          workId: work.id,
-          content: args.input.content,
-        },
-      });
-
-      return !!workItem && !!work;
+    createTodayWorkItem: async (_: unknown, args: MutationCreateTodayWorkItemArgs) => {
+      return createTodayWorkItem(args.input);
     },
-    deleteTodayWork: (input: DeleteTodayWorkInput) => {
-      prisma.work.delete({
-        where: {
-          id: Number(input.id),
-        },
-      });
-      prisma.workItem.deleteMany({
-        where: {
-          workId: Number(input.id),
-        },
-      });
+    deleteTodayWork: async (_: unknown, args: MutationDeleteTodayWorkArgs) => {
+      return deleteTodayWork(Number(args.id));
+    },
+    deleteTodayWorkItem: async (_: unknown, args: MutationCreateTodayWorkItemArgs) => {
+      return deleteTodayWorkItem(Number(args.input));
     },
   },
 };

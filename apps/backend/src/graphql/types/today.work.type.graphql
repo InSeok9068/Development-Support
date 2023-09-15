@@ -16,21 +16,13 @@ type Query {
 }
 
 type Mutation {
-  createTodayWork(input: CreateTodayWorkInput!): Work!
-  deleteTodayWork(input: DeleteTodayWorkInput!): Work!
-  deleteTodayWorkItem(input: DeleteTodayWorkItemInput!): WorkItem!
+  createTodayWorkItem(input: CreateTodayWorkItemInput!): Work!
+  deleteTodayWork(id: ID!): Work!
+  deleteTodayWorkItem(id: ID!): WorkItem!
 }
 
-input CreateTodayWorkInput {
+input CreateTodayWorkItemInput {
   title: String!
   tag: String
   content: String!
-}
-
-input DeleteTodayWorkInput {
-  id: ID!
-}
-
-input DeleteTodayWorkItemInput {
-  id: ID!
 }

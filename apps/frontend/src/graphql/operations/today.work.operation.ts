@@ -1,7 +1,7 @@
 import { gql } from '@apollo/client/core';
 
-export const GET_WORKS_QUERY = gql`
-  query GetWorks {
+const WORKS_QUERY = gql`
+  query Works {
     works {
       id
       title
@@ -13,10 +13,12 @@ export const GET_WORKS_QUERY = gql`
   }
 `;
 
-export const CREATE_TODAY_WORK_MUTATION = gql`
-  mutation CreateTodayWork($input: CreateTodayWorkInput!) {
-    createTodayWork(input: $input) {
+const CREATE_TODAY_WORK_ITEM_MUTATION = gql`
+  mutation CreateTodayWorkItem($input: CreateTodayWorkItemInput!) {
+    createTodayWorkItem(input: $input) {
       title
     }
   }
 `;
+
+export { CREATE_TODAY_WORK_ITEM_MUTATION, WORKS_QUERY };
