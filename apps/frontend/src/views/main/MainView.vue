@@ -5,12 +5,12 @@
 
 <script setup lang="ts">
 import { apolloClient } from '@/composables/use.grahpql.client';
-import { getUsers } from '@/graphql/operations/main.operation';
+import { GET_USERS_QUERY } from '@/graphql/operations/main.operation';
 import { type GetUsersQuery } from '@support/shared/types';
 import { provideApolloClient, useQuery } from '@vue/apollo-composable';
 
 const apiTest = () => {
-  const { result } = provideApolloClient(apolloClient)(() => useQuery<GetUsersQuery>(getUsers));
+  const { result } = provideApolloClient(apolloClient)(() => useQuery<GetUsersQuery>(GET_USERS_QUERY));
 
   console.log(result.value?.user?.username);
 };
