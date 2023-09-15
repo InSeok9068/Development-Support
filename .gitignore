@@ -37,3 +37,4 @@ apps/backend/mergeSchema.graphql
 
 ### Frontend
 apps/frontend/apollo.config.js
+apps/frontend/components.d.ts
