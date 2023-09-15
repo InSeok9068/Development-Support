@@ -1,4 +1,4 @@
-import { prisma } from '../../configs';
+import { prisma } from '@/configs';
 
 const resolvers = {
   Query: {

@@ -1,3 +1,6 @@
+import { logger, passportConfigInit } from '@/configs';
+import { schema } from '@/graphql/schema';
+import { errorMiddleware, morganMiddleware } from '@/middlewares';
 import cors from 'cors';
 import dotenv from 'dotenv';
 import express, { Express, Request, Response } from 'express';
@@ -6,9 +9,6 @@ import { createHandler } from 'graphql-http/lib/use/express';
 import helmet from 'helmet';
 import passport from 'passport';
 import path from 'path';
-import { logger, passportConfigInit } from './configs';
-import { schema } from './graphql/schema';
-import { errorMiddleware, morganMiddleware } from './middlewares';
 
 dotenv.config({ path: `.env.${process.env.NODE_ENV}` });
 

@@ -1,6 +1,6 @@
+import { logger } from '@/configs';
 import { Request } from 'express';
 import morgan, { StreamOptions } from 'morgan';
-import { logger } from '../configs';
 
 // morgan 설정
 const stream: StreamOptions = {

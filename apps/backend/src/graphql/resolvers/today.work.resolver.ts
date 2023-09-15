@@ -1,6 +1,6 @@
+import { prisma } from '@/configs';
+import { createTodayWorkItem, deleteTodayWork, deleteTodayWorkItem } from '@/service/today.work.service';
 import { MutationCreateTodayWorkItemArgs, MutationDeleteTodayWorkArgs, QueryWorkArgs } from '@support/shared/types';
-import { prisma } from '../../configs';
-import { createTodayWorkItem, deleteTodayWork, deleteTodayWorkItem } from '../../service/today.work.service';
 
 const resolvers = {
   Query: {

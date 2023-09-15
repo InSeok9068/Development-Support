@@ -1,6 +1,6 @@
+import { prisma } from '@/configs';
 import { CreateTodayWorkItemInput } from '@support/shared/types';
 import dayjs from 'dayjs';
-import { prisma } from '../configs';
 
 const createTodayWorkItem = async (input: CreateTodayWorkItemInput) => {
   const now = dayjs();
