@@ -1,7 +1,7 @@
 import { type UiTodayWorkInputArgs, type UiTodayWorkListArgs } from '@/ui/today.work.ui';
 import { ref } from 'vue';
 
-export const useTodayWork = () => {
+const useTodayWork = () => {
   const todayWorkInputArgs = ref<UiTodayWorkInputArgs>({
     title: '',
     desc: '',
@@ -13,3 +13,5 @@ export const useTodayWork = () => {
 
   return { todayWorkInputArgs, todayWorkListArgs };
 };
+
+export { useTodayWork };
