@@ -42,22 +42,13 @@
 
 <script setup lang="ts">
 import { useTodayWork } from '@/composables/todayWork/today.work';
-const { todayWorkInputArgs, todayWorkListArgs } = useTodayWork();
+const { todayWorkInputArgs, todayWorkListArgs, createTodayWorkItem, works } = useTodayWork();
 
 const onClickRegist = () => {
-  todayWorkListArgs.value.item = [
-    ...todayWorkListArgs.value.item,
-    {
-      title: todayWorkInputArgs.value.title,
-      subItem: [
-        {
-          desc: todayWorkInputArgs.value.desc,
-        },
-      ],
-    },
-  ];
-
-  console.log(todayWorkListArgs);
+  createTodayWorkItem({
+    title: todayWorkInputArgs.value.title,
+    content: todayWorkInputArgs.value.desc,
+  });
 };
 
 const onClickItemRemove = (removeIndex: number) => {

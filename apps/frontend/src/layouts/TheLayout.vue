@@ -14,7 +14,10 @@
 <script setup lang="ts">
 import AppCard from '@/components/app/AppCard.vue';
 import { usePlugin } from '@/composables/plugin';
+import { apolloClient } from '@/composables/use.grahpql.client';
 import type { UiCardArgs } from '@/ui/common.ui';
+import { provideApolloClient } from '@vue/apollo-composable';
+import { onMounted } from 'vue';
 import { useRouter } from 'vue-router';
 const router = useRouter();
 const { $navi } = usePlugin();
@@ -32,4 +35,8 @@ const cardArgsList: UiCardArgs[] = [
     move: () => $navi.todayWork(router).todayWork().go(),
   },
 ];
+
+onMounted(() => {
+  provideApolloClient(apolloClient);
+});
 </script>

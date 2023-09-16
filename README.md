@@ -81,5 +81,5 @@ pnpm dev
 
 - GitHub Action CI/CI 구축 (Turorepo, Docker)
 - 로그인 기능 구현 (미사용 예정)
-- GraphQL 로깅
-- Vue 폴더구조로 자동 라우팅 설정
+- Vue 폴더구조로 자동 라우팅 설정(불가능?)
+- 공통 팝업창 작업
