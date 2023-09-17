@@ -26,9 +26,6 @@ const useTodayWork = () => {
   });
 
   const works = () => {
-    // const { onResult } = useQuery<WorksQuery>(WORKS_QUERY, {
-    //   fetchPolicy: 'no-cache',
-    // });
     const { onResult } = useQuery<WorksQuery>(WORKS_QUERY);
 
     onResult((result) => {
@@ -54,11 +51,10 @@ const useTodayWork = () => {
       variables: {
         input,
       },
+      refetchQueries: [WORKS_QUERY, 'Works'],
     });
 
     await mutate();
-
-    works();
   };
 
   const deleteTodayWorkItem = async (id: number) => {
@@ -66,11 +62,10 @@ const useTodayWork = () => {
       variables: {
         id: String(id),
       },
+      refetchQueries: [WORKS_QUERY, 'Works'],
     });
 
     await mutate();
-
-    works();
   };
 
   return { todayWorkInputArgs, todayWorkListArgs, createTodayWorkItem, deleteTodayWorkItem, works };

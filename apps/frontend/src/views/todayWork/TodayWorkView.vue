@@ -62,6 +62,5 @@ const onClickRegist = () => {
 
 const onClickItemRemove = (subIndex: number) => {
   deleteTodayWorkItem(subIndex);
-  works();
 };
 </script>
