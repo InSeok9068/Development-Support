@@ -11,7 +11,7 @@ const createTodayWorkItem = async (input: CreateTodayWorkItemInput) => {
     week: now.get('d'),
   };
 
-  const work = await prisma.work.findFirstOrThrow({
+  const work = await prisma.work.findFirst({
     where: {
       title: input.title,
     },
