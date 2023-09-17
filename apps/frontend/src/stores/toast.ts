@@ -6,7 +6,7 @@ import { ref } from 'vue';
 export const useToastStore = defineStore('toast', () => {
   const toasts = ref<UiToastArgs[]>([]);
 
-  const showToast = (title: string, message: string) => {
+  const showToast = ({ title = '알림', message }: UiToastArgs) => {
     toasts.value = [...toasts.value, { title, message, show: false }];
     //애니메이션 알고리즘
     setTimeout(() => {

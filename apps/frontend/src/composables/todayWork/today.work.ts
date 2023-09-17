@@ -48,7 +48,7 @@ const useTodayWork = () => {
     });
 
     onError((error) => {
-      showToast('에러', error.message);
+      showToast({ message: error.message });
     });
   };
 
@@ -60,7 +60,7 @@ const useTodayWork = () => {
       refetchQueries: [WORKS_QUERY, 'Works'],
     });
 
-    await mutate().catch((error) => showToast('에러', error.message));
+    await mutate().catch((error) => showToast({ message: error.message }));
   };
 
   const deleteTodayWorkItem = async (id: number) => {
@@ -71,7 +71,7 @@ const useTodayWork = () => {
       refetchQueries: [WORKS_QUERY, 'Works'],
     });
 
-    await mutate().catch((error) => showToast('에러', error.message));
+    await mutate().catch((error) => showToast({ message: error.message }));
   };
 
   return { todayWorkInputArgs, todayWorkListArgs, createTodayWorkItem, deleteTodayWorkItem, works };
