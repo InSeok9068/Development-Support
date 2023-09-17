@@ -13,6 +13,7 @@ import {
   type WorkItem,
   type WorksQuery,
 } from '@support/shared/types';
+import { CreateTodayWorkItemInputValidator } from '@support/shared/validators';
 import { useMutation, useQuery } from '@vue/apollo-composable';
 import { ref } from 'vue';
 const { showToast } = useToastStore();
@@ -53,6 +54,11 @@ const useTodayWork = () => {
   };
 
   const createTodayWorkItem = async (input: CreateTodayWorkItemInput) => {
+    if (!CreateTodayWorkItemInputValidator.safeParse(input).success) {
+      showToast({ message: '요청 데이터 확인' });
+      return;
+    }
+
     const { mutate } = useMutation<Work[], CreateTodayWorkItemMutationVariables>(CREATE_TODAY_WORK_ITEM_MUTATION, {
       variables: {
         input,
