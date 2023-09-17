@@ -1,6 +1,11 @@
 import { prisma } from '@/configs';
 import { createTodayWorkItem, deleteTodayWork, deleteTodayWorkItem } from '@/service/today.work.service';
-import { MutationCreateTodayWorkItemArgs, MutationDeleteTodayWorkArgs, QueryWorkArgs } from '@support/shared/types';
+import {
+  MutationCreateTodayWorkItemArgs,
+  MutationDeleteTodayWorkArgs,
+  MutationDeleteTodayWorkItemArgs,
+  QueryWorkArgs,
+} from '@support/shared/types';
 
 const resolvers = {
   Query: {
@@ -12,7 +17,11 @@ const resolvers = {
       });
     },
     works: () => {
-      return prisma.work.findMany();
+      return prisma.work.findMany({
+        include: {
+          workItems: {},
+        },
+      });
     },
   },
 
@@ -23,8 +32,8 @@ const resolvers = {
     deleteTodayWork: async (_: unknown, args: MutationDeleteTodayWorkArgs) => {
       return deleteTodayWork(Number(args.id));
     },
-    deleteTodayWorkItem: async (_: unknown, args: MutationCreateTodayWorkItemArgs) => {
-      return deleteTodayWorkItem(Number(args.input));
+    deleteTodayWorkItem: async (_: unknown, args: MutationDeleteTodayWorkItemArgs) => {
+      return deleteTodayWorkItem(Number(args.id));
     },
   },
 };

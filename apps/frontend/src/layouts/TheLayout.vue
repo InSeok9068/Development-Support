@@ -8,7 +8,6 @@
       <router-view></router-view>
     </div>
   </div>
-  <TheLayoutFooter></TheLayoutFooter>
 </template>
 
 <script setup lang="ts">

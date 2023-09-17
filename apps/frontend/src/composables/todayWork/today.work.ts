@@ -1,11 +1,16 @@
-import { GET_USERS_QUERY } from '@/graphql/operations/main.operation';
-import { CREATE_TODAY_WORK_ITEM_MUTATION } from '@/graphql/operations/today.work.operation';
-import { type UiTodayWorkInputArgs, type UiTodayWorkListArgs } from '@/ui/today.work.ui';
+import {
+  CREATE_TODAY_WORK_ITEM_MUTATION,
+  DELETE_TODAY_WORK_ITEM_MUTATION,
+  WORKS_QUERY,
+} from '@/graphql/operations/today.work.operation';
+import { type UiTodayWorkInputArgs, type UiTodayWorkItemArgs, type UiTodayWorkListArgs } from '@/ui/today.work.ui';
 import {
   type CreateTodayWorkItemInput,
-  type CreateTodayWorkItemMutation,
   type CreateTodayWorkItemMutationVariables,
-  type GetUsersQuery,
+  type MutationDeleteTodayWorkItemArgs,
+  type Work,
+  type WorkItem,
+  type WorksQuery,
 } from '@support/shared/types';
 import { useMutation, useQuery } from '@vue/apollo-composable';
 import { ref } from 'vue';
@@ -13,33 +18,62 @@ import { ref } from 'vue';
 const useTodayWork = () => {
   const todayWorkInputArgs = ref<UiTodayWorkInputArgs>({
     title: '',
-    desc: '',
+    content: '',
   });
 
   const todayWorkListArgs = ref<UiTodayWorkListArgs>({
     item: [],
   });
 
-  const createTodayWorkItem = (input: CreateTodayWorkItemInput) => {
-    const { mutate } = useMutation<CreateTodayWorkItemMutation, CreateTodayWorkItemMutationVariables>(
-      CREATE_TODAY_WORK_ITEM_MUTATION,
-      {
-        variables: {
-          input,
-        },
-      },
-    );
-
-    mutate();
-  };
-
   const works = () => {
-    const { result } = useQuery<GetUsersQuery>(GET_USERS_QUERY);
+    // const { onResult } = useQuery<WorksQuery>(WORKS_QUERY, {
+    //   fetchPolicy: 'no-cache',
+    // });
+    const { onResult } = useQuery<WorksQuery>(WORKS_QUERY);
 
-    return result;
+    onResult((result) => {
+      todayWorkListArgs.value = {
+        item: result.data?.works?.map((work) => {
+          return {
+            id: Number(work?.id),
+            title: work?.title,
+            subItem: work?.workItems?.map((item) => {
+              return {
+                id: Number(item?.id),
+                content: item?.content,
+              };
+            }),
+          };
+        }) as UiTodayWorkItemArgs[],
+      };
+    });
   };
 
-  return { todayWorkInputArgs, todayWorkListArgs, createTodayWorkItem, works };
+  const createTodayWorkItem = async (input: CreateTodayWorkItemInput) => {
+    const { mutate } = useMutation<Work[], CreateTodayWorkItemMutationVariables>(CREATE_TODAY_WORK_ITEM_MUTATION, {
+      variables: {
+        input,
+      },
+    });
+
+    await mutate();
+
+    works();
+  };
+
+  const deleteTodayWorkItem = async (id: number) => {
+    const { mutate } = useMutation<WorkItem, MutationDeleteTodayWorkItemArgs>(DELETE_TODAY_WORK_ITEM_MUTATION, {
+      variables: {
+        id: String(id),
+      },
+    });
+
+    await mutate();
+
+    works();
+  };
+
+  return { todayWorkInputArgs, todayWorkListArgs, createTodayWorkItem, deleteTodayWorkItem, works };
 };
 
 export { useTodayWork };

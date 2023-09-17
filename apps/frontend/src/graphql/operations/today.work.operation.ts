@@ -16,9 +16,25 @@ const WORKS_QUERY = gql`
 const CREATE_TODAY_WORK_ITEM_MUTATION = gql`
   mutation CreateTodayWorkItem($input: CreateTodayWorkItemInput!) {
     createTodayWorkItem(input: $input) {
-      title
+      id
     }
   }
 `;
 
-export { CREATE_TODAY_WORK_ITEM_MUTATION, WORKS_QUERY };
+const DELETE_TODAY_WORK_MUTATION = gql`
+  mutation DeleteTodayWork($id: ID!) {
+    deleteTodayWork(id: $id) {
+      id
+    }
+  }
+`;
+
+const DELETE_TODAY_WORK_ITEM_MUTATION = gql`
+  mutation DeleteTodayWorkItem($id: ID!) {
+    deleteTodayWorkItem(id: $id) {
+      id
+    }
+  }
+`;
+
+export { CREATE_TODAY_WORK_ITEM_MUTATION, DELETE_TODAY_WORK_ITEM_MUTATION, DELETE_TODAY_WORK_MUTATION, WORKS_QUERY };

@@ -9,7 +9,7 @@
         "NODE_ENV": "development"
       },
       "args": ["${workspaceFolder}/apps/backend/src/app.ts"],
-      "runtimeArgs": ["--nolazy", "-r", "ts-node/register", "-r"],
+      "runtimeArgs": ["--nolazy", "-r", "ts-node/register", "-r", "tsconfig-paths/register"],
       "sourceMaps": true,
       "cwd": "${workspaceRoot}/apps/backend",
       "console": "integratedTerminal"

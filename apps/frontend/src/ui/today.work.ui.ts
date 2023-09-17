@@ -1,13 +1,15 @@
 export interface UiTodayWorkInputArgs {
   title: string;
-  desc: string;
+  content: string;
 }
 
 export interface UiTodayWorkSubItemArgs {
-  desc: string;
+  id: number;
+  content: string;
 }
 
 export interface UiTodayWorkItemArgs {
+  id: number;
   title: string;
   subItem: UiTodayWorkSubItemArgs[];
 }
