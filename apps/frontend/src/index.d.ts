@@ -8,8 +8,8 @@ import type { IPlgNavi } from './plugins/navigator.plugin';
 export {};
 declare module 'vue' {
   interface ComponentCustomProperties {
+    $navi: IPlgNavi;
     $str: IStringUtil;
     $time: ITimeUtil;
-    $navi: IPlgNavi;
   }
 }
