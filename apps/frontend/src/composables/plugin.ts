@@ -1,6 +1,6 @@
 import { PLUGIN_NAVIGATOR_NAME, type IPlgNavi } from '@/plugins/navigator.plugin';
 import { PLUGIN_STRING_NAME } from '@/plugins/string.plugin';
-import type { IStringUtil } from '@/utils/string.util';
+import type { IStringUtil } from '@support/shared/utils/string.util';
 
 import { inject } from 'vue';
 

@@ -58,9 +58,18 @@ const onClickRegist = () => {
     title: todayWorkInputArgs.value.title,
     content: todayWorkInputArgs.value.content,
   });
+
+  todayWorkInputArgsClear();
 };
 
 const onClickItemRemove = (subIndex: number) => {
   deleteTodayWorkItem(subIndex);
+};
+
+const todayWorkInputArgsClear = () => {
+  todayWorkInputArgs.value = {
+    title: '',
+    content: '',
+  };
 };
 </script>

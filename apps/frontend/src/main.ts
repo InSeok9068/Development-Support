@@ -11,6 +11,7 @@ import '@/assets/index.css';
 
 import navigator from '@/plugins/navigator.plugin';
 import str from '@/plugins/string.plugin';
+import time from '@/plugins/time.plugin';
 
 //앱 정보 출력
 console.log(`*******************************************************`);
@@ -34,6 +35,7 @@ const pinia = createPinia();
 pinia.use(piniaPluginPersistedstate);
 app.use(pinia);
 app.use(str); //문자열 플러그인 등록
+app.use(time); //시간 플러그인 등록
 app.use(navigator); //URL Navigator 플러그인
 
 app.mount('#app');

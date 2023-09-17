@@ -1,4 +1,4 @@
-import { isEmptyString } from '@/utils/string.util';
+import { isEmptyString } from '@support/shared/utils/string.util';
 import type { LocationQueryRaw, NavigationFailure, RouteLocationRaw, Router } from 'vue-router';
 
 /**

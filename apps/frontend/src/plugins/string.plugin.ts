@@ -1,7 +1,7 @@
 /**
  * 문자열 관련 유틸
  */
-import { stringUtil } from '@/utils/string.util';
+import { stringUtil } from '@support/shared/utils';
 import type { App } from 'vue';
 
 //플러그인 종류

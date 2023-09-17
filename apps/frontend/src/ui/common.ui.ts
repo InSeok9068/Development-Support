@@ -5,3 +5,9 @@ export interface UiCardArgs {
   desc?: string;
   move: () => GoResult;
 }
+
+export interface UiToastArgs {
+  title?: string;
+  message?: string;
+  show?: boolean;
+}

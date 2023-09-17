@@ -25,7 +25,7 @@ const stringCompareNoCase = (src: string | null, target: string | null): boolean
  * @param isTrim trim 적용여부
  * @returns 빈스트링 여부
  */
-const isEmptyString = (text: string | null | undefined, isTrim?: boolean) => {
+export const isEmptyString = (text: string | null | undefined, isTrim?: boolean) => {
   if (text == null) return true;
   let trim = text;
   if (isTrim) trim = text.trim();

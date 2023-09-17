@@ -3,6 +3,7 @@ import {
   DELETE_TODAY_WORK_ITEM_MUTATION,
   WORKS_QUERY,
 } from '@/graphql/operations/today.work.operation';
+import { useToastStore } from '@/stores/toast';
 import { type UiTodayWorkInputArgs, type UiTodayWorkItemArgs, type UiTodayWorkListArgs } from '@/ui/today.work.ui';
 import {
   type CreateTodayWorkItemInput,
@@ -14,6 +15,7 @@ import {
 } from '@support/shared/types';
 import { useMutation, useQuery } from '@vue/apollo-composable';
 import { ref } from 'vue';
+const { showToast } = useToastStore();
 
 const useTodayWork = () => {
   const todayWorkInputArgs = ref<UiTodayWorkInputArgs>({
@@ -26,7 +28,7 @@ const useTodayWork = () => {
   });
 
   const works = () => {
-    const { onResult } = useQuery<WorksQuery>(WORKS_QUERY);
+    const { onResult, onError } = useQuery<WorksQuery>(WORKS_QUERY);
 
     onResult((result) => {
       todayWorkListArgs.value = {
@@ -44,6 +46,10 @@ const useTodayWork = () => {
         }) as UiTodayWorkItemArgs[],
       };
     });
+
+    onError((error) => {
+      showToast('에러', error.message);
+    });
   };
 
   const createTodayWorkItem = async (input: CreateTodayWorkItemInput) => {
@@ -54,7 +60,7 @@ const useTodayWork = () => {
       refetchQueries: [WORKS_QUERY, 'Works'],
     });
 
-    await mutate();
+    await mutate().catch((error) => showToast('에러', error.message));
   };
 
   const deleteTodayWorkItem = async (id: number) => {
@@ -65,7 +71,7 @@ const useTodayWork = () => {
       refetchQueries: [WORKS_QUERY, 'Works'],
     });
 
-    await mutate();
+    await mutate().catch((error) => showToast('에러', error.message));
   };
 
   return { todayWorkInputArgs, todayWorkListArgs, createTodayWorkItem, deleteTodayWorkItem, works };

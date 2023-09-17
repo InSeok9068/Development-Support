@@ -4,25 +4,46 @@ import dayjs from 'dayjs';
 
 const createTodayWorkItem = async (input: CreateTodayWorkItemInput) => {
   const now = dayjs();
-  const work = await prisma.work.create({
-    data: {
+  const date = {
+    day: now.get('D'),
+    month: now.get('M'),
+    year: now.get('y'),
+    week: now.get('d'),
+  };
+
+  const work = await prisma.work.findFirstOrThrow({
+    where: {
       title: input.title,
-      tag: input.tag,
-      day: now.get('D'),
-      month: now.get('M'),
-      year: now.get('y'),
-      week: now.get('d'),
     },
   });
 
-  await prisma.workItem.create({
-    data: {
-      workId: work.id,
-      content: input.content,
-    },
-  });
+  if (work && work.title === input.title) {
+    await prisma.workItem.create({
+      data: {
+        workId: work.id,
+        content: input.content,
+      },
+    });
 
-  return work;
+    return work;
+  } else {
+    const work = await prisma.work.create({
+      data: {
+        title: input.title,
+        tag: input.tag,
+        ...date,
+      },
+    });
+
+    await prisma.workItem.create({
+      data: {
+        workId: work.id,
+        content: input.content,
+      },
+    });
+
+    return work;
+  }
 };
 
 const deleteTodayWork = async (id: number) => {
@@ -41,11 +62,42 @@ const deleteTodayWork = async (id: number) => {
   return work;
 };
 const deleteTodayWorkItem = async (id: number) => {
-  const workItem = await prisma.workItem.delete({
+  const workItem = await prisma.workItem.findUnique({
     where: {
       id,
     },
   });
+
+  if (workItem) {
+    const work = await prisma.work.findUnique({
+      where: {
+        id: workItem.workId,
+      },
+      include: {
+        workItems: {},
+      },
+    });
+
+    if (work?.workItems.length === 1) {
+      await prisma.workItem.delete({
+        where: {
+          id,
+        },
+      });
+
+      await prisma.work.delete({
+        where: {
+          id: workItem.workId,
+        },
+      });
+    } else {
+      await prisma.workItem.delete({
+        where: {
+          id,
+        },
+      });
+    }
+  }
 
   return workItem;
 };
