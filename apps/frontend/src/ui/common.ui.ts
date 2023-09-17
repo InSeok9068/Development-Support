@@ -9,5 +9,4 @@ export interface UiCardArgs {
 export interface UiToastArgs {
   title?: string;
   message?: string;
-  show?: boolean;
 }

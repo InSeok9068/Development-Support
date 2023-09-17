@@ -1,6 +1,6 @@
 <template>
-  <div v-for="({ title, message, show }, index) in toasts" :key="index">
-    <dialog id="appToast" class="modal" :open="show">
+  <div v-for="({ title, message }, index) in toasts" :key="index">
+    <dialog id="appToast" class="modal">
       <div class="modal-box">
         <h3 class="text-lg font-bold">{{ title }}</h3>
         <p class="py-4">{{ message }}</p>
