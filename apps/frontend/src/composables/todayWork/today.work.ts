@@ -3,7 +3,7 @@ import {
   DELETE_TODAY_WORK_ITEM_MUTATION,
   WORKS_QUERY,
 } from '@/graphql/operations/today.work.operation';
-import { useToastStore } from '@/stores/toast';
+import { useToastStore } from '@/stores/toast.store';
 import { type UiTodayWorkInputArgs, type UiTodayWorkItemArgs, type UiTodayWorkListArgs } from '@/ui/today.work.ui';
 import {
   type CreateTodayWorkItemInput,
