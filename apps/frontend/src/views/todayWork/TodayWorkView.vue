@@ -15,6 +15,7 @@
   </div>
   <div class="form-control join w-1/2">
     <b>오늘 한일</b>
+    <input type="date" class="w-min" />
     <div class="mt-1"></div>
     <ul>
       <li v-for="(item, index) in todayWorkListArgs.item" :key="index">
