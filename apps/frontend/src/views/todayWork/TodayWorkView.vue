@@ -23,7 +23,7 @@
           <li v-for="(subItem, subIndex) in item.subItem" :key="subIndex">
             * {{ subItem.content }}
             <button class="btn btn-square btn-ghost" @click.prevent.stop="onClickItemRemove(subItem.id)">
-              <TrashIconView />
+              <TrashIcon />
             </button>
           </li>
         </ul>
@@ -33,9 +33,9 @@
 </template>
 
 <script setup lang="ts">
+import TrashIcon from '@/components/icon/TrashIcon.vue';
 import { useTodayWork } from '@/composables/todayWork/today.work';
 import { onMounted } from 'vue';
-import TrashIconView from '@/components/icon/TrashIconView.vue';
 const { todayWorkInputArgs, todayWorkListArgs, createTodayWorkItem, deleteTodayWorkItem, works } = useTodayWork();
 
 onMounted(() => works());
