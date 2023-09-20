@@ -13,7 +13,7 @@
     <div class="mt-3"></div>
     <input v-model="todayWorkInputArgs.time" type="range" min="1" max="8" class="range range-info w-1/2" step="1" />
     <div class="flex w-1/2 justify-between px-2 text-xs">
-      <span v-for="(item, index) in 8" :key="index">{{ item }}</span>
+      <span v-for="(item, index) in 8" :key="index">{{ item }}시간</span>
     </div>
     <div class="mt-3"></div>
     <button class="btn btn-primary w-1/3" @click.prevent.stop="onClickRegist()">등록</button>
