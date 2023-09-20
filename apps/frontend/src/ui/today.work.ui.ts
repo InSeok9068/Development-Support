@@ -17,3 +17,7 @@ export interface UiTodayWorkItemArgs {
 export interface UiTodayWorkListArgs {
   item: UiTodayWorkItemArgs[];
 }
+
+export interface UiTodayWorkSearchArgs {
+  date: string;
+}

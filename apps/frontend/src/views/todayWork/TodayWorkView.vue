@@ -15,7 +15,7 @@
   </div>
   <div class="form-control join w-1/2">
     <b>오늘 한일</b>
-    <input type="date" class="w-min" />
+    <input v-model="todayWorkSearchArgs.date" type="date" class="w-min" @change="works(todayWorkSearchArgs)" />
     <div class="mt-1"></div>
     <ul>
       <li v-for="(item, index) in todayWorkListArgs.item" :key="index">
@@ -37,9 +37,10 @@
 import TrashIcon from '@/components/icon/TrashIcon.vue';
 import { useTodayWork } from '@/composables/todayWork/today.work';
 import { onMounted } from 'vue';
-const { todayWorkInputArgs, todayWorkListArgs, createTodayWorkItem, deleteTodayWorkItem, works } = useTodayWork();
+const { todayWorkInputArgs, todayWorkListArgs, todayWorkSearchArgs, createTodayWorkItem, deleteTodayWorkItem, works } =
+  useTodayWork();
 
-onMounted(() => works());
+onMounted(() => works(todayWorkSearchArgs.value));
 
 const onClickRegist = () => {
   createTodayWorkItem({

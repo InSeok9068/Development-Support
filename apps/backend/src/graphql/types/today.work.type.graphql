@@ -12,7 +12,7 @@ type WorkItem {
 
 type Query {
   work(id: ID!): Work
-  works: [Work]
+  works(date: String!): [Work]
 }
 
 type Mutation {

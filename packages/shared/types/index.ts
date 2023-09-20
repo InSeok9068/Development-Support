@@ -51,6 +51,10 @@ export type QueryWorkArgs = {
   id: Scalars['ID']['input'];
 };
 
+export type QueryWorksArgs = {
+  date: Scalars['String']['input'];
+};
+
 export type User = {
   __typename?: 'User';
   email: Scalars['String']['output'];
@@ -78,7 +82,9 @@ export type GetUsersQueryVariables = Exact<{ [key: string]: never }>;
 
 export type GetUsersQuery = { __typename?: 'Query'; user?: { __typename?: 'User'; username: string } | null };
 
-export type WorksQueryVariables = Exact<{ [key: string]: never }>;
+export type WorksQueryVariables = Exact<{
+  date: Scalars['String']['input'];
+}>;
 
 export type WorksQuery = {
   __typename?: 'Query';
@@ -96,5 +102,20 @@ export type CreateTodayWorkItemMutationVariables = Exact<{
 
 export type CreateTodayWorkItemMutation = {
   __typename?: 'Mutation';
-  createTodayWorkItem: { __typename?: 'Work'; title: string };
+  createTodayWorkItem: { __typename?: 'Work'; id: string };
+};
+
+export type DeleteTodayWorkMutationVariables = Exact<{
+  id: Scalars['ID']['input'];
+}>;
+
+export type DeleteTodayWorkMutation = { __typename?: 'Mutation'; deleteTodayWork: { __typename?: 'Work'; id: string } };
+
+export type DeleteTodayWorkItemMutationVariables = Exact<{
+  id: Scalars['ID']['input'];
+}>;
+
+export type DeleteTodayWorkItemMutation = {
+  __typename?: 'Mutation';
+  deleteTodayWorkItem: { __typename?: 'WorkItem'; id: string };
 };

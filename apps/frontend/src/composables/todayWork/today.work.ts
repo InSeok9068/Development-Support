@@ -4,17 +4,24 @@ import {
   WORKS_QUERY,
 } from '@/graphql/operations/today.work.operation';
 import { useToastStore } from '@/stores/toast.store';
-import { type UiTodayWorkInputArgs, type UiTodayWorkItemArgs, type UiTodayWorkListArgs } from '@/ui/today.work.ui';
+import {
+  type UiTodayWorkInputArgs,
+  type UiTodayWorkItemArgs,
+  type UiTodayWorkListArgs,
+  type UiTodayWorkSearchArgs,
+} from '@/ui/today.work.ui';
 import {
   type CreateTodayWorkItemInput,
   type CreateTodayWorkItemMutationVariables,
   type MutationDeleteTodayWorkItemArgs,
+  type QueryWorksArgs,
   type Work,
   type WorkItem,
   type WorksQuery,
 } from '@support/shared/types';
 import { CreateTodayWorkItemInputValidator } from '@support/shared/validators';
 import { useMutation, useQuery } from '@vue/apollo-composable';
+import dayjs from 'dayjs';
 import { ref } from 'vue';
 const { showToast } = useToastStore();
 
@@ -28,8 +35,14 @@ const useTodayWork = () => {
     item: [],
   });
 
-  const works = () => {
-    const { onResult, onError } = useQuery<WorksQuery>(WORKS_QUERY);
+  const todayWorkSearchArgs = ref<UiTodayWorkSearchArgs>({
+    date: dayjs().format('YYYY-MM-DD'),
+  });
+
+  const works = (searchArgs: UiTodayWorkSearchArgs) => {
+    const { onResult, onError } = useQuery<WorksQuery, QueryWorksArgs>(WORKS_QUERY, {
+      date: searchArgs.date,
+    });
 
     onResult((result) => {
       todayWorkListArgs.value = {
@@ -80,7 +93,14 @@ const useTodayWork = () => {
     await mutate().catch((error) => showToast({ message: error.message }));
   };
 
-  return { todayWorkInputArgs, todayWorkListArgs, createTodayWorkItem, deleteTodayWorkItem, works };
+  return {
+    todayWorkInputArgs,
+    todayWorkListArgs,
+    todayWorkSearchArgs,
+    createTodayWorkItem,
+    deleteTodayWorkItem,
+    works,
+  };
 };
 
 export { useTodayWork };

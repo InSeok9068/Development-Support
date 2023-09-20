@@ -5,7 +5,9 @@ import {
   MutationDeleteTodayWorkArgs,
   MutationDeleteTodayWorkItemArgs,
   QueryWorkArgs,
+  QueryWorksArgs,
 } from '@support/shared/types';
+import dayjs from 'dayjs';
 
 const resolvers = {
   Query: {
@@ -16,8 +18,14 @@ const resolvers = {
         },
       });
     },
-    works: () => {
+    works: (_: unknown, args: QueryWorksArgs) => {
+      const date = dayjs(args.date);
       return prisma.work.findMany({
+        where: {
+          year: date.get('y'),
+          month: date.get('M'),
+          day: date.get('D'),
+        },
         include: {
           workItems: {},
         },

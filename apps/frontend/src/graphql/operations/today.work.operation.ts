@@ -1,8 +1,8 @@
 import { gql } from '@apollo/client/core';
 
 const WORKS_QUERY = gql`
-  query Works {
-    works {
+  query Works($date: String!) {
+    works(date: $date) {
       id
       title
       workItems {

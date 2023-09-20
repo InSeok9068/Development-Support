@@ -8,7 +8,7 @@
     "build:dev": "run-p type-check build-only:dev",
     "build-only": "vite build --emptyOutDir",
     "build-only:dev": "vite build --emptyOutDir --mode development",
-    "type-check": "vue-tsc --noEmit -p tsconfig.vitest.json --composite false",
+    "type-check": "vue-tsc --noEmit -p tsconfig.build.json --composite false",
     "lint": "eslint \"src/**/*.{ts,js,vue}\"",
     "lint:fix": "eslint \"src/**/*.{ts,js,vue}\" --fix",
     "lint:format": "prettier --write .",
