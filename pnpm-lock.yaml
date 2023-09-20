@@ -105,6 +105,9 @@ importers:
       node-telegram-bot-api:
         specifier: ^0.63.0
         version: 0.63.0
+      nodemailer:
+        specifier: ^6.9.5
+        version: 6.9.5
       passport:
         specifier: ^0.6.0
         version: 0.6.0
@@ -133,6 +136,9 @@ importers:
       '@types/node-telegram-bot-api':
         specifier: ^0.61.7
         version: 0.61.7
+      '@types/nodemailer':
+        specifier: ^6.4.10
+        version: 6.4.10
       '@types/passport':
         specifier: ^1.0.12
         version: 1.0.12
@@ -1975,6 +1981,12 @@ packages:
 
   /@types/node@20.6.2:
     resolution: {integrity: sha512-Y+/1vGBHV/cYk6OI1Na/LHzwnlNCAfU3ZNGrc1LdRe/LAIbdDPTTv/HU3M7yXN448aTVDq3eKRm2cg7iKLb8gw==}
+
+  /@types/nodemailer@6.4.10:
+    resolution: {integrity: sha512-oPW/IdhkU3FyZc1dzeqmS+MBjrjZNiiINnrEOrWALzccJlP5xTlbkNr2YnTnnyj9Eqm5ofjRoASEbrCYpA7BrA==}
+    dependencies:
+      '@types/node': 20.6.2
+    dev: true
 
   /@types/passport-local@1.0.35:
     resolution: {integrity: sha512-K4eLTJ8R0yYW8TvCqkjB0pTKoqfUSdl5PfZdidTjV2ETV3604fQxtY6BHKjQWAx50WUS0lqzBvKv3LoI1ZBPeA==}
@@ -5313,6 +5325,11 @@ packages:
       request-promise: 4.2.6(request@2.88.2)
     transitivePeerDependencies:
       - supports-color
+    dev: false
+
+  /nodemailer@6.9.5:
+    resolution: {integrity: sha512-/dmdWo62XjumuLc5+AYQZeiRj+PRR8y8qKtFCOyuOl1k/hckZd8durUUHs/ucKx6/8kN+wFxqKJlQ/LK/qR5FA==}
+    engines: {node: '>=6.0.0'}
     dev: false
 
   /nodemon@3.0.1:

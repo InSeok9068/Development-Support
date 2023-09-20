@@ -17,6 +17,7 @@ export type Scalars = {
 export type CreateTodayWorkItemInput = {
   content: Scalars['String']['input'];
   tag?: InputMaybe<Scalars['String']['input']>;
+  time: Scalars['String']['input'];
   title: Scalars['String']['input'];
 };
 
@@ -68,6 +69,7 @@ export type Work = {
   __typename?: 'Work';
   id: Scalars['ID']['output'];
   tag?: Maybe<Scalars['String']['output']>;
+  time: Scalars['String']['output'];
   title: Scalars['String']['output'];
   workItems?: Maybe<Array<Maybe<WorkItem>>>;
 };
@@ -76,6 +78,7 @@ export type WorkItem = {
   __typename?: 'WorkItem';
   content: Scalars['String']['output'];
   id: Scalars['ID']['output'];
+  time: Scalars['String']['output'];
 };
 
 export type GetUsersQueryVariables = Exact<{ [key: string]: never }>;
@@ -92,7 +95,8 @@ export type WorksQuery = {
     __typename?: 'Work';
     id: string;
     title: string;
-    workItems?: Array<{ __typename?: 'WorkItem'; id: string; content: string } | null> | null;
+    time: string;
+    workItems?: Array<{ __typename?: 'WorkItem'; id: string; content: string; time: string } | null> | null;
   } | null> | null;
 };
 

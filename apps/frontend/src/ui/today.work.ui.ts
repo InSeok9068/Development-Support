@@ -1,6 +1,7 @@
 export interface UiTodayWorkInputArgs {
   title: string;
   content: string;
+  time: number;
 }
 
 export interface UiTodayWorkSubItemArgs {

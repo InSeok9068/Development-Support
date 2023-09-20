@@ -11,16 +11,17 @@ import dayjs from 'dayjs';
 
 const resolvers = {
   Query: {
-    work: (_: unknown, args: QueryWorkArgs) => {
-      return prisma.work.findUnique({
+    work: async (_: unknown, args: QueryWorkArgs) => {
+      const work = await prisma.work.findUnique({
         where: {
           id: Number(args.id),
         },
       });
+      return work;
     },
-    works: (_: unknown, args: QueryWorksArgs) => {
+    works: async (_: unknown, args: QueryWorksArgs) => {
       const date = dayjs(args.date);
-      return prisma.work.findMany({
+      const works = await prisma.work.findMany({
         where: {
           year: date.get('y'),
           month: date.get('M'),
@@ -30,6 +31,8 @@ const resolvers = {
           workItems: {},
         },
       });
+      console.log(works);
+      return works;
     },
   },
 

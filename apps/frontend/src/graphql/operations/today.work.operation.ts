@@ -5,9 +5,11 @@ const WORKS_QUERY = gql`
     works(date: $date) {
       id
       title
+      time
       workItems {
         id
         content
+        time
       }
     }
   }

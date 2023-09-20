@@ -29,6 +29,7 @@ const useTodayWork = () => {
   const todayWorkInputArgs = ref<UiTodayWorkInputArgs>({
     title: '',
     content: '',
+    time: 1,
   });
 
   const todayWorkListArgs = ref<UiTodayWorkListArgs>({
@@ -50,10 +51,12 @@ const useTodayWork = () => {
           return {
             id: Number(work?.id),
             title: work?.title,
+            time: work?.time,
             subItem: work?.workItems?.map((item) => {
               return {
                 id: Number(item?.id),
                 content: item?.content,
+                time: item?.time,
               };
             }),
           };

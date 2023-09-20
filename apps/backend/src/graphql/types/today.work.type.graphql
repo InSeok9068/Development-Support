@@ -2,11 +2,13 @@ type Work {
   id: ID!
   title: String!
   tag: String
+  time: String!
   workItems: [WorkItem]
 }
 
 type WorkItem {
   id: ID!
+  time: String!
   content: String!
 }
 
@@ -25,4 +27,5 @@ input CreateTodayWorkItemInput {
   title: String!
   tag: String
   content: String!
+  time: String!
 }
