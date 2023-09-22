@@ -16,6 +16,7 @@ export type Scalars = {
 
 export type CreateTodayWorkItemInput = {
   content: Scalars['String']['input'];
+  date: Scalars['String']['input'];
   tag?: InputMaybe<Scalars['String']['input']>;
   time: Scalars['String']['input'];
   title: Scalars['String']['input'];

@@ -7,11 +7,13 @@ export interface UiTodayWorkInputArgs {
 export interface UiTodayWorkSubItemArgs {
   id: number;
   content: string;
+  time: number;
 }
 
 export interface UiTodayWorkItemArgs {
   id: number;
   title: string;
+  time: number;
   subItem: UiTodayWorkSubItemArgs[];
 }
 

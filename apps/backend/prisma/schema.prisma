@@ -20,7 +20,7 @@ model Work {
   title     String
   year      Int
   month     Int
-  day       Int
+  date      Int
   week      Int
   time      Int        @default(0)
   tag       String?

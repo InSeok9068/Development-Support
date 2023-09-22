@@ -51,12 +51,12 @@ const useTodayWork = () => {
           return {
             id: Number(work?.id),
             title: work?.title,
-            time: work?.time,
+            time: Number(work?.time),
             subItem: work?.workItems?.map((item) => {
               return {
                 id: Number(item?.id),
                 content: item?.content,
-                time: item?.time,
+                time: Number(item?.time),
               };
             }),
           };

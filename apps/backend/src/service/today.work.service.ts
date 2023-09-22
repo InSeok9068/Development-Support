@@ -12,12 +12,9 @@ const work = async (id: number) => {
 };
 
 const works = async (date: string) => {
-  const dateByDayJs = dayjs(date);
   const works = await prisma.work.findMany({
     where: {
-      year: dateByDayJs.get('y'),
-      month: dateByDayJs.get('M'),
-      day: dateByDayJs.get('D'),
+      date: Number(dayjs(date).format('YYYYMMDD')),
     },
     include: {
       workItems: {},
@@ -27,9 +24,9 @@ const works = async (date: string) => {
 };
 
 const createTodayWorkItem = async (input: CreateTodayWorkItemInput) => {
-  const now = dayjs();
+  const now = dayjs(input.date);
   const date = {
-    day: now.get('D'),
+    date: Number(now.format('YYYYMMDD')),
     month: now.get('M'),
     year: now.get('y'),
     week: now.get('d'),
@@ -38,6 +35,7 @@ const createTodayWorkItem = async (input: CreateTodayWorkItemInput) => {
   const work = await prisma.work.findFirst({
     where: {
       title: input.title,
+      date: Number(dayjs(input.date).format('YYYYMMDD')),
     },
   });
 
@@ -55,6 +53,7 @@ const createTodayWorkItem = async (input: CreateTodayWorkItemInput) => {
       data: {
         workId: work.id,
         content: input.content,
+        time: Number(input.time),
       },
     });
 

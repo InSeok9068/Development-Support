@@ -28,4 +28,5 @@ input CreateTodayWorkItemInput {
   tag: String
   content: String!
   time: String!
+  date: String!
 }

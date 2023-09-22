@@ -31,10 +31,10 @@
     <div class="mt-1"></div>
     <ul>
       <li v-for="(item, index) in todayWorkListArgs.item" :key="index" class="mb-2">
-        <p class="text-lg">- {{ item.title }}</p>
+        <p class="text-lg">{{ `- ${item.title} ${item.time}H` }}</p>
         <ul class="ml-3">
           <li v-for="(subItem, subIndex) in item.subItem" :key="subIndex">
-            {{ `${subIndex + 1}) ${subItem.content}` }}
+            {{ `${subIndex + 1}) ${subItem.content} ${subItem.time}H` }}
             <button class="btn btn-square btn-ghost" @click.prevent.stop="onClickItemRemove(subItem.id)">
               <TrashIcon />
             </button>
@@ -59,6 +59,7 @@ const onClickRegist = () => {
     title: todayWorkInputArgs.value.title,
     content: todayWorkInputArgs.value.content,
     time: String(todayWorkInputArgs.value.time),
+    date: todayWorkSearchArgs.value.date,
   });
 
   todayWorkInputArgsClear();
