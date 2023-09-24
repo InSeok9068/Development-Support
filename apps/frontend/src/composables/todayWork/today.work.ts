@@ -51,12 +51,12 @@ const useTodayWork = () => {
           return {
             id: Number(work?.id),
             title: work?.title,
-            time: Number(work?.time),
+            time: work?.time,
             subItem: work?.workItems?.map((item) => {
               return {
                 id: Number(item?.id),
                 content: item?.content,
-                time: Number(item?.time),
+                time: item?.time,
               };
             }),
           };
@@ -70,6 +70,8 @@ const useTodayWork = () => {
   };
 
   const createTodayWorkItem = async (input: CreateTodayWorkItemInput) => {
+    input.time = Number(input.time);
+
     if (!CreateTodayWorkItemInputValidator.safeParse(input).success) {
       showToast({ message: '요청 데이터 확인' });
       return;

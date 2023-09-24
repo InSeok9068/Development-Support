@@ -42,7 +42,7 @@ const createTodayWorkItem = async (input: CreateTodayWorkItemInput) => {
   if (work && work.title === input.title) {
     await prisma.work.update({
       data: {
-        time: work.time + Number(input.time),
+        time: work.time + input.time,
       },
       where: {
         id: work.id,
@@ -53,7 +53,7 @@ const createTodayWorkItem = async (input: CreateTodayWorkItemInput) => {
       data: {
         workId: work.id,
         content: input.content,
-        time: Number(input.time),
+        time: input.time,
       },
     });
 
@@ -63,7 +63,7 @@ const createTodayWorkItem = async (input: CreateTodayWorkItemInput) => {
       data: {
         title: input.title,
         tag: input.tag,
-        time: Number(input.time),
+        time: input.time,
         ...date,
       },
     });
@@ -72,7 +72,7 @@ const createTodayWorkItem = async (input: CreateTodayWorkItemInput) => {
       data: {
         workId: work.id,
         content: input.content,
-        time: Number(input.time),
+        time: input.time,
       },
     });
 
@@ -129,7 +129,7 @@ const deleteTodayWorkItem = async (id: number) => {
       } else {
         await prisma.work.update({
           data: {
-            time: work.time - Number(workItem.time),
+            time: work.time - workItem.time,
           },
           where: {
             id: work.id,

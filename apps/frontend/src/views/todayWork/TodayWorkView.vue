@@ -60,7 +60,7 @@ const onClickRegist = () => {
   createTodayWorkItem({
     title: todayWorkInputArgs.value.title,
     content: todayWorkInputArgs.value.content,
-    time: String(todayWorkInputArgs.value.time),
+    time: todayWorkInputArgs.value.time,
     date: todayWorkSearchArgs.value.date,
   });
 
