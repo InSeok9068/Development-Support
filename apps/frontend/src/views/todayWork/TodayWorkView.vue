@@ -27,6 +27,8 @@
         class="m-2 w-min border border-black pl-1"
         @change="works(todayWorkSearchArgs)"
       />
+      <input type="month" class="m-2 hidden w-min border border-black pl-1" />
+      <input type="week" class="m-2 hidden w-min border border-black pl-1" />
     </div>
     <div class="mt-1"></div>
     <ul>
