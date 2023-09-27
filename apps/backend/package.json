@@ -2,6 +2,7 @@
   "name": "development-support-backend",
   "description": "개발 도우미 (백엔드)",
   "scripts": {
+    "test": "vitest",
     "dev": "cross-env NODE_ENV=development nodemon --exec ts-node -r tsconfig-paths/register src/app.ts",
     "start": "tsc && cross-env NODE_ENV=production node dist/app.js",
     "build": "tsc",

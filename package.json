@@ -5,6 +5,9 @@
     "prepare": "husky install",
     "preinstall": "npx only-allow pnpm",
     "build": "turbo run build",
+    "test": "turbo run test",
+    "test:b": "turbo run test --filter=./apps/backend",
+    "test:f": "turbo run test --filter=./apps/frontend",
     "dev": "turbo run dev",
     "dev:b": "turbo run dev --filter=./apps/backend",
     "dev:f": "turbo run dev --filter=./apps/frontend",
@@ -32,7 +35,8 @@
     "prettier": "^3.0.3",
     "ts-node": "^10.9.1",
     "turbo": "^1.10.14",
-    "typescript": "^5.2.2"
+    "typescript": "^5.2.2",
+    "vitest": "^0.34.5"
   },
   "lint-staged": {
     "*.{js,ts}": [
@@ -43,5 +47,5 @@
       "prettier --write"
     ]
   },
-  "packageManager": "pnpm@8.7.6"
+  "packageManager": "pnpm@8.8.0"
 }
