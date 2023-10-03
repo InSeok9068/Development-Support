@@ -19,6 +19,7 @@ type Query {
 
 type Mutation {
   createTodayWorkItem(input: CreateTodayWorkItemInput!): Work!
+  updateTodayWorkItemForTransfer(input: UpdateTodayWorkItemForTransferInput!): Work!
   deleteTodayWork(id: ID!): Work!
   deleteTodayWorkItem(id: ID!): WorkItem!
 }
@@ -29,4 +30,9 @@ input CreateTodayWorkItemInput {
   content: String!
   time: Int!
   date: String!
+}
+
+input UpdateTodayWorkItemForTransferInput {
+  id: ID!
+  itemId: ID!
 }

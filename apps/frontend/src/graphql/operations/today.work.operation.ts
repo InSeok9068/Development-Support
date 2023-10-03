@@ -23,6 +23,14 @@ const CREATE_TODAY_WORK_ITEM_MUTATION = gql`
   }
 `;
 
+const UPDATE_TODAY_WORK_ITEM_FOR_TRANSFER = gql`
+  mutation UpdateTodayWorkItemForTransfer($input: UpdateTodayWorkItemForTransferInput!) {
+    updateTodayWorkItemForTransfer(input: $input) {
+      id
+    }
+  }
+`;
+
 const DELETE_TODAY_WORK_MUTATION = gql`
   mutation DeleteTodayWork($id: ID!) {
     deleteTodayWork(id: $id) {
@@ -39,4 +47,10 @@ const DELETE_TODAY_WORK_ITEM_MUTATION = gql`
   }
 `;
 
-export { CREATE_TODAY_WORK_ITEM_MUTATION, DELETE_TODAY_WORK_ITEM_MUTATION, DELETE_TODAY_WORK_MUTATION, WORKS_QUERY };
+export {
+  CREATE_TODAY_WORK_ITEM_MUTATION,
+  DELETE_TODAY_WORK_ITEM_MUTATION,
+  DELETE_TODAY_WORK_MUTATION,
+  UPDATE_TODAY_WORK_ITEM_FOR_TRANSFER,
+  WORKS_QUERY,
+};

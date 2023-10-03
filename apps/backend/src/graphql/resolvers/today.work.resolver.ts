@@ -1,8 +1,16 @@
-import { createTodayWorkItem, deleteTodayWork, deleteTodayWorkItem, work, works } from '@/service/today.work.service';
+import {
+  createTodayWorkItem,
+  deleteTodayWork,
+  deleteTodayWorkItem,
+  updateTodayWorkItemForTransfer,
+  work,
+  works,
+} from '@/service/today.work.service';
 import {
   MutationCreateTodayWorkItemArgs,
   MutationDeleteTodayWorkArgs,
   MutationDeleteTodayWorkItemArgs,
+  MutationUpdateTodayWorkItemForTransferArgs,
   QueryWorkArgs,
   QueryWorksArgs,
 } from '@support/shared/types';
@@ -20,6 +28,9 @@ const resolvers = {
   Mutation: {
     createTodayWorkItem: async (_: unknown, args: MutationCreateTodayWorkItemArgs) => {
       return await createTodayWorkItem(args.input);
+    },
+    updateTodayWorkItemForTransfer: async (_: unknown, args: MutationUpdateTodayWorkItemForTransferArgs) => {
+      return await updateTodayWorkItemForTransfer(args.input);
     },
     deleteTodayWork: async (_: unknown, args: MutationDeleteTodayWorkArgs) => {
       return await deleteTodayWork(Number(args.id));

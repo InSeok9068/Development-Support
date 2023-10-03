@@ -1,5 +1,5 @@
 import { prisma } from '@/configs';
-import { CreateTodayWorkItemInput } from '@support/shared/types';
+import { CreateTodayWorkItemInput, UpdateTodayWorkItemForTransferInput } from '@support/shared/types';
 import dayjs from 'dayjs';
 
 const work = async (id: number) => {
@@ -80,6 +80,8 @@ const createTodayWorkItem = async (input: CreateTodayWorkItemInput) => {
   }
 };
 
+const updateTodayWorkItemForTransfer = (input: UpdateTodayWorkItemForTransferInput) => {};
+
 const deleteTodayWork = async (id: number) => {
   const work = await prisma.work.delete({
     where: {
@@ -148,4 +150,4 @@ const deleteTodayWorkItem = async (id: number) => {
   return workItem;
 };
 
-export { createTodayWorkItem, deleteTodayWork, deleteTodayWorkItem, work, works };
+export { createTodayWorkItem, deleteTodayWork, deleteTodayWorkItem, updateTodayWorkItemForTransfer, work, works };

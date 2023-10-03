@@ -32,10 +32,22 @@
     </div>
     <div class="mt-1"></div>
     <ul>
-      <li v-for="(item, index) in todayWorkListArgs.item" :key="index" class="mb-2">
+      <li
+        v-for="(item, index) in todayWorkListArgs.item"
+        :key="index"
+        class="mb-2"
+        @drop.prevent="onDrop($event, item.id)"
+        @dragenter.prevent
+        @dragover.prevent
+      >
         <p class="text-lg">{{ `- ${item.title} ${item.time}H` }}</p>
         <ul class="ml-3">
-          <li v-for="(subItem, subIndex) in item.subItem" :key="subIndex">
+          <li
+            v-for="(subItem, subIndex) in item.subItem"
+            :key="subIndex"
+            draggable="true"
+            @dragstart="onDragStart($event, subItem.id)"
+          >
             {{ `${subIndex + 1}) ${subItem.content} ${subItem.time}H` }}
             <button class="btn btn-square btn-ghost" @click.prevent.stop="onClickItemRemove(subItem.id)">
               <TrashIcon />
@@ -50,9 +62,17 @@
 <script setup lang="ts">
 import TrashIcon from '@/components/icon/TrashIcon.vue';
 import { useTodayWork } from '@/composables/todayWork/today.work';
+import type { CreateTodayWorkItemInput, UpdateTodayWorkItemForTransferInput } from '@support/shared/types';
 import { onMounted } from 'vue';
-const { todayWorkInputArgs, todayWorkListArgs, todayWorkSearchArgs, createTodayWorkItem, deleteTodayWorkItem, works } =
-  useTodayWork();
+const {
+  todayWorkInputArgs,
+  todayWorkListArgs,
+  todayWorkSearchArgs,
+  createTodayWorkItem,
+  deleteTodayWorkItem,
+  updateTodayWorkItemForTransfer,
+  works,
+} = useTodayWork();
 
 onMounted(() => works(todayWorkSearchArgs.value));
 
@@ -62,13 +82,24 @@ const onClickRegist = () => {
     content: todayWorkInputArgs.value.content,
     time: todayWorkInputArgs.value.time,
     date: todayWorkSearchArgs.value.date,
-  });
+  } as CreateTodayWorkItemInput);
 
   todayWorkInputArgsClear();
 };
 
 const onClickItemRemove = (subIndex: number) => {
   deleteTodayWorkItem(subIndex);
+};
+
+const onDragStart = (event: DragEvent, id: number) => {
+  event.dataTransfer?.setData('text', String(id));
+};
+
+const onDrop = (event: DragEvent, id: number) => {
+  updateTodayWorkItemForTransfer({
+    id: String(id),
+    itemId: event.dataTransfer?.getData('text'),
+  } as UpdateTodayWorkItemForTransferInput);
 };
 
 const todayWorkInputArgsClear = () => {

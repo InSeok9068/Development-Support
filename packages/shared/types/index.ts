@@ -27,6 +27,7 @@ export type Mutation = {
   createTodayWorkItem: Work;
   deleteTodayWork: Work;
   deleteTodayWorkItem: WorkItem;
+  updateTodayWorkItemForTransfer: Work;
 };
 
 export type MutationCreateTodayWorkItemArgs = {
@@ -39,6 +40,10 @@ export type MutationDeleteTodayWorkArgs = {
 
 export type MutationDeleteTodayWorkItemArgs = {
   id: Scalars['ID']['input'];
+};
+
+export type MutationUpdateTodayWorkItemForTransferArgs = {
+  input: UpdateTodayWorkItemForTransferInput;
 };
 
 export type Query = {
@@ -55,6 +60,11 @@ export type QueryWorkArgs = {
 
 export type QueryWorksArgs = {
   date: Scalars['String']['input'];
+};
+
+export type UpdateTodayWorkItemForTransferInput = {
+  id: Scalars['ID']['input'];
+  itemId: Scalars['ID']['input'];
 };
 
 export type User = {
@@ -108,6 +118,15 @@ export type CreateTodayWorkItemMutationVariables = Exact<{
 export type CreateTodayWorkItemMutation = {
   __typename?: 'Mutation';
   createTodayWorkItem: { __typename?: 'Work'; id: string };
+};
+
+export type UpdateTodayWorkItemForTransferMutationVariables = Exact<{
+  input: UpdateTodayWorkItemForTransferInput;
+}>;
+
+export type UpdateTodayWorkItemForTransferMutation = {
+  __typename?: 'Mutation';
+  updateTodayWorkItemForTransfer: { __typename?: 'Work'; id: string };
 };
 
 export type DeleteTodayWorkMutationVariables = Exact<{

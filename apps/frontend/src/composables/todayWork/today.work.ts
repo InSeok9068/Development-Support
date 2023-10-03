@@ -1,6 +1,7 @@
 import {
   CREATE_TODAY_WORK_ITEM_MUTATION,
   DELETE_TODAY_WORK_ITEM_MUTATION,
+  UPDATE_TODAY_WORK_ITEM_FOR_TRANSFER,
   WORKS_QUERY,
 } from '@/graphql/operations/today.work.operation';
 import { useToastStore } from '@/stores/toast.store';
@@ -15,6 +16,8 @@ import {
   type CreateTodayWorkItemMutationVariables,
   type MutationDeleteTodayWorkItemArgs,
   type QueryWorksArgs,
+  type UpdateTodayWorkItemForTransferInput,
+  type UpdateTodayWorkItemForTransferMutationVariables,
   type Work,
   type WorkItem,
   type WorksQuery,
@@ -77,12 +80,26 @@ const useTodayWork = () => {
       return;
     }
 
-    const { mutate } = useMutation<Work[], CreateTodayWorkItemMutationVariables>(CREATE_TODAY_WORK_ITEM_MUTATION, {
+    const { mutate } = useMutation<Work, CreateTodayWorkItemMutationVariables>(CREATE_TODAY_WORK_ITEM_MUTATION, {
       variables: {
         input,
       },
       refetchQueries: [WORKS_QUERY, 'Works'],
     });
+
+    await mutate().catch((error) => showToast({ message: error.message }));
+  };
+
+  const updateTodayWorkItemForTransfer = async (input: UpdateTodayWorkItemForTransferInput) => {
+    const { mutate } = useMutation<Work, UpdateTodayWorkItemForTransferMutationVariables>(
+      UPDATE_TODAY_WORK_ITEM_FOR_TRANSFER,
+      {
+        variables: {
+          input,
+        },
+        refetchQueries: [WORKS_QUERY, 'Works'],
+      },
+    );
 
     await mutate().catch((error) => showToast({ message: error.message }));
   };
@@ -104,6 +121,7 @@ const useTodayWork = () => {
     todayWorkSearchArgs,
     createTodayWorkItem,
     deleteTodayWorkItem,
+    updateTodayWorkItemForTransfer,
     works,
   };
 };
