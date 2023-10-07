@@ -55,6 +55,7 @@ jobs:
     needs: build
     runs-on: [self-hosted]
     env:
+      project-working-directory: /home/ubuntu/Development-Support
       backend-working-directory: /home/ubuntu/Development-Support/apps/backend
       frontend-working-directory: /home/ubuntu/Development-Support/apps/frontend
 
@@ -76,6 +77,7 @@ jobs:
 
       - name: project install dependencies
         run: pnpm install
+        working-directory: ${{ env.project-working-directory }}
 
       - name: backend npm build
         run: npm run build
