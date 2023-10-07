@@ -1,18 +1,51 @@
 {
+  "name": "development-support",
+  "description": "개발 도우미",
   "scripts": {
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "preinstall": "npx only-allow pnpm",
+    "build": "turbo run build",
+    "test": "turbo run test",
+    "test:b": "turbo run test --filter=./apps/backend",
+    "test:f": "turbo run test --filter=./apps/frontend",
+    "dev": "turbo run dev",
+    "dev:b": "turbo run dev --filter=./apps/backend",
+    "dev:f": "turbo run dev --filter=./apps/frontend",
+    "lint": "turbo run lint",
+    "lint:fix": "turbo run lint:fix",
+    "lint:format": "turbo run lint:format",
+    "codegen": "turbo run codegen",
+    "codegen:b": "turbo run codegen --filter=./apps/backend",
+    "codegen:f": "turbo run codegen --filter=./apps/frontend",
+    "clean": "turbo run clean && rimraf node_modules"
+  },
+  "dependencies": {
+    "dayjs": "^1.11.10",
+    "lodash": "^4.17.21"
   },
   "devDependencies": {
+    "@support/eslint-config-custom": "workspace:*",
+    "@support/prettier-config-custom": "workspace:*",
+    "@support/shared": "workspace:*",
+    "@types/lodash": "^4.14.199",
+    "@types/node": "^20.8.3",
+    "eslint": "^8.51.0",
     "husky": "^8.0.3",
-    "lint-staged": "^14.0.1"
+    "lint-staged": "^14.0.1",
+    "prettier": "^3.0.3",
+    "ts-node": "^10.9.1",
+    "turbo": "^1.10.15",
+    "typescript": "^5.2.2",
+    "vitest": "^0.34.6"
   },
   "lint-staged": {
-    "*.{js,jsx,ts,tsx}": [
+    "*.{js,ts}": [
       "eslint --fix",
       "prettier --write"
     ],
-    "*.vue" : [
+    "*.vue": [
       "prettier --write"
     ]
-  }
+  },
+  "packageManager": "pnpm@8.8.0"
 }

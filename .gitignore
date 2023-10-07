@@ -4,13 +4,17 @@
 .idea
 
 # Node Modules
-**/node_modules
+node_modules
 
-# Secret Env
-**/.env.secret*
+# Env
+**/.env*
 
 # Build OutPut
-**/dist
+dist
+
+# turbo
+.cache
+.turbo
 
 # Logs
 **/logs
@@ -24,11 +28,13 @@
 ### Backend
 
 # Prisma
-backend/db
-backend/prisma/migrations
+apps/backend/db
+apps/backend/prisma/migrations
 
 # Public
-backend/public
+apps/backend/public
+apps/backend/mergeSchema.graphql
 
 ### Frontend
-
+apps/frontend/apollo.config.js
+apps/frontend/components.d.ts
