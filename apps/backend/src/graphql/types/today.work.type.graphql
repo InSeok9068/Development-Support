@@ -1,0 +1,38 @@
+type Work {
+  id: ID!
+  title: String!
+  tag: String
+  time: Int!
+  workItems: [WorkItem]
+}
+
+type WorkItem {
+  id: ID!
+  time: Int!
+  content: String!
+}
+
+type Query {
+  work(id: ID!): Work
+  works(date: String!): [Work]
+}
+
+type Mutation {
+  createTodayWorkItem(input: CreateTodayWorkItemInput!): Work!
+  updateTodayWorkItemForTransfer(input: UpdateTodayWorkItemForTransferInput!): Work!
+  deleteTodayWork(id: ID!): Work!
+  deleteTodayWorkItem(id: ID!): WorkItem!
+}
+
+input CreateTodayWorkItemInput {
+  title: String!
+  tag: String
+  content: String!
+  time: Int!
+  date: String!
+}
+
+input UpdateTodayWorkItemForTransferInput {
+  id: ID!
+  itemId: ID!
+}

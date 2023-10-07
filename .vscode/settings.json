@@ -1,13 +1,18 @@
 {
   "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": true
+    "source.fixAll.eslint": true,
+    "source.organizeImports": true
   },
   "explorer.fileNesting.enabled": true,
   "explorer.fileNesting.expand": false,
   "explorer.fileNesting.patterns": {
     ".env": ".env*",
-    "package.json": "package-lock.json",
+    "package.json": "package-lock.json, pnpm*",
     "tailwind.config.js": "postcss.config.js"
+  },
+  "emmet.syntaxProfiles": {
+    "vue": "html",
+    "vue-html": "html"
   },
   "[prisma]": {
     "editor.defaultFormatter": "Prisma.prisma"
