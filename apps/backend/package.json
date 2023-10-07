@@ -4,7 +4,7 @@
   "scripts": {
     "test": "vitest",
     "dev": "cross-env NODE_ENV=development nodemon --exec ts-node -r tsconfig-paths/register src/app.ts",
-    "start": "tsc && cross-env NODE_ENV=production node dist/app.js",
+    "start": "tsc && cross-env NODE_ENV=production ts-node -r tsconfig-paths/register dist/app.js",
     "build": "tsc",
     "lint": "eslint \"src/**/*.{ts,js}\"",
     "lint:fix": "eslint \"src/**/*.{ts,js}\" --fix",
