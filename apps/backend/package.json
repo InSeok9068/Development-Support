@@ -22,7 +22,7 @@
     "@graphql-tools/load-files": "^7.0.0",
     "@graphql-tools/merge": "^9.0.0",
     "@graphql-tools/schema": "^10.0.0",
-    "@prisma/client": "^5.3.1",
+    "@prisma/client": "^5.4.1",
     "axios": "^1.5.1",
     "cheerio": "1.0.0-rc.12",
     "cors": "^2.8.5",
@@ -38,7 +38,7 @@
     "nodemailer": "^6.9.5",
     "passport": "^0.6.0",
     "passport-local": "^1.0.0",
-    "puppeteer": "^21.3.6",
+    "puppeteer": "^21.3.8",
     "winston": "^3.10.0"
   },
   "devDependencies": {
@@ -52,7 +52,7 @@
     "@types/passport-local": "^1.0.36",
     "cross-env": "^7.0.3",
     "nodemon": "^3.0.1",
-    "prisma": "^5.3.1",
+    "prisma": "^5.4.1",
     "tsconfig-paths": "^4.2.0"
   }
 }

@@ -4,6 +4,6 @@
     "clean": "rimraf node_modules"
   },
   "dependencies": {
-    "zod": "^3.22.3"
+    "zod": "^3.22.4"
   }
 }
