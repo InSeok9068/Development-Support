@@ -80,7 +80,9 @@ const createTodayWorkItem = async (input: CreateTodayWorkItemInput) => {
   }
 };
 
-const updateTodayWorkItemForTransfer = (input: UpdateTodayWorkItemForTransferInput) => {};
+const updateTodayWorkItemForTransfer = (input: UpdateTodayWorkItemForTransferInput) => {
+  // TODO 드래그 앤 드랍으로 데이터 업데이트
+};
 
 const deleteTodayWork = async (id: number) => {
   const work = await prisma.work.delete({
