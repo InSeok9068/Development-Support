@@ -1,7 +1,7 @@
 <template>
   <div class="mx-auto h-screen w-full p-5">
     <div class="dropdown dropdown-end float-right">
-      <label tabindex="0" class="btn m-1">프로필</label>
+      <label tabindex="0" class="btn btn-accent m-1">프로필</label>
       <ul tabindex="0" class="menu dropdown-content rounded-box z-[1] w-52 bg-base-100 p-2 shadow">
         <li><a @click.prevent.stop="$navi.login(router).login().go()">로그인</a></li>
         <li><a @click.prevent.stop="$navi.main(router).main().go()">로그아웃</a></li>
@@ -15,6 +15,11 @@
       <router-view></router-view>
     </div>
   </div>
+  <footer class="footer footer-center absolute bottom-0 bg-base-300 p-4 text-base-content">
+    <aside>
+      <p>Copyright © 2023 - All right reserved by ACME Industries Ltd</p>
+    </aside>
+  </footer>
 </template>
 
 <script setup lang="ts">
