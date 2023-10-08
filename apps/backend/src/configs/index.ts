@@ -1,5 +1,6 @@
-import { prisma } from './prisma.config';
 import { logger } from './logger.config';
+import { transporter } from './mail.config';
 import { passportConfigInit } from './passport.config';
+import { prisma } from './prisma.config';
 
-export { prisma, logger, passportConfigInit };
+export { logger, passportConfigInit, prisma, transporter };
