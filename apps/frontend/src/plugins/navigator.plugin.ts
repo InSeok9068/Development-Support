@@ -1,4 +1,5 @@
 import { urlDashBoard, type UrlDashBoard } from '@/router/url/dashboard.url';
+import { urlLogin, type UrlLogin } from '@/router/url/login.url';
 import { urlMain, type UrlMain } from '@/router/url/main.url';
 import { urlTodayWork, type UrlTodayWork } from '@/router/url/today.work.url';
 import type { App } from 'vue';
@@ -13,6 +14,7 @@ export interface IPlgNavi {
   main: (router?: VueRouter) => UrlMain;
   dashboard: (router?: VueRouter) => UrlDashBoard;
   todayWork: (router?: VueRouter) => UrlTodayWork;
+  login: (router?: VueRouter) => UrlLogin;
 }
 
 export default {
@@ -21,6 +23,7 @@ export default {
       main: urlMain,
       dashboard: urlDashBoard,
       todayWork: urlTodayWork,
+      login: urlLogin,
     };
     app.config.globalProperties.$navi = navi;
     app.provide(PLUGIN_NAVIGATOR_NAME, app.config.globalProperties.$navi);
