@@ -42,5 +42,9 @@ const cardArgsList: UiCardArgs[] = [
     title: '오늘 한일',
     move: () => $navi.todayWork(router).todayWork().go(),
   },
+  {
+    title: '기술 스펙',
+    move: () => $navi.techSpec(router).techSpec().go(),
+  },
 ];
 </script>
