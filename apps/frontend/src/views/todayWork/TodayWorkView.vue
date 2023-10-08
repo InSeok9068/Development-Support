@@ -1,24 +1,20 @@
 <template>
-  <div class="form-control join w-1/2">
+  <div class="form-control join w-2/6">
     <label class="label">
       <span class="label-text">오늘 무슨 일을 하셨나요?</span>
     </label>
-    <input v-model="todayWorkInputArgs.title" class="input input-bordered w-1/2" type="text" placeholder="제목" />
+    <input v-model="todayWorkInputArgs.title" class="input input-bordered" type="text" placeholder="제목" />
     <div class="mt-1"></div>
-    <textarea
-      v-model="todayWorkInputArgs.content"
-      class="textarea textarea-bordered w-1/2"
-      placeholder="내용"
-    ></textarea>
+    <textarea v-model="todayWorkInputArgs.content" class="textarea textarea-bordered" placeholder="내용"></textarea>
     <div class="mt-3"></div>
-    <input v-model="todayWorkInputArgs.time" type="range" min="1" max="8" class="range range-info w-1/2" step="1" />
-    <div class="flex w-1/2 justify-between px-2 text-xs">
+    <input v-model="todayWorkInputArgs.time" type="range" min="1" max="8" class="range range-info" step="1" />
+    <div class="flex justify-between px-2 text-xs">
       <span v-for="(item, index) in 8" :key="index">{{ item }}시간</span>
     </div>
     <div class="mt-3"></div>
     <button class="btn btn-primary w-1/3" @click.prevent.stop="onClickRegist()">등록</button>
   </div>
-  <div class="form-control join w-1/2">
+  <div class="form-control join float-right w-3/6">
     <div>
       <b class="text-2xl">오늘 한일</b>
       <input
@@ -29,6 +25,7 @@
       />
       <input type="month" class="m-2 hidden w-min border border-black pl-1" />
       <input type="week" class="m-2 hidden w-min border border-black pl-1" />
+      <button class="btn btn-neutral float-right">주간보고서 전송</button>
     </div>
     <div class="mt-1"></div>
     <ul>
