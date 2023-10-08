@@ -27,6 +27,7 @@ export type Mutation = {
   createTodayWorkItem: Work;
   deleteTodayWork: Work;
   deleteTodayWorkItem: WorkItem;
+  sendWeeklyReport: Scalars['Boolean']['output'];
   updateTodayWorkItemForTransfer: Work;
 };
 

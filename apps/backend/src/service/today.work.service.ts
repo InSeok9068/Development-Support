@@ -150,4 +150,16 @@ const deleteTodayWorkItem = async (id: number) => {
   return workItem;
 };
 
-export { createTodayWorkItem, deleteTodayWork, deleteTodayWorkItem, updateTodayWorkItemForTransfer, work, works };
+const sendWeeklyReport = () => {
+  return true;
+};
+
+export {
+  createTodayWorkItem,
+  deleteTodayWork,
+  deleteTodayWorkItem,
+  sendWeeklyReport,
+  updateTodayWorkItemForTransfer,
+  work,
+  works,
+};
