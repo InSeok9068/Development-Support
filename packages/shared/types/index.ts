@@ -144,3 +144,7 @@ export type DeleteTodayWorkItemMutation = {
   __typename?: 'Mutation';
   deleteTodayWorkItem: { __typename?: 'WorkItem'; id: string };
 };
+
+export type SendWeeklyReportMutationVariables = Exact<{ [key: string]: never }>;
+
+export type SendWeeklyReportMutation = { __typename?: 'Mutation'; sendWeeklyReport: boolean };
