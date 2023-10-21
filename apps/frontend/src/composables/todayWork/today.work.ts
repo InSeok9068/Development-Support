@@ -1,6 +1,7 @@
 import {
   CREATE_TODAY_WORK_ITEM_MUTATION,
   DELETE_TODAY_WORK_ITEM_MUTATION,
+  SEND_WEEKLY_REPORT_MUTATION,
   UPDATE_TODAY_WORK_ITEM_FOR_TRANSFER,
   WORKS_QUERY,
 } from '@/graphql/operations/today.work.operation';
@@ -115,6 +116,12 @@ const useTodayWork = () => {
     await mutate().catch((error) => showToast({ message: error.message }));
   };
 
+  const sendWeeklyReport = async () => {
+    const { mutate } = useMutation<boolean>(SEND_WEEKLY_REPORT_MUTATION);
+
+    await mutate().catch((error) => showToast({ message: error.message }));
+  };
+
   return {
     todayWorkInputArgs,
     todayWorkListArgs,
@@ -122,6 +129,7 @@ const useTodayWork = () => {
     createTodayWorkItem,
     deleteTodayWorkItem,
     updateTodayWorkItemForTransfer,
+    sendWeeklyReport,
     works,
   };
 };

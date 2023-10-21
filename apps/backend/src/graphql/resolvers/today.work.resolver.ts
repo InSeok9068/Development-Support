@@ -2,6 +2,7 @@ import {
   createTodayWorkItem,
   deleteTodayWork,
   deleteTodayWorkItem,
+  sendWeeklyReport,
   updateTodayWorkItemForTransfer,
   work,
   works,
@@ -37,6 +38,9 @@ const resolvers = {
     },
     deleteTodayWorkItem: async (_: unknown, args: MutationDeleteTodayWorkItemArgs) => {
       return await deleteTodayWorkItem(Number(args.id));
+    },
+    sendWeeklyReport: (_: unknown) => {
+      return sendWeeklyReport();
     },
   },
 };

@@ -27,14 +27,14 @@
     "@support/eslint-config-custom": "workspace:*",
     "@support/prettier-config-custom": "workspace:*",
     "@support/shared": "workspace:*",
-    "@types/lodash": "^4.14.199",
-    "@types/node": "^20.8.3",
-    "eslint": "^8.51.0",
+    "@types/lodash": "^4.14.200",
+    "@types/node": "^20.8.7",
+    "eslint": "^8.52.0",
     "husky": "^8.0.3",
-    "lint-staged": "^14.0.1",
+    "lint-staged": "^15.0.2",
     "prettier": "^3.0.3",
     "ts-node": "^10.9.1",
-    "turbo": "^1.10.15",
+    "turbo": "^1.10.16",
     "typescript": "^5.2.2",
     "vitest": "^0.34.6"
   },
@@ -47,5 +47,5 @@
       "prettier --write"
     ]
   },
-  "packageManager": "pnpm@8.8.0"
+  "packageManager": "pnpm@8.9.2"
 }
