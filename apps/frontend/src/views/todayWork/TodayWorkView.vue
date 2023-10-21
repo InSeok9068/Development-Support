@@ -25,7 +25,7 @@
       />
       <input type="month" class="m-2 hidden w-min border border-black pl-1" />
       <input type="week" class="m-2 hidden w-min border border-black pl-1" />
-      <button class="btn btn-neutral float-right">주간보고서 전송</button>
+      <button class="btn btn-neutral float-right" @click.prevent.stop="onSendWeeklyReport()">주간보고서 전송</button>
     </div>
     <div class="mt-1"></div>
     <ul>
@@ -68,6 +68,7 @@ const {
   createTodayWorkItem,
   deleteTodayWorkItem,
   updateTodayWorkItemForTransfer,
+  sendWeeklyReport,
   works,
 } = useTodayWork();
 
@@ -97,6 +98,10 @@ const onDrop = (event: DragEvent, id: number) => {
     id: String(id),
     itemId: event.dataTransfer?.getData('text'),
   } as UpdateTodayWorkItemForTransferInput);
+};
+
+const onSendWeeklyReport = () => {
+  sendWeeklyReport();
 };
 
 const todayWorkInputArgsClear = () => {
