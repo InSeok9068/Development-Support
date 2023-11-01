@@ -2,8 +2,6 @@
 
 [TOC]
 
-[Notion Link](https://www.notion.so/4d3b8c7aeb0b4b149da887c6dbdc609b)
-
 ## 환경구성
 
 Server OS : Ubuntu
@@ -77,7 +75,7 @@ pnpm dev
 
 ### 완료
 
-- 미작성 
+- 미작성
 
 ## 기타 작업
 

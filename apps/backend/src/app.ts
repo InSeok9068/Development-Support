@@ -1,6 +1,6 @@
 import { logger, passportConfigInit } from '@/configs';
 import { schema } from '@/graphql/schema';
-import { errorMiddleware, morganMiddleware } from '@/middlewares';
+import { errorMiddleware, limiterMiddleware, morganMiddleware } from '@/middlewares';
 import cors from 'cors';
 import dotenv from 'dotenv';
 import express, { Express, Request, Response } from 'express';
@@ -39,7 +39,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 passportConfigInit();
 
-app.all('/graphql', createHandler({ schema }));
+app.all('/graphql', limiterMiddleware, createHandler({ schema }));
 
 app.get('/', (req: Request, res: Response) => {
   res.sendFile(path.join(__dirname, '../public/index.html'));
