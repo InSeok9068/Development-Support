@@ -28,7 +28,7 @@
     "@support/prettier-config-custom": "workspace:*",
     "@support/shared": "workspace:*",
     "@types/lodash": "^4.14.200",
-    "@types/node": "^20.8.7",
+    "@types/node": "^20.8.10",
     "eslint": "^8.52.0",
     "husky": "^8.0.3",
     "lint-staged": "^15.0.2",
