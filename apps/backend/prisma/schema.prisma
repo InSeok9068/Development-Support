@@ -36,3 +36,16 @@ model WorkItem {
   work    Work   @relation(fields: [workId], references: [id])
   workId  Int
 }
+
+model JobScrap {
+  id          Int      @id @default(autoincrement())
+  company     String
+  position    String
+  requirement String?
+  stratDate   DateTime
+  endDate     DateTime
+  link        String
+  isConfirm   Boolean  @default(false)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @default(now())
+}
