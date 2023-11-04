@@ -29,7 +29,7 @@
     "@support/shared": "workspace:*",
     "@types/lodash": "^4.14.200",
     "@types/node": "^20.8.10",
-    "eslint": "^8.52.0",
+    "eslint": "^8.53.0",
     "husky": "^8.0.3",
     "lint-staged": "^15.0.2",
     "prettier": "^3.0.3",
