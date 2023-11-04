@@ -26,6 +26,10 @@ class NaverJobScraping implements JobScraping {
   getJobScrap(): JobScrap {
     return this.jobscrap;
   }
+
+  async getLinks() {
+    return await this.page.$$('a.card_link');
+  }
 }
 
 export { NaverJobScraping };

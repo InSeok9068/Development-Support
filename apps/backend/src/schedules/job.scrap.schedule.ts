@@ -24,7 +24,7 @@ const siteScraping = () => {
           await page.goto(site.url);
           await delay(1000);
           const naverJobScraping = new NaverJobScraping(site.company, page);
-          const jobList = await page.$$eval('h3.title', (el) => el.map((el) => el.textContent));
+          console.log(naverJobScraping.getLinks());
           await browser.close();
         }
         break;

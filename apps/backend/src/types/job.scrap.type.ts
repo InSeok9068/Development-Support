@@ -5,6 +5,7 @@ interface JobScraping {
   scrapStratDate(): Promise<void>;
   scrapEndDate(): Promise<void>;
   getJobScrap(): JobScrap;
+  getLinks(): Promise<any>;
 }
 
 interface JobScrap {
