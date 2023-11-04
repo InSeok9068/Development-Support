@@ -1,14 +1,15 @@
 interface JobScraping {
-  scrapCompany(): void;
-  scrapPosition(): void;
-  scrapRequirement(): void;
-  scrapStratDate(): void;
-  scrapEndDate(): void;
+  scrapTitle(): Promise<void>;
+  scrapPosition(): Promise<void>;
+  scrapRequirement(): Promise<void>;
+  scrapStratDate(): Promise<void>;
+  scrapEndDate(): Promise<void>;
   getJobScrap(): JobScrap;
 }
 
 interface JobScrap {
   company: string;
+  title: string;
   position: string;
   requirement: string;
   stratDate: string;

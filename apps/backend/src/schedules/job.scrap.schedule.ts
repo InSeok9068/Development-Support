@@ -1,63 +1,31 @@
-import axios from 'axios';
-import { load } from 'cheerio';
+import { NaverJobScraping } from '@/service/job.scrap.service';
 import { CronJob } from 'cron';
 import puppeteer from 'puppeteer';
 
-type LANDING_TYPE = 'SPA' | 'SSR';
-
 interface Site {
-  name: string;
+  company: string;
   url: string;
-  landingType: LANDING_TYPE;
 }
 
-const siteList: Site[] = [
+const sites: Site[] = [
   {
-    name: 'LINE',
-    url: 'https://careers.linecorp.com/ko/jobs?ca=All&ci=Bundang&co=East%20Asia&fi=Web%20Development,Server-side&ty=Full-time',
-    landingType: 'SPA',
-  },
-  {
-    name: 'WOOWAHAN',
-    url: 'https://career.woowahan.com/?jobCodes=BA007001&employmentTypeCodes=BA002001&serviceSectionCodes=&careerPeriod=&keyword=&category=jobGroupCodes%3ABA005001#recruit-list',
-    landingType: 'SPA',
-  },
-  {
-    name: 'COUPANG',
-    url: 'https://www.coupang.jobs/kr/jobs/?search=Back&location=South+Korea&pagesize=20#results',
-    landingType: 'SSR',
+    company: 'NAVER',
+    url: 'https://recruit.navercorp.com/rcrt/list.do?subJobCdArr=1010004%2C1060001&sysCompanyCdArr=KR%2CNB%2CWM%2CSN%2CNL%2CWTKR%2CNFN%2CNI&empTypeCdArr=0010&entTypeCdArr=0020&workAreaCdArr=0010%2C0020&sw=&subJobCdData=1010004&subJobCdData=1060001&sysCompanyCdData=KR&sysCompanyCdData=NB&sysCompanyCdData=WM&sysCompanyCdData=SN&sysCompanyCdData=NL&sysCompanyCdData=WTKR&sysCompanyCdData=NFN&sysCompanyCdData=NI&empTypeCdData=0010&entTypeCdData=0020&workAreaCdData=0010&workAreaCdData=0020#n',
   },
 ];
 
 const siteScraping = () => {
-  siteList.forEach(async (site) => {
-    switch (site.name) {
-      case 'LINE':
+  sites.forEach(async (site) => {
+    switch (site.company) {
+      case 'NAVER':
         {
           const browser = await puppeteer.launch({ headless: true });
           const page = await browser.newPage();
           await page.goto(site.url);
           await delay(1000);
+          const naverJobScraping = new NaverJobScraping(site.company, page);
           const jobList = await page.$$eval('h3.title', (el) => el.map((el) => el.textContent));
           await browser.close();
-        }
-        break;
-      case 'WOOWAHAN':
-        {
-          const browser = await puppeteer.launch({ headless: true });
-          const page = await browser.newPage();
-          await page.goto(site.url);
-          await delay(1000);
-          const jobList = await page.$$eval('p.fr-view', (el) => el.map((el) => el.textContent));
-          await browser.close();
-        }
-        break;
-      case 'COUPANG':
-        {
-          const { data } = await axios.get(site.url);
-          const $ = load(data);
-          const jobList = $('.job-listing .stretched-link');
-          console.log(`[${site.name}] ${jobList.text()}`);
         }
         break;
       default:

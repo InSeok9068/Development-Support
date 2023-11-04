@@ -5,32 +5,27 @@ class NaverJobScraping implements JobScraping {
   private page: Page;
   private jobscrap: JobScrap;
 
-  constructor(page: Page) {
+  constructor(company: string, page: Page) {
     this.page = page;
     this.jobscrap = {} as JobScrap;
+    this.jobscrap.company = company;
   }
 
-  scrapCompany(): string {
-    return '';
+  async scrapTitle() {
+    const cardTitle = await this.page.$$eval('h4.card_title', (el) => el.map((el) => el.textContent));
   }
 
-  scrapPosition(): string {
-    return '';
-  }
+  async scrapPosition() {}
 
-  scrapRequirement(): string {
-    return '';
-  }
+  async scrapRequirement() {}
 
-  scrapStratDate(): string {
-    return '';
-  }
+  async scrapStratDate() {}
 
-  scrapEndDate(): string {
-    return '';
-  }
+  async scrapEndDate() {}
 
   getJobScrap(): JobScrap {
     return this.jobscrap;
   }
 }
+
+export { NaverJobScraping };

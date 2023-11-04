@@ -40,6 +40,7 @@ model WorkItem {
 model JobScrap {
   id          Int      @id @default(autoincrement())
   company     String
+  title       String
   position    String
   requirement String?
   stratDate   DateTime
