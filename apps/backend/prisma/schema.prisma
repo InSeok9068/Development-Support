@@ -40,12 +40,16 @@ model WorkItem {
 model JobScrap {
   id          Int      @id @default(autoincrement())
   company     String
+  title       String
   position    String
   requirement String?
   stratDate   DateTime
   endDate     DateTime
   link        String
   isConfirm   Boolean  @default(false)
+  linkId      String
   createdAt   DateTime @default(now())
   updatedAt   DateTime @default(now())
+
+  // @@unique([company, linkId])
 }
