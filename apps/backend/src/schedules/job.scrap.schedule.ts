@@ -1,5 +1,6 @@
 import { saveJobScrap } from '@/service/job.scrap.service';
 import { NaverJobScraping } from '@/service/scraps';
+import { CronJob } from 'cron';
 import puppeteer from 'puppeteer';
 
 interface Site {
@@ -54,6 +55,7 @@ const jobPostingAction = () => {
   siteScraping();
 };
 
-// const jobPostingSchedule = new CronJob('* * * * * *', jobPostingAction, null, true, 'Asia/Seoul');
+// 3일마다 아침 9시에 동작
+const jobPostingSchedule = new CronJob('0 9 */3 * * *', jobPostingAction, null, true, 'Asia/Seoul');
 
-export { jobPostingAction };
+export { jobPostingSchedule };

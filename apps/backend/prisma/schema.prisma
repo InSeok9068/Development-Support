@@ -47,6 +47,9 @@ model JobScrap {
   endDate     DateTime
   link        String
   isConfirm   Boolean  @default(false)
+  linkId      String
   createdAt   DateTime @default(now())
   updatedAt   DateTime @default(now())
+
+  // @@unique([company, linkId])
 }

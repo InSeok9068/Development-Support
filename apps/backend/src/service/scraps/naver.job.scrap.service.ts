@@ -50,6 +50,10 @@ class NaverJobScraping implements JobScraping {
     this.jobScrap.link = this.page.url();
   }
 
+  async scrapLinkId(): Promise<void> {
+    this.jobScrap.linkId = await this.page.$eval('input[name="annoId"]', ({ value }) => value);
+  }
+
   getJobScrap(): JobScrap {
     return this.jobScrap;
   }
