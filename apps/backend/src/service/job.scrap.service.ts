@@ -1,35 +1,14 @@
-import { JobScrap, JobScraping } from '@/types/job.scrap.type';
-import { Page } from 'puppeteer';
+import { prisma } from '@/configs';
+import { JobScrap } from '@/types/job.scrap.type';
 
-class NaverJobScraping implements JobScraping {
-  private page: Page;
-  private jobscrap: JobScrap;
+const saveJobScrap = async (jobscrap: JobScrap) => {
+  const jobScrap = await prisma.jobScrap.create({
+    data: {
+      ...jobscrap,
+    },
+  });
 
-  constructor(company: string, page: Page) {
-    this.page = page;
-    this.jobscrap = {} as JobScrap;
-    this.jobscrap.company = company;
-  }
+  return jobScrap;
+};
 
-  async scrapTitle() {
-    const cardTitle = await this.page.$$eval('h4.card_title', (el) => el.map((el) => el.textContent));
-  }
-
-  async scrapPosition() {}
-
-  async scrapRequirement() {}
-
-  async scrapStratDate() {}
-
-  async scrapEndDate() {}
-
-  getJobScrap(): JobScrap {
-    return this.jobscrap;
-  }
-
-  async getLinks() {
-    return await this.page.$$('a.card_link');
-  }
-}
-
-export { NaverJobScraping };
+export { saveJobScrap };

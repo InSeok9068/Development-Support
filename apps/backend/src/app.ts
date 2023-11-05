@@ -41,12 +41,11 @@ passportConfigInit();
 
 app.all('/graphql', limiterMiddleware, createHandler({ schema }));
 
-app.get('/', (req: Request, res: Response) => {
+app.get('/', (_req: Request, res: Response) => {
   res.sendFile(path.join(__dirname, '../public/index.html'));
 });
 
 app.listen(port, () => {
   logger.info('App Start');
   console.log(`[server]: Server is running at <http://localhost:${port}>`);
-  // consoleSchedule;
 });
