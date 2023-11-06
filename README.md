@@ -36,7 +36,7 @@ CI/CD : GitHub Action (+ Self-hosted Runner)
 
 Notification : Telegram
 
-Authentication : Firebase? & Supabase?
+Authentication : Firebase
 
 API Interface Spec : Postman
 
@@ -83,7 +83,7 @@ pnpm dev
 ## 기타 작업
 
 - GitHub Action CI/CI 구축 (Turorepo, Docker)
-- Firabase & Supabase 이용하여 로그인 및 인증 구현
+- graphql 통신 시 헤더값에 유저 인증 값 던지기
 - 공통 팝업창 작업
 - 메뉴창 사이드바로 구현??
 - 해당 사이드 프로젝트 기술스텍을 볼 수 있는 페이지 구현
