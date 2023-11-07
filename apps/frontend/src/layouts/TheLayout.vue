@@ -36,12 +36,12 @@ const cardArgsList: UiCardArgs[] = [
     move: () => $navi.main(router).main().go(),
   },
   {
-    title: '대시보드',
-    move: () => $navi.dashboard(router).dashboard().go(),
-  },
-  {
     title: '오늘 한일',
     move: () => $navi.todayWork(router).todayWork().go(),
+  },
+  {
+    title: '대시보드',
+    move: () => $navi.dashboard(router).dashboard().go(),
   },
   {
     title: '기술 스펙',

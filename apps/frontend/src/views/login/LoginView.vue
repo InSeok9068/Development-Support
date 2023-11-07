@@ -1,11 +1,9 @@
 <template>
   <div class="flex items-center">
     <div class="card mx-auto w-full max-w-5xl shadow-lg">
-      <div class="py-24">
-        <h2 class="mb-20 text-center text-2xl font-semibold">로그인</h2>
-        <div id="firebaseui-auth-container"></div>
-        <div id="loader">Loading...</div>
-      </div>
+      <h2 class="mb-14 text-center text-2xl font-semibold">로그인</h2>
+      <div id="firebaseui-auth-container"></div>
+      <div id="loader">Loading...</div>
     </div>
   </div>
 </template>
