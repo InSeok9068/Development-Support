@@ -1,17 +1,13 @@
 <template>
-  메인
-  <button @click.prevent.stop="apiTest()">API 테스트</button>
+  <p class="text-xl">
+    환영합니다. <b> {{ userName }} </b>님
+  </p>
 </template>
 
 <script setup lang="ts">
-import { apolloClient } from '@/composables/use.grahpql.client';
-import { GET_USERS_QUERY } from '@/graphql/operations/main.operation';
-import { type GetUsersQuery } from '@support/shared/types';
-import { provideApolloClient, useQuery } from '@vue/apollo-composable';
+import { auth } from '@/composables/firebase';
+import { ref } from 'vue';
+const userName = ref('');
 
-const apiTest = () => {
-  const { result } = provideApolloClient(apolloClient)(() => useQuery<GetUsersQuery>(GET_USERS_QUERY));
-
-  console.log(result.value?.user?.username);
-};
+auth.onAuthStateChanged((user) => (userName.value = user?.displayName ?? ''));
 </script>
