@@ -16,7 +16,9 @@ Frontend Framework : VueJS
 
 CSS Framework : Tailwind CSS + Daisy UI
 
-Database : SQLite
+RDB Database : SQLite
+
+NoSQL Database : Firestore (Firebase)
 
 Database ORM Framework : Prisma
 
