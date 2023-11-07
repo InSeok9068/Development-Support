@@ -7,6 +7,7 @@
 <script setup lang="ts">
 import { auth } from '@/composables/firebase';
 import { ref } from 'vue';
+const userName = ref('');
 
-const userName = ref(auth.currentUser?.displayName);
+auth.onAuthStateChanged((user) => (userName.value = user?.displayName ?? ''));
 </script>
