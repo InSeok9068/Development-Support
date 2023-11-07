@@ -34,6 +34,7 @@ apps/backend/prisma/migrations
 # Public
 apps/backend/public
 apps/backend/mergeSchema.graphql
+apps/backend/serviceAccountKey.json
 
 ### Frontend
 apps/frontend/apollo.config.js

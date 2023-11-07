@@ -1,17 +1,10 @@
-import dotenv from 'dotenv';
-import { initializeApp } from 'firebase/app';
+import admin from 'firebase-admin';
 
-dotenv.config({ path: `.env.${process.env.NODE_ENV}` });
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const serviceAccount = require('../../serviceAccountKey.json');
 
-const firebaseConfig = {
-  apiKey: process.env.FIRE_BASE_API_KEY,
-  authDomain: process.env.FIRE_BASE_AUTH_DOMAIN,
-  projectId: process.env.FIRE_BASE_PROJECT_ID,
-  storageBucket: process.env.FIRE_BASE_STORAGE_BUCKET,
-  messagingSenderId: process.env.FIRE_BASE_MESSAGING_SENDER_ID,
-  appId: process.env.FIRE_BASE_APP_ID,
-};
+admin.initializeApp({
+  credential: admin.credential.cert(serviceAccount),
+});
 
-const app = initializeApp(firebaseConfig);
-
-export { app };
+export { admin };
