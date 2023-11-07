@@ -1,6 +1,6 @@
 import { logger } from '@/configs';
 import { schema } from '@/graphql/schema';
-import { errorMiddleware, limiterMiddleware, morganMiddleware } from '@/middlewares';
+import { authMiddleware, errorMiddleware, limiterMiddleware, morganMiddleware } from '@/middlewares';
 import cors from 'cors';
 import dotenv from 'dotenv';
 import express, { Express, Request, Response } from 'express';
@@ -27,7 +27,7 @@ app.use('/favicon.ico', express.static('public/favicon.ico'));
 app.use(morganMiddleware);
 app.use(errorMiddleware);
 
-app.all('/graphql', limiterMiddleware, createHandler({ schema }));
+app.all('/graphql', [authMiddleware, limiterMiddleware], createHandler({ schema }));
 
 app.get('/', (_req: Request, res: Response) => {
   res.sendFile(path.join(__dirname, '../public/index.html'));
