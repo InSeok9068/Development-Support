@@ -1,56 +1,41 @@
 <template>
   <div class="flex items-center">
-    <div class="card mx-auto w-full max-w-5xl shadow-xl">
-      <div class="px-10 py-24">
-        <h2 class="mb-2 text-center text-2xl font-semibold">Login</h2>
-        <form>
-          <div class="mb-4">
-            <div class="form-control mt-4 w-full">
-              <label class="label"><span class="undefined label-text text-base-content">Email Id</span></label
-              ><input
-                type="emailId"
-                placeholder=""
-                class="input input-bordered w-full"
-                value=""
-                data-siid="si_input_0"
-                data-si-pw="0"
-              />
-            </div>
-            <div class="form-control mt-4 w-full">
-              <label class="label"><span class="undefined label-text text-base-content">Password</span></label
-              ><input
-                type="password"
-                placeholder=""
-                class="input input-bordered w-full"
-                value=""
-                data-siid="si_input_1"
-                data-si-pw="1"
-              />
-            </div>
-          </div>
-          <div class="text-right text-primary">
-            <a href="/forgot-password"
-              ><span
-                class="inline-block text-sm transition duration-200 hover:cursor-pointer hover:text-primary hover:underline"
-                >Forgot Password?</span
-              ></a
-            >
-          </div>
-          <p class="mt-8 text-center text-error"></p>
-          <button type="submit" class="btn btn-primary mt-2 w-full">Login</button>
-          <div class="mt-4 text-center">
-            Don't have an account yet?
-            <a href="/register"
-              ><span
-                class="durati on-200 inline-block transition hover:cursor-pointer hover:text-primary hover:underline"
-                >Register</span
-              ></a
-            >
-          </div>
-        </form>
+    <div class="card mx-auto w-full max-w-5xl shadow-lg">
+      <div class="py-24">
+        <h2 class="mb-20 text-center text-2xl font-semibold">로그인</h2>
+        <div id="firebaseui-auth-container"></div>
+        <div id="loader">Loading...</div>
       </div>
     </div>
   </div>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { auth } from '@/composables/firebase';
+import firebase from 'firebase/compat/app';
+import * as firebaseui from 'firebaseui';
+import 'firebaseui/dist/firebaseui.css';
+import { onMounted } from 'vue';
+
+const uiConfig = {
+  callbacks: {
+    uiShown: () => {
+      document.getElementById('loader')!.style.display = 'none';
+    },
+  },
+  signInSuccessUrl: '/main', // 성공 시 리다이렉트 URL
+  signInOptions: [
+    firebase.auth.GoogleAuthProvider.PROVIDER_ID,
+    firebase.auth.FacebookAuthProvider.PROVIDER_ID,
+    firebase.auth.GithubAuthProvider.PROVIDER_ID,
+  ],
+  tosUrl: '<your-tos-url>', // 서비스이용약관
+  privacyPolicyUrl: () => window.location.assign('<your-privacy-policy-url>'), // 개인정보처리방침
+};
+
+const ui = firebaseui.auth.AuthUI.getInstance() ?? new firebaseui.auth.AuthUI(auth);
+
+onMounted(() => {
+  ui.start('#firebaseui-auth-container', uiConfig);
+});
+</script>
