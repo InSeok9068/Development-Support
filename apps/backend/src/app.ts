@@ -29,7 +29,7 @@ app.use(errorMiddleware);
 
 app.all('/graphql', [authMiddleware, limiterMiddleware], createHandler({ schema }));
 
-app.get('/', (_req: Request, res: Response) => {
+app.get('/*', (_req: Request, res: Response) => {
   res.sendFile(path.join(__dirname, '../public/index.html'));
 });
 
