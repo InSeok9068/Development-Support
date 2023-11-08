@@ -33,6 +33,18 @@ jobs:
       - name: project install dependencies
         run: pnpm install
 
+      - name: setting .env
+        run: |
+          echo "VITE_API_URL=${{ secrets.VITE_API_URL }}" >> .env
+          echo "VITE_GRAPHQL_URL=${{ secrets.VITE_GRAPHQL_URL }}" >> .env
+          echo "VITE_FIRE_BASE_API_KEY=${{ secrets.VITE_FIRE_BASE_API_KEY }}" >> .env
+          echo "VITE_FIRE_BASE_AUTH_DOMAIN=${{ secrets.VITE_FIRE_BASE_AUTH_DOMAIN }}" >> .env
+          echo "VITE_FIRE_BASE_PROJECT_ID=${{ secrets.VITE_FIRE_BASE_PROJECT_ID }}" >> .env
+          echo "VITE_FIRE_BASE_STORAGE_BUCKET=${{ secrets.VITE_FIRE_BASE_STORAGE_BUCKET }}" >> .env
+          echo "VITE_FIRE_BASE_MESSAGING_SENDER_ID=${{ secrets.VITE_FIRE_BASE_MESSAGING_SENDER_ID }}" >> .env
+          echo "VITE_FIRE_BASE_APP_ID=${{ secrets.VITE_FIRE_BASE_APP_ID }}" >> .env
+        working-directory: ${{ env.frontend-working-directory }}
+
       - name: frontend npm build
         run: npm run build
         working-directory: ${{ env.frontend-working-directory }}
