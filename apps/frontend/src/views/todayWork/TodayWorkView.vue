@@ -20,11 +20,11 @@
       <input
         v-model="todayWorkSearchArgs.date"
         type="date"
-        class="m-2 w-min border border-black pl-1"
+        class="m-2 w-min rounded-xl border border-black pl-1"
         @change="works(todayWorkSearchArgs)"
       />
-      <input type="month" class="m-2 hidden w-min border border-black pl-1" />
-      <input type="week" class="m-2 hidden w-min border border-black pl-1" />
+      <input type="month" class="m-2 hidden w-min rounded-xl border border-black pl-1" />
+      <input type="week" class="m-2 hidden w-min rounded-xl border border-black pl-1" />
       <button class="btn btn-neutral float-right" @click.prevent.stop="onSendWeeklyReport()">주간보고서 전송</button>
     </div>
     <div class="mt-1"></div>
