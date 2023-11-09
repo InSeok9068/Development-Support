@@ -3,7 +3,7 @@
     <div class="dropdown dropdown-end float-right">
       <label tabindex="0" class="btn btn-accent m-1">프로필</label>
       <ul tabindex="0" class="menu dropdown-content rounded-box z-[1] w-52 bg-base-100 p-2 shadow">
-        <li><a @click.prevent.stop="onClickLogin()">로그인</a></li>
+        <li v-show="!certified"><a @click.prevent.stop="onClickLogin()">로그인</a></li>
         <li><a @click.prevent.stop="onClickLogout()">로그아웃</a></li>
       </ul>
     </div>
@@ -24,10 +24,12 @@
 
 <script setup lang="ts">
 import AppCard from '@/components/app/AppCard.vue';
+import { useAuth } from '@/composables/auth';
 import { auth } from '@/composables/firebase';
 import { usePlugin } from '@/composables/plugin';
 import type { UiCardArgs } from '@/ui/common.ui';
 import { useRouter } from 'vue-router';
+const { certified } = useAuth();
 const router = useRouter();
 const { $navi } = usePlugin();
 const cardArgsList: UiCardArgs[] = [
@@ -48,6 +50,8 @@ const cardArgsList: UiCardArgs[] = [
     move: () => $navi.techSpec(router).techSpec().go(),
   },
 ];
+
+auth.onAuthStateChanged((user) => (certified.value = !!user));
 
 const onClickLogin = () => $navi.login(router).login().go();
 const onClickLogout = async () => {
