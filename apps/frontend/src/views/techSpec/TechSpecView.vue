@@ -1,5 +1,5 @@
 <template>
-  <div class="columns-3">
+  <div class="flex">
     <table class="table">
       <tbody>
         <tr>

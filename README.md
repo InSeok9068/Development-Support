@@ -84,6 +84,4 @@ pnpm dev
 
 - GitHub Action CI/CI 구축 (Turorepo, Docker)
 - 공통 팝업창 작업
-- 메뉴창 사이드바로 구현??
-- 해당 사이드 프로젝트 기술스텍을 볼 수 있는 페이지 구현
-- .env 파일들 GitHub Action 과정에서는 인식이 안되서 따로 설정
+- (?) 메뉴창 사이드바로 구현
