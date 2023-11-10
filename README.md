@@ -40,8 +40,6 @@ Notification : Telegram
 
 Authentication : Firebase
 
-API Interface Spec : Postman
-
 ---
 
 ## 실행
