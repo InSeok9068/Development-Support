@@ -1,6 +1,6 @@
 <template>
   <p class="text-xl">
-    환영합니다. <b> {{ userName }} </b>님
+    환영합니다. <b> {{ userName }} </b> {{ userName && '님' }}
   </p>
 </template>
 
