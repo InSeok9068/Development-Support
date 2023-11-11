@@ -37,7 +37,8 @@
         @dragenter.prevent
         @dragover.prevent
       >
-        <p class="text-lg">{{ `- ${item.title} ${item.time}H` }}</p>
+        <p class="text-lg">{{ `- ${item.title} [${item.time}H]` }}</p>
+
         <ul class="ml-3">
           <li
             v-for="(subItem, subIndex) in item.subItem"
@@ -45,7 +46,7 @@
             draggable="true"
             @dragstart="onDragStart($event, subItem.id)"
           >
-            {{ `${subIndex + 1}) ${subItem.content} ${subItem.time}H` }}
+            {{ `${subIndex + 1}) ${subItem.content} [${subItem.time}H]` }}
             <button class="btn btn-square btn-ghost" @click.prevent.stop="onClickItemRemove(subItem.id)">
               <TrashIcon />
             </button>

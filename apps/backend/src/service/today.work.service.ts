@@ -3,7 +3,7 @@ import { CreateTodayWorkItemInput, UpdateTodayWorkItemForTransferInput } from '@
 import dayjs from 'dayjs';
 
 const work = async (id: number) => {
-  const work = await prisma.work.findUnique({
+  const work = await prisma.work.findUniqueOrThrow({
     where: {
       id,
     },
@@ -80,8 +80,65 @@ const createTodayWorkItem = async (input: CreateTodayWorkItemInput) => {
   }
 };
 
-const updateTodayWorkItemForTransfer = (input: UpdateTodayWorkItemForTransferInput) => {
-  // TODO 드래그 앤 드랍으로 데이터 업데이트
+const updateTodayWorkItemForTransfer = async (input: UpdateTodayWorkItemForTransferInput) => {
+  const workItem = await prisma.workItem.findFirstOrThrow({
+    where: {
+      id: Number(input.itemId),
+    },
+  });
+
+  const work = await prisma.work.findFirstOrThrow({
+    where: {
+      id: Number(input.id),
+    },
+  });
+
+  await prisma.work.update({
+    data: {
+      time: {
+        decrement: workItem.time,
+      },
+    },
+    where: {
+      id: workItem.workId,
+    },
+  });
+
+  await prisma.work.update({
+    data: {
+      time: {
+        increment: workItem.time,
+      },
+    },
+    where: {
+      id: work.id,
+    },
+  });
+
+  const updateWorkItem = await prisma.workItem.update({
+    data: {
+      workId: work.id,
+    },
+    where: {
+      id: workItem.id,
+    },
+  });
+
+  const workList = await prisma.workItem.findMany({
+    where: {
+      workId: workItem.workId,
+    },
+  });
+
+  if (workList.length === 0) {
+    await prisma.work.delete({
+      where: {
+        id: workItem.workId,
+      },
+    });
+  }
+
+  return updateWorkItem;
 };
 
 const deleteTodayWork = async (id: number) => {
@@ -101,52 +158,50 @@ const deleteTodayWork = async (id: number) => {
 };
 
 const deleteTodayWorkItem = async (id: number) => {
-  const workItem = await prisma.workItem.findUnique({
+  const workItem = await prisma.workItem.findUniqueOrThrow({
     where: {
       id,
     },
   });
 
-  if (workItem) {
-    const work = await prisma.work.findUnique({
+  const work = await prisma.work.findUniqueOrThrow({
+    where: {
+      id: workItem.workId,
+    },
+    include: {
+      workItems: {},
+    },
+  });
+
+  if (work.workItems.length === 1) {
+    await prisma.workItem.delete({
       where: {
-        id: workItem.workId,
-      },
-      include: {
-        workItems: {},
+        id,
       },
     });
 
-    if (work) {
-      if (work.workItems.length === 1) {
-        await prisma.workItem.delete({
-          where: {
-            id,
-          },
-        });
+    await prisma.work.delete({
+      where: {
+        id: workItem.workId,
+      },
+    });
+  } else {
+    await prisma.work.update({
+      data: {
+        time: {
+          decrement: workItem.time,
+        },
+      },
+      where: {
+        id: work.id,
+      },
+    });
 
-        await prisma.work.delete({
-          where: {
-            id: workItem.workId,
-          },
-        });
-      } else {
-        await prisma.work.update({
-          data: {
-            time: work.time - workItem.time,
-          },
-          where: {
-            id: work.id,
-          },
-        });
-
-        await prisma.workItem.delete({
-          where: {
-            id,
-          },
-        });
-      }
-    }
+    await prisma.workItem.delete({
+      where: {
+        id,
+      },
+    });
   }
 
   return workItem;
