@@ -1,18 +1,16 @@
-// import dotenv from 'dotenv';
-// import { createClient } from 'redis';
+import dotenv from 'dotenv';
+import { createClient } from 'redis';
 
-// dotenv.config({ path: `.env.${process.env.NODE_ENV}` });
+dotenv.config({ path: `.env.${process.env.NODE_ENV}` });
 
-// const client = createClient({
-//   url: 'redis://:@127.0.0.1:6379/0',
-// });
+const client = createClient({
+  url: process.env.REDIS_URL,
+});
 
-// client.on('error', (err) => console.log('Redis Client Error', err));
+client.on('error', (err) => console.log('Redis Client Error', err));
 
-// (async () => {
-//   await client.connect();
-// })();
-
-const client = '';
+(async () => {
+  await client.connect();
+})();
 
 export { client };
