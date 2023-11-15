@@ -22,8 +22,8 @@
     "@graphql-tools/load-files": "^7.0.0",
     "@graphql-tools/merge": "^9.0.0",
     "@graphql-tools/schema": "^10.0.0",
-    "@prisma/client": "^5.5.2",
-    "axios": "^1.6.1",
+    "@prisma/client": "^5.6.0",
+    "axios": "^1.6.2",
     "cors": "^2.8.5",
     "cron": "^3.1.6",
     "cross-env": "^7.0.3",
@@ -48,7 +48,7 @@
     "@types/node-telegram-bot-api": "^0.63.1",
     "@types/nodemailer": "^6.4.14",
     "nodemon": "^3.0.1",
-    "prisma": "^5.5.2",
+    "prisma": "^5.6.0",
     "tsconfig-paths": "^4.2.0"
   }
 }
