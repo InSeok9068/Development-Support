@@ -112,8 +112,8 @@ importers:
         specifier: ^6.9.7
         version: 6.9.7
       puppeteer:
-        specifier: ^21.5.1
-        version: 21.5.1(typescript@5.2.2)
+        specifier: ^21.5.2
+        version: 21.5.2(typescript@5.2.2)
       redis:
         specifier: ^4.6.10
         version: 4.6.10
@@ -134,8 +134,8 @@ importers:
         specifier: ^1.9.9
         version: 1.9.9
       '@types/node-telegram-bot-api':
-        specifier: ^0.63.1
-        version: 0.63.1
+        specifier: ^0.63.2
+        version: 0.63.2
       '@types/nodemailer':
         specifier: ^6.4.14
         version: 6.4.14
@@ -213,8 +213,8 @@ importers:
         specifier: ^10.4.16
         version: 10.4.16(postcss@8.4.31)
       daisyui:
-        specifier: ^4.0.7
-        version: 4.0.7(postcss@8.4.31)
+        specifier: ^4.0.9
+        version: 4.0.9(postcss@8.4.31)
       eslint-plugin-vue:
         specifier: ^9.18.1
         version: 9.18.1(eslint@8.53.0)
@@ -2792,8 +2792,8 @@ packages:
       '@types/node': 20.9.0
     dev: true
 
-  /@types/node-telegram-bot-api@0.63.1:
-    resolution: {integrity: sha512-J6P0V2pNlb2+g3rNVSvfU+jRS+E8PjjuIaRj5zdYSnWfpFmU4TWyZI4AxvenU0W7QkPzODSvAzcZVx2+6p4mrg==}
+  /@types/node-telegram-bot-api@0.63.2:
+    resolution: {integrity: sha512-KSFYpXxIKyqZXGGYSc0KM/n64Lq/VbD6yVCVBbOTDrp/x9OlRLvOsjlHqxjVMYw6BF/Wi2mn0mcGG7A6THVdHw==}
     dependencies:
       '@types/node': 20.9.0
       '@types/request': 2.48.12
@@ -3710,7 +3710,7 @@ packages:
     hasBin: true
     dependencies:
       caniuse-lite: 1.0.30001562
-      electron-to-chromium: 1.4.583
+      electron-to-chromium: 1.4.585
       node-releases: 2.0.13
       update-browserslist-db: 1.0.13(browserslist@4.22.1)
     dev: true
@@ -3767,7 +3767,7 @@ packages:
     resolution: {integrity: sha512-gxGWBrTT1JuMx6R+o5PTXMmUnhnVzLQ9SNutD4YqKtI6ap897t3tKECYla6gCWEkplXnlNybEkZg9GEGxKFCgw==}
     dependencies:
       pascal-case: 3.1.2
-      tslib: 2.6.2
+      tslib: 2.5.3
     dev: true
 
   /camelcase-css@2.0.1:
@@ -3788,7 +3788,7 @@ packages:
     resolution: {integrity: sha512-ds37W8CytHgwnhGGTi88pcPyR15qoNkOpYwmMMfnWqqWgESapLqvDx6huFjQ5vqWSn2Z06173XNA7LtMOeUh1A==}
     dependencies:
       no-case: 3.0.4
-      tslib: 2.6.2
+      tslib: 2.5.3
       upper-case-first: 2.0.2
     dev: true
 
@@ -3867,7 +3867,7 @@ packages:
       path-case: 3.0.4
       sentence-case: 3.0.4
       snake-case: 3.0.4
-      tslib: 2.6.2
+      tslib: 2.5.3
     dev: true
 
   /chardet@0.7.0:
@@ -4078,7 +4078,7 @@ packages:
     resolution: {integrity: sha512-I2hSBi7Vvs7BEuJDr5dDHfzb/Ruj3FyvFyh7KLilAjNQw3Be+xgqUBA2W6scVEcL0hL1dwPRtIqEPVUCKkSsyQ==}
     dependencies:
       no-case: 3.0.4
-      tslib: 2.6.2
+      tslib: 2.5.3
       upper-case: 2.0.2
     dev: true
 
@@ -4219,8 +4219,8 @@ packages:
     engines: {node: ^12.20.0 || ^14.13.1 || >=16.0.0}
     dev: true
 
-  /daisyui@4.0.7(postcss@8.4.31):
-    resolution: {integrity: sha512-D84DnNDZKcamwNsxCMrwYaddyz5kC6VO6oe30nM1x67GzCAfarfd3Ar1rpLGXCIqSsEoNZUHO8EcXvX93W2ZkA==}
+  /daisyui@4.0.9(postcss@8.4.31):
+    resolution: {integrity: sha512-x9E1UL/gF4ZWOAJaMKOw3Ji9WmNZA0Tok/knRzzJWu9KJu+7kOHREqlhpvnP9Qz/4EOTu0ep9akquQnbeldYYQ==}
     engines: {node: '>=16.9.0'}
     dependencies:
       css-selector-tokenizer: 0.8.0
@@ -4405,7 +4405,7 @@ packages:
     resolution: {integrity: sha512-Kv5nKlh6yRrdrGvxeJ2e5y2eRUpkUosIW4A2AS38zwSz27zu7ufDwQPi5Jhs3XAlGNetl3bmnGhQsMtkKJnj3w==}
     dependencies:
       no-case: 3.0.4
-      tslib: 2.6.2
+      tslib: 2.5.3
     dev: true
 
   /dotenv@16.3.1:
@@ -4459,8 +4459,8 @@ packages:
     resolution: {integrity: sha512-WMwm9LhRUo+WUaRN+vRuETqG89IgZphVSNkdFgeb6sS/E4OrDIN7t48CAewSHXc6C8lefD8KKfr5vY61brQlow==}
     dev: false
 
-  /electron-to-chromium@1.4.583:
-    resolution: {integrity: sha512-93y1gcONABZ7uqYe/JWDVQP/Pj/sQSunF0HVAPdlg/pfBnOyBMLlQUxWvkqcljJg1+W6cjvPuYD+r1Th9Tn8mA==}
+  /electron-to-chromium@1.4.585:
+    resolution: {integrity: sha512-B4yBlX0azdA3rVMxpYwLQfDpdwOgcnLCkpvSOd68iFmeedo+WYjaBJS3/W58LVD8CB2nf+o7C4K9xz1l09RkWg==}
     dev: true
 
   /emoji-regex@8.0.0:
@@ -5656,7 +5656,7 @@ packages:
     resolution: {integrity: sha512-H/vuk5TEEVZwrR0lp2zed9OCo1uAILMlx0JEMgC26rzyJJ3N1v6XkwHHXJQdR2doSjcGPM6OKPYoJgf0plJ11Q==}
     dependencies:
       capital-case: 1.0.4
-      tslib: 2.6.2
+      tslib: 2.5.3
     dev: true
 
   /helmet@7.1.0:
@@ -5958,7 +5958,7 @@ packages:
   /is-lower-case@2.0.2:
     resolution: {integrity: sha512-bVcMJy4X5Og6VZfdOZstSexlEy20Sr0k/p/b2IlQJlfdKAQuMpiv5w2Ccxb8sKdRUNAG1PnHVHjFSdRDVS6NlQ==}
     dependencies:
-      tslib: 2.6.2
+      tslib: 2.5.3
     dev: true
 
   /is-negative-zero@2.0.2:
@@ -6052,7 +6052,7 @@ packages:
   /is-upper-case@2.0.2:
     resolution: {integrity: sha512-44pxmxAvnnAOwBg4tHPnkfvgjPwbc5QIsSstNU+YcJ1ovxVzCWpSGosPJOZh/a1tdl81fbgnLc9LLv+x2ywbPQ==}
     dependencies:
-      tslib: 2.6.2
+      tslib: 2.5.3
     dev: true
 
   /is-weakref@1.0.2:
@@ -6565,13 +6565,13 @@ packages:
   /lower-case-first@2.0.2:
     resolution: {integrity: sha512-EVm/rR94FJTZi3zefZ82fLWab+GX14LJN4HrWBcuo6Evmsl9hEfnqxgcHCKb9q+mNf6EVdsjx/qucYFIIB84pg==}
     dependencies:
-      tslib: 2.6.2
+      tslib: 2.5.3
     dev: true
 
   /lower-case@2.0.2:
     resolution: {integrity: sha512-7fm3l3NAF9WfN6W3JOmf5drwpVqX78JtoGJ3A6W0a6ZnldM41w2fV5D490psKFTpMds8TJse/eHLFFsNHHjHgg==}
     dependencies:
-      tslib: 2.6.2
+      tslib: 2.5.3
     dev: true
 
   /lru-cache@10.0.2:
@@ -6821,7 +6821,7 @@ packages:
       acorn: 8.11.2
       pathe: 1.1.1
       pkg-types: 1.0.3
-      ufo: 1.3.1
+      ufo: 1.3.2
     dev: true
 
   /moment@2.29.4:
@@ -6894,7 +6894,7 @@ packages:
     resolution: {integrity: sha512-fgAN3jGAh+RoxUGZHTSOLJIqUc2wmoBwGR4tbpNAKmmovFoWq0OdRkb0VkldReO2a2iBT/OEulG9XSUc10r3zg==}
     dependencies:
       lower-case: 2.0.2
-      tslib: 2.6.2
+      tslib: 2.5.3
     dev: true
 
   /node-fetch@2.6.7:
@@ -7252,7 +7252,7 @@ packages:
     resolution: {integrity: sha512-RXlj7zCYokReqWpOPH9oYivUzLYZ5vAPIfEmCTNViosC78F8F0H9y7T7gG2M39ymgutxF5gcFEsyZQSph9Bp3A==}
     dependencies:
       dot-case: 3.0.4
-      tslib: 2.6.2
+      tslib: 2.5.3
     dev: true
 
   /parent-module@1.0.1:
@@ -7302,7 +7302,7 @@ packages:
     resolution: {integrity: sha512-uWlGT3YSnK9x3BQJaOdcZwrnV6hPpd8jFH1/ucpiLRPh/2zCVJKS19E4GvYHvaCcACn3foXZ0cLB9Wrx1KGe5g==}
     dependencies:
       no-case: 3.0.4
-      tslib: 2.6.2
+      tslib: 2.5.3
     dev: true
 
   /path-browserify@1.0.1:
@@ -7313,7 +7313,7 @@ packages:
     resolution: {integrity: sha512-qO4qCFjXqVTrcbPt/hQfhTQ+VhFsqNKOPtytgNKkKxSoEp3XPUQ8ObFuePylOIok5gjn69ry8XiULxCwot3Wfg==}
     dependencies:
       dot-case: 3.0.4
-      tslib: 2.6.2
+      tslib: 2.5.3
     dev: true
 
   /path-exists@4.0.0:
@@ -7781,9 +7781,9 @@ packages:
     resolution: {integrity: sha512-vYt7UD1U9Wg6138shLtLOvdAu+8DsC/ilFtEVHcH+wydcSpNE20AfSOduf6MkRFahL5FY7X1oU7nKVZFtfq8Fg==}
     engines: {node: '>=6'}
 
-  /puppeteer-core@21.5.1:
-    resolution: {integrity: sha512-u6c3SZKAOaOQogaTkQvllxT/o2PP16wkbrUWINtMhfvrB4ko+xwqC1pb+vyCPMmNUh3N/CX5YGqb3DWx2fUPSQ==}
-    engines: {node: '>=16.3.0'}
+  /puppeteer-core@21.5.2:
+    resolution: {integrity: sha512-v4T0cWnujSKs+iEfmb8ccd7u4/x8oblEyKqplqKnJ582Kw8PewYAWvkH4qUWhitN3O2q9RF7dzkvjyK5HbzjLA==}
+    engines: {node: '>=16.13.2'}
     dependencies:
       '@puppeteer/browsers': 1.8.0
       chromium-bidi: 0.4.33(devtools-protocol@0.0.1203626)
@@ -7798,14 +7798,14 @@ packages:
       - utf-8-validate
     dev: false
 
-  /puppeteer@21.5.1(typescript@5.2.2):
-    resolution: {integrity: sha512-NkI06BXckVZeZUkODK+BbgGelQSu7uYEp9PaJDozxpwNRFDYoVfHQvd2G4dERoLdP6+qx4EBPwEhk4dEkQc2Kg==}
-    engines: {node: '>=16.3.0'}
+  /puppeteer@21.5.2(typescript@5.2.2):
+    resolution: {integrity: sha512-BaAGJOq8Fl6/cck6obmwaNLksuY0Bg/lIahCLhJPGXBFUD2mCffypa4A592MaWnDcye7eaHmSK9yot0pxctY8A==}
+    engines: {node: '>=16.13.2'}
     requiresBuild: true
     dependencies:
       '@puppeteer/browsers': 1.8.0
       cosmiconfig: 8.3.6(typescript@5.2.2)
-      puppeteer-core: 21.5.1
+      puppeteer-core: 21.5.2
     transitivePeerDependencies:
       - bufferutil
       - encoding
@@ -8194,7 +8194,7 @@ packages:
     resolution: {integrity: sha512-8LS0JInaQMCRoQ7YUytAo/xUu5W2XnQxV2HI/6uM6U7CITS1RqPElr30V6uIqyMKM9lJGRVFy5/4CuzcixNYSg==}
     dependencies:
       no-case: 3.0.4
-      tslib: 2.6.2
+      tslib: 2.5.3
       upper-case-first: 2.0.2
     dev: true
 
@@ -8341,7 +8341,7 @@ packages:
     resolution: {integrity: sha512-LAOh4z89bGQvl9pFfNF8V146i7o7/CqFPbqzYgP+yYzDIDeS9HaNFtXABamRW+AQzEVODcvE79ljJ+8a9YSdMg==}
     dependencies:
       dot-case: 3.0.4
-      tslib: 2.6.2
+      tslib: 2.5.3
     dev: true
 
   /socks-proxy-agent@8.0.2:
@@ -8399,7 +8399,7 @@ packages:
   /sponge-case@1.0.1:
     resolution: {integrity: sha512-dblb9Et4DAtiZ5YSUZHLl4XhH4uK80GhAZrVXdN4O2P4gQ40Wa5UIOPUHlA/nFd2PLblBZWUioLMMAVrgpoYcA==}
     dependencies:
-      tslib: 2.6.2
+      tslib: 2.5.3
     dev: true
 
   /sshpk@1.18.0:
@@ -8613,7 +8613,7 @@ packages:
   /swap-case@2.0.2:
     resolution: {integrity: sha512-kc6S2YS/2yXbtkSMunBtKdah4VFETZ8Oh6ONSmSd9bRxhqTrtARUCBUiWXH3xVPpvR7tz2CSnkuXVE42EcGnMw==}
     dependencies:
-      tslib: 2.6.2
+      tslib: 2.5.3
     dev: true
 
   /symbol-observable@4.0.0:
@@ -8734,7 +8734,7 @@ packages:
   /title-case@3.0.3:
     resolution: {integrity: sha512-e1zGYRvbffpcHIrnuqT0Dh+gEJtDaxDSoG4JAIpq4oDFyooziLBIiYQv0GBT4FUAnUop5uZ1hiIAj7oAF6sOCA==}
     dependencies:
-      tslib: 2.6.2
+      tslib: 2.5.3
     dev: true
 
   /tmp@0.0.33:
@@ -9046,8 +9046,8 @@ packages:
     dev: false
     optional: true
 
-  /ufo@1.3.1:
-    resolution: {integrity: sha512-uY/99gMLIOlJPwATcMVYfqDSxUR9//AUcgZMzwfSTJPDKzA1S8mX4VLqa+fiAtveraQUBCz4FFcwVZBGbwBXIw==}
+  /ufo@1.3.2:
+    resolution: {integrity: sha512-o+ORpgGwaYQXgqGDwd+hkS4PuZ3QnmqMMxRuajK/a38L6fTpcE5GPIfrf+L/KemFzfUpeUQc1rRS1iDBozvnFA==}
     dev: true
 
   /uglify-js@3.17.4:
@@ -9164,13 +9164,13 @@ packages:
   /upper-case-first@2.0.2:
     resolution: {integrity: sha512-514ppYHBaKwfJRK/pNC6c/OxfGa0obSnAl106u97Ed0I625Nin96KAjttZF6ZL3e1XLtphxnqrOi9iWgm+u+bg==}
     dependencies:
-      tslib: 2.6.2
+      tslib: 2.5.3
     dev: true
 
   /upper-case@2.0.2:
     resolution: {integrity: sha512-KgdgDGJt2TpuwBUIjgG6lzw2GWFRCW9Qkfkiv0DxqHHLYJHmtmdUIKcZd8rHgFSjopVTlw6ggzCm1b8MFQwikg==}
     dependencies:
-      tslib: 2.6.2
+      tslib: 2.5.3
     dev: true
 
   /uri-js@4.4.1:
