@@ -6,7 +6,7 @@ import {
   updateTodayWorkItemForTransfer,
   work,
   works,
-} from '@/service/today.work.service';
+} from '@/services/today.work.service';
 import {
   MutationCreateTodayWorkItemArgs,
   MutationDeleteTodayWorkArgs,

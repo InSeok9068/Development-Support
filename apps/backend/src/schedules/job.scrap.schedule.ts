@@ -1,5 +1,5 @@
-import { saveJobScrap } from '@/service/job.scrap.service';
-import { NaverJobScraping } from '@/service/scraps';
+import { saveJobScrap } from '@/services/job.scrap.service';
+import { NaverJobScraping } from '@/services/scraps';
 import { CronJob } from 'cron';
 import puppeteer from 'puppeteer';
 
