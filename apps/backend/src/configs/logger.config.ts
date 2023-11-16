@@ -1,4 +1,5 @@
 import winston from 'winston';
+import 'winston-daily-rotate-file';
 
 // winstrom 설정
 const levels = {
@@ -33,11 +34,19 @@ const format = winston.format.combine(
 
 const transports = [
   new winston.transports.Console(),
-  new winston.transports.File({
-    filename: 'logs/error.log',
+  new winston.transports.DailyRotateFile({
     level: 'error',
+    filename: `logs/%DATE%_error.log`,
+    datePattern: 'YYYY-MM-DD',
+    zippedArchive: true,
+    maxFiles: 30,
   }),
-  new winston.transports.File({ filename: 'logs/all.log' }),
+  new winston.transports.DailyRotateFile({
+    filename: `logs/%DATE%_all.log`,
+    datePattern: 'YYYY-MM-DD',
+    zippedArchive: true,
+    maxFiles: 14,
+  }),
 ];
 
 const logger = winston.createLogger({
