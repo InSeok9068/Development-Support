@@ -68,18 +68,12 @@ pnpm dev
 
 ### 예정
 
+- GitHub Action CI/CI 구축 (Turorepo, Docker 서버 배포)
+- 권한마다 보여질 카드 표기
+- 공통 팝업창 작업
+- (?) 메뉴창 사이드바로 구현
 - 업무 대시보드 표기 (chart.js)
 
 ### 진행중
 
 [docs 폴더 참고]
-
-- 오늘 한일
-- 채용공고 스크랩
-
-## 기타 작업
-
-- GitHub Action CI/CI 구축 (Turorepo, Docker 서버 배포)
-- 공통 팝업창 작업
-- (?) 메뉴창 사이드바로 구현
-- 권한마다 보여질 카드 표기
