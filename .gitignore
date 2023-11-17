@@ -20,9 +20,6 @@ dist
 **/logs
 **/*.log
 **/npm-debug.log*
-**/yarn-debug.log*
-**/yarn-error.log*
-**/lerna-debug.log*
 **/.pnpm-debug.log*
 
 ### Backend
@@ -33,9 +30,13 @@ apps/backend/prisma/migrations
 
 # Public
 apps/backend/public
+
+# Config
 apps/backend/mergeSchema.graphql
 apps/backend/serviceAccountKey.json
 
 ### Frontend
+
+# Config
 apps/frontend/apollo.config.js
 apps/frontend/components.d.ts
