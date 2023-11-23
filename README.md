@@ -66,6 +66,8 @@ pnpm dev
 
 ## 기능 구현
 
+※ ChatGPT와 페어 코딩 진행 (+ AWS CodeWhisperer)
+
 ### 예정
 
 - GitHub Action CI/CI 구축 (Turorepo, Docker 서버 배포)
