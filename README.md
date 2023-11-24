@@ -68,6 +68,13 @@ pnpm dev
 
 ※ ChatGPT와 페어 코딩 진행 (+ AWS CodeWhisperer)
 
+```
+<ChatGPT를 구현 단계에 활용하기>
+1. 코딩 지원: 구현과 디버깅에 ChatGPT를 활용
+2. 최적화 지원: 코드 최적화를 위한 제안을 받아 더 나은 코드를 작성하는 습관을 익히게 함
+3. 코드리뷰: 코드를 검토해 버그, 보안 취약점을 찾아냄
+```
+
 ### 예정
 
 - GitHub Action CI/CI 구축 (Turorepo, Docker 서버 배포)
