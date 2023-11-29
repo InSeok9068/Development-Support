@@ -2,7 +2,7 @@
   <div class="mx-auto h-screen w-full p-5">
     <div class="dropdown dropdown-end float-right">
       <label tabindex="0" class="btn btn-accent m-1">프로필</label>
-      <ul tabindex="0" class="menu dropdown-content rounded-box z-[1] w-52 bg-base-100 p-2 shadow">
+      <ul tabindex="0" class="menu dropdown-content z-[1] w-52 rounded-box bg-base-100 p-2 shadow">
         <li v-show="!certified"><a @click.prevent.stop="onClickLogin()">로그인</a></li>
         <li><a @click.prevent.stop="onClickLogout()">로그아웃</a></li>
       </ul>

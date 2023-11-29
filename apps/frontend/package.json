@@ -1,7 +1,6 @@
 {
   "name": "development-support-fronted",
   "description": "개발 도우미 (프론트엔드)",
-  "type": "module",
   "scripts": {
     "test": "vitest",
     "dev": "vite --host --port 3000",
