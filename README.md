@@ -93,4 +93,5 @@ Figma를 통하여 화면 기획 및 기능 설명 작성
 - [ ] 메뉴창 사이드바로 구현 고려(?)
 - [ ] 업무 대시보드 표기 (chart.js)
 - [ ] NewRelic 운영 모니터링 진행 (도커 서버를 통해 NewRelic 서버 실행)
-- [ ] Express Grahpql 오류 시 Grahpql 오류 포멧으로 리턴
+- [ ] Express GraphQL 오류 시 GraphQL 오류 포멧으로 리턴
+- [ ] log 파일 삭제 `winston`을 통한 설정하였지만 동작 X 파악 필요
