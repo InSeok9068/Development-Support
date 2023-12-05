@@ -64,7 +64,15 @@ pnpm dev
 
 ---
 
-## 기능 구현
+## 1. 기획
+
+Figma를 통하여 화면 기획 및 기능 설명 작성
+
+## 2. 개발 설계
+
+`docs` 폴더 참고
+
+## 3. 기능 구현
 
 ※ ChatGPT와 페어 코딩 진행 (+ AWS CodeWhisperer)
 
@@ -75,15 +83,14 @@ pnpm dev
 3. 코드리뷰: 코드를 검토해 버그, 보안 취약점을 찾아냄
 ```
 
-### 예정
+---
 
-- GitHub Action CI/CI 구축 (Turorepo, Docker 서버 배포)
-- 권한마다 보여질 카드 표기
-- 공통 팝업창 작업
-- (?) 메뉴창 사이드바로 구현
-- 업무 대시보드 표기 (chart.js)
-- NewRelic 운영 모니터링 진행 (도커 서버를 통해 NewRelic 서버 실행)
+## 프로젝트 공통화 및 CI/CD 개선 TODO 리스트
 
-### 진행중
-
-[docs 폴더 참고]
+- [ ] GitHub Action CI/CI 구축 (Turorepo, Docker 서버 배포)
+- [ ] 권한마다 보여질 카드 표기
+- [ ] 공통 팝업창 작업
+- [ ] 메뉴창 사이드바로 구현 고려(?)
+- [ ] 업무 대시보드 표기 (chart.js)
+- [ ] NewRelic 운영 모니터링 진행 (도커 서버를 통해 NewRelic 서버 실행)
+- [ ] Express Grahpql 오류 시 Grahpql 오류 포멧으로 리턴
