@@ -22,7 +22,7 @@
     "@graphql-tools/load-files": "^7.0.0",
     "@graphql-tools/merge": "^9.0.1",
     "@graphql-tools/schema": "^10.0.2",
-    "@prisma/client": "^5.6.0",
+    "@prisma/client": "^5.7.0",
     "axios": "^1.6.2",
     "cors": "^2.8.5",
     "cron": "^3.1.6",
@@ -37,7 +37,7 @@
     "morgan": "^1.10.0",
     "node-telegram-bot-api": "^0.64.0",
     "nodemailer": "^6.9.7",
-    "puppeteer": "^21.5.2",
+    "puppeteer": "^21.6.0",
     "redis": "^4.6.11",
     "winston": "^3.11.0",
     "winston-daily-rotate-file": "^4.7.1"
@@ -49,7 +49,7 @@
     "@types/node-telegram-bot-api": "^0.64.0",
     "@types/nodemailer": "^6.4.14",
     "nodemon": "^3.0.2",
-    "prisma": "^5.6.0",
+    "prisma": "^5.7.0",
     "tsconfig-paths": "^4.2.0"
   }
 }
