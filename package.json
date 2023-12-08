@@ -28,15 +28,15 @@
     "@support/prettier-config-custom": "workspace:*",
     "@support/shared": "workspace:*",
     "@types/lodash": "^4.14.202",
-    "@types/node": "^20.10.3",
+    "@types/node": "^20.10.4",
     "eslint": "^8.55.0",
     "husky": "^8.0.3",
     "lint-staged": "^15.2.0",
     "prettier": "^3.1.0",
     "ts-node": "^10.9.1",
-    "turbo": "^1.11.0",
+    "turbo": "^1.11.1",
     "typescript": "^5.3.3",
-    "vitest": "^1.0.1"
+    "vitest": "^1.0.2"
   },
   "lint-staged": {
     "*.{js,ts}": [

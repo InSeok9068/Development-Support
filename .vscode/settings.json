@@ -1,7 +1,7 @@
 {
   "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": true,
-    "source.organizeImports": true
+    "source.fixAll.eslint": "explicit",
+    "source.organizeImports": "explicit"
   },
   "explorer.fileNesting.enabled": true,
   "explorer.fileNesting.expand": false,
@@ -23,6 +23,7 @@
     "**/bower_components": true,
     "**/*.code-search": true,
     "**/package-lock.json": true,
-    "**/.gitignore": true
+    "**/.gitignore": true,
+    "*/dist": true
   }
 }
