@@ -3,6 +3,7 @@
   "description": "개발 도우미 (프론트엔드)",
   "scripts": {
     "test": "vitest",
+    "test:ui": "vitest --ui",
     "dev": "vite --host --port 3000",
     "preview": "vite preview",
     "build": "run-p type-check build-only",
@@ -26,7 +27,7 @@
     "graphql": "^16.8.1",
     "pinia": "^2.1.7",
     "pinia-plugin-persistedstate": "^3.2.0",
-    "vue": "^3.3.10",
+    "vue": "^3.3.11",
     "vue-router": "^4.2.5"
   },
   "devDependencies": {

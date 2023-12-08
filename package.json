@@ -29,6 +29,7 @@
     "@support/shared": "workspace:*",
     "@types/lodash": "^4.14.202",
     "@types/node": "^20.10.4",
+    "@vitest/ui": "^1.0.2",
     "eslint": "^8.55.0",
     "husky": "^8.0.3",
     "lint-staged": "^15.2.0",
