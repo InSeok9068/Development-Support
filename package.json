@@ -29,15 +29,15 @@
     "@support/shared": "workspace:*",
     "@types/lodash": "^4.14.202",
     "@types/node": "^20.10.4",
-    "@vitest/ui": "^1.0.2",
+    "@vitest/ui": "^1.0.4",
     "eslint": "^8.55.0",
     "husky": "^8.0.3",
     "lint-staged": "^15.2.0",
-    "prettier": "^3.1.0",
+    "prettier": "^3.1.1",
     "ts-node": "^10.9.2",
     "turbo": "^1.11.1",
     "typescript": "^5.3.3",
-    "vitest": "^1.0.2"
+    "vitest": "^1.0.4"
   },
   "lint-staged": {
     "*.{js,ts}": [
