@@ -27,7 +27,17 @@ app.use('/favicon.ico', express.static('public/favicon.ico'));
 app.use(morganMiddleware);
 app.use(errorMiddleware);
 
-app.all('/graphql', [authMiddleware, limiterMiddleware], createHandler({ schema }));
+app.all(
+  '/graphql',
+  [authMiddleware, limiterMiddleware],
+  createHandler({
+    schema,
+    formatError: (error) => {
+      logger.error(error.stack);
+      return error;
+    },
+  }),
+);
 
 app.get('/*', (_req: Request, res: Response) => {
   res.sendFile(path.join(__dirname, '../public/index.html'));
