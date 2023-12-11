@@ -4,7 +4,7 @@ import { prisma } from '../configs/__mocks__/prisma.config';
 
 vi.mock('../configs/prisma.config');
 
-test('한일 조회', async () => {
+test('Prisma Mock Sample Code', async () => {
   const resultWork = {
     id: 1,
     title: '테스트 데이터',
