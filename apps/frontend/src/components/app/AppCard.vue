@@ -1,5 +1,5 @@
 <template>
-  <div class="card w-48 bg-base-100 shadow-xl">
+  <div class="card bg-base-100 w-48 shadow-xl">
     <div class="card-body">
       <h2 class="card-title">
         {{ theArgs.title }}
