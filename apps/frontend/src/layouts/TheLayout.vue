@@ -1,8 +1,10 @@
 <template>
+  <Button label="Submit" />
+  <i class="pi pi-user" style="font-size: 2.5rem"></i>
   <div class="mx-auto h-screen w-full p-5">
     <div class="dropdown dropdown-end float-right">
       <label tabindex="0" class="btn btn-accent m-1">프로필</label>
-      <ul tabindex="0" class="menu dropdown-content z-[1] w-52 rounded-box bg-base-100 p-2 shadow">
+      <ul tabindex="0" class="menu dropdown-content rounded-box bg-base-100 z-[1] w-52 p-2 shadow">
         <li v-show="!certified"><a @click.prevent.stop="onClickLogin()">로그인</a></li>
         <li><a @click.prevent.stop="onClickLogout()">로그아웃</a></li>
       </ul>
@@ -15,7 +17,7 @@
       <router-view></router-view>
     </div>
   </div>
-  <footer class="footer footer-center absolute bottom-0 bg-base-300 p-4 text-base-content">
+  <footer class="footer footer-center bg-base-300 text-base-content absolute bottom-0 p-4">
     <aside>
       <p>Copyright © 2023 - All right reserved by ACME Industries Ltd</p>
     </aside>

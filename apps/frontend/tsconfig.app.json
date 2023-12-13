@@ -2,6 +2,7 @@
   "extends": "@vue/tsconfig/tsconfig.dom.json",
   "include": ["env.d.ts", "src/**/*", "src/**/*.vue", "package.json"],
   "compilerOptions": {
+    "allowJs": true, // TODO import Lara from '@/assets/presets/lara'; 허용
     "composite": true,
     "paths": {
       "@/*": ["./src/*"]

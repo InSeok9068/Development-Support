@@ -2,6 +2,7 @@
   "extends": ["@tsconfig/node18/tsconfig.json", "@vue/tsconfig/tsconfig.json"],
   "include": ["vite.config.*"],
   "compilerOptions": {
+    "allowJs": true, // TODO import Lara from '@/assets/presets/lara'; 허용
     "composite": true,
     "types": ["node"]
   }
