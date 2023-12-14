@@ -24,7 +24,7 @@
         </tr>
         <tr>
           <th>CSS Framework</th>
-          <td>Tailwind CSS + Daisy UI</td>
+          <td>PrimeVue</td>
         </tr>
       </tbody>
     </table>

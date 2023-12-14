@@ -14,7 +14,7 @@ Backend Framework : Express
 
 Frontend Framework : VueJS
 
-CSS Framework : Tailwind CSS + Daisy UI
+CSS Framework : PrimeVue
 
 RDB Database : SQLite
 
