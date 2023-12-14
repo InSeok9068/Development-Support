@@ -1,4 +1,4 @@
-<template>
+<!-- <template>
   <Button label="Submit" />
   <i class="pi pi-user" style="font-size: 2.5rem"></i>
   <div class="mx-auto h-screen w-full p-5">
@@ -60,4 +60,4 @@ const onClickLogout = async () => {
   await auth.signOut();
   $navi.login(router).login().go();
 };
-</script>
+</script> -->
