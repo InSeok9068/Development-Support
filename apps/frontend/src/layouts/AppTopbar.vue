@@ -2,7 +2,7 @@
   <div class="layout-topbar">
     <router-link to="/" class="layout-topbar-logo">
       <img :src="logoUrl" alt="logo" />
-      <span>SAKAI</span>
+      <span>개발 도우미</span>
     </router-link>
 
     <button class="p-link layout-menu-button layout-topbar-button" @click="onMenuToggle()">
@@ -35,7 +35,7 @@ import { useLayout } from '@/layouts/composables/layout';
 import { computed, onBeforeUnmount, onMounted, ref } from 'vue';
 import { useRouter } from 'vue-router';
 
-const { layoutConfig, onMenuToggle } = useLayout();
+const { onMenuToggle } = useLayout();
 
 const outsideClickListener = ref(null);
 const topbarMenuActive = ref(false);
@@ -50,7 +50,7 @@ onBeforeUnmount(() => {
 });
 
 const logoUrl = computed(() => {
-  return `layout/images/${layoutConfig.darkTheme.value ? 'logo-white' : 'logo-dark'}.svg`;
+  return `layout/images/logo.svg`;
 });
 
 const onTopBarMenuButton = () => {

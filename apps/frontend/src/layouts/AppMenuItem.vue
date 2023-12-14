@@ -26,14 +26,14 @@
     </router-link>
     <Transition v-if="item.items && item.visible !== false" name="layout-submenu">
       <ul v-show="root ? true : isActiveMenu" class="layout-submenu">
-        <app-menu-item
+        <AppMenuItem
           v-for="(child, i) in item.items"
           :key="child"
           :index="i"
           :item="child"
           :parent-item-key="itemKey"
           :root="false"
-        ></app-menu-item>
+        ></AppMenuItem>
       </ul>
     </Transition>
   </li>

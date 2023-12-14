@@ -1,16 +1,16 @@
 <template>
   <div class="layout-wrapper" :class="containerClass">
-    <app-topbar></app-topbar>
+    <AppTopbar></AppTopbar>
     <div class="layout-sidebar">
-      <app-sidebar></app-sidebar>
+      <AppSidebar></AppSidebar>
     </div>
     <div class="layout-main-container">
       <div class="layout-main">
         <router-view></router-view>
       </div>
-      <app-footer></app-footer>
+      <AppFooter></AppFooter>
+      <AppConfig></AppConfig>
     </div>
-    <app-config></app-config>
     <div class="layout-mask"></div>
   </div>
 </template>
