@@ -8,4 +8,9 @@ module.exports = {
   },
   parser: 'vue-eslint-parser',
   extends: ['plugin:vue/vue3-recommended', ...eslintBaseConfig.extends],
+  rules: {
+    '@typescript-eslint/no-explicit-any': 'off',
+    'vue/multi-word-component-names': 'off',
+    'vue/no-reserved-component-names': 'off',
+  },
 };

@@ -23,6 +23,7 @@ app.use(
   }),
 );
 app.use('/assets', express.static('public/assets'));
+app.use('/layout', express.static('public/layout'));
 app.use('/favicon.ico', express.static('public/favicon.ico'));
 app.use(morganMiddleware);
 app.use(errorMiddleware);

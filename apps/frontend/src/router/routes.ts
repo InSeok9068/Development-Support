@@ -1,5 +1,6 @@
 import type { RouteRecordRaw } from 'vue-router';
 import { urlDashBoard } from './url/dashboard.url';
+import { urlIndex } from './url/index.url';
 import { urlLogin } from './url/login.url';
 import { urlMain } from './url/main.url';
 import { urlTechSpec } from './url/tech.spec.url ';
@@ -33,6 +34,7 @@ const makeRoutes = (...routes: any) => {
 
 export const routes: Readonly<RouteRecordRaw[]> = [
   ...makeRoutes(
+    urlIndex(),
     urlDashBoard(),
     urlMain(),
     urlTodayWork(),

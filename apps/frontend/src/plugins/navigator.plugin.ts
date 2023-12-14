@@ -1,4 +1,5 @@
 import { urlDashBoard, type UrlDashBoard } from '@/router/url/dashboard.url';
+import { urlIndex, type UrlIndex } from '@/router/url/index.url';
 import { urlLogin, type UrlLogin } from '@/router/url/login.url';
 import { urlMain, type UrlMain } from '@/router/url/main.url';
 import { urlTechSpec, type UrlTechSpec } from '@/router/url/tech.spec.url ';
@@ -12,6 +13,7 @@ type VueRouter = Router | undefined;
 export const PLUGIN_NAVIGATOR_NAME = 'navi';
 
 export interface IPlgNavi {
+  index: (router?: VueRouter) => UrlIndex;
   main: (router?: VueRouter) => UrlMain;
   dashboard: (router?: VueRouter) => UrlDashBoard;
   todayWork: (router?: VueRouter) => UrlTodayWork;
@@ -22,6 +24,7 @@ export interface IPlgNavi {
 export default {
   install(app: App) {
     const navi: IPlgNavi = {
+      index: urlIndex,
       main: urlMain,
       dashboard: urlDashBoard,
       todayWork: urlTodayWork,

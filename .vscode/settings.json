@@ -8,7 +8,6 @@
   "explorer.fileNesting.patterns": {
     ".env": ".env*",
     "package.json": "pnpm-*",
-    "tailwind.config.js": "postcss.config.*",
     "DockerFile": ".dockerignore"
   },
   "emmet.syntaxProfiles": {
