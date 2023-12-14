@@ -1,12 +1,14 @@
-import type { GoResult } from '@/router/url/common.url';
-
-export interface UiCardArgs {
-  title: string;
-  desc?: string;
-  move: () => GoResult;
+export interface UiToastArgs {
+  severity?: 'success' | 'info' | 'warn' | 'error';
+  summary?: string;
+  detail: string;
+  life: number;
 }
 
-export interface UiToastArgs {
-  title?: string;
-  message?: string;
+export interface UiConfirmDialogArgs {
+  header?: string;
+  message: string;
+  icon?: string;
+  accept?: () => void;
+  reject?: () => void;
 }

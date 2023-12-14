@@ -1,3 +1,4 @@
+import { useToast } from '@/composables/toast';
 import {
   CREATE_TODAY_WORK_ITEM_MUTATION,
   DELETE_TODAY_WORK_ITEM_MUTATION,
@@ -5,7 +6,6 @@ import {
   UPDATE_TODAY_WORK_ITEM_FOR_TRANSFER,
   WORKS_QUERY,
 } from '@/graphql/operations/today.work.operation';
-import { useToastStore } from '@/stores/toast.store';
 import {
   type UiTodayWorkInputArgs,
   type UiTodayWorkItemArgs,
@@ -27,7 +27,7 @@ import { CreateTodayWorkItemInputValidator } from '@support/shared/validators';
 import { useMutation, useQuery } from '@vue/apollo-composable';
 import dayjs from 'dayjs';
 import { ref } from 'vue';
-const { showToast } = useToastStore();
+const { toast } = useToast();
 
 const useTodayWork = () => {
   const todayWorkInputArgs = ref<UiTodayWorkInputArgs>({
@@ -69,7 +69,10 @@ const useTodayWork = () => {
     });
 
     onError((error) => {
-      showToast({ message: error.message });
+      toast.value = {
+        detail: error.message,
+        life: 300,
+      };
     });
   };
 
@@ -77,7 +80,10 @@ const useTodayWork = () => {
     input.time = Number(input.time);
 
     if (!CreateTodayWorkItemInputValidator.safeParse(input).success) {
-      showToast({ message: '요청 데이터 확인' });
+      toast.value = {
+        detail: '요청 데이터 확인',
+        life: 300,
+      };
       return;
     }
 
@@ -88,7 +94,12 @@ const useTodayWork = () => {
       refetchQueries: [WORKS_QUERY, 'Works'],
     });
 
-    await mutate().catch((error) => showToast({ message: error.message }));
+    await mutate().catch((error) => {
+      toast.value = {
+        detail: error.message,
+        life: 300,
+      };
+    });
   };
 
   const updateTodayWorkItemForTransfer = async (input: UpdateTodayWorkItemForTransferInput) => {
@@ -102,7 +113,12 @@ const useTodayWork = () => {
       },
     );
 
-    await mutate().catch((error) => showToast({ message: error.message }));
+    await mutate().catch((error) => {
+      toast.value = {
+        detail: error.message,
+        life: 300,
+      };
+    });
   };
 
   const deleteTodayWorkItem = async (id: number) => {
@@ -113,13 +129,23 @@ const useTodayWork = () => {
       refetchQueries: [WORKS_QUERY, 'Works'],
     });
 
-    await mutate().catch((error) => showToast({ message: error.message }));
+    await mutate().catch((error) => {
+      toast.value = {
+        detail: error.message,
+        life: 300,
+      };
+    });
   };
 
   const sendWeeklyReport = async () => {
     const { mutate } = useMutation<boolean>(SEND_WEEKLY_REPORT_MUTATION);
 
-    await mutate().catch((error) => showToast({ message: error.message }));
+    await mutate().catch((error) => {
+      toast.value = {
+        detail: error.message,
+        life: 300,
+      };
+    });
   };
 
   return {

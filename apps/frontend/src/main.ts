@@ -11,7 +11,33 @@ import '@/assets/styles.scss';
 import navigator from '@/plugins/navigator.plugin';
 import str from '@/plugins/string.plugin';
 import time from '@/plugins/time.plugin';
-/* PrimeVue Component Start */
+
+//앱 정보 출력
+console.log(`*******************************************************`);
+console.log(`* ${name}`);
+console.log(`* User Agent : ${window.navigator.userAgent}`);
+console.log(`*******************************************************`);
+for (const key in import.meta.env) {
+  console.log(`- ${key} : ${import.meta.env[key]}`);
+}
+console.log(`*****************************************************  **`);
+
+//---------------------------------
+// VUE
+//---------------------------------
+//뷰인스턴스 생성
+const app = createApp(App);
+
+//뷰 미들웨어 등록
+app.use(router);
+const pinia = createPinia();
+pinia.use(piniaPluginPersistedstate);
+app.use(pinia);
+app.use(str); //문자열 플러그인 등록
+app.use(time); //시간 플러그인 등록
+app.use(navigator); //URL Navigator 플러그인
+
+/* PrimeVue Start */
 import Accordion from 'primevue/accordion';
 import AccordionTab from 'primevue/accordiontab';
 import AutoComplete from 'primevue/autocomplete';
@@ -34,6 +60,7 @@ import ColorPicker from 'primevue/colorpicker';
 import Column from 'primevue/column';
 import ColumnGroup from 'primevue/columngroup';
 import PrimeVue from 'primevue/config';
+import ConfirmationService from 'primevue/confirmationservice';
 import ConfirmDialog from 'primevue/confirmdialog';
 import ConfirmPopup from 'primevue/confirmpopup';
 import ContextMenu from 'primevue/contextmenu';
@@ -98,6 +125,7 @@ import Textarea from 'primevue/textarea';
 import TieredMenu from 'primevue/tieredmenu';
 import Timeline from 'primevue/timeline';
 import Toast from 'primevue/toast';
+import ToastService from 'primevue/toastservice';
 import ToggleButton from 'primevue/togglebutton';
 import Toolbar from 'primevue/toolbar';
 import Tooltip from 'primevue/tooltip';
@@ -106,35 +134,10 @@ import TreeSelect from 'primevue/treeselect';
 import TreeTable from 'primevue/treetable';
 import TriStateCheckbox from 'primevue/tristatecheckbox';
 import VirtualScroller from 'primevue/virtualscroller';
-/* PrimeVue Component End */
-
-//앱 정보 출력
-console.log(`*******************************************************`);
-console.log(`* ${name}`);
-console.log(`* User Agent : ${window.navigator.userAgent}`);
-console.log(`*******************************************************`);
-for (const key in import.meta.env) {
-  console.log(`- ${key} : ${import.meta.env[key]}`);
-}
-console.log(`*****************************************************  **`);
-
-//---------------------------------
-// VUE
-//---------------------------------
-//뷰인스턴스 생성
-const app = createApp(App);
-
-//뷰 미들웨어 등록
-app.use(router);
-const pinia = createPinia();
-pinia.use(piniaPluginPersistedstate);
-app.use(pinia);
-app.use(str); //문자열 플러그인 등록
-app.use(time); //시간 플러그인 등록
-app.use(navigator); //URL Navigator 플러그인
 app.use(PrimeVue);
+app.use(ConfirmationService);
+app.use(ToastService);
 
-/* PrimeVue Component Start */
 app.directive('tooltip', Tooltip);
 app.directive('badge', BadgeDirective);
 app.directive('ripple', Ripple);
@@ -229,6 +232,6 @@ app.component('TreeSelect', TreeSelect);
 app.component('TreeTable', TreeTable);
 app.component('TriStateCheckbox', TriStateCheckbox);
 app.component('VirtualScroller', VirtualScroller);
-/* PrimeVue Component End */
+/* PrimeVue End */
 
 app.mount('#app');

@@ -12,10 +12,14 @@
       <AppConfig></AppConfig>
     </div>
     <div class="layout-mask"></div>
+    <AppConfirmDialog />
+    <AppToast />
   </div>
 </template>
 
 <script setup>
+import AppConfirmDialog from '@/components/app/AppConfirmDialog.vue';
+import AppToast from '@/components/app/AppToast.vue';
 import { useLayout } from '@/layouts/composables/layout';
 import { computed, ref, watch } from 'vue';
 import AppConfig from './AppConfig.vue';
