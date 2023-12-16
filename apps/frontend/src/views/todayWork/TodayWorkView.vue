@@ -20,7 +20,12 @@
     <div class="col-12 md:col-6">
       <div class="card flex align-items-center flex-column md:flex-row gap-3">
         <b>오늘 한일</b>
-        <Calendar v-model="todayWorkSearchArgs.date" show-icon @date-select="works(todayWorkSearchArgs)" />
+        <Calendar
+          v-model="todayWorkSearchArgs.date"
+          show-icon
+          date-format="yy-mm-dd"
+          @date-select="works(todayWorkSearchArgs)"
+        />
         <Button label="주간보고서 전송" @click.prevent.stop="onClickRegist()"></Button>
       </div>
       <div class="mt-1"></div>
