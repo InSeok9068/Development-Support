@@ -100,5 +100,6 @@
 <style lang="scss" scoped>
 th {
   text-align: left;
+  width: 170px;
 }
 </style>
