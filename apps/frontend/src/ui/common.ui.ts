@@ -12,3 +12,9 @@ export interface UiConfirmDialogArgs {
   accept?: () => void;
   reject?: () => void;
 }
+
+export interface UiDialogArgs {
+  header?: string;
+  message: string;
+  show: boolean;
+}
