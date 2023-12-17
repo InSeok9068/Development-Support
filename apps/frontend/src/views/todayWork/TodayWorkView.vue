@@ -10,7 +10,7 @@
         <Textarea v-model="todayWorkInputArgs.content" class="md:col-12" auto-resize rows="5" placeholder="내용" />
         <div class="mt-3"></div>
         <Slider v-model="todayWorkInputArgs.time" class="md:w-26rem mb-2" :min="1" :max="8" :step="1" />
-        <div class="flex align-items-center flex-column md:flex-row gap-6">
+        <div class="flex align-items-center md:flex-row gap-6">
           <span v-for="(item, index) in 8" :key="index">{{ item }}</span>
         </div>
         <div class="mt-3"></div>
