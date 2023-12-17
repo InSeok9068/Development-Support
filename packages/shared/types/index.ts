@@ -49,10 +49,15 @@ export type MutationUpdateTodayWorkItemForTransferArgs = {
 
 export type Query = {
   __typename?: 'Query';
+  suggestions?: Maybe<Array<Maybe<Work>>>;
   user?: Maybe<User>;
   users?: Maybe<Array<Maybe<User>>>;
   work?: Maybe<Work>;
   works?: Maybe<Array<Maybe<Work>>>;
+};
+
+export type QuerySuggestionsArgs = {
+  title: Scalars['String']['input'];
 };
 
 export type QueryWorkArgs = {
@@ -148,3 +153,12 @@ export type DeleteTodayWorkItemMutation = {
 export type SendWeeklyReportMutationVariables = Exact<{ [key: string]: never }>;
 
 export type SendWeeklyReportMutation = { __typename?: 'Mutation'; sendWeeklyReport: boolean };
+
+export type SuggestionsQueryVariables = Exact<{
+  title: Scalars['String']['input'];
+}>;
+
+export type SuggestionsQuery = {
+  __typename?: 'Query';
+  suggestions?: Array<{ __typename?: 'Work'; title: string } | null> | null;
+};

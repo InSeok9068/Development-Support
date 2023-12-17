@@ -15,6 +15,7 @@ type WorkItem {
 type Query {
   work(id: ID!): Work
   works(date: String!): [Work]
+  suggestions(title: String!): [Work]
 }
 
 type Mutation {

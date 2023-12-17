@@ -3,6 +3,7 @@ import {
   deleteTodayWork,
   deleteTodayWorkItem,
   sendWeeklyReport,
+  suggestions,
   updateTodayWorkItemForTransfer,
   work,
   works,
@@ -12,6 +13,7 @@ import {
   MutationDeleteTodayWorkArgs,
   MutationDeleteTodayWorkItemArgs,
   MutationUpdateTodayWorkItemForTransferArgs,
+  QuerySuggestionsArgs,
   QueryWorkArgs,
   QueryWorksArgs,
 } from '@support/shared/types';
@@ -23,6 +25,9 @@ const resolvers = {
     },
     works: async (_: unknown, args: QueryWorksArgs) => {
       return await works(args.date);
+    },
+    suggestions: async (_: unknown, args: QuerySuggestionsArgs) => {
+      return await suggestions(args.title);
     },
   },
 

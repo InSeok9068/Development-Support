@@ -207,6 +207,18 @@ const deleteTodayWorkItem = async (id: number) => {
   return workItem;
 };
 
+const suggestions = async (title: string) => {
+  const suggestions = await prisma.work.findMany({
+    where: {
+      title: {
+        startsWith: title,
+      },
+    },
+  });
+
+  return suggestions;
+};
+
 const sendWeeklyReport = () => {
   return true;
 };
@@ -216,6 +228,7 @@ export {
   deleteTodayWork,
   deleteTodayWorkItem,
   sendWeeklyReport,
+  suggestions,
   updateTodayWorkItemForTransfer,
   work,
   works,

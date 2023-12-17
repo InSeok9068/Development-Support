@@ -8,8 +8,8 @@
             v-model="todayWorkInputArgs.title"
             class="flex-column"
             placeholder="제목"
-            :suggestions="[]"
-            @complete="console.log()"
+            :suggestions="suggestionsArgs.suggestion"
+            @complete="onCompleteSuggestions"
           />
         </div>
         <div class="mt-1"></div>
@@ -82,10 +82,12 @@ const {
   todayWorkInputArgs,
   todayWorkListArgs,
   todayWorkSearchArgs,
+  suggestionsArgs,
   createTodayWorkItem,
   deleteTodayWorkItem,
   updateTodayWorkItemForTransfer,
   sendWeeklyReport,
+  suggestions,
   works,
 } = useTodayWork();
 
@@ -119,6 +121,10 @@ const onDrop = (event: DragEvent, id: number) => {
 
 const onSendWeeklyReport = () => {
   sendWeeklyReport();
+};
+
+const onCompleteSuggestions = async (event: any) => {
+  await suggestions(event.query);
 };
 
 const todayWorkInputArgsClear = () => {

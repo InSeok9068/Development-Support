@@ -53,11 +53,20 @@ const SEND_WEEKLY_REPORT_MUTATION = gql`
   }
 `;
 
+const SUGGESTIONS_QUERY = gql`
+  query Suggestions($title: String!) {
+    suggestions(title: $title) {
+      title
+    }
+  }
+`;
+
 export {
   CREATE_TODAY_WORK_ITEM_MUTATION,
   DELETE_TODAY_WORK_ITEM_MUTATION,
   DELETE_TODAY_WORK_MUTATION,
   SEND_WEEKLY_REPORT_MUTATION,
+  SUGGESTIONS_QUERY,
   UPDATE_TODAY_WORK_ITEM_FOR_TRANSFER,
   WORKS_QUERY,
 };

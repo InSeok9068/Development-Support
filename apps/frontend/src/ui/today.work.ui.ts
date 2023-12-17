@@ -24,3 +24,7 @@ export interface UiTodayWorkListArgs {
 export interface UiTodayWorkSearchArgs {
   date: string;
 }
+
+export interface UiTodayWorkSuggestions {
+  suggestion: string[];
+}

@@ -3,6 +3,7 @@ import {
   CREATE_TODAY_WORK_ITEM_MUTATION,
   DELETE_TODAY_WORK_ITEM_MUTATION,
   SEND_WEEKLY_REPORT_MUTATION,
+  SUGGESTIONS_QUERY,
   UPDATE_TODAY_WORK_ITEM_FOR_TRANSFER,
   WORKS_QUERY,
 } from '@/graphql/operations/today.work.operation';
@@ -11,12 +12,15 @@ import {
   type UiTodayWorkItemArgs,
   type UiTodayWorkListArgs,
   type UiTodayWorkSearchArgs,
+  type UiTodayWorkSuggestions,
 } from '@/ui/today.work.ui';
 import {
   type CreateTodayWorkItemInput,
   type CreateTodayWorkItemMutationVariables,
   type MutationDeleteTodayWorkItemArgs,
   type QueryWorksArgs,
+  type SuggestionsQuery,
+  type SuggestionsQueryVariables,
   type UpdateTodayWorkItemForTransferInput,
   type UpdateTodayWorkItemForTransferMutationVariables,
   type Work,
@@ -42,6 +46,10 @@ const useTodayWork = () => {
 
   const todayWorkSearchArgs = ref<UiTodayWorkSearchArgs>({
     date: dayjs().format('YYYY-MM-DD'),
+  });
+
+  const suggestionsArgs = ref<UiTodayWorkSuggestions>({
+    suggestion: [],
   });
 
   const works = (searchArgs: UiTodayWorkSearchArgs) => {
@@ -70,8 +78,8 @@ const useTodayWork = () => {
 
     onError((error) => {
       toast.value = {
+        ...toast.value,
         detail: error.message,
-        life: 300,
       };
     });
   };
@@ -81,8 +89,8 @@ const useTodayWork = () => {
 
     if (!CreateTodayWorkItemInputValidator.safeParse(input).success) {
       toast.value = {
+        ...toast.value,
         detail: '요청 데이터 확인',
-        life: 300,
       };
       return;
     }
@@ -96,8 +104,8 @@ const useTodayWork = () => {
 
     await mutate().catch((error) => {
       toast.value = {
+        ...toast.value,
         detail: error.message,
-        life: 300,
       };
     });
   };
@@ -115,8 +123,8 @@ const useTodayWork = () => {
 
     await mutate().catch((error) => {
       toast.value = {
+        ...toast.value,
         detail: error.message,
-        life: 300,
       };
     });
   };
@@ -142,8 +150,27 @@ const useTodayWork = () => {
 
     await mutate().catch((error) => {
       toast.value = {
+        ...toast.value,
         detail: error.message,
-        life: 300,
+      };
+    });
+  };
+
+  const suggestions = async (title: string) => {
+    const { onResult, onError } = useQuery<SuggestionsQuery, SuggestionsQueryVariables>(SUGGESTIONS_QUERY, {
+      title,
+    });
+
+    onResult((result) => {
+      suggestionsArgs.value = {
+        suggestion: result.data?.suggestions?.map((suggestion) => suggestion?.title) as string[],
+      };
+    });
+
+    onError((error) => {
+      toast.value = {
+        ...toast.value,
+        detail: error.message,
       };
     });
   };
@@ -152,10 +179,12 @@ const useTodayWork = () => {
     todayWorkInputArgs,
     todayWorkListArgs,
     todayWorkSearchArgs,
+    suggestionsArgs,
     createTodayWorkItem,
     deleteTodayWorkItem,
     updateTodayWorkItemForTransfer,
     sendWeeklyReport,
+    suggestions,
     works,
   };
 };
