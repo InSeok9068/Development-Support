@@ -91,8 +91,6 @@ Figma를 통하여 화면 기획 및 기능 설명 작성
 
 - [ ] GitHub Action CI/CI 구축 (Turorepo, Docker 서버 배포)
 - [ ] 권한마다 보여질 카드 표기
-- [ ] 공통 팝업창 작업
-- [ ] 메뉴창 사이드바로 구현 고려(?)
 - [ ] 업무 대시보드 표기 (chart.js)
 - [ ] Sentry 운영 모니터링 진행
 - [ ] log 파일 삭제 `winston`을 통한 설정하였지만 동작 X 파악 필요
