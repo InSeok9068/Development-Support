@@ -24,7 +24,7 @@
       </div>
     </div>
     <div class="col-12 md:col-6">
-      <div class="card flex align-items-end md:flex-row gap-3">
+      <div class="card flex align-items-center md:flex-row gap-2">
         <div class="flex-auto">
           <Calendar
             v-model="todayWorkSearchArgs.date"
