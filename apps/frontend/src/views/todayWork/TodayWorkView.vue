@@ -3,7 +3,7 @@
     <div class="col-12 md:col-6">
       <div class="card">
         <div class="flex flex-column gap-2">
-          <label class="font-bold">오늘 무슨 일을 하셨나요?</label>
+          <label class="font-bold text-lg">오늘 무슨 일을 하셨나요?</label>
           <AutoComplete
             v-model="todayWorkInputArgs.title"
             class="flex-column"
@@ -26,7 +26,6 @@
     <div class="col-12 md:col-6">
       <div class="card flex align-items-end md:flex-row gap-3">
         <div class="flex-auto">
-          <label class="font-bold block mb-2"> 오늘 한일 </label>
           <Calendar
             v-model="todayWorkSearchArgs.date"
             show-icon
@@ -40,6 +39,7 @@
       </div>
       <div class="mt-1"></div>
       <div class="card">
+        <label class="font-bold text-lg block mb-2"> 오늘 한일 </label>
         <ul>
           <li
             v-for="(item, index) in todayWorkListArgs.item"
