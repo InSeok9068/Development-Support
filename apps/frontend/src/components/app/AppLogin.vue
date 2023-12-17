@@ -1,22 +1,16 @@
 <template>
-  <div class="card flex justify-content-center">
-    <Dialog v-model:visible="authArgs.requiredAuth" modal>
-      <template #container="{ closeCallback }">
-        <div class="flex align-items-center gap-2">
-          <div>
-            <div id="firebaseui-auth-container"></div>
-            <div id="loader">Loading...</div>
-          </div>
-          <Button
-            label="Cancel"
-            text
-            class="p-3 w-full text-primary-50 border-1 border-white-alpha-30 hover:bg-white-alpha-10"
-            @click="closeCallback"
-          ></Button>
+  <Dialog v-model:visible="authArgs.requiredAuth" modal>
+    <template #container="{ closeCallback }">
+      <div class="flex flex-column align-items-center gap-2 bg-white p-5">
+        <span class="text-xl font-bold">로그인</span>
+        <div>
+          <div id="firebaseui-auth-container"></div>
+          <div id="loader">Loading...</div>
         </div>
-      </template>
-    </Dialog>
-  </div>
+        <Button label="Cancel" class="p-3 w-full" @click="closeCallback"></Button>
+      </div>
+    </template>
+  </Dialog>
 </template>
 
 <script setup lang="ts">
@@ -47,6 +41,6 @@ const uiConfig = {
 const ui = firebaseui.auth.AuthUI.getInstance() ?? new firebaseui.auth.AuthUI(auth);
 
 onMounted(() => {
-  ui.start('#firebaseui-auth-container', uiConfig);
+  setTimeout(() => ui.start('#firebaseui-auth-container', uiConfig), 10);
 });
 </script>

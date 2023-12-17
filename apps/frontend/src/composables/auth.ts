@@ -1,3 +1,4 @@
+import { auth } from '@/composables/firebase';
 import { useAuthStore } from '@/stores/auth.store';
 import { storeToRefs } from 'pinia';
 
@@ -8,7 +9,9 @@ export const useAuth = () => {
     authArgs.value.requiredAuth = true;
   };
 
-  const logout = () => {};
+  const logout = () => {
+    auth.signOut();
+  };
 
   return { authArgs, login, logout };
 };

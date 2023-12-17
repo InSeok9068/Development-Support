@@ -14,7 +14,7 @@
     <div class="layout-mask"></div>
     <AppConfirmDialog />
     <AppToast />
-    <AppLogin />
+    <AppLogin v-if="authArgs.requiredAuth" />
   </div>
 </template>
 
@@ -22,6 +22,8 @@
 import AppConfirmDialog from '@/components/app/AppConfirmDialog.vue';
 import AppLogin from '@/components/app/AppLogin.vue';
 import AppToast from '@/components/app/AppToast.vue';
+import { useAuth } from '@/composables/auth';
+import { auth } from '@/composables/firebase';
 import { useLayout } from '@/layouts/composables/layout';
 import { computed, ref, watch } from 'vue';
 import AppConfig from './AppConfig.vue';
@@ -30,6 +32,7 @@ import AppSidebar from './AppSidebar.vue';
 import AppTopbar from './AppTopbar.vue';
 
 const { layoutConfig, layoutState, isSidebarActive } = useLayout();
+const { authArgs } = useAuth();
 
 const outsideClickListener = ref(null);
 
@@ -83,6 +86,11 @@ const isOutsideClicked = (event) => {
     topbarEl.contains(event.target)
   );
 };
+
+auth.onAuthStateChanged((user) => {
+  authArgs.value.isAuth = !!user;
+  authArgs.value.userName = user?.displayName ?? '';
+});
 </script>
 
 <style lang="scss" scoped></style>

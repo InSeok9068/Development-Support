@@ -1,6 +1,5 @@
 import { urlDashBoard, type UrlDashBoard } from '@/router/url/dashboard.url';
 import { urlIndex, type UrlIndex } from '@/router/url/index.url';
-import { urlLogin, type UrlLogin } from '@/router/url/login.url';
 import { urlTechSpec, type UrlTechSpec } from '@/router/url/tech.spec.url ';
 import { urlTodayWork, type UrlTodayWork } from '@/router/url/today.work.url';
 import type { App } from 'vue';
@@ -25,7 +24,6 @@ export default {
       index: urlIndex,
       dashboard: urlDashBoard,
       todayWork: urlTodayWork,
-      login: urlLogin,
       techSpec: urlTechSpec,
     };
     app.config.globalProperties.$navi = navi;

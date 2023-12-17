@@ -14,7 +14,7 @@
     </Button>
 
     <div class="layout-topbar-menu" :class="topbarMenuClasses">
-      <span class="flex align-items-center">??? 님</span>
+      <span class="flex align-items-center">{{ authArgs.userName }}</span>
       <Button class="p-link layout-topbar-button" @click="toggleMenu">
         <i class="pi pi-user"></i>
         <span>Profile</span>
@@ -29,6 +29,7 @@ import { useAuth } from '@/composables/auth';
 import { useLayout } from '@/layouts/composables/layout';
 import { computed, onBeforeUnmount, onMounted, ref } from 'vue';
 import { useRouter } from 'vue-router';
+const { authArgs } = useAuth();
 
 const { onMenuToggle } = useLayout();
 const { login, logout } = useAuth();

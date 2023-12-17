@@ -1,7 +1,6 @@
 import type { RouteRecordRaw } from 'vue-router';
 import { urlDashBoard } from './url/dashboard.url';
 import { urlIndex } from './url/index.url';
-import { urlLogin } from './url/login.url';
 import { urlTechSpec } from './url/tech.spec.url ';
 import { urlTodayWork } from './url/today.work.url';
 
@@ -36,7 +35,6 @@ export const routes: Readonly<RouteRecordRaw[]> = [
     urlIndex(),
     urlDashBoard(),
     urlTodayWork(),
-    urlLogin(),
     urlTechSpec(),
     // MUST BE: 기능별 URL route를 반들면 아래에 반드시 등록해야 url이 동작합니다.
   ),
