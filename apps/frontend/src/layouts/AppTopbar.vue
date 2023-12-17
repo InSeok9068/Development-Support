@@ -14,10 +14,12 @@
     </Button>
 
     <div class="layout-topbar-menu" :class="topbarMenuClasses">
-      <Button class="p-link layout-topbar-button" @click="onTopBarMenuButton()">
+      <span class="flex align-items-center">??? 님</span>
+      <Button class="p-link layout-topbar-button" @click="toggleMenu">
         <i class="pi pi-user"></i>
         <span>Profile</span>
       </Button>
+      <Menu ref="menu" :model="items" :popup="true" />
     </div>
   </div>
 </template>
@@ -32,6 +34,20 @@ const { onMenuToggle } = useLayout();
 const outsideClickListener = ref(null);
 const topbarMenuActive = ref(false);
 const router = useRouter();
+const menu = ref();
+const items = ref([
+  {
+    label: 'Options',
+    items: [
+      {
+        label: '로그인',
+      },
+      {
+        label: '로그아웃',
+      },
+    ],
+  },
+]);
 
 onMounted(() => {
   bindOutsideClickListener();
@@ -83,6 +99,10 @@ const isOutsideClicked = (event) => {
     topbarEl.isSameNode(event.target) ||
     topbarEl.contains(event.target)
   );
+};
+
+const toggleMenu = (event) => {
+  menu.value.toggle(event);
 };
 </script>
 
