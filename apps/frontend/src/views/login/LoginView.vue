@@ -1,13 +1,16 @@
 <template>
-  <Dialog v-model:visible="authArgs.requiredAuth" modal>
+  <Dialog v-model:visible="visible" modal>
     <template #container="{ closeCallback }">
       <div class="flex flex-column align-items-center gap-2 bg-white p-5">
         <span class="text-xl font-bold">로그인</span>
         <div>
-          <div id="firebaseui-auth-container"></div>
-          <div id="loader">Loading...</div>
+          <div id="firebaseui-auth-container" class="w-20rem md:w-25rem"></div>
         </div>
-        <Button label="Cancel" class="p-3 w-full" @click="closeCallback"></Button>
+        <Button
+          label="Cancel"
+          class="p-3 w-full"
+          @click="closeCallback && $navi.dashboard($router).dashboard().go()"
+        ></Button>
       </div>
     </template>
   </Dialog>
@@ -20,14 +23,11 @@ import firebase from 'firebase/compat/app';
 import * as firebaseui from 'firebaseui';
 import 'firebaseui/dist/firebaseui.css';
 import { onMounted } from 'vue';
+import { ref } from 'vue';
 const { authArgs } = useAuth();
+const visible = ref(true);
 
 const uiConfig = {
-  callbacks: {
-    uiShown: () => {
-      document.getElementById('loader')!.style.display = 'none';
-    },
-  },
   signInSuccessUrl: '/', // 성공 시 리다이렉트 URL
   signInOptions: [
     firebase.auth.GoogleAuthProvider.PROVIDER_ID,
@@ -41,6 +41,6 @@ const uiConfig = {
 const ui = firebaseui.auth.AuthUI.getInstance() ?? new firebaseui.auth.AuthUI(auth);
 
 onMounted(() => {
-  setTimeout(() => ui.start('#firebaseui-auth-container', uiConfig), 10);
+  setTimeout(() => ui.start('#firebaseui-auth-container', uiConfig), 1);
 });
 </script>

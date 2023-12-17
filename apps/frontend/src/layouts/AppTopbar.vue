@@ -14,7 +14,11 @@
     </Button>
 
     <div class="layout-topbar-menu" :class="topbarMenuClasses">
-      <span class="flex align-items-center">{{ authArgs.userName }}</span>
+      <span class="flex align-items-center">
+        <p v-show="!!authArgs.userName">
+          {{ `${authArgs.userName} 님` }}
+        </p>
+      </span>
       <Button class="p-link layout-topbar-button" @click="toggleMenu">
         <i class="pi pi-user"></i>
         <span>Profile</span>
@@ -26,25 +30,27 @@
 
 <script setup>
 import { useAuth } from '@/composables/auth';
+import { auth } from '@/composables/firebase';
+import { usePlugin } from '@/composables/plugin';
 import { useLayout } from '@/layouts/composables/layout';
 import { computed, onBeforeUnmount, onMounted, ref } from 'vue';
 import { useRouter } from 'vue-router';
 const { authArgs } = useAuth();
-
+const router = useRouter();
+const { $navi } = usePlugin();
 const { onMenuToggle } = useLayout();
-const { login, logout } = useAuth();
 
 const outsideClickListener = ref(null);
 const topbarMenuActive = ref(false);
-const router = useRouter();
 const menu = ref();
 
 const onClickLogin = () => {
-  login();
+  $navi.login(router).login().go();
 };
 
 const onClickLogout = () => {
-  logout();
+  auth.signOut();
+  $navi.dashboard(router).dashboard().go();
 };
 
 const items = ref([

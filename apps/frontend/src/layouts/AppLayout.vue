@@ -14,13 +14,11 @@
     <div class="layout-mask"></div>
     <AppConfirmDialog />
     <AppToast />
-    <AppLogin v-if="authArgs.requiredAuth" />
   </div>
 </template>
 
 <script setup>
 import AppConfirmDialog from '@/components/app/AppConfirmDialog.vue';
-import AppLogin from '@/components/app/AppLogin.vue';
 import AppToast from '@/components/app/AppToast.vue';
 import { useAuth } from '@/composables/auth';
 import { auth } from '@/composables/firebase';
