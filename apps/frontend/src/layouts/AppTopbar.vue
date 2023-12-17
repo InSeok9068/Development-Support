@@ -5,27 +5,19 @@
       <span>개발 도우미</span>
     </router-link>
 
-    <button class="p-link layout-menu-button layout-topbar-button" @click="onMenuToggle()">
+    <Button class="p-link layout-menu-button layout-topbar-button" @click="onMenuToggle()">
       <i class="pi pi-bars"></i>
-    </button>
+    </Button>
 
-    <button class="p-link layout-topbar-menu-button layout-topbar-button" @click="onTopBarMenuButton()">
+    <Button class="p-link layout-topbar-menu-button layout-topbar-button" @click="onTopBarMenuButton()">
       <i class="pi pi-ellipsis-v"></i>
-    </button>
+    </Button>
 
     <div class="layout-topbar-menu" :class="topbarMenuClasses">
-      <button class="p-link layout-topbar-button" @click="onTopBarMenuButton()">
-        <i class="pi pi-calendar"></i>
-        <span>Calendar</span>
-      </button>
-      <button class="p-link layout-topbar-button" @click="onTopBarMenuButton()">
+      <Button class="p-link layout-topbar-button" @click="onTopBarMenuButton()">
         <i class="pi pi-user"></i>
         <span>Profile</span>
-      </button>
-      <button class="p-link layout-topbar-button" @click="onSettingsClick()">
-        <i class="pi pi-cog"></i>
-        <span>Settings</span>
-      </button>
+      </Button>
     </div>
   </div>
 </template>
@@ -56,10 +48,7 @@ const logoUrl = computed(() => {
 const onTopBarMenuButton = () => {
   topbarMenuActive.value = !topbarMenuActive.value;
 };
-const onSettingsClick = () => {
-  topbarMenuActive.value = false;
-  router.push('/documentation');
-};
+
 const topbarMenuClasses = computed(() => {
   return {
     'layout-topbar-menu-mobile-active': topbarMenuActive.value,

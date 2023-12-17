@@ -1,7 +1,7 @@
 <template>
-  <div class="card">
-    <div class="flex flex-row justify-content-center gap-6">
-      <div>
+  <div class="card col-12 md:col-6">
+    <div class="flex flex-column justify-content-center">
+      <div class="card col-12">
         <table class="table">
           <tbody>
             <tr>
@@ -31,7 +31,7 @@
           </tbody>
         </table>
       </div>
-      <div>
+      <div class="card col-12">
         <table class="table">
           <tbody>
             <tr>
@@ -43,7 +43,7 @@
               <td>Firestore (Firebase)</td>
             </tr>
             <tr>
-              <th>Database ORM Framework</th>
+              <th>ORM Framework</th>
               <td>Prisma</td>
             </tr>
             <tr>
@@ -61,7 +61,7 @@
           </tbody>
         </table>
       </div>
-      <div>
+      <div class="card col-12">
         <table class="table">
           <tbody>
             <tr>
@@ -96,3 +96,9 @@
 </template>
 
 <script setup lang="ts"></script>
+
+<style lang="scss" scoped>
+th {
+  text-align: left;
+}
+</style>

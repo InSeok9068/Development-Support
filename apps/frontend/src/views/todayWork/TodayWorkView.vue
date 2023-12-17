@@ -4,14 +4,20 @@
       <div class="card">
         <div class="flex flex-column gap-2">
           <label class="font-bold">오늘 무슨 일을 하셨나요?</label>
-          <InputText v-model="todayWorkInputArgs.title" type="text" placeholder="제목" />
+          <AutoComplete
+            v-model="todayWorkInputArgs.title"
+            class="flex-column"
+            placeholder="제목"
+            :suggestions="[]"
+            @complete="console.log()"
+          />
         </div>
         <div class="mt-1"></div>
         <Textarea v-model="todayWorkInputArgs.content" class="col-12" auto-resize rows="5" placeholder="내용" />
         <div class="mt-3"></div>
         <Slider v-model="todayWorkInputArgs.time" class="w-auto mb-2" :min="1" :max="8" :step="1" />
         <div class="flex align-items-center justify-content-between flex-row">
-          <span v-for="(item, index) in 8" :key="index">{{ item }}시간</span>
+          <span v-for="(item, index) in 8" :key="index">{{ item }}H</span>
         </div>
         <div class="mt-3"></div>
         <Button label="등록" @click.prevent.stop="onClickRegist()"></Button>
@@ -45,29 +51,20 @@
           >
             <span class="text-lg font-bold">{{ `${item.title} ` }}</span>
             <span class="text-lg font-bold text-red-700">{{ `[${item.time}H]` }}</span>
-            <ul class="ml-3">
+            <ul>
               <li
                 v-for="(subItem, subIndex) in item.subItem"
                 :key="subIndex"
                 draggable="true"
                 @dragstart="onDragStart($event, subItem.id)"
               >
-                <!-- <InputGroup>
-                <Button icon="pi pi-check" severity="success" />
-                <InputText placeholder="Vote" />
-                <Button icon="pi pi-times" severity="danger" />
-              </InputGroup> -->
-                <InputGroup>
-                  <InputGroupAddon>{{ `${subIndex + 1}) ${subItem.content} ` }}</InputGroupAddon>
-                  <InputGroupAddon>{{ `[${subItem.time}H]` }}</InputGroupAddon>
-                  <Button
-                    class="vertical-align-baseline"
-                    icon="pi pi-eraser"
-                    text
-                    rounded
-                    @click.prevent.stop="onClickItemRemove(subItem.id)"
-                  />
-                </InputGroup>
+                {{ `${subIndex + 1}) ${subItem.content} [${subItem.time}H]` }}
+                <Button
+                  class="vertical-align-baseline"
+                  icon="pi pi-eraser"
+                  text
+                  @click.prevent.stop="onClickItemRemove(subItem.id)"
+                />
               </li>
             </ul>
           </li>
