@@ -3,30 +3,34 @@
     <div class="col-12 md:col-6">
       <div class="card">
         <div class="flex flex-column gap-2">
-          <label>오늘 무슨 일을 하셨나요?</label>
+          <label class="font-bold">오늘 무슨 일을 하셨나요?</label>
           <InputText v-model="todayWorkInputArgs.title" type="text" placeholder="제목" />
         </div>
         <div class="mt-1"></div>
-        <Textarea v-model="todayWorkInputArgs.content" class="md:col-12" auto-resize rows="5" placeholder="내용" />
+        <Textarea v-model="todayWorkInputArgs.content" class="col-12" auto-resize rows="5" placeholder="내용" />
         <div class="mt-3"></div>
-        <Slider v-model="todayWorkInputArgs.time" class="md:w-26rem mb-2" :min="1" :max="8" :step="1" />
-        <div class="flex align-items-center md:flex-row gap-6">
-          <span v-for="(item, index) in 8" :key="index">{{ item }}</span>
+        <Slider v-model="todayWorkInputArgs.time" class="w-auto mb-2" :min="1" :max="8" :step="1" />
+        <div class="flex align-items-center justify-content-between flex-row">
+          <span v-for="(item, index) in 8" :key="index">{{ item }}시간</span>
         </div>
         <div class="mt-3"></div>
         <Button label="등록" @click.prevent.stop="onClickRegist()"></Button>
       </div>
     </div>
     <div class="col-12 md:col-6">
-      <div class="card flex align-items-center flex-column md:flex-row gap-3">
-        <b>오늘 한일</b>
-        <Calendar
-          v-model="todayWorkSearchArgs.date"
-          show-icon
-          date-format="yy-mm-dd"
-          @date-select="works(todayWorkSearchArgs)"
-        />
-        <Button label="주간보고서 전송" @click.prevent.stop="onClickRegist()"></Button>
+      <div class="card flex align-items-end md:flex-row gap-3">
+        <div class="flex-auto">
+          <label class="font-bold block mb-2"> 오늘 한일 </label>
+          <Calendar
+            v-model="todayWorkSearchArgs.date"
+            show-icon
+            date-format="yy-mm-dd"
+            @date-select="works(todayWorkSearchArgs)"
+          />
+        </div>
+        <div class="flex-auto">
+          <Button label="주간보고서 전송" @click.prevent.stop="onClickRegist()"></Button>
+        </div>
       </div>
       <div class="mt-1"></div>
       <div class="card">
