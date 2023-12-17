@@ -14,7 +14,6 @@ export interface IPlgNavi {
   index: (router?: VueRouter) => UrlIndex;
   dashboard: (router?: VueRouter) => UrlDashBoard;
   todayWork: (router?: VueRouter) => UrlTodayWork;
-  login: (router?: VueRouter) => UrlLogin;
   techSpec: (router?: VueRouter) => UrlTechSpec;
 }
 
