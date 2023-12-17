@@ -18,3 +18,8 @@ export interface UiDialogArgs {
   message: string;
   show: boolean;
 }
+
+export interface UiAuthArgs {
+  isAuth: boolean;
+  requiredAuth: boolean;
+}

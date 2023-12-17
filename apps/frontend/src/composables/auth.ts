@@ -2,7 +2,13 @@ import { useAuthStore } from '@/stores/auth.store';
 import { storeToRefs } from 'pinia';
 
 export const useAuth = () => {
-  const { certified } = storeToRefs(useAuthStore());
+  const { authArgs } = storeToRefs(useAuthStore());
 
-  return { certified };
+  const login = () => {
+    authArgs.value.requiredAuth = true;
+  };
+
+  const logout = () => {};
+
+  return { authArgs, login, logout };
 };

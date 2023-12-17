@@ -14,11 +14,13 @@
     <div class="layout-mask"></div>
     <AppConfirmDialog />
     <AppToast />
+    <AppLogin />
   </div>
 </template>
 
 <script setup>
 import AppConfirmDialog from '@/components/app/AppConfirmDialog.vue';
+import AppLogin from '@/components/app/AppLogin.vue';
 import AppToast from '@/components/app/AppToast.vue';
 import { useLayout } from '@/layouts/composables/layout';
 import { computed, ref, watch } from 'vue';

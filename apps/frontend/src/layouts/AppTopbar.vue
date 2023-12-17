@@ -25,25 +25,38 @@
 </template>
 
 <script setup>
+import { useAuth } from '@/composables/auth';
 import { useLayout } from '@/layouts/composables/layout';
 import { computed, onBeforeUnmount, onMounted, ref } from 'vue';
 import { useRouter } from 'vue-router';
 
 const { onMenuToggle } = useLayout();
+const { login, logout } = useAuth();
 
 const outsideClickListener = ref(null);
 const topbarMenuActive = ref(false);
 const router = useRouter();
 const menu = ref();
+
+const onClickLogin = () => {
+  login();
+};
+
+const onClickLogout = () => {
+  logout();
+};
+
 const items = ref([
   {
     label: 'Options',
     items: [
       {
         label: '로그인',
+        command: onClickLogin,
       },
       {
         label: '로그아웃',
+        command: onClickLogout,
       },
     ],
   },

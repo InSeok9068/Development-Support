@@ -1,8 +1,12 @@
+import type { UiAuthArgs } from '@/ui/common.ui';
 import { defineStore } from 'pinia';
 import { ref } from 'vue';
 
 export const useAuthStore = defineStore('auth', () => {
-  const certified = ref(false);
+  const authArgs = ref<UiAuthArgs>({
+    isAuth: false,
+    requiredAuth: false,
+  });
 
-  return { certified };
+  return { authArgs };
 });
