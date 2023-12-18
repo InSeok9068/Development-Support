@@ -86,8 +86,15 @@ const isOutsideClicked = (event) => {
 };
 
 auth.onAuthStateChanged((user) => {
-  authArgs.value.isAuth = !!user;
-  authArgs.value.userName = user?.displayName ?? '';
+  if (user) {
+    authArgs.value.isAuth = true;
+    authArgs.value.uid = user.uid;
+    authArgs.value.userName = user.userName;
+  } else {
+    authArgs.value.isAuth = false;
+    authArgs.value.uid = '';
+    authArgs.value.userName = '';
+  }
 });
 </script>
 
