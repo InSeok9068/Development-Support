@@ -89,7 +89,7 @@ auth.onAuthStateChanged((user) => {
   if (user) {
     authArgs.value.isAuth = true;
     authArgs.value.uid = user.uid;
-    authArgs.value.userName = user.userName;
+    authArgs.value.userName = user.displayName;
   } else {
     authArgs.value.isAuth = false;
     authArgs.value.uid = '';

@@ -1,14 +1,19 @@
-import { useAuth } from '@/composables/auth';
 import { ApolloClient, ApolloLink, HttpLink, InMemoryCache, concat } from '@apollo/client/core';
 import { onError } from '@apollo/client/link/error';
-
-const { authArgs } = useAuth();
 
 const httpLink = new HttpLink({ uri: import.meta.env.VITE_GRAPHQL_URL });
 
 const authLink = new ApolloLink((operation, forward) => {
   // add the authorization to the headers
-  const uid = authArgs.value.uid ?? '';
+  let uid = '';
+
+  const auth = localStorage.getItem('auth');
+  let authLocalStorage;
+  if (auth) {
+    authLocalStorage = JSON.parse(auth);
+    uid = authLocalStorage.authArgs.uid;
+  }
+
   operation.setContext({
     headers: {
       authorization: uid,
