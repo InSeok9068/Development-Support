@@ -1,7 +1,7 @@
 import vue from '@vitejs/plugin-vue';
 import { fileURLToPath, URL } from 'node:url';
 import Components from 'unplugin-vue-components/vite';
-import { defineConfig, splitVendorChunkPlugin } from 'vite';
+import { defineConfig } from 'vite';
 import removeConsole from 'vite-plugin-remove-console';
 
 // https://vitejs.dev/config/
@@ -12,12 +12,10 @@ export default defineConfig({
       dirs: ['src/components/app'],
       dts: true,
     }),
-    splitVendorChunkPlugin(),
     removeConsole(),
   ],
   build: {
     outDir: '../backend/public',
-    chunkSizeWarningLimit: 600,
   },
   //개발시 CORS 회피를 위해서 프록시 사용
   server: {
