@@ -13,7 +13,11 @@
       "cache": false,
       "persistent": true
     },
-    "codegen": {
+    "development-support-backend#codegen": {
+      "cache": false
+    },
+    "development-support-fronted#codegen": {
+      "dependsOn": ["development-support-backend#codegen"],
       "cache": false
     },
     "clean": {

@@ -99,10 +99,6 @@ export type WorksInput = {
   uid?: InputMaybe<Scalars['ID']['input']>;
 };
 
-export type GetUsersQueryVariables = Exact<{ [key: string]: never }>;
-
-export type GetUsersQuery = { __typename?: 'Query'; user?: { __typename?: 'User'; username: string } | null };
-
 export type WorksQueryVariables = Exact<{
   input: WorksInput;
 }>;
