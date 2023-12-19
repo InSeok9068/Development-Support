@@ -1,11 +1,17 @@
 import { prisma } from '@/configs';
-import { CreateTodayWorkItemInput, UpdateTodayWorkItemForTransferInput } from '@support/shared/types';
+import {
+  CreateTodayWorkItemInput,
+  SuggestionsInput,
+  UpdateTodayWorkItemForTransferInput,
+  WorksInput,
+} from '@support/shared/types';
 import dayjs from 'dayjs';
 
-const works = async (date: string) => {
+const works = async (input: WorksInput) => {
   const works = await prisma.work.findMany({
     where: {
-      date: Number(dayjs(date).format('YYYYMMDD')),
+      uid: input.uid!,
+      date: Number(dayjs(input.date).format('YYYYMMDD')),
     },
     include: {
       workItems: {},
@@ -25,6 +31,7 @@ const createTodayWorkItem = async (input: CreateTodayWorkItemInput) => {
 
   const work = await prisma.work.findFirst({
     where: {
+      uid: input.uid!,
       title: input.title,
       date: Number(dayjs(input.date).format('YYYYMMDD')),
     },
@@ -52,6 +59,7 @@ const createTodayWorkItem = async (input: CreateTodayWorkItemInput) => {
   } else {
     const work = await prisma.work.create({
       data: {
+        uid: input.uid!,
         title: input.title,
         tag: input.tag,
         time: input.time,
@@ -182,11 +190,12 @@ const deleteTodayWorkItem = async (id: number) => {
   return workItem;
 };
 
-const suggestions = async (title: string) => {
+const suggestions = async (input: SuggestionsInput) => {
   const suggestions = await prisma.work.findMany({
     where: {
+      uid: input.uid!,
       title: {
-        startsWith: title,
+        startsWith: input.title,
       },
     },
   });

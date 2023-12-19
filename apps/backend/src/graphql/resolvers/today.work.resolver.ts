@@ -18,11 +18,12 @@ import {
 const resolvers = {
   Query: {
     works: async (_: unknown, args: QueryWorksArgs, { headers }: { headers: any }) => {
-      getUid(headers);
-      return await works(args.date);
+      args.input.uid = getUid(headers);
+      return await works(args.input);
     },
     suggestions: async (_: unknown, args: QuerySuggestionsArgs, { headers }: { headers: any }) => {
-      return await suggestions(args.title);
+      args.input.uid = getUid(headers);
+      return await suggestions(args.input);
     },
   },
 

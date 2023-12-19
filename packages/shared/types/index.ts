@@ -52,11 +52,16 @@ export type Query = {
 };
 
 export type QuerySuggestionsArgs = {
-  title: Scalars['String']['input'];
+  input: SuggestionsInput;
 };
 
 export type QueryWorksArgs = {
-  date: Scalars['String']['input'];
+  input: WorksInput;
+};
+
+export type SuggestionsInput = {
+  title: Scalars['String']['input'];
+  uid?: InputMaybe<Scalars['ID']['input']>;
 };
 
 export type UpdateTodayWorkItemForTransferInput = {
@@ -89,12 +94,17 @@ export type WorkItem = {
   time: Scalars['Int']['output'];
 };
 
+export type WorksInput = {
+  date: Scalars['String']['input'];
+  uid?: InputMaybe<Scalars['ID']['input']>;
+};
+
 export type GetUsersQueryVariables = Exact<{ [key: string]: never }>;
 
 export type GetUsersQuery = { __typename?: 'Query'; user?: { __typename?: 'User'; username: string } | null };
 
 export type WorksQueryVariables = Exact<{
-  date: Scalars['String']['input'];
+  input: WorksInput;
 }>;
 
 export type WorksQuery = {
@@ -140,7 +150,7 @@ export type SendWeeklyReportMutationVariables = Exact<{ [key: string]: never }>;
 export type SendWeeklyReportMutation = { __typename?: 'Mutation'; sendWeeklyReport: boolean };
 
 export type SuggestionsQueryVariables = Exact<{
-  title: Scalars['String']['input'];
+  input: SuggestionsInput;
 }>;
 
 export type SuggestionsQuery = {

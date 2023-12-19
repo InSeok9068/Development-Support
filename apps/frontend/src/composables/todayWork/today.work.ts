@@ -54,7 +54,9 @@ const useTodayWork = () => {
 
   const works = (searchArgs: UiTodayWorkSearchArgs) => {
     const { onResult, onError } = useQuery<WorksQuery, QueryWorksArgs>(WORKS_QUERY, {
-      date: searchArgs.date,
+      input: {
+        date: searchArgs.date,
+      },
     });
 
     onResult((result) => {
@@ -158,7 +160,9 @@ const useTodayWork = () => {
 
   const suggestions = async (title: string) => {
     const { onResult, onError } = useQuery<SuggestionsQuery, SuggestionsQueryVariables>(SUGGESTIONS_QUERY, {
-      title,
+      input: {
+        title,
+      },
     });
 
     onResult((result) => {

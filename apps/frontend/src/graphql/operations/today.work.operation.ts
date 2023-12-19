@@ -1,8 +1,8 @@
 import { gql } from '@apollo/client/core';
 
 const WORKS_QUERY = gql`
-  query Works($date: String!) {
-    works(date: $date) {
+  query Works($input: WorksInput!) {
+    works(input: $input) {
       id
       title
       time
@@ -46,8 +46,8 @@ const SEND_WEEKLY_REPORT_MUTATION = gql`
 `;
 
 const SUGGESTIONS_QUERY = gql`
-  query Suggestions($title: String!) {
-    suggestions(title: $title) {
+  query Suggestions($input: SuggestionsInput!) {
+    suggestions(input: $input) {
       title
     }
   }
