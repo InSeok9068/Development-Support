@@ -5,6 +5,7 @@ vi.mock('../configs/prisma.config');
 
 test('Prisma Mock Sample Code', async () => {
   const resultWork = {
+    uid: 'adasdasfdsfsa',
     id: 1,
     title: '테스트 데이터',
     year: 2023,
