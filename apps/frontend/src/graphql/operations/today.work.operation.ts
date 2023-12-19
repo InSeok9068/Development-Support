@@ -31,14 +31,6 @@ const UPDATE_TODAY_WORK_ITEM_FOR_TRANSFER = gql`
   }
 `;
 
-const DELETE_TODAY_WORK_MUTATION = gql`
-  mutation DeleteTodayWork($id: ID!) {
-    deleteTodayWork(id: $id) {
-      id
-    }
-  }
-`;
-
 const DELETE_TODAY_WORK_ITEM_MUTATION = gql`
   mutation DeleteTodayWorkItem($id: ID!) {
     deleteTodayWorkItem(id: $id) {
@@ -64,7 +56,6 @@ const SUGGESTIONS_QUERY = gql`
 export {
   CREATE_TODAY_WORK_ITEM_MUTATION,
   DELETE_TODAY_WORK_ITEM_MUTATION,
-  DELETE_TODAY_WORK_MUTATION,
   SEND_WEEKLY_REPORT_MUTATION,
   SUGGESTIONS_QUERY,
   UPDATE_TODAY_WORK_ITEM_FOR_TRANSFER,

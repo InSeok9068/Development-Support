@@ -2,15 +2,6 @@ import { prisma } from '@/configs';
 import { CreateTodayWorkItemInput, UpdateTodayWorkItemForTransferInput } from '@support/shared/types';
 import dayjs from 'dayjs';
 
-const work = async (id: number) => {
-  const work = await prisma.work.findUniqueOrThrow({
-    where: {
-      id,
-    },
-  });
-  return work;
-};
-
 const works = async (date: string) => {
   const works = await prisma.work.findMany({
     where: {
@@ -141,22 +132,6 @@ const updateTodayWorkItemForTransfer = async (input: UpdateTodayWorkItemForTrans
   return updateWorkItem;
 };
 
-const deleteTodayWork = async (id: number) => {
-  const work = await prisma.work.delete({
-    where: {
-      id,
-    },
-  });
-
-  await prisma.workItem.deleteMany({
-    where: {
-      workId: id,
-    },
-  });
-
-  return work;
-};
-
 const deleteTodayWorkItem = async (id: number) => {
   const workItem = await prisma.workItem.findUniqueOrThrow({
     where: {
@@ -225,11 +200,9 @@ const sendWeeklyReport = () => {
 
 export {
   createTodayWorkItem,
-  deleteTodayWork,
   deleteTodayWorkItem,
   sendWeeklyReport,
   suggestions,
   updateTodayWorkItemForTransfer,
-  work,
   works,
 };

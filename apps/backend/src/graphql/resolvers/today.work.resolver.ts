@@ -1,45 +1,38 @@
 import {
   createTodayWorkItem,
-  deleteTodayWork,
   deleteTodayWorkItem,
   sendWeeklyReport,
   suggestions,
   updateTodayWorkItemForTransfer,
-  work,
   works,
 } from '@/services/today.work.service';
+import { getUid } from '@/utils/header.util';
 import {
   MutationCreateTodayWorkItemArgs,
-  MutationDeleteTodayWorkArgs,
   MutationDeleteTodayWorkItemArgs,
   MutationUpdateTodayWorkItemForTransferArgs,
   QuerySuggestionsArgs,
-  QueryWorkArgs,
   QueryWorksArgs,
 } from '@support/shared/types';
 
 const resolvers = {
   Query: {
-    work: async (_: unknown, args: QueryWorkArgs) => {
-      return await work(Number(args.id));
-    },
-    works: async (_: unknown, args: QueryWorksArgs) => {
+    works: async (_: unknown, args: QueryWorksArgs, { headers }: { headers: any }) => {
+      getUid(headers);
       return await works(args.date);
     },
-    suggestions: async (_: unknown, args: QuerySuggestionsArgs) => {
+    suggestions: async (_: unknown, args: QuerySuggestionsArgs, { headers }: { headers: any }) => {
       return await suggestions(args.title);
     },
   },
 
   Mutation: {
-    createTodayWorkItem: async (_: unknown, args: MutationCreateTodayWorkItemArgs) => {
+    createTodayWorkItem: async (_: unknown, args: MutationCreateTodayWorkItemArgs, { headers }: { headers: any }) => {
+      args.input.uid = getUid(headers);
       return await createTodayWorkItem(args.input);
     },
     updateTodayWorkItemForTransfer: async (_: unknown, args: MutationUpdateTodayWorkItemForTransferArgs) => {
       return await updateTodayWorkItemForTransfer(args.input);
-    },
-    deleteTodayWork: async (_: unknown, args: MutationDeleteTodayWorkArgs) => {
-      return await deleteTodayWork(Number(args.id));
     },
     deleteTodayWorkItem: async (_: unknown, args: MutationDeleteTodayWorkItemArgs) => {
       return await deleteTodayWorkItem(Number(args.id));

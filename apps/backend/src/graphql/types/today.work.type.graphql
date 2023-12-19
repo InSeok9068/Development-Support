@@ -13,7 +13,6 @@ type WorkItem {
 }
 
 type Query {
-  work(id: ID!): Work
   works(date: String!): [Work]
   suggestions(title: String!): [Work]
 }
@@ -21,12 +20,12 @@ type Query {
 type Mutation {
   createTodayWorkItem(input: CreateTodayWorkItemInput!): Work!
   updateTodayWorkItemForTransfer(input: UpdateTodayWorkItemForTransferInput!): Work!
-  deleteTodayWork(id: ID!): Work!
   deleteTodayWorkItem(id: ID!): WorkItem!
   sendWeeklyReport: Boolean!
 }
 
 input CreateTodayWorkItemInput {
+  uid: ID
   title: String!
   tag: String
   content: String!

@@ -33,6 +33,7 @@ app.all(
   [authMiddleware, limiterMiddleware],
   createHandler({
     schema,
+    context: ({ headers }) => ({ headers }),
     formatError: (error) => {
       logger.error(error.stack);
       return error;

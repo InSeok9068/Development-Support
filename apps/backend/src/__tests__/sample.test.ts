@@ -1,4 +1,3 @@
-import { work } from '@/services/today.work.service';
 import { test, vi } from 'vitest';
 import { prisma } from '../configs/__mocks__/prisma.config';
 
@@ -19,6 +18,4 @@ test('Prisma Mock Sample Code', async () => {
   };
 
   prisma.work.findUniqueOrThrow.mockResolvedValue(resultWork);
-
-  console.log(await work(1));
 });

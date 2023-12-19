@@ -17,6 +17,7 @@ model User {
 
 model Work {
   id        Int        @id @default(autoincrement())
+  uid       String
   title     String
   year      Int
   month     Int
