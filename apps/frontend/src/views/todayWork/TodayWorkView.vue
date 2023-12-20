@@ -25,7 +25,7 @@
     </div>
     <div class="col-12 md:col-6">
       <div class="card flex align-items-center md:flex-row gap-2">
-        <div class="flex-auto">
+        <div class="flex">
           <Calendar
             v-model="todayWorkSearchArgs.date"
             show-icon
@@ -33,7 +33,13 @@
             @date-select="works(todayWorkSearchArgs)"
           />
         </div>
-        <div class="flex-auto">
+        <div class="flex">
+          <Button icon="pi pi-caret-left" @click.prevent.stop="onClickCalendarPre()" />
+        </div>
+        <div class="flex">
+          <Button icon="pi pi-caret-right" @click.prevent.stop="onClickCalendarNext()" />
+        </div>
+        <div class="flex">
           <Button label="주간보고서 전송" @click.prevent.stop="onClickRegist()"></Button>
         </div>
       </div>
@@ -77,6 +83,7 @@
 <script setup lang="ts">
 import { useTodayWork } from '@/composables/todayWork/today.work';
 import type { CreateTodayWorkItemInput, UpdateTodayWorkItemForTransferInput } from '@support/shared/types';
+import dayjs from 'dayjs';
 import { onMounted } from 'vue';
 const {
   todayWorkInputArgs,
@@ -125,6 +132,16 @@ const onSendWeeklyReport = () => {
 
 const onCompleteSuggestions = async (event: any) => {
   await suggestions(event.query);
+};
+
+const onClickCalendarPre = () => {
+  todayWorkSearchArgs.value.date = dayjs(todayWorkSearchArgs.value.date).add(-1, 'day').format('YYYY-MM-DD');
+  works(todayWorkSearchArgs.value);
+};
+
+const onClickCalendarNext = () => {
+  todayWorkSearchArgs.value.date = dayjs(todayWorkSearchArgs.value.date).add(1, 'day').format('YYYY-MM-DD');
+  works(todayWorkSearchArgs.value);
 };
 
 const todayWorkInputArgsClear = () => {
