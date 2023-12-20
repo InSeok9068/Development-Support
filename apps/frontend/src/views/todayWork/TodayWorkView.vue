@@ -81,9 +81,9 @@
 </template>
 
 <script setup lang="ts">
+import { usePlugin } from '@/composables/plugin';
 import { useTodayWork } from '@/composables/todayWork/today.work';
 import type { CreateTodayWorkItemInput, UpdateTodayWorkItemForTransferInput } from '@support/shared/types';
-import dayjs from 'dayjs';
 import { onMounted } from 'vue';
 const {
   todayWorkInputArgs,
@@ -97,6 +97,7 @@ const {
   suggestions,
   works,
 } = useTodayWork();
+const { $time } = usePlugin();
 
 onMounted(() => works(todayWorkSearchArgs.value));
 
@@ -135,12 +136,12 @@ const onCompleteSuggestions = async (event: any) => {
 };
 
 const onClickCalendarPre = () => {
-  todayWorkSearchArgs.value.date = dayjs(todayWorkSearchArgs.value.date).add(-1, 'day').format('YYYY-MM-DD');
+  todayWorkSearchArgs.value.date = $time.plusTime(todayWorkSearchArgs.value.date, 1, 'day', 'YYYY-MM-DD');
   works(todayWorkSearchArgs.value);
 };
 
 const onClickCalendarNext = () => {
-  todayWorkSearchArgs.value.date = dayjs(todayWorkSearchArgs.value.date).add(1, 'day').format('YYYY-MM-DD');
+  todayWorkSearchArgs.value.date = $time.minusTime(todayWorkSearchArgs.value.date, 1, 'day', 'YYYY-MM-DD');
   works(todayWorkSearchArgs.value);
 };
 
