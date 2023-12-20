@@ -136,12 +136,12 @@ const onCompleteSuggestions = async (event: any) => {
 };
 
 const onClickCalendarPre = () => {
-  todayWorkSearchArgs.value.date = $time.plusTime(todayWorkSearchArgs.value.date, 1, 'day', 'YYYY-MM-DD');
+  todayWorkSearchArgs.value.date = $time.minusTime(todayWorkSearchArgs.value.date, 1, 'day', 'YYYY-MM-DD');
   works(todayWorkSearchArgs.value);
 };
 
 const onClickCalendarNext = () => {
-  todayWorkSearchArgs.value.date = $time.minusTime(todayWorkSearchArgs.value.date, 1, 'day', 'YYYY-MM-DD');
+  todayWorkSearchArgs.value.date = $time.plusTime(todayWorkSearchArgs.value.date, 1, 'day', 'YYYY-MM-DD');
   works(todayWorkSearchArgs.value);
 };
 
