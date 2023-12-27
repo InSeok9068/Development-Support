@@ -43,7 +43,6 @@
           <Button label="주간보고서 전송" @click.prevent.stop="onClickRegist()"></Button>
         </div>
       </div>
-      <div class="mt-1"></div>
       <div class="card">
         <label class="font-bold text-lg block mb-2"> 오늘 한일 </label>
         <ul>
