@@ -66,6 +66,12 @@
                 {{ `${subIndex + 1}) ${subItem.content} [${subItem.time}H]` }}
                 <Button
                   class="vertical-align-baseline"
+                  icon="pi pi-file-edit"
+                  text
+                  @click.prevent.stop="onClickItemSelect(subItem.itemId)"
+                />
+                <Button
+                  class="vertical-align-baseline"
                   icon="pi pi-eraser"
                   text
                   @click.prevent.stop="onClickItemRemove(subItem.itemId)"
@@ -121,6 +127,8 @@ const onClickRegist = () => {
 
   todayWorkInputArgsClear();
 };
+
+const onClickItemSelect = (subIndex: number) => {};
 
 const onClickItemRemove = (subIndex: number) => {
   deleteTodayWorkItem(subIndex);

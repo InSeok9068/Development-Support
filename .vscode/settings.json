@@ -26,5 +26,7 @@
     "**/.gitignore": true,
     "**/dist": true, // 백엔드 빌드
     "**/public": true // 프론트 엔드 빌드
-  }
+  },
+  "vitest.enable": true,
+  "vitest.commandLine": "npx vitest"
 }

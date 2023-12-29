@@ -4,9 +4,26 @@ import {
   SuggestionsInput,
   UpdateTodayWorkItemForTransferInput,
   UpdateTodayWorkItemInput,
+  WorkInput,
   WorksInput,
 } from '@support/shared/types';
 import dayjs from 'dayjs';
+
+const work = async (input: WorkInput) => {
+  const work = await prisma.work.findFirstOrThrow({
+    where: {
+      workItems: {
+        every: {
+          itemId: Number(input.itemId),
+        },
+      },
+    },
+    include: {
+      workItems: {},
+    },
+  });
+  return work;
+};
 
 const works = async (input: WorksInput) => {
   const works = await prisma.work.findMany({
@@ -217,5 +234,6 @@ export {
   suggestions,
   updateTodayWorkItem,
   updateTodayWorkItemForTransfer,
+  work,
   works,
 };
