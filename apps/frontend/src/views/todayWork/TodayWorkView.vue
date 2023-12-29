@@ -60,20 +60,23 @@
               <li
                 v-for="(subItem, subIndex) in item.subItem"
                 :key="subIndex"
+                class="flex align-items-center gap-1"
                 draggable="true"
                 @dragstart="onDragStart($event, subItem.itemId)"
               >
-                {{ `${subIndex + 1}) ${subItem.content} [${subItem.time}H]` }}
+                <span class="flex">
+                  {{ `${subIndex + 1}) ${subItem.content} [${subItem.time}H]` }}
+                </span>
                 <Button
-                  class="vertical-align-baseline"
                   icon="pi pi-file-edit"
                   text
+                  severity="help"
                   @click.prevent.stop="onClickItemSelect(subItem.itemId)"
                 />
                 <Button
-                  class="vertical-align-baseline"
                   icon="pi pi-eraser"
                   text
+                  severity="danger"
                   @click.prevent.stop="onClickItemRemove(subItem.itemId)"
                 />
               </li>
