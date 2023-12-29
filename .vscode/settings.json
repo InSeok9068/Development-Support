@@ -28,5 +28,5 @@
     "**/public": true // 프론트 엔드 빌드
   },
   "vitest.enable": true,
-  "vitest.commandLine": "npx vitest"
+  "vitest.commandLine": "pnpm vitest"
 }
