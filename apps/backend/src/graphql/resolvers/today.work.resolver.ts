@@ -3,6 +3,7 @@ import {
   deleteTodayWorkItem,
   sendWeeklyReport,
   suggestions,
+  updateTodayWorkItem,
   updateTodayWorkItemForTransfer,
   works,
 } from '@/services/today.work.service';
@@ -10,6 +11,7 @@ import { getUid } from '@/utils/header.util';
 import {
   MutationCreateTodayWorkItemArgs,
   MutationDeleteTodayWorkItemArgs,
+  MutationUpdateTodayWorkItemArgs,
   MutationUpdateTodayWorkItemForTransferArgs,
   QuerySuggestionsArgs,
   QueryWorksArgs,
@@ -32,14 +34,17 @@ const resolvers = {
       args.input.uid = getUid(headers);
       return await createTodayWorkItem(args.input);
     },
+    updateTodayWorkItem: async (_: unknown, args: MutationUpdateTodayWorkItemArgs) => {
+      return await updateTodayWorkItem(args.input);
+    },
     updateTodayWorkItemForTransfer: async (_: unknown, args: MutationUpdateTodayWorkItemForTransferArgs) => {
       return await updateTodayWorkItemForTransfer(args.input);
     },
     deleteTodayWorkItem: async (_: unknown, args: MutationDeleteTodayWorkItemArgs) => {
-      return await deleteTodayWorkItem(Number(args.id));
+      return await deleteTodayWorkItem(Number(args.itemId));
     },
-    sendWeeklyReport: (_: unknown) => {
-      return sendWeeklyReport();
+    sendWeeklyReport: (_: unknown, _args: unknown, { headers }: { headers: any }) => {
+      return sendWeeklyReport(getUid(headers));
     },
   },
 };

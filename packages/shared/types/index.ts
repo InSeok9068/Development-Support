@@ -28,6 +28,7 @@ export type Mutation = {
   createTodayWorkItem: Work;
   deleteTodayWorkItem: WorkItem;
   sendWeeklyReport: Scalars['Boolean']['output'];
+  updateTodayWorkItem: Work;
   updateTodayWorkItemForTransfer: Work;
 };
 
@@ -36,7 +37,11 @@ export type MutationCreateTodayWorkItemArgs = {
 };
 
 export type MutationDeleteTodayWorkItemArgs = {
-  id: Scalars['ID']['input'];
+  itemId: Scalars['ID']['input'];
+};
+
+export type MutationUpdateTodayWorkItemArgs = {
+  input: UpdateTodayWorkItemInput;
 };
 
 export type MutationUpdateTodayWorkItemForTransferArgs = {
@@ -48,11 +53,16 @@ export type Query = {
   suggestions?: Maybe<Array<Maybe<Work>>>;
   user?: Maybe<User>;
   users?: Maybe<Array<Maybe<User>>>;
+  work?: Maybe<Work>;
   works?: Maybe<Array<Maybe<Work>>>;
 };
 
 export type QuerySuggestionsArgs = {
   input: SuggestionsInput;
+};
+
+export type QueryWorkArgs = {
+  input?: InputMaybe<WorkInput>;
 };
 
 export type QueryWorksArgs = {
@@ -67,6 +77,14 @@ export type SuggestionsInput = {
 export type UpdateTodayWorkItemForTransferInput = {
   id: Scalars['ID']['input'];
   itemId: Scalars['ID']['input'];
+};
+
+export type UpdateTodayWorkItemInput = {
+  content: Scalars['String']['input'];
+  itemId: Scalars['ID']['input'];
+  tag?: InputMaybe<Scalars['String']['input']>;
+  time: Scalars['Int']['input'];
+  title: Scalars['String']['input'];
 };
 
 export type User = {
@@ -87,10 +105,15 @@ export type Work = {
   workItems?: Maybe<Array<Maybe<WorkItem>>>;
 };
 
+export type WorkInput = {
+  itemId: Scalars['ID']['input'];
+  uid?: InputMaybe<Scalars['ID']['input']>;
+};
+
 export type WorkItem = {
   __typename?: 'WorkItem';
   content: Scalars['String']['output'];
-  id: Scalars['ID']['output'];
+  itemId: Scalars['ID']['output'];
   time: Scalars['Int']['output'];
 };
 
@@ -110,7 +133,7 @@ export type WorksQuery = {
     id: string;
     title: string;
     time: number;
-    workItems?: Array<{ __typename?: 'WorkItem'; id: string; content: string; time: number } | null> | null;
+    workItems?: Array<{ __typename?: 'WorkItem'; itemId: string; content: string; time: number } | null> | null;
   } | null> | null;
 };
 
@@ -123,6 +146,15 @@ export type CreateTodayWorkItemMutation = {
   createTodayWorkItem: { __typename?: 'Work'; id: string };
 };
 
+export type UpdateTodayWOrkItemMutationVariables = Exact<{
+  input: UpdateTodayWorkItemInput;
+}>;
+
+export type UpdateTodayWOrkItemMutation = {
+  __typename?: 'Mutation';
+  updateTodayWorkItem: { __typename?: 'Work'; id: string };
+};
+
 export type UpdateTodayWorkItemForTransferMutationVariables = Exact<{
   input: UpdateTodayWorkItemForTransferInput;
 }>;
@@ -133,12 +165,12 @@ export type UpdateTodayWorkItemForTransferMutation = {
 };
 
 export type DeleteTodayWorkItemMutationVariables = Exact<{
-  id: Scalars['ID']['input'];
+  itemId: Scalars['ID']['input'];
 }>;
 
 export type DeleteTodayWorkItemMutation = {
   __typename?: 'Mutation';
-  deleteTodayWorkItem: { __typename?: 'WorkItem'; id: string };
+  deleteTodayWorkItem: { __typename?: 'WorkItem'; itemId: string };
 };
 
 export type SendWeeklyReportMutationVariables = Exact<{ [key: string]: never }>;

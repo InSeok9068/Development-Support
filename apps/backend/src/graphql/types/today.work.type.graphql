@@ -7,21 +7,28 @@ type Work {
 }
 
 type WorkItem {
-  id: ID!
+  itemId: ID!
   time: Int!
   content: String!
 }
 
 type Query {
+  work(input: WorkInput): Work
   works(input: WorksInput!): [Work]
   suggestions(input: SuggestionsInput!): [Work]
 }
 
 type Mutation {
   createTodayWorkItem(input: CreateTodayWorkItemInput!): Work!
+  updateTodayWorkItem(input: UpdateTodayWorkItemInput!): Work!
   updateTodayWorkItemForTransfer(input: UpdateTodayWorkItemForTransferInput!): Work!
-  deleteTodayWorkItem(id: ID!): WorkItem!
+  deleteTodayWorkItem(itemId: ID!): WorkItem!
   sendWeeklyReport: Boolean!
+}
+
+input WorkInput {
+  uid: ID
+  itemId: ID!
 }
 
 input WorksInput {
@@ -41,6 +48,14 @@ input CreateTodayWorkItemInput {
   content: String!
   time: Int!
   date: String!
+}
+
+input UpdateTodayWorkItemInput {
+  itemId: ID!
+  title: String!
+  tag: String
+  content: String!
+  time: Int!
 }
 
 input UpdateTodayWorkItemForTransferInput {

@@ -5,7 +5,7 @@ export interface UiTodayWorkInputArgs {
 }
 
 export interface UiTodayWorkSubItemArgs {
-  id: number;
+  itemId: number;
   content: string;
   time: number;
 }

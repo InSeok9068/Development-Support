@@ -3,6 +3,7 @@ import {
   CreateTodayWorkItemInput,
   SuggestionsInput,
   UpdateTodayWorkItemForTransferInput,
+  UpdateTodayWorkItemInput,
   WorksInput,
 } from '@support/shared/types';
 import dayjs from 'dayjs';
@@ -79,10 +80,12 @@ const createTodayWorkItem = async (input: CreateTodayWorkItemInput) => {
   }
 };
 
+const updateTodayWorkItem = async (input: UpdateTodayWorkItemInput) => {};
+
 const updateTodayWorkItemForTransfer = async (input: UpdateTodayWorkItemForTransferInput) => {
   const workItem = await prisma.workItem.findFirstOrThrow({
     where: {
-      id: Number(input.itemId),
+      itemId: Number(input.itemId),
     },
   });
 
@@ -119,7 +122,7 @@ const updateTodayWorkItemForTransfer = async (input: UpdateTodayWorkItemForTrans
       workId: work.id,
     },
     where: {
-      id: workItem.id,
+      itemId: workItem.itemId,
     },
   });
 
@@ -140,10 +143,10 @@ const updateTodayWorkItemForTransfer = async (input: UpdateTodayWorkItemForTrans
   return updateWorkItem;
 };
 
-const deleteTodayWorkItem = async (id: number) => {
+const deleteTodayWorkItem = async (itemId: number) => {
   const workItem = await prisma.workItem.findUniqueOrThrow({
     where: {
-      id,
+      itemId,
     },
   });
 
@@ -159,7 +162,7 @@ const deleteTodayWorkItem = async (id: number) => {
   if (work.workItems.length === 1) {
     await prisma.workItem.delete({
       where: {
-        id,
+        itemId,
       },
     });
 
@@ -182,7 +185,7 @@ const deleteTodayWorkItem = async (id: number) => {
 
     await prisma.workItem.delete({
       where: {
-        id,
+        itemId,
       },
     });
   }
@@ -203,7 +206,7 @@ const suggestions = async (input: SuggestionsInput) => {
   return suggestions;
 };
 
-const sendWeeklyReport = () => {
+const sendWeeklyReport = (uid: string) => {
   return true;
 };
 
@@ -212,6 +215,7 @@ export {
   deleteTodayWorkItem,
   sendWeeklyReport,
   suggestions,
+  updateTodayWorkItem,
   updateTodayWorkItemForTransfer,
   works,
 };

@@ -7,7 +7,7 @@ const WORKS_QUERY = gql`
       title
       time
       workItems {
-        id
+        itemId
         content
         time
       }
@@ -23,6 +23,14 @@ const CREATE_TODAY_WORK_ITEM_MUTATION = gql`
   }
 `;
 
+const UPDATE_TODAY_WORK_ITEM_MUTATION = gql`
+  mutation UpdateTodayWOrkItem($input: UpdateTodayWorkItemInput!) {
+    updateTodayWorkItem(input: $input) {
+      id
+    }
+  }
+`;
+
 const UPDATE_TODAY_WORK_ITEM_FOR_TRANSFER = gql`
   mutation UpdateTodayWorkItemForTransfer($input: UpdateTodayWorkItemForTransferInput!) {
     updateTodayWorkItemForTransfer(input: $input) {
@@ -32,9 +40,9 @@ const UPDATE_TODAY_WORK_ITEM_FOR_TRANSFER = gql`
 `;
 
 const DELETE_TODAY_WORK_ITEM_MUTATION = gql`
-  mutation DeleteTodayWorkItem($id: ID!) {
-    deleteTodayWorkItem(id: $id) {
-      id
+  mutation DeleteTodayWorkItem($itemId: ID!) {
+    deleteTodayWorkItem(itemId: $itemId) {
+      itemId
     }
   }
 `;
@@ -59,5 +67,6 @@ export {
   SEND_WEEKLY_REPORT_MUTATION,
   SUGGESTIONS_QUERY,
   UPDATE_TODAY_WORK_ITEM_FOR_TRANSFER,
+  UPDATE_TODAY_WORK_ITEM_MUTATION,
   WORKS_QUERY,
 };

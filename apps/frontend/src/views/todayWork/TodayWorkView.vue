@@ -61,14 +61,14 @@
                 v-for="(subItem, subIndex) in item.subItem"
                 :key="subIndex"
                 draggable="true"
-                @dragstart="onDragStart($event, subItem.id)"
+                @dragstart="onDragStart($event, subItem.itemId)"
               >
                 {{ `${subIndex + 1}) ${subItem.content} [${subItem.time}H]` }}
                 <Button
                   class="vertical-align-baseline"
                   icon="pi pi-eraser"
                   text
-                  @click.prevent.stop="onClickItemRemove(subItem.id)"
+                  @click.prevent.stop="onClickItemRemove(subItem.itemId)"
                 />
               </li>
             </ul>

@@ -68,7 +68,7 @@ const useTodayWork = () => {
             time: work?.time,
             subItem: work?.workItems?.map((item) => {
               return {
-                id: Number(item?.id),
+                itemId: Number(item?.itemId),
                 content: item?.content,
                 time: item?.time,
               };
@@ -131,10 +131,10 @@ const useTodayWork = () => {
     });
   };
 
-  const deleteTodayWorkItem = async (id: number) => {
+  const deleteTodayWorkItem = async (itemId: number) => {
     const { mutate } = useMutation<WorkItem, MutationDeleteTodayWorkItemArgs>(DELETE_TODAY_WORK_ITEM_MUTATION, {
       variables: {
-        id: String(id),
+        itemId: String(itemId),
       },
       refetchQueries: [WORKS_QUERY, 'Works'],
     });

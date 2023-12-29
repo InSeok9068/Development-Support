@@ -31,7 +31,7 @@ model Work {
 }
 
 model WorkItem {
-  id      Int    @id @default(autoincrement())
+  itemId  Int    @id @default(autoincrement())
   content String
   time    Int    @default(0)
   work    Work   @relation(fields: [workId], references: [id])
