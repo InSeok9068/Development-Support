@@ -17,7 +17,7 @@ const model = ref([
     items: [{ label: '대시보드', icon: 'pi pi-fw pi-home', to: '/dashboard' }],
   },
   {
-    label: 'UI Components',
+    label: 'Pages',
     items: [
       { label: '오늘 한일', icon: 'pi pi-fw pi-check-square', to: '/today-work' },
       { label: '기술 스펙', icon: 'pi pi-fw pi-list', to: '/tech-spec' },

@@ -51,31 +51,29 @@
           >
             <span class="text-lg font-bold">{{ `${item.title} ` }}</span>
             <span class="text-lg font-bold text-red-700">{{ `[${item.time}H]` }}</span>
-            <ul>
-              <li
-                v-for="(subItem, subIndex) in item.subItem"
-                :key="subIndex"
-                class="flex align-items-center gap-1"
-                draggable="true"
-                @dragstart="onDragStart($event, subItem.itemId)"
-              >
-                <span class="flex">
-                  {{ `${subIndex + 1}) ${subItem.content} [${subItem.time}H]` }}
-                </span>
-                <Button
-                  icon="pi pi-file-edit"
-                  text
-                  severity="help"
-                  @click.prevent.stop="onClickItemSelect(subItem.itemId)"
-                />
-                <Button
-                  icon="pi pi-eraser"
-                  text
-                  severity="danger"
-                  @click.prevent.stop="onClickItemRemove(subItem.itemId)"
-                />
-              </li>
-            </ul>
+            <div
+              v-for="(subItem, subIndex) in item.subItem"
+              :key="subIndex"
+              class="flex align-items-center gap-1"
+              draggable="true"
+              @dragstart="onDragStart($event, subItem.itemId)"
+            >
+              <span class="flex">
+                {{ `${subIndex + 1}) ${subItem.content} [${subItem.time}H]` }}
+              </span>
+              <Button
+                icon="pi pi-file-edit"
+                text
+                severity="help"
+                @click.prevent.stop="onClickItemSelect(subItem.itemId)"
+              />
+              <Button
+                icon="pi pi-eraser"
+                text
+                severity="danger"
+                @click.prevent.stop="onClickItemRemove(subItem.itemId)"
+              />
+            </div>
           </li>
         </ul>
       </div>

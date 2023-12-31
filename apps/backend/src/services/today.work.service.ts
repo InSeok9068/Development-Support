@@ -157,7 +157,7 @@ const updateTodayWorkItemForTransfer = async (input: UpdateTodayWorkItemForTrans
     });
   }
 
-  return updateWorkItem;
+  return work;
 };
 
 const deleteTodayWorkItem = async (itemId: number) => {
