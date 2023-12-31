@@ -82,11 +82,9 @@
     </div>
     <div class="col-12">
       <div class="card">
-        <TabView>
-          <TabPanel v-for="day in weekly" :key="day" :header="day">
-            <p class="m-0">{{ day }}</p>
-          </TabPanel>
-        </TabView>
+        <iframe src="https://news.hada.io" class="w-full h-20rem">
+          <p>현재 사용 중인 브라우저는 iframe 요소를 지원하지 않습니다!</p>
+        </iframe>
       </div>
     </div>
   </div>
@@ -96,7 +94,7 @@
 import { usePlugin } from '@/composables/plugin';
 import { useTodayWork } from '@/composables/todayWork/today.work';
 import type { CreateTodayWorkItemInput, UpdateTodayWorkItemForTransferInput } from '@support/shared/types';
-import { onMounted, ref } from 'vue';
+import { onMounted } from 'vue';
 const {
   todayWorkInputArgs,
   todayWorkListArgs,
@@ -112,8 +110,6 @@ const {
 const { $time } = usePlugin();
 
 onMounted(() => works(todayWorkSearchArgs.value));
-
-const weekly = ref<string[]>(['월', '화', '수', '목', '금']);
 
 const onClickRegist = () => {
   createTodayWorkItem({
