@@ -11,20 +11,17 @@
             :suggestions="suggestionsArgs.suggestion"
             @complete="onCompleteSuggestions"
           />
+          <Textarea v-model="todayWorkInputArgs.content" auto-resize rows="5" placeholder="내용" />
+          <Slider v-model="todayWorkInputArgs.time" class="w-auto" :min="1" :max="8" :step="1" />
+          <div class="flex align-items-center justify-content-between flex-row">
+            <span v-for="(item, index) in 8" :key="index">{{ item }}H</span>
+          </div>
+          <Button label="등록" @click.prevent.stop="onClickRegist()"></Button>
         </div>
-        <div class="mt-1"></div>
-        <Textarea v-model="todayWorkInputArgs.content" class="col-12" auto-resize rows="5" placeholder="내용" />
-        <div class="mt-3"></div>
-        <Slider v-model="todayWorkInputArgs.time" class="w-auto mb-2" :min="1" :max="8" :step="1" />
-        <div class="flex align-items-center justify-content-between flex-row">
-          <span v-for="(item, index) in 8" :key="index">{{ item }}H</span>
-        </div>
-        <div class="mt-3"></div>
-        <Button label="등록" @click.prevent.stop="onClickRegist()"></Button>
       </div>
     </div>
     <div class="col-12 md:col-6">
-      <div class="card flex align-items-center md:flex-row gap-2">
+      <div class="card flex align-items-center flex-column md:flex-row gap-2">
         <div class="flex">
           <Calendar
             v-model="todayWorkSearchArgs.date"
@@ -33,10 +30,8 @@
             @date-select="works(todayWorkSearchArgs)"
           />
         </div>
-        <div class="flex">
+        <div class="flex gap-2">
           <Button icon="pi pi-caret-left" @click.prevent.stop="onClickCalendarPre()" />
-        </div>
-        <div class="flex">
           <Button icon="pi pi-caret-right" @click.prevent.stop="onClickCalendarNext()" />
         </div>
         <div class="flex">
