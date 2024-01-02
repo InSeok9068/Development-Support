@@ -118,7 +118,8 @@ export type WorkItem = {
 };
 
 export type WorksInput = {
-  date: Scalars['String']['input'];
+  endDate: Scalars['String']['input'];
+  startDate: Scalars['String']['input'];
   uid?: InputMaybe<Scalars['ID']['input']>;
 };
 
