@@ -20,7 +20,8 @@ const model = ref([
     label: 'Pages',
     items: [
       { label: '오늘 한일', icon: 'pi pi-fw pi-check-square', to: '/today-work' },
-      { label: '기술 스펙', icon: 'pi pi-fw pi-list', to: '/tech-spec' },
+      { label: '한일 목록', icon: 'pi pi-fw pi-list', to: '/work-list' },
+      { label: '기술 스펙', icon: 'pi pi-fw pi-server', to: '/tech-spec' },
     ],
   },
 ]);

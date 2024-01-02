@@ -4,6 +4,7 @@ import { urlIndex } from './url/index.url';
 import { urlLogin } from './url/login.url';
 import { urlTechSpec } from './url/tech.spec.url ';
 import { urlTodayWork } from './url/today.work.url';
+import { urlWorkList } from './url/work.list.url';
 
 /**
  * Route 합성
@@ -37,6 +38,7 @@ export const routes: Readonly<RouteRecordRaw[]> = [
     urlLogin(),
     urlDashBoard(),
     urlTodayWork(),
+    urlWorkList(),
     urlTechSpec(),
     // MUST BE: 기능별 URL route를 반들면 아래에 반드시 등록해야 url이 동작합니다.
   ),
