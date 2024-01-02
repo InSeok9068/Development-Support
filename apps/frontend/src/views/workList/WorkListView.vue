@@ -1,6 +1,6 @@
 <template>
   <div class="card col-12">
-    <DataTable :value="products">
+    <DataTable>
       <Column header="제목"></Column>
       <Column header="내용"></Column>
       <Column header="시간"></Column>
