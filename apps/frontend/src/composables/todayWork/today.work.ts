@@ -55,7 +55,8 @@ const useTodayWork = () => {
   const works = (searchArgs: UiTodayWorkSearchArgs) => {
     const { onResult, onError } = useQuery<WorksQuery, QueryWorksArgs>(WORKS_QUERY, {
       input: {
-        date: searchArgs.date,
+        startDate: searchArgs.date,
+        endDate: searchArgs.date,
       },
     });
 

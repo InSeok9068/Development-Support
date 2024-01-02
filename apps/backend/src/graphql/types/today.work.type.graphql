@@ -33,7 +33,8 @@ input WorkInput {
 
 input WorksInput {
   uid: ID
-  date: String!
+  startDate: String!
+  endDate: String!
 }
 
 input SuggestionsInput {

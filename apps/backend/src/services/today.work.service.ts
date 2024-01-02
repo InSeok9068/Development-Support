@@ -29,7 +29,10 @@ const works = async (input: WorksInput) => {
   const works = await prisma.work.findMany({
     where: {
       uid: input.uid!,
-      date: Number(dayjs(input.date).format('YYYYMMDD')),
+      date: {
+        lte: Number(dayjs(input.startDate).format('YYYYMMDD')),
+        gte: Number(dayjs(input.endDate).format('YYYYMMDD')),
+      },
     },
     include: {
       workItems: {},
