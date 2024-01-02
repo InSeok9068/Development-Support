@@ -30,8 +30,8 @@ const works = async (input: WorksInput) => {
     where: {
       uid: input.uid!,
       date: {
-        lte: Number(dayjs(input.startDate).format('YYYYMMDD')),
-        gte: Number(dayjs(input.endDate).format('YYYYMMDD')),
+        gte: Number(dayjs(input.startDate).format('YYYYMMDD')),
+        lte: Number(dayjs(input.endDate).format('YYYYMMDD')),
       },
     },
     include: {
