@@ -98,10 +98,12 @@ export type User = {
 
 export type Work = {
   __typename?: 'Work';
+  createdAt: Scalars['String']['output'];
   id: Scalars['ID']['output'];
   tag?: Maybe<Scalars['String']['output']>;
   time: Scalars['Int']['output'];
   title: Scalars['String']['output'];
+  updatedAt: Scalars['String']['output'];
   workItems?: Maybe<Array<Maybe<WorkItem>>>;
 };
 
@@ -113,8 +115,10 @@ export type WorkInput = {
 export type WorkItem = {
   __typename?: 'WorkItem';
   content: Scalars['String']['output'];
+  createdAt: Scalars['String']['output'];
   itemId: Scalars['ID']['output'];
   time: Scalars['Int']['output'];
+  updatedAt: Scalars['String']['output'];
 };
 
 export type WorksInput = {
@@ -134,7 +138,16 @@ export type WorksQuery = {
     id: string;
     title: string;
     time: number;
-    workItems?: Array<{ __typename?: 'WorkItem'; itemId: string; content: string; time: number } | null> | null;
+    createdAt: string;
+    updatedAt: string;
+    workItems?: Array<{
+      __typename?: 'WorkItem';
+      itemId: string;
+      content: string;
+      time: number;
+      createdAt: string;
+      updatedAt: string;
+    } | null> | null;
   } | null> | null;
 };
 

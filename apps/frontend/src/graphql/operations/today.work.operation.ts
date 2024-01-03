@@ -6,10 +6,14 @@ const WORKS_QUERY = gql`
       id
       title
       time
+      createdAt
+      updatedAt
       workItems {
         itemId
         content
         time
+        createdAt
+        updatedAt
       }
     }
   }
