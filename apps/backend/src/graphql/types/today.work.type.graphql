@@ -3,6 +3,8 @@ type Work {
   title: String!
   tag: String
   time: Int!
+  createdAt: String!
+  updatedAt: String!
   workItems: [WorkItem]
 }
 
@@ -10,6 +12,8 @@ type WorkItem {
   itemId: ID!
   time: Int!
   content: String!
+  createdAt: String!
+  updatedAt: String!
 }
 
 type Query {

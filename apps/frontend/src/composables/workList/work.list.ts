@@ -2,6 +2,7 @@ import { useToast } from '@/composables/toast';
 import { WORKS_QUERY } from '@/graphql/operations/today.work.operation';
 import type { UiWorkItemArgs, UiWorkListArgs } from '@/ui/work.list.ui';
 import type { QueryWorksArgs, WorksQuery } from '@support/shared/types';
+import { toMillisecondString } from '@support/shared/utils/time.util';
 import { useQuery } from '@vue/apollo-composable';
 import { ref } from 'vue';
 const { toast } = useToast();
@@ -23,7 +24,10 @@ const useWorkList = () => {
       workListArgs.value = {
         item: result.data?.works!.flatMap((work) =>
           work!.workItems!.map((item) => ({
-            date: '',
+            date: toMillisecondString({
+              dateTime: item!.createdAt,
+              outFormat: 'YYYY-MM-DD',
+            }),
             title: work!.title,
             content: item!.content,
             time: item!.time,

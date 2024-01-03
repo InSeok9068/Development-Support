@@ -227,6 +227,22 @@ export interface ToTimeStringArg {
  * @param outFormat 포맷팅된 시간의 형식
  * @returns 포멧팅된 string
  */
+export const toMillisecondString = ({
+  dateTime,
+  inFormat = 'YYYYMMDDHHmmss',
+  outFormat = 'YYYY.MM.DD',
+}: ToTimeStringArg) => {
+  if (dateTime == null) return '';
+  return dayjs(new Date(Number(dateTime)), inFormat).format(outFormat);
+};
+
+/**
+ * 주어진 형식으로 시간을 포멧팅한다.
+ * @param dateTime 포맷팅할 시간
+ * @param inFormat 포맷팅할 시간의 형식
+ * @param outFormat 포맷팅된 시간의 형식
+ * @returns 포멧팅된 string
+ */
 export const toTimeString = ({ dateTime, inFormat = 'YYYYMMDDHHmmss', outFormat = 'YYYY.MM.DD' }: ToTimeStringArg) => {
   if (dateTime == null) return '';
   return dayjs(dateTime, inFormat).format(outFormat);
@@ -311,6 +327,7 @@ export interface ITimeUtil {
   timeoutMs: ({ ms, tag, beforeAfterMs, startedCb }: TimeoutMsArg) => Promise<unknown>;
   timeoutDt: ({ dateTime, tag, beforeAfterSeconds, startedCb }: TimeoutDtArg) => Promise<unknown>;
   toTimeString: ({ dateTime, inFormat, outFormat }: ToTimeStringArg) => string;
+  toMillisecondString: ({ dateTime, inFormat, outFormat }: ToTimeStringArg) => string;
   betweenTime: (dateTime: string, from: string, to: string) => boolean;
   today: (format: TIME_FORMAT) => string;
   plusTime: (time: string, plusTime: number, timeUnit: ManipulateType, format: TIME_FORMAT) => string;
@@ -332,6 +349,7 @@ export const timeUtil: ITimeUtil = {
   timeoutMs,
   timeoutDt,
   toTimeString,
+  toMillisecondString,
   betweenTime,
   today,
   plusTime,
