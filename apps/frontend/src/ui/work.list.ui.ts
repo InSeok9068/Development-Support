@@ -1,3 +1,8 @@
+export interface UiWorkListSearchArgs {
+  stratDate: string;
+  endDate: string;
+}
+
 export interface UiWorkItemArgs {
   date: string;
   title: string;
