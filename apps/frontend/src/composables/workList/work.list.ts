@@ -1,22 +1,27 @@
 import { useToast } from '@/composables/toast';
 import { WORKS_QUERY } from '@/graphql/operations/today.work.operation';
-import type { UiWorkItemArgs, UiWorkListArgs } from '@/ui/work.list.ui';
+import type { UiWorkItemArgs, UiWorkListArgs, UiWorkListSearchArgs } from '@/ui/work.list.ui';
 import type { QueryWorksArgs, WorksQuery } from '@support/shared/types';
-import { toMillisecondString } from '@support/shared/utils/time.util';
+import { timeUtil, toMillisecondString } from '@support/shared/utils/time.util';
 import { useQuery } from '@vue/apollo-composable';
 import { ref } from 'vue';
 const { toast } = useToast();
 
 const useWorkList = () => {
+  const workListSearchArgs = ref<UiWorkListSearchArgs>({
+    stratDate: timeUtil.today('YYYY-MM-DD'),
+    endDate: timeUtil.today('YYYY-MM-DD'),
+  });
+
   const workListArgs = ref<UiWorkListArgs>({
     item: [] as UiWorkItemArgs[],
   });
 
-  const works = () => {
+  const works = (workListSearchArgs: UiWorkListSearchArgs) => {
     const { onResult, onError } = useQuery<WorksQuery, QueryWorksArgs>(WORKS_QUERY, {
       input: {
-        startDate: '2023-12-01',
-        endDate: '2023-12-31',
+        startDate: workListSearchArgs.stratDate,
+        endDate: workListSearchArgs.endDate,
       },
     });
 
@@ -45,6 +50,7 @@ const useWorkList = () => {
   };
 
   return {
+    workListSearchArgs,
     workListArgs,
     works,
   };
