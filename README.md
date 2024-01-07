@@ -66,13 +66,15 @@ pnpm dev
 
 ## 1. 기획
 
+[옵시디언/개발도우미/UI&UX 기획](<https://github.com/InSeok9068/Obsidian/tree/main/A.%20Projects%20(%EB%AA%A9%ED%91%9C%2C%20%EB%A7%88%EA%B0%90)/%EC%82%AC%EC%9D%B4%EB%93%9C%20%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/%EA%B0%9C%EB%B0%9C%EB%8F%84%EC%9A%B0%EB%AF%B8/%EC%84%A4%EA%B3%84>)
+
 Figma를 통하여 화면 기획 및 기능 설명 작성
 
 ※ Bard 기획서 검토 (이미지 업로드)
 
 ## 2. 개발 설계
 
-`docs` 폴더 참고
+[옵시디언/개발도우미/개발 설계](<https://github.com/InSeok9068/Obsidian/tree/main/A.%20Projects%20(%EB%AA%A9%ED%91%9C%2C%20%EB%A7%88%EA%B0%90)/%EC%82%AC%EC%9D%B4%EB%93%9C%20%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/%EA%B0%9C%EB%B0%9C%EB%8F%84%EC%9A%B0%EB%AF%B8/%EC%84%A4%EA%B3%84>)
 
 ## 3. 기능 구현
 
