@@ -38,6 +38,7 @@ app.use(time); //시간 플러그인 등록
 app.use(navigator); //URL Navigator 플러그인
 
 /* PrimeVue Start */
+import Lara from '@/assets/presets/lara'; //import preset
 import AutoComplete from 'primevue/autocomplete';
 import Avatar from 'primevue/avatar';
 import AvatarGroup from 'primevue/avatargroup';
@@ -123,7 +124,10 @@ import Tree from 'primevue/tree';
 import TreeSelect from 'primevue/treeselect';
 import TreeTable from 'primevue/treetable';
 import TriStateCheckbox from 'primevue/tristatecheckbox';
-app.use(PrimeVue);
+app.use(PrimeVue, {
+  unstyled: true,
+  pt: Lara, //apply preset
+});
 app.use(ConfirmationService);
 app.use(ToastService);
 
