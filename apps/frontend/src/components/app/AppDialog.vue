@@ -7,8 +7,8 @@
     :breakpoints="{ '1199px': '75vw', '575px': '90vw' }"
   >
     <template #header>
-      <div class="inline-flex align-items-center justify-content-center gap-2">
-        <span class="font-bold white-space-nowrap">{{ dialog.header }}</span>
+      <div class="align-items-center justify-content-center inline-flex gap-2">
+        <span class="white-space-nowrap font-bold">{{ dialog.header }}</span>
       </div>
     </template>
     <p class="m-0">

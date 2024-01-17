@@ -10,7 +10,7 @@
     class="layout-config-sidebar w-20rem"
   >
     <h5>Scale</h5>
-    <div class="flex align-items-center">
+    <div class="align-items-center flex">
       <Button
         icon="pi pi-minus"
         type="button"
@@ -18,7 +18,7 @@
         :disabled="layoutConfig.scale.value === scales[0]"
         @click="decrementScale()"
       ></Button>
-      <div class="flex gap-2 align-items-center">
+      <div class="align-items-center flex gap-2">
         <i
           v-for="s in scales"
           :key="s"

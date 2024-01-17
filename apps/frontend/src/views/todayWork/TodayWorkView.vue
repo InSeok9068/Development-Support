@@ -2,8 +2,8 @@
   <div class="grid">
     <div class="col-12 md:col-6">
       <div class="card">
-        <div class="flex flex-column gap-2">
-          <label class="font-bold text-lg">오늘 무슨 일을 하셨나요?</label>
+        <div class="flex-column flex gap-2">
+          <label class="text-lg font-bold">오늘 무슨 일을 하셨나요?</label>
           <AutoComplete
             v-model="todayWorkInputArgs.title"
             class="flex-column"
@@ -13,7 +13,7 @@
           />
           <Textarea v-model="todayWorkInputArgs.content" auto-resize rows="5" placeholder="내용" />
           <Slider v-model="todayWorkInputArgs.time" class="w-auto" :min="1" :max="8" :step="1" />
-          <div class="flex align-items-center justify-content-between flex-row">
+          <div class="align-items-center justify-content-between flex flex-row">
             <span v-for="(item, index) in 8" :key="index">{{ item }}H</span>
           </div>
           <Button label="등록" @click.prevent.stop="onClickRegist()"></Button>
@@ -21,7 +21,7 @@
       </div>
     </div>
     <div class="col-12 md:col-6">
-      <div class="card flex align-items-center flex-column md:flex-row gap-2">
+      <div class="card align-items-center flex-column flex gap-2 md:flex-row">
         <div class="flex">
           <Calendar
             v-model="todayWorkSearchArgs.date"
@@ -39,7 +39,7 @@
         </div>
       </div>
       <div class="card">
-        <label class="font-bold text-lg block mb-2"> 오늘 한일 </label>
+        <label class="mb-2 block text-lg font-bold"> 오늘 한일 </label>
         <ul>
           <li
             v-for="(item, index) in todayWorkListArgs.item"
@@ -54,7 +54,7 @@
             <div
               v-for="(subItem, subIndex) in item.subItem"
               :key="subIndex"
-              class="flex align-items-center gap-1"
+              class="align-items-center flex gap-1"
               draggable="true"
               @dragstart="onDragStart($event, subItem.itemId)"
             >
@@ -80,7 +80,7 @@
     </div>
     <div class="col-12">
       <div class="card">
-        <iframe src="https://news.hada.io" class="w-full h-20rem">
+        <iframe src="https://news.hada.io" class="h-20rem w-full">
           <p>현재 사용 중인 브라우저는 iframe 요소를 지원하지 않습니다!</p>
         </iframe>
       </div>

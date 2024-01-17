@@ -1,6 +1,6 @@
 <template>
   <div class="card col-12 md:col-6">
-    <div class="flex flex-column justify-content-center">
+    <div class="flex-column justify-content-center flex">
       <div class="card col-12">
         <table class="table">
           <tbody>
