@@ -164,8 +164,8 @@ importers:
         specifier: ^3.8.9
         version: 3.8.9(graphql@16.8.1)
       '@vue/apollo-composable':
-        specifier: 4.0.0-beta.12
-        version: 4.0.0-beta.12(@apollo/client@3.8.9)(graphql@16.8.1)(typescript@5.3.3)(vue@3.4.14)
+        specifier: 4.0.0
+        version: 4.0.0(@apollo/client@3.8.9)(graphql@16.8.1)(typescript@5.3.3)(vue@3.4.14)
       axios:
         specifier: ^1.6.5
         version: 1.6.5
@@ -3135,8 +3135,8 @@ packages:
       path-browserify: 1.0.1
     dev: true
 
-  /@vue/apollo-composable@4.0.0-beta.12(@apollo/client@3.8.9)(graphql@16.8.1)(typescript@5.3.3)(vue@3.4.14):
-    resolution: {integrity: sha512-qfi6B6obkzvCUVGB9l28s96xCzPfffB0c7esR8y3UbKc1KwzdOIESMHmoYv0xM2isYP0pu+dz6Rt9KUn7zNf4Q==}
+  /@vue/apollo-composable@4.0.0(@apollo/client@3.8.9)(graphql@16.8.1)(typescript@5.3.3)(vue@3.4.14):
+    resolution: {integrity: sha512-n0S/qN9OoguCrND79osTkf0uOluHfyMd+HJbaMh/JhVrv0u6NlK4mPHUWSAxri+8jYFh8H//TrC72tepy3jO8g==}
     peerDependencies:
       '@apollo/client': ^3.4.13
       '@vue/composition-api': ^1.0.0
