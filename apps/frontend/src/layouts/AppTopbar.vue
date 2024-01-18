@@ -124,6 +124,16 @@ const isOutsideClicked = (event) => {
 const toggleMenu = (event) => {
   menu.value.toggle(event);
 };
+
+const keyState = {};
+window.onkeydown = (e) => {
+  keyState[e.code] = true;
+
+  keyState['ControlLeft'] && keyState['Backslash'] && onMenuToggle();
+};
+window.onkeyup = (e) => {
+  keyState[e.code] = false;
+};
 </script>
 
 <style lang="scss" scoped></style>
