@@ -26,7 +26,7 @@
             </tr>
             <tr>
               <th>CSS Framework</th>
-              <td>PrimeVue</td>
+              <td>PrimeVue + PrimeFlex</td>
             </tr>
           </tbody>
         </table>
