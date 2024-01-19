@@ -1,4 +1,4 @@
-interface JobScraping {
+export interface JobScraping {
   scrapTitle(): Promise<void>;
   scrapPosition(): Promise<void>;
   scrapRequirement(): Promise<void>;
@@ -10,7 +10,7 @@ interface JobScraping {
   getLinks(): Promise<any>;
 }
 
-interface JobScrap {
+export interface JobScrap {
   company: string;
   title: string;
   position: string;
@@ -20,5 +20,3 @@ interface JobScrap {
   link: string;
   linkId: string;
 }
-
-export { JobScrap, JobScraping };
