@@ -58,3 +58,13 @@ model JobScrap {
 
   // @@unique([company, linkId])
 }
+
+model NewsletterScrap {
+  id         Int      @id @default(autoincrement())
+  title      String
+  source     String
+  sourceLink String
+  originLink String?
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @default(now())
+}
