@@ -62,6 +62,14 @@ pnpm install
 pnpm dev
 ```
 
+### 백엔드 단위 테스트
+
+`경로 : ./apps/backend`
+
+```shell
+pnpm cross-env NODE_ENV=development vitest {파일경로}
+```
+
 ---
 
 ## 1. 기획
