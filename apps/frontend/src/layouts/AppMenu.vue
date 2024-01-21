@@ -14,7 +14,10 @@ import AppMenuItem from './AppMenuItem.vue';
 const model = ref([
   {
     label: 'Home',
-    items: [{ label: '대시보드', icon: 'pi pi-fw pi-home', to: '/dashboard' }],
+    items: [
+      { label: '대시보드', icon: 'pi pi-fw pi-home', to: '/dashboard' },
+      { label: '뉴스레터', icon: 'pi pi-fw pi-truck', to: '/newsletter' },
+    ],
   },
   {
     label: 'Pages',
