@@ -64,7 +64,7 @@ model NewsletterScrap {
   title           String
   source          String
   sourceUniqueKey String?
-  detailLink      String?
+  sourceLink      String?
   originLink      String?
   summary         String?
   createdAt       DateTime @default(now())
