@@ -1,0 +1,15 @@
+type Newsletter {
+  id: ID!
+  title: String!
+  source: String
+  sourceLink: String
+  originLink: String
+}
+
+type Query {
+  newsletters(input: NewslettersInput!): [Newsletter]
+}
+
+input NewslettersInput {
+  source: String
+}

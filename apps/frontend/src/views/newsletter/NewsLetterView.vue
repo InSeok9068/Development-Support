@@ -2,11 +2,10 @@
   <div class="card col-12">
     <TabView>
       <TabPanel header="전체">
-        <DataTable :value="products" table-style="min-width: 50rem">
-          <Column field="code" header="장소"></Column>
-          <Column field="name" header="제목"></Column>
-          <Column field="category" header="스크랩 시간"></Column>
-          <Column field="quantity" header="요약"></Column>
+        <DataTable :value="newsletterListArgs.item" table-style="min-width: 50rem">
+          <Column field="source" header="소스"></Column>
+          <Column field="title" header="제목"></Column>
+          <Column field="action" header="요약"></Column>
         </DataTable>
       </TabPanel>
       <TabPanel header="GeekNews">
@@ -19,6 +18,12 @@
   </div>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { useNewsletter } from '@/composables/newsletter/newsletter';
+import { onMounted } from 'vue';
+const { newsletters, newslettersSearchArgs, newsletterListArgs } = useNewsletter();
+
+onMounted(() => newsletters(newslettersSearchArgs.value));
+</script>
 
 <style lang="scss" scoped></style>

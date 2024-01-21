@@ -48,13 +48,31 @@ export type MutationUpdateTodayWorkItemForTransferArgs = {
   input: UpdateTodayWorkItemForTransferInput;
 };
 
+export type Newsletter = {
+  __typename?: 'Newsletter';
+  id: Scalars['ID']['output'];
+  originLink?: Maybe<Scalars['String']['output']>;
+  source?: Maybe<Scalars['String']['output']>;
+  sourceLink?: Maybe<Scalars['String']['output']>;
+  title: Scalars['String']['output'];
+};
+
+export type NewslettersInput = {
+  source?: InputMaybe<Scalars['String']['input']>;
+};
+
 export type Query = {
   __typename?: 'Query';
+  newsletters?: Maybe<Array<Maybe<Newsletter>>>;
   suggestions?: Maybe<Array<Maybe<Work>>>;
   user?: Maybe<User>;
   users?: Maybe<Array<Maybe<User>>>;
   work?: Maybe<Work>;
   works?: Maybe<Array<Maybe<Work>>>;
+};
+
+export type QueryNewslettersArgs = {
+  input: NewslettersInput;
 };
 
 export type QuerySuggestionsArgs = {
@@ -125,6 +143,22 @@ export type WorksInput = {
   endDate: Scalars['String']['input'];
   startDate: Scalars['String']['input'];
   uid?: InputMaybe<Scalars['ID']['input']>;
+};
+
+export type NewslettersQueryVariables = Exact<{
+  input: NewslettersInput;
+}>;
+
+export type NewslettersQuery = {
+  __typename?: 'Query';
+  newsletters?: Array<{
+    __typename?: 'Newsletter';
+    id: string;
+    title: string;
+    source?: string | null;
+    sourceLink?: string | null;
+    originLink?: string | null;
+  } | null> | null;
 };
 
 export type WorksQueryVariables = Exact<{
