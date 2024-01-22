@@ -2,7 +2,7 @@
   <div class="card col-12">
     <TabView>
       <TabPanel header="전체">
-        <DataTable :value="newsletterListArgs.item" table-style="min-width: 50rem">
+        <DataTable :value="newsletterListArgs.item" paginator :rows="20" :rows-per-page-options="[20, 50, 100]">
           <Column field="source" header="소스"></Column>
           <Column field="title" header="제목">
             <template #body="slotProps">

@@ -32,6 +32,6 @@ const newsletterScrapAction = async () => {
 };
 
 // 매일마다 아침 9시에 동작
-const newsletterScrapSchedule = new CronJob('0 9 * * * *', newsletterScrapAction, null, true, 'Asia/Seoul');
+const newsletterScrapSchedule = new CronJob('0 0 9 * * *', newsletterScrapAction, null, true, 'Asia/Seoul');
 
 export { newsletterScrapAction, newsletterScrapSchedule };
