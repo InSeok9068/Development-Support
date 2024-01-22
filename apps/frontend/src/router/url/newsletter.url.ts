@@ -14,7 +14,7 @@ export const urlNewsletter = (router?: Router): UrlNewsletter => {
     newsletter: function (): NewsletterRoute {
       return {
         path: NEWSLETTER_URL,
-        component: () => import('@/views/newsletter/NewsLetterView.vue'),
+        component: () => import('@/views/newsletter/NewsletterView.vue'),
         desc: '뉴스레터',
         dir: function () {
           return URL_DIR(this.path);

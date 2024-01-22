@@ -4,7 +4,11 @@
       <TabPanel header="전체">
         <DataTable :value="newsletterListArgs.item" table-style="min-width: 50rem">
           <Column field="source" header="소스"></Column>
-          <Column field="title" header="제목"></Column>
+          <Column field="title" header="제목">
+            <template #body="slotProps">
+              <a :href="slotProps.data.sourceLink">{{ slotProps.data.title }}</a>
+            </template>
+          </Column>
           <Column field="action" header="요약"></Column>
         </DataTable>
       </TabPanel>

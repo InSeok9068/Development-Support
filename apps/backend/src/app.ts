@@ -1,7 +1,7 @@
 import { logger } from '@/configs';
 import { schema } from '@/graphql/schema';
 import { authMiddleware, errorMiddleware, limiterMiddleware, morganMiddleware } from '@/middlewares';
-import { newsletterScrapSchedule } from '@/schedules';
+import { newsletterScrapSchedule } from '@/schedules/newsletter.scrap.schedule';
 import cors from 'cors';
 import dotenv from 'dotenv';
 import express, { Express, Request, Response } from 'express';
