@@ -9,7 +9,7 @@
         <Button
           label="Cancel"
           class="p-3 w-full"
-          @click="$navi.dashboard($router).dashboard().go() && closeCallback"
+          @click="$navi.newsletter($router).newsletter().go() && closeCallback"
         ></Button>
       </div>
     </template>

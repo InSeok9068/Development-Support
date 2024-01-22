@@ -50,7 +50,7 @@ const onClickLogin = () => {
 
 const onClickLogout = () => {
   auth.signOut();
-  $navi.dashboard(router).dashboard().go();
+  $navi.newsletter(router).newsletter().go();
 };
 
 const items = ref([

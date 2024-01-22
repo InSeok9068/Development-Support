@@ -15,8 +15,8 @@ const model = ref([
   {
     label: 'Home',
     items: [
-      { label: '대시보드', icon: 'pi pi-fw pi-home', to: '/dashboard' },
       { label: '뉴스레터', icon: 'pi pi-fw pi-truck', to: '/newsletter' },
+      { label: '대시보드', icon: 'pi pi-fw pi-chart-line', to: '/dashboard' },
     ],
   },
   {
@@ -25,8 +25,11 @@ const model = ref([
       { label: '오늘 한일', icon: 'pi pi-fw pi-check-square', to: '/today-work' },
       { label: '한일 목록', icon: 'pi pi-fw pi-list', to: '/work-list' },
       { label: '이름 짓기', icon: 'pi pi-fw pi-pencil', to: '/namer' },
-      { label: '기술 스펙', icon: 'pi pi-fw pi-server', to: '/tech-spec' },
     ],
+  },
+  {
+    label: 'Abouts',
+    items: [{ label: '기술 스펙', icon: 'pi pi-fw pi-server', to: '/tech-spec' }],
   },
 ]);
 </script>

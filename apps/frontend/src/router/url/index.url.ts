@@ -14,7 +14,7 @@ export const urlIndex = (router?: Router): UrlIndex => {
     index: function (): IndexRoute {
       return {
         path: INDEX_URL,
-        component: () => import('@/views/dashboard/DashboardView.vue'),
+        component: () => import('@/views/newsletter/NewsletterView.vue'),
         desc: '인덱스',
         dir: function () {
           return URL_DIR(this.path);
