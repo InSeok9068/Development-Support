@@ -37,12 +37,15 @@
 <script setup lang="ts">
 import { useNewsletter } from '@/composables/newsletter/newsletter';
 import { onMounted } from 'vue';
+import { useDialog } from '@/composables/dialog';
 const { newsletters, newslettersSearchArgs, newsletterListArgs } = useNewsletter();
+const { dialog } = useDialog();
 
 onMounted(() => newsletters(newslettersSearchArgs.value));
 
 const aiSummary = (id: string) => {
-  alert('준비중 입니다!');
+  dialog.value.message = '준비 중입니다!';
+  dialog.value.show = true;
 };
 </script>
 

@@ -4,6 +4,7 @@ import { ref } from 'vue';
 
 export const useDialogStore = defineStore('dialog', () => {
   const dialog = ref<UiDialogArgs>({
+    header: '알림',
     message: '',
     show: false,
   });
