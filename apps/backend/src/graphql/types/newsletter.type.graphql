@@ -1,9 +1,13 @@
 type Newsletter {
   id: ID!
   title: String!
-  source: String
+  source: String!
+  sourceUniqueKey: String
   sourceLink: String
   originLink: String
+  summary: String
+  createdAt: String!
+  updatedAt: String!
 }
 
 type Query {
@@ -12,4 +16,13 @@ type Query {
 
 input NewslettersInput {
   source: String
+}
+
+input CreateNewsletterInput {
+  title: String!
+  source: String!
+  sourceUniqueKey: String
+  sourceLink: String
+  originLink: String
+  summary: String
 }

@@ -314,6 +314,12 @@ export const betweenTime = (dateTime: string, from: string, to: string) => {
 };
 
 /**
+ * 딜레이 지연
+ * @param milliseconds
+ */
+export const delay = (milliseconds: number) => new Promise((resolve) => setTimeout(resolve, milliseconds));
+
+/**
  * 시간 유틸리티 인터페이스
  */
 export interface ITimeUtil {
@@ -333,6 +339,7 @@ export interface ITimeUtil {
   plusTime: (time: string, plusTime: number, timeUnit: ManipulateType, format: TIME_FORMAT) => string;
   minusTime: (time: string, offset: number, timeUnit: ManipulateType, format: TIME_FORMAT) => string;
   toTimeConvert: ({ dateTime, inFormat }: { dateTime: string; inFormat: TIME_FORMAT }) => string;
+  delay: (milliseconds: number) => Promise<unknown>;
 }
 
 /**
@@ -355,4 +362,5 @@ export const timeUtil: ITimeUtil = {
   plusTime,
   minusTime,
   toTimeConvert,
+  delay,
 };

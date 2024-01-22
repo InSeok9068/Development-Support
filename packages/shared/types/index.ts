@@ -14,6 +14,15 @@ export type Scalars = {
   Float: { input: number; output: number };
 };
 
+export type CreateNewsletterInput = {
+  originLink?: InputMaybe<Scalars['String']['input']>;
+  source: Scalars['String']['input'];
+  sourceLink?: InputMaybe<Scalars['String']['input']>;
+  sourceUniqueKey?: InputMaybe<Scalars['String']['input']>;
+  summary?: InputMaybe<Scalars['String']['input']>;
+  title: Scalars['String']['input'];
+};
+
 export type CreateTodayWorkItemInput = {
   content: Scalars['String']['input'];
   date: Scalars['String']['input'];
@@ -50,11 +59,15 @@ export type MutationUpdateTodayWorkItemForTransferArgs = {
 
 export type Newsletter = {
   __typename?: 'Newsletter';
+  createdAt: Scalars['String']['output'];
   id: Scalars['ID']['output'];
   originLink?: Maybe<Scalars['String']['output']>;
-  source?: Maybe<Scalars['String']['output']>;
+  source: Scalars['String']['output'];
   sourceLink?: Maybe<Scalars['String']['output']>;
+  sourceUniqueKey?: Maybe<Scalars['String']['output']>;
+  summary?: Maybe<Scalars['String']['output']>;
   title: Scalars['String']['output'];
+  updatedAt: Scalars['String']['output'];
 };
 
 export type NewslettersInput = {
@@ -155,7 +168,7 @@ export type NewslettersQuery = {
     __typename?: 'Newsletter';
     id: string;
     title: string;
-    source?: string | null;
+    source: string;
     sourceLink?: string | null;
     originLink?: string | null;
   } | null> | null;

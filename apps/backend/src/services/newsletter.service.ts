@@ -1,5 +1,5 @@
 import { prisma } from '@/configs';
-import { NewslettersInput } from '@support/shared/types';
+import { CreateNewsletterInput, NewslettersInput } from '@support/shared/types';
 
 const newsletters = async (input: NewslettersInput) => {
   if (input.source) {
@@ -13,4 +13,32 @@ const newsletters = async (input: NewslettersInput) => {
   }
 };
 
-export { newsletters };
+const createNewsletter = async (input: CreateNewsletterInput) => {
+  const saveNewsletter = async (input: CreateNewsletterInput) => {
+    return await prisma.newsletterScrap.create({
+      data: {
+        title: input.title,
+        source: input.source,
+        sourceUniqueKey: input.sourceUniqueKey,
+        sourceLink: input.sourceLink,
+        originLink: input.originLink,
+      },
+    });
+  };
+
+  if (input.sourceUniqueKey) {
+    const count = await prisma.newsletterScrap.count({
+      where: {
+        sourceUniqueKey: input.sourceUniqueKey,
+      },
+    });
+
+    if (count === 0) {
+      return await saveNewsletter(input);
+    }
+  } else {
+    return await saveNewsletter(input);
+  }
+};
+
+export { createNewsletter, newsletters };

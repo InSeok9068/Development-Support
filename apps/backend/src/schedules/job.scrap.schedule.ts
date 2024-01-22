@@ -1,5 +1,6 @@
 import { saveJobScrap } from '@/services/job.scrap.service';
 import { NaverJobScraping } from '@/services/scraps';
+import { delay } from '@support/shared/utils/time.util';
 import { CronJob } from 'cron';
 import puppeteer from 'puppeteer';
 
@@ -15,7 +16,7 @@ const sites: Site[] = [
   },
 ];
 
-const siteScraping = () => {
+const jobPostingAction = () => {
   sites.forEach(async (site) => {
     switch (site.company) {
       case 'NAVER':
@@ -29,7 +30,6 @@ const siteScraping = () => {
           for (let i = 0; i < links.length; i++) {
             const links = await jobScraping.getLinks();
             await links[i].click();
-            await delay(1000);
             await jobScraping.scrapTitle();
             await jobScraping.scrapPosition();
             await jobScraping.scrapRequirement();
@@ -47,12 +47,6 @@ const siteScraping = () => {
         break;
     }
   });
-};
-
-const delay = (milliseconds: number) => new Promise((resolve) => setTimeout(resolve, milliseconds));
-
-const jobPostingAction = () => {
-  siteScraping();
 };
 
 // 3일마다 아침 9시에 동작
