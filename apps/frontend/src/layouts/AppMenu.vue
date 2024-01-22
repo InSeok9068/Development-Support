@@ -24,6 +24,7 @@ const model = ref([
     items: [
       { label: '오늘 한일', icon: 'pi pi-fw pi-check-square', to: '/today-work' },
       { label: '한일 목록', icon: 'pi pi-fw pi-list', to: '/work-list' },
+      { label: '이름 짓기', icon: 'pi pi-fw pi-pencil', to: '/namer' },
       { label: '기술 스펙', icon: 'pi pi-fw pi-server', to: '/tech-spec' },
     ],
   },

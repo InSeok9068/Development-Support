@@ -1,6 +1,7 @@
 import { logger } from '@/configs';
 import { schema } from '@/graphql/schema';
 import { authMiddleware, errorMiddleware, limiterMiddleware, morganMiddleware } from '@/middlewares';
+import { newsletterScrapSchedule } from '@/schedules';
 import cors from 'cors';
 import dotenv from 'dotenv';
 import express, { Express, Request, Response } from 'express';
@@ -46,6 +47,9 @@ app.get('/*', (_req: Request, res: Response) => {
 });
 
 app.listen(port, () => {
+  // 스케줄 실행 START
+  newsletterScrapSchedule;
+  // 스케줄 실행 END
   logger.info('App Start');
   console.log(`[server]: Server is running at <http://localhost:${port}>`);
 });
