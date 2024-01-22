@@ -6,7 +6,9 @@
           <Column field="source" header="소스"></Column>
           <Column field="title" header="제목">
             <template #body="slotProps">
-              <a :href="slotProps.data.sourceLink">{{ slotProps.data.title }}</a>
+              <a :href="slotProps.data.sourceLink" target="_blank" rel="noopener noreferrer">{{
+                slotProps.data.title
+              }}</a>
             </template>
           </Column>
           <Column field="action" header="요약"></Column>
@@ -28,8 +30,6 @@ import { onMounted } from 'vue';
 const { newsletters, newslettersSearchArgs, newsletterListArgs } = useNewsletter();
 
 onMounted(() => newsletters(newslettersSearchArgs.value));
-
-console.log('임시');
 </script>
 
 <style lang="scss" scoped></style>
