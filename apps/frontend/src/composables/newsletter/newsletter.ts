@@ -24,6 +24,7 @@ const useNewsletter = () => {
       newsletterListArgs.value = {
         item: result.data?.newsletters?.map((newsletter) => {
           return {
+            id: newsletter?.id,
             title: newsletter?.title,
             source: newsletter?.source,
             sourceLink: newsletter?.sourceLink,

@@ -3,6 +3,7 @@ export interface UiNewslettersSearchArgs {
 }
 
 export interface UiNewsletterItemArgs {
+  id: string;
   title: string;
   source?: string;
   sourceLink?: string;

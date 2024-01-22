@@ -11,7 +11,17 @@
               }}</a>
             </template>
           </Column>
-          <Column field="action" header="요약"></Column>
+          <Column header="요약">
+            <template #body="slotProps">
+              <Button
+                label="(AI) 요약보기"
+                type="button"
+                severity="help"
+                rounded
+                @click="aiSummary(slotProps.data.id)"
+              ></Button>
+            </template>
+          </Column>
         </DataTable>
       </TabPanel>
       <TabPanel header="GeekNews">
@@ -30,6 +40,10 @@ import { onMounted } from 'vue';
 const { newsletters, newslettersSearchArgs, newsletterListArgs } = useNewsletter();
 
 onMounted(() => newsletters(newslettersSearchArgs.value));
+
+const aiSummary = (id: string) => {
+  alert('준비중 입니다!');
+};
 </script>
 
 <style lang="scss" scoped></style>
