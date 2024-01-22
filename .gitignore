@@ -22,6 +22,9 @@ dist
 **/npm-debug.log*
 **/.pnpm-debug.log*
 
+# Vite Workspace
+**/vite.config.mts.timestamp-*
+
 ### Backend
 
 # Prisma
