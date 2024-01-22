@@ -1,6 +1,7 @@
 import { urlDashBoard, type UrlDashBoard } from '@/router/url/dashboard.url';
 import { urlIndex, type UrlIndex } from '@/router/url/index.url';
 import { urlLogin, type UrlLogin } from '@/router/url/login.url';
+import { urlNamer, type UrlNamer } from '@/router/url/namer.url';
 import { urlNewsletter, type UrlNewsletter } from '@/router/url/newsletter.url';
 import { urlTechSpec, type UrlTechSpec } from '@/router/url/tech.spec.url ';
 import { urlTodayWork, type UrlTodayWork } from '@/router/url/today.work.url';
@@ -21,6 +22,7 @@ export interface IPlgNavi {
   techSpec: (router?: VueRouter) => UrlTechSpec;
   workList: (router?: VueRouter) => UrlWorkList;
   newsletter: (router?: VueRouter) => UrlNewsletter;
+  namer: (router?: VueRouter) => UrlNamer;
 }
 
 export default {
@@ -33,6 +35,7 @@ export default {
       techSpec: urlTechSpec,
       workList: urlWorkList,
       newsletter: urlNewsletter,
+      namer: urlNamer,
     };
     app.config.globalProperties.$navi = navi;
     app.provide(PLUGIN_NAVIGATOR_NAME, app.config.globalProperties.$navi);
