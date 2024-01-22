@@ -1,0 +1,14 @@
+type NameSuggest {
+  nameSuggest: String!
+}
+
+type Query {
+  nameSuggestions(input: NameSuggestionsInput!): [NameSuggest]!
+}
+
+input NameSuggestionsInput {
+  lang: String!
+  type: String!
+  crud: String!
+  input: String!
+}

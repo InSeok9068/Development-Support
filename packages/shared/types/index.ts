@@ -57,6 +57,18 @@ export type MutationUpdateTodayWorkItemForTransferArgs = {
   input: UpdateTodayWorkItemForTransferInput;
 };
 
+export type NameSuggest = {
+  __typename?: 'NameSuggest';
+  nameSuggest: Scalars['String']['output'];
+};
+
+export type NameSuggestionsInput = {
+  crud: Scalars['String']['input'];
+  input: Scalars['String']['input'];
+  lang: Scalars['String']['input'];
+  type: Scalars['String']['input'];
+};
+
 export type Newsletter = {
   __typename?: 'Newsletter';
   createdAt: Scalars['String']['output'];
@@ -76,12 +88,17 @@ export type NewslettersInput = {
 
 export type Query = {
   __typename?: 'Query';
+  nameSuggestions: Array<Maybe<NameSuggest>>;
   newsletters?: Maybe<Array<Maybe<Newsletter>>>;
   suggestions?: Maybe<Array<Maybe<Work>>>;
   user?: Maybe<User>;
   users?: Maybe<Array<Maybe<User>>>;
   work?: Maybe<Work>;
   works?: Maybe<Array<Maybe<Work>>>;
+};
+
+export type QueryNameSuggestionsArgs = {
+  input: NameSuggestionsInput;
 };
 
 export type QueryNewslettersArgs = {
