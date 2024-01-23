@@ -59,7 +59,12 @@
     </div>
     <div class="col-12 md:col-6">
       <div class="card">
-        <p>{{ nameSuggestionsArgs }}</p>
+        <div class="flex flex-column gap-2">
+          <span class="flex">
+            <h3>결과보기</h3>
+          </span>
+          <Textarea v-model="nameSuggestionsArgs" rows="20" />
+        </div>
       </div>
     </div>
   </div>

@@ -1,6 +1,8 @@
 <template>
   <div class="card col-12">
-    <Button label="스크랩 NOW" size="small" @click="onClickNowScrapingNewsletters()" />
+    <div class="flex justify-content-end">
+      <Button label="스크랩 NOW" size="small" @click="onClickNowScrapingNewsletters()" />
+    </div>
     <TabView>
       <TabPanel header="전체">
         <DataTable :value="newsletterListArgs.item" paginator :rows="20" :rows-per-page-options="[20, 50, 100]">
