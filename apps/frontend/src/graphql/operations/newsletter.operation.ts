@@ -1,8 +1,8 @@
 import { gql } from '@apollo/client/core';
 
 const NEWSLETTERS_QUERY = gql`
-  query Newsletters($input: NewslettersInput!) {
     newsletters(input: $input) {
+  query Newsletters($input: NewslettersInput!) {
       id
       title
       source

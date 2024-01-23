@@ -38,7 +38,7 @@ export interface LlamaApiChatCompletionsResponse extends LlamaCommonResponse {
 
 export interface LlamaApiCompletionsRequest {
   prompt: string;
-  stop: string[];
+  stop?: string[];
 }
 
 export interface LlamaApiChatCompletionsMessage {

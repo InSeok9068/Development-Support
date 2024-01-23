@@ -13,7 +13,9 @@ const newsletterScrapAction = async () => {
         await delay(500);
         const titleList = await page.$$eval('.topictitle > a > h1', (els) => els.map((el) => el.textContent ?? ''));
         const sourceLinkList = await page.$$eval('.topicdesc > a', (els) => els.map((el) => el.href));
-        const sourceUniqueKeyList = sourceLinkList.map((sourceLink) => sourceLink.match(/id=(\d+)$/)?.[1]);
+        const sourceUniqueKeyList = sourceLinkList.map(
+          (sourceLink) => source + '-' + sourceLink.match(/id=(\d+)$/)?.[1],
+        );
         for (let i = 0; i < titleList.length; i++) {
           await createNewsletter({
             source,

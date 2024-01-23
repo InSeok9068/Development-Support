@@ -1,9 +1,5 @@
-type NameSuggest {
-  nameSuggest: String!
-}
-
 type Query {
-  nameSuggestions(input: NameSuggestionsInput!): [NameSuggest]!
+  nameSuggestions(input: NameSuggestionsInput!): String!
 }
 
 input NameSuggestionsInput {

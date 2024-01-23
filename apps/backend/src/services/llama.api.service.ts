@@ -10,14 +10,20 @@ import dotenv from 'dotenv';
 dotenv.config({ path: `.env.${process.env.NODE_ENV}` });
 
 const llamaApiCompletions = async (param: LlamaApiCompletionsRequest) => {
-  const reponse = await axios.post<LlamaApiCompletionsResponse>(process.env.LLAMA_API_URL + '/v1/completions', param);
+  const reponse = await axios.post<LlamaApiCompletionsResponse>(process.env.LLAMA_API_URL + '/v1/completions', {
+    max_tokens: 100,
+    ...param,
+  });
   return reponse.data;
 };
 
 const llamaApiChatCompletions = async (param: LlamaApiChatCompletionsRequest) => {
   const reponse = await axios.post<LlamaApiChatCompletionsResponse>(
     process.env.LLAMA_API_URL + '/v1/chat/completions',
-    param,
+    {
+      max_tokens: 100,
+      ...param,
+    },
   );
   return reponse.data;
 };
