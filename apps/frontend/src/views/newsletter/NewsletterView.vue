@@ -1,5 +1,6 @@
 <template>
   <div class="card col-12">
+    <Button label="스크랩 NOW" size="small" @click="onClickNowScrapingNewsletters()" />
     <TabView>
       <TabPanel header="전체">
         <DataTable :value="newsletterListArgs.item" paginator :rows="20" :rows-per-page-options="[20, 50, 100]">
@@ -35,10 +36,10 @@
 </template>
 
 <script setup lang="ts">
+import { useDialog } from '@/composables/dialog';
 import { useNewsletter } from '@/composables/newsletter/newsletter';
 import { onMounted } from 'vue';
-import { useDialog } from '@/composables/dialog';
-const { newsletters, newslettersSearchArgs, newsletterListArgs } = useNewsletter();
+const { newsletters, nowScrapingNewsletters, newslettersSearchArgs, newsletterListArgs } = useNewsletter();
 const { dialog } = useDialog();
 
 onMounted(() => newsletters(newslettersSearchArgs.value));
@@ -46,6 +47,10 @@ onMounted(() => newsletters(newslettersSearchArgs.value));
 const aiSummary = (id: string) => {
   dialog.value.message = '준비 중입니다!';
   dialog.value.show = true;
+};
+
+const onClickNowScrapingNewsletters = async () => {
+  await nowScrapingNewsletters();
 };
 </script>
 

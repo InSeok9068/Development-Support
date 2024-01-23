@@ -12,4 +12,12 @@ const NEWSLETTERS_QUERY = gql`
   }
 `;
 
-export { NEWSLETTERS_QUERY };
+const NOW_SCRAPING_NEWSLETTERS_MUTATION = gql`
+  mutation NowScrapingNewsletters {
+    nowScrapingNewsletters {
+      id
+    }
+  }
+`;
+
+export { NEWSLETTERS_QUERY, NOW_SCRAPING_NEWSLETTERS_MUTATION };

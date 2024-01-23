@@ -36,6 +36,7 @@ export type Mutation = {
   __typename?: 'Mutation';
   createTodayWorkItem: Work;
   deleteTodayWorkItem: WorkItem;
+  nowScrapingNewsletters?: Maybe<Array<Maybe<Newsletter>>>;
   sendWeeklyReport: Scalars['Boolean']['output'];
   updateTodayWorkItem: Work;
   updateTodayWorkItemForTransfer: Work;
@@ -189,6 +190,13 @@ export type NewslettersQuery = {
     sourceLink?: string | null;
     originLink?: string | null;
   } | null> | null;
+};
+
+export type NowScrapingNewslettersMutationVariables = Exact<{ [key: string]: never }>;
+
+export type NowScrapingNewslettersMutation = {
+  __typename?: 'Mutation';
+  nowScrapingNewsletters?: Array<{ __typename?: 'Newsletter'; id: string } | null> | null;
 };
 
 export type WorksQueryVariables = Exact<{

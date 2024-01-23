@@ -1,8 +1,8 @@
 import { useToast } from '@/composables/toast';
-import { NEWSLETTERS_QUERY } from '@/graphql/operations/newsletter.operation';
+import { NEWSLETTERS_QUERY, NOW_SCRAPING_NEWSLETTERS_MUTATION } from '@/graphql/operations/newsletter.operation';
 import type { UiNewsletterItemArgs, UiNewsletterListArgs, UiNewslettersSearchArgs } from '@/ui/newsletter.ui';
-import type { NewslettersQuery, QueryNewslettersArgs } from '@support/shared/types';
-import { useQuery } from '@vue/apollo-composable';
+import type { Newsletter, NewslettersQuery, QueryNewslettersArgs } from '@support/shared/types';
+import { useMutation, useQuery } from '@vue/apollo-composable';
 import { ref } from 'vue';
 const { toast } = useToast();
 
@@ -42,10 +42,24 @@ const useNewsletter = () => {
     });
   };
 
+  const nowScrapingNewsletters = async () => {
+    const { mutate } = useMutation<Newsletter>(NOW_SCRAPING_NEWSLETTERS_MUTATION, {
+      refetchQueries: [NEWSLETTERS_QUERY, 'Newsletters'],
+    });
+
+    await mutate().catch((error) => {
+      toast.value = {
+        ...toast.value,
+        detail: error.message,
+      };
+    });
+  };
+
   return {
     newslettersSearchArgs,
     newsletterListArgs,
     newsletters,
+    nowScrapingNewsletters,
   };
 };
 
