@@ -15,12 +15,14 @@
     <AppConfirmDialog />
     <AppDialog />
     <AppToast />
+    <AppLoading />
   </div>
 </template>
 
 <script setup>
 import AppConfirmDialog from '@/components/app/AppConfirmDialog.vue';
 import AppDialog from '@/components/app/AppDialog.vue';
+import AppLoading from '@/components/app/AppLoading.vue';
 import AppToast from '@/components/app/AppToast.vue';
 import { useAuth } from '@/composables/auth';
 import { auth } from '@/composables/firebase';
