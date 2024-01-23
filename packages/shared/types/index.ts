@@ -177,6 +177,29 @@ export type NameSuggestionsQueryVariables = Exact<{
 
 export type NameSuggestionsQuery = { __typename?: 'Query'; nameSuggestions: string };
 
+export type NewslettersQueryVariables = Exact<{
+  input: NewslettersInput;
+}>;
+
+export type NewslettersQuery = {
+  __typename?: 'Query';
+  newsletters?: Array<{
+    __typename?: 'Newsletter';
+    id: string;
+    title: string;
+    source: string;
+    sourceLink?: string | null;
+    originLink?: string | null;
+  } | null> | null;
+};
+
+export type NowScrapingNewslettersMutationVariables = Exact<{ [key: string]: never }>;
+
+export type NowScrapingNewslettersMutation = {
+  __typename?: 'Mutation';
+  nowScrapingNewsletters?: Array<{ __typename?: 'Newsletter'; id: string } | null> | null;
+};
+
 export type WorksQueryVariables = Exact<{
   input: WorksInput;
 }>;
