@@ -39,11 +39,9 @@ const useNewsletter = () => {
   };
 
   const nowScrapingNewsletters = async () => {
-    const { apolloMutation } = useApolloMutation<Newsletter>(NOW_SCRAPING_NEWSLETTERS_MUTATION, {
-      refetchQueries: [NEWSLETTERS_QUERY, 'Newsletters'],
-    });
-
+    const { apolloMutation } = useApolloMutation<Newsletter>(NOW_SCRAPING_NEWSLETTERS_MUTATION);
     await apolloMutation();
+    await newsletters(newslettersSearchArgs.value);
   };
 
   return {
