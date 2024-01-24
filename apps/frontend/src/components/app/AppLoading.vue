@@ -4,7 +4,9 @@
     modal
     :pt="{
       root: {
-        style: 'box-shadow : none',
+        style: {
+          'box-shadow': 'none',
+        },
       },
     }"
   >
@@ -17,6 +19,4 @@
 <script setup lang="ts">
 import { useLoading } from '@/composables/loading';
 const { loading } = useLoading();
-// import { useGlobalMutationLoading } from '@vue/apollo-composable';
-// const loading = useGlobalMutationLoading();
 </script>

@@ -1,3 +1,4 @@
+import { useLoading } from '@/composables/loading';
 import { useToast } from '@/composables/toast';
 import { NEWSLETTERS_QUERY, NOW_SCRAPING_NEWSLETTERS_MUTATION } from '@/graphql/operations/newsletter.operation';
 import type { UiNewsletterItemArgs, UiNewsletterListArgs, UiNewslettersSearchArgs } from '@/ui/newsletter.ui';
@@ -5,6 +6,7 @@ import type { Newsletter, NewslettersQuery, QueryNewslettersArgs } from '@suppor
 import { useMutation, useQuery } from '@vue/apollo-composable';
 import { ref } from 'vue';
 const { toast } = useToast();
+const { loading } = useLoading();
 
 const useNewsletter = () => {
   const newslettersSearchArgs = ref<UiNewslettersSearchArgs>({
