@@ -1,9 +1,9 @@
 import { useToast } from '@/composables/toast';
+import { useApolloQuery } from '@/composables/use.apollo.query';
 import { WORKS_QUERY } from '@/graphql/operations/today.work.operation';
 import type { UiWorkItemArgs, UiWorkListArgs, UiWorkListSearchArgs } from '@/ui/work.list.ui';
 import type { QueryWorksArgs, WorksQuery } from '@support/shared/types';
 import { timeUtil, toMillisecondString } from '@support/shared/utils/time.util';
-import { useQuery } from '@vue/apollo-composable';
 import { ref } from 'vue';
 const { toast } = useToast();
 
@@ -17,36 +17,29 @@ const useWorkList = () => {
     item: [] as UiWorkItemArgs[],
   });
 
-  const works = (workListSearchArgs: UiWorkListSearchArgs) => {
-    const { onResult, onError } = useQuery<WorksQuery, QueryWorksArgs>(WORKS_QUERY, {
+  const works = async (workListSearchArgs: UiWorkListSearchArgs) => {
+    const { apolloQuery } = useApolloQuery<WorksQuery, QueryWorksArgs>(WORKS_QUERY, {
       input: {
         startDate: workListSearchArgs.stratDate,
         endDate: workListSearchArgs.endDate,
       },
     });
 
-    onResult((result) => {
-      workListArgs.value = {
-        item: result.data?.works!.flatMap((work) =>
-          work!.workItems!.map((item) => ({
-            date: toMillisecondString({
-              dateTime: item!.createdAt,
-              outFormat: 'YYYY-MM-DD',
-            }),
-            title: work!.title,
-            content: item!.content,
-            time: item!.time,
-          })),
-        ),
-      };
-    });
+    const result = await apolloQuery();
 
-    onError((error) => {
-      toast.value = {
-        ...toast.value,
-        detail: error.message,
-      };
-    });
+    workListArgs.value = {
+      item: result.data?.works!.flatMap((work) =>
+        work!.workItems!.map((item) => ({
+          date: toMillisecondString({
+            dateTime: item!.createdAt,
+            outFormat: 'YYYY-MM-DD',
+          }),
+          title: work!.title,
+          content: item!.content,
+          time: item!.time,
+        })),
+      ),
+    };
   };
 
   return {

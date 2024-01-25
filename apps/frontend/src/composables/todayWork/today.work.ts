@@ -1,4 +1,3 @@
-import { useToast } from '@/composables/toast';
 import { useApolloMutation } from '@/composables/use.apollo.mutation';
 import { useApolloQuery } from '@/composables/use.apollo.query';
 import {
@@ -31,7 +30,6 @@ import {
 } from '@support/shared/types';
 import dayjs from 'dayjs';
 import { ref } from 'vue';
-const { toast } = useToast();
 
 const useTodayWork = () => {
   const todayWorkInputArgs = ref<UiTodayWorkInputArgs>({

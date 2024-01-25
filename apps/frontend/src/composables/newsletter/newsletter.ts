@@ -1,13 +1,9 @@
-import { useLoading } from '@/composables/loading';
-import { useToast } from '@/composables/toast';
 import { useApolloMutation } from '@/composables/use.apollo.mutation';
 import { useApolloQuery } from '@/composables/use.apollo.query';
 import { NEWSLETTERS_QUERY, NOW_SCRAPING_NEWSLETTERS_MUTATION } from '@/graphql/operations/newsletter.operation';
 import type { UiNewsletterItemArgs, UiNewsletterListArgs, UiNewslettersSearchArgs } from '@/ui/newsletter.ui';
 import type { Newsletter, NewslettersQuery, QueryNewslettersArgs } from '@support/shared/types';
 import { ref } from 'vue';
-const { toast } = useToast();
-const { loading } = useLoading();
 
 const useNewsletter = () => {
   const newslettersSearchArgs = ref<UiNewslettersSearchArgs>({
