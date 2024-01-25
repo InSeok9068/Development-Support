@@ -1,4 +1,6 @@
 import { useToast } from '@/composables/toast';
+import { useApolloMutation } from '@/composables/use.apollo.mutation';
+import { useApolloQuery } from '@/composables/use.apollo.query';
 import {
   CREATE_TODAY_WORK_ITEM_MUTATION,
   DELETE_TODAY_WORK_ITEM_MUTATION,
@@ -27,7 +29,6 @@ import {
   type WorkItem,
   type WorksQuery,
 } from '@support/shared/types';
-import { CreateTodayWorkItemInputValidator } from '@support/shared/validators';
 import { useMutation, useQuery } from '@vue/apollo-composable';
 import dayjs from 'dayjs';
 import { ref } from 'vue';
@@ -52,65 +53,46 @@ const useTodayWork = () => {
     suggestion: [],
   });
 
-  const works = (searchArgs: UiTodayWorkSearchArgs) => {
-    const { onResult, onError } = useQuery<WorksQuery, QueryWorksArgs>(WORKS_QUERY, {
+  const works = async (searchArgs: UiTodayWorkSearchArgs) => {
+    const { apolloQuery } = useApolloQuery<WorksQuery, QueryWorksArgs>(WORKS_QUERY, {
       input: {
         startDate: searchArgs.date,
         endDate: searchArgs.date,
       },
     });
 
-    onResult((result) => {
-      todayWorkListArgs.value = {
-        item: result.data?.works?.map((work) => {
-          return {
-            id: Number(work?.id),
-            title: work?.title,
-            time: work?.time,
-            subItem: work?.workItems?.map((item) => {
-              return {
-                itemId: Number(item?.itemId),
-                content: item?.content,
-                time: item?.time,
-              };
-            }),
-          };
-        }) as UiTodayWorkItemArgs[],
-      };
-    });
+    const result = await apolloQuery();
 
-    onError((error) => {
-      toast.value = {
-        ...toast.value,
-        detail: error.message,
-      };
-    });
+    todayWorkListArgs.value = {
+      item: result.data?.works?.map((work) => {
+        return {
+          id: Number(work?.id),
+          title: work?.title,
+          time: work?.time,
+          subItem: work?.workItems?.map((item) => {
+            return {
+              itemId: Number(item?.itemId),
+              content: item?.content,
+              time: item?.time,
+            };
+          }),
+        };
+      }) as UiTodayWorkItemArgs[],
+    };
   };
 
   const createTodayWorkItem = async (input: CreateTodayWorkItemInput) => {
-    input.time = Number(input.time);
-
-    if (!CreateTodayWorkItemInputValidator.safeParse(input).success) {
-      toast.value = {
-        ...toast.value,
-        detail: '요청 데이터 확인',
-      };
-      return;
-    }
-
-    const { mutate } = useMutation<Work, CreateTodayWorkItemMutationVariables>(CREATE_TODAY_WORK_ITEM_MUTATION, {
-      variables: {
-        input,
+    const { apolloMutation } = useApolloMutation<Work, CreateTodayWorkItemMutationVariables>(
+      CREATE_TODAY_WORK_ITEM_MUTATION,
+      {
+        variables: {
+          input,
+        },
       },
-      refetchQueries: [WORKS_QUERY, 'Works'],
-    });
+    );
 
-    await mutate().catch((error) => {
-      toast.value = {
-        ...toast.value,
-        detail: error.message,
-      };
-    });
+    await apolloMutation();
+    await works(todayWorkSearchArgs.value);
   };
 
   const updateTodayWorkItemForTransfer = async (input: UpdateTodayWorkItemForTransferInput) => {

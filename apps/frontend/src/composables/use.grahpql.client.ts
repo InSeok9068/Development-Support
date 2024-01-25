@@ -29,6 +29,14 @@ const unauthorizedLink = onError(({ networkError }) => {
 const apolloClient = new ApolloClient({
   link: concat(unauthorizedLink, concat(authLink, httpLink)),
   cache: new InMemoryCache(),
+  defaultOptions: {
+    query: {
+      fetchPolicy: 'network-only',
+    },
+    mutate: {
+      fetchPolicy: 'network-only',
+    },
+  },
 });
 
 export { apolloClient };

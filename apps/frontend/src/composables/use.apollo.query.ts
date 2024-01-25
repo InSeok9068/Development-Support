@@ -10,7 +10,9 @@ const useApolloQuery = <TResult = any, TVariables extends OperationVariables = O
   document: DocumentParameter<TResult, TVariables>,
   variables: VariablesParameter<TVariables>,
 ) => {
-  const { onResult, onError } = useQuery(document, variables);
+  const { onResult, onError } = useQuery(document, variables, {
+    fetchPolicy: 'network-only',
+  });
 
   const apolloQuery = () =>
     new Promise<ApolloQueryResult<TResult>>((resolve, reject) => {

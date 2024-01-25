@@ -24,7 +24,10 @@ const useApolloMutation = <TResult = any, TVariables extends OperationVariables 
   document: DocumentParameter<TResult, TVariables>,
   options?: OptionsParameter<TResult, TVariables>,
 ) => {
-  const { mutate } = useMutation(document, options);
+  const { mutate } = useMutation(document, {
+    fetchPolicy: 'network-only',
+    ...options,
+  });
 
   const apolloMutation = () =>
     new Promise<FetchResult<TResult>>((resolve, reject) => {
