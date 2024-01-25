@@ -1,14 +1,16 @@
+/* dotenv Setting */
+import dotenv from 'dotenv';
+import path from 'path';
+dotenv.config({ path: path.join(__dirname, '..', `.env.${process.env.NODE_ENV}`) });
+/* dotenv Setting */
+
 import { logger } from '@/configs';
 import { schema } from '@/graphql/schema';
 import { authMiddleware, errorMiddleware, limiterMiddleware, morganMiddleware } from '@/middlewares';
 import cors from 'cors';
-import dotenv from 'dotenv';
 import express, { Express, Request, Response } from 'express';
 import { createHandler } from 'graphql-http/lib/use/express';
 import helmet from 'helmet';
-import path from 'path';
-
-dotenv.config({ path: `.env.${process.env.NODE_ENV}` });
 
 const app: Express = express();
 const port = process.env.PORT || 4000;

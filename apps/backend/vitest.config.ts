@@ -5,5 +5,6 @@ export default defineConfig({
   plugins: [tsconfigPaths()],
   test: {
     testTimeout: 0,
+    setupFiles: ['./src/__tests__/setup/dotenv.ts'],
   },
 });

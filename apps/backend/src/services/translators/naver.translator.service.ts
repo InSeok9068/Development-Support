@@ -1,8 +1,5 @@
 import { NaverTranslatorResponse, Translator, TranslatorRequest } from '@/types/translator.type';
 import axios from 'axios';
-import dotenv from 'dotenv';
-
-dotenv.config({ path: `.env.${process.env.NODE_ENV}` });
 
 class NaverTranslatorService implements Translator {
   async translateText(param: TranslatorRequest): Promise<string> {
