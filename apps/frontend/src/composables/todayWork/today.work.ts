@@ -29,7 +29,6 @@ import {
   type WorkItem,
   type WorksQuery,
 } from '@support/shared/types';
-import { useMutation, useQuery } from '@vue/apollo-composable';
 import dayjs from 'dayjs';
 import { ref } from 'vue';
 const { toast } = useToast();
@@ -96,70 +95,51 @@ const useTodayWork = () => {
   };
 
   const updateTodayWorkItemForTransfer = async (input: UpdateTodayWorkItemForTransferInput) => {
-    const { mutate } = useMutation<Work, UpdateTodayWorkItemForTransferMutationVariables>(
+    const { apolloMutation } = useApolloMutation<Work, UpdateTodayWorkItemForTransferMutationVariables>(
       UPDATE_TODAY_WORK_ITEM_FOR_TRANSFER,
       {
         variables: {
           input,
         },
-        refetchQueries: [WORKS_QUERY, 'Works'],
       },
     );
 
-    await mutate().catch((error) => {
-      toast.value = {
-        ...toast.value,
-        detail: error.message,
-      };
-    });
+    await apolloMutation();
+    await works(todayWorkSearchArgs.value);
   };
 
   const deleteTodayWorkItem = async (itemId: number) => {
-    const { mutate } = useMutation<WorkItem, MutationDeleteTodayWorkItemArgs>(DELETE_TODAY_WORK_ITEM_MUTATION, {
-      variables: {
-        itemId: String(itemId),
+    const { apolloMutation } = useApolloMutation<WorkItem, MutationDeleteTodayWorkItemArgs>(
+      DELETE_TODAY_WORK_ITEM_MUTATION,
+      {
+        variables: {
+          itemId: String(itemId),
+        },
       },
-      refetchQueries: [WORKS_QUERY, 'Works'],
-    });
+    );
 
-    await mutate().catch((error) => {
-      toast.value = {
-        detail: error.message,
-        life: 300,
-      };
-    });
+    await apolloMutation();
+    await works(todayWorkSearchArgs.value);
   };
 
   const sendWeeklyReport = async () => {
-    const { mutate } = useMutation<boolean>(SEND_WEEKLY_REPORT_MUTATION);
+    const { apolloMutation } = useApolloMutation<boolean>(SEND_WEEKLY_REPORT_MUTATION);
 
-    await mutate().catch((error) => {
-      toast.value = {
-        ...toast.value,
-        detail: error.message,
-      };
-    });
+    await apolloMutation();
   };
 
   const suggestions = async (title: string) => {
-    const { onResult, onError } = useQuery<SuggestionsQuery, SuggestionsQueryVariables>(SUGGESTIONS_QUERY, {
+    const { apolloQuery } = useApolloQuery<SuggestionsQuery, SuggestionsQueryVariables>(SUGGESTIONS_QUERY, {
       input: {
         title,
       },
     });
 
-    onResult((result) => {
-      suggestionsArgs.value = {
-        suggestion: result.data?.suggestions?.map((suggestion) => suggestion?.title) as string[],
-      };
-    });
+    const result = await apolloQuery();
 
-    onError((error) => {
-      toast.value = {
-        ...toast.value,
-        detail: error.message,
-      };
-    });
+    suggestionsArgs.value = {
+      suggestion: result.data?.suggestions?.map((suggestion) => suggestion?.title) as string[],
+    };
   };
 
   return {
