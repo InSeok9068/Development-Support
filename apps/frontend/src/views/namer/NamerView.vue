@@ -63,7 +63,7 @@
           <span class="flex">
             <h3>결과보기</h3>
           </span>
-          <Textarea v-model="nameSuggestionsArgs" rows="20" />
+          <Textarea v-model="nameSuggestionsArgs" rows="20" readonly />
         </div>
       </div>
     </div>
