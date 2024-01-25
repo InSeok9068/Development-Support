@@ -7,9 +7,16 @@ const newsletters = async (input: NewslettersInput) => {
       where: {
         source: input.source,
       },
+      orderBy: {
+        createdAt: 'desc',
+      },
     });
   } else {
-    return await prisma.newsletterScrap.findMany();
+    return await prisma.newsletterScrap.findMany({
+      orderBy: {
+        createdAt: 'desc',
+      },
+    });
   }
 };
 

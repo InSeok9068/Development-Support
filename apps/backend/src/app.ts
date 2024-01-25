@@ -7,6 +7,7 @@ dotenv.config({ path: path.join(__dirname, '..', `.env.${process.env.NODE_ENV}`)
 import { logger } from '@/configs';
 import { schema } from '@/graphql/schema';
 import { authMiddleware, errorMiddleware, limiterMiddleware, morganMiddleware } from '@/middlewares';
+import { newsletterScrapSchedule } from '@/schedules/newsletter.scrap.schedule';
 import cors from 'cors';
 import express, { Express, Request, Response } from 'express';
 import { createHandler } from 'graphql-http/lib/use/express';
@@ -49,7 +50,7 @@ app.get('/*', (_req: Request, res: Response) => {
 
 app.listen(port, () => {
   // 스케줄 실행 START
-  // newsletterScrapSchedule;
+  newsletterScrapSchedule;
   // 스케줄 실행 END
   logger.info('App Start');
   console.log(`[server]: Server is running at <http://localhost:${port}>`);

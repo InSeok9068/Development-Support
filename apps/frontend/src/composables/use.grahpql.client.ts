@@ -23,7 +23,9 @@ const authLink = new ApolloLink((operation, forward) => {
 });
 
 const unauthorizedLink = onError(({ networkError }) => {
-  if ((networkError as any).statusCode === 401) location.href = '/login';
+  if (networkError) {
+    if ((networkError as any)?.statusCode === 401) location.href = '/login';
+  }
 });
 
 const apolloClient = new ApolloClient({
