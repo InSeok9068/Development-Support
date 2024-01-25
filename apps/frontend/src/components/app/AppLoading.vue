@@ -8,6 +8,12 @@
           'box-shadow': 'none',
         },
       },
+      mask: {
+        style: {
+          animation: 'none',
+          'background-color': 'unset',
+        },
+      },
     }"
   >
     <template #container="{}">
