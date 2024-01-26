@@ -7,6 +7,15 @@ const config: CodegenConfig = {
     '../../packages/shared/types/index.ts': {
       plugins: ['typescript', 'typescript-operations'],
     },
+    '../../packages/shared/validators/index.ts': {
+      plugins: ['typescript-validation-schema'],
+      config: {
+        importFrom: '../types',
+        useTypeImports: true,
+        notAllowEmptyString: true,
+        schema: 'zod',
+      },
+    },
   },
 };
 export default config;

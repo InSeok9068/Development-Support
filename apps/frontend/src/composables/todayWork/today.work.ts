@@ -1,5 +1,6 @@
 import { useApolloMutation } from '@/composables/use.apollo.mutation';
 import { useApolloQuery } from '@/composables/use.apollo.query';
+import { useValidator } from '@/composables/validator';
 import {
   CREATE_TODAY_WORK_ITEM_MUTATION,
   DELETE_TODAY_WORK_ITEM_MUTATION,
@@ -28,8 +29,10 @@ import {
   type WorkItem,
   type WorksQuery,
 } from '@support/shared/types';
+import { CreateTodayWorkItemInputSchema, UpdateTodayWorkItemForTransferInputSchema } from '@support/shared/validators';
 import dayjs from 'dayjs';
 import { ref } from 'vue';
+const { safeParseIfErrorToast } = useValidator();
 
 const useTodayWork = () => {
   const todayWorkInputArgs = ref<UiTodayWorkInputArgs>({
@@ -79,6 +82,10 @@ const useTodayWork = () => {
   };
 
   const createTodayWorkItem = async (input: CreateTodayWorkItemInput) => {
+    if (!safeParseIfErrorToast(CreateTodayWorkItemInputSchema().safeParse(input))) {
+      return;
+    }
+
     const { apolloMutation } = useApolloMutation<Work, CreateTodayWorkItemMutationVariables>(
       CREATE_TODAY_WORK_ITEM_MUTATION,
       {
@@ -93,6 +100,10 @@ const useTodayWork = () => {
   };
 
   const updateTodayWorkItemForTransfer = async (input: UpdateTodayWorkItemForTransferInput) => {
+    if (!safeParseIfErrorToast(UpdateTodayWorkItemForTransferInputSchema().safeParse(input))) {
+      return;
+    }
+
     const { apolloMutation } = useApolloMutation<Work, UpdateTodayWorkItemForTransferMutationVariables>(
       UPDATE_TODAY_WORK_ITEM_FOR_TRANSFER,
       {

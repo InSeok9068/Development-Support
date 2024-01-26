@@ -1,11 +1,9 @@
-import { useToast } from '@/composables/toast';
 import { useApolloQuery } from '@/composables/use.apollo.query';
 import { WORKS_QUERY } from '@/graphql/operations/today.work.operation';
 import type { UiWorkItemArgs, UiWorkListArgs, UiWorkListSearchArgs } from '@/ui/work.list.ui';
 import type { QueryWorksArgs, WorksQuery } from '@support/shared/types';
 import { timeUtil, toMillisecondString } from '@support/shared/utils/time.util';
 import { ref } from 'vue';
-const { toast } = useToast();
 
 const useWorkList = () => {
   const workListSearchArgs = ref<UiWorkListSearchArgs>({
