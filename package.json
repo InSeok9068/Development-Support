@@ -30,7 +30,7 @@
     "@support/shared": "workspace:*",
     "@types/lodash": "^4.14.202",
     "@types/node": "^20.11.7",
-    "@vitest/ui": "^1.2.1",
+    "@vitest/ui": "^1.2.2",
     "eslint": "^8.56.0",
     "husky": "^9.0.6",
     "lint-staged": "^15.2.0",
@@ -38,7 +38,7 @@
     "ts-node": "^10.9.2",
     "turbo": "^1.11.3",
     "typescript": "^5.3.3",
-    "vitest": "^1.2.1"
+    "vitest": "^1.2.2"
   },
   "lint-staged": {
     "*.{js,ts}": [
