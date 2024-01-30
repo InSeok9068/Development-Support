@@ -14,6 +14,9 @@ const config: CodegenConfig = {
         useTypeImports: true,
         notAllowEmptyString: true,
         schema: 'zod',
+        directives: {
+          constraint: {},
+        },
       },
     },
   },

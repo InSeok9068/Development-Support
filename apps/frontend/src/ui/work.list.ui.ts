@@ -1,5 +1,5 @@
 export interface UiWorkListSearchArgs {
-  stratDate: string;
+  startDate: string;
   endDate: string;
 }
 

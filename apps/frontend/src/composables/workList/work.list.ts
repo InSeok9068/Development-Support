@@ -1,13 +1,16 @@
 import { useApolloQuery } from '@/composables/use.apollo.query';
+import { useValidator } from '@/composables/validator';
 import { WORKS_QUERY } from '@/graphql/operations/today.work.operation';
 import type { UiWorkItemArgs, UiWorkListArgs, UiWorkListSearchArgs } from '@/ui/work.list.ui';
 import type { QueryWorksArgs, WorksQuery } from '@support/shared/types';
 import { timeUtil, toMillisecondString } from '@support/shared/utils/time.util';
+import { WorksInputSchema } from '@support/shared/validators';
 import { ref } from 'vue';
+const { safeParseIfErrorToast } = useValidator();
 
 const useWorkList = () => {
   const workListSearchArgs = ref<UiWorkListSearchArgs>({
-    stratDate: timeUtil.today('YYYY-MM-DD'),
+    startDate: timeUtil.today('YYYY-MM-DD'),
     endDate: timeUtil.today('YYYY-MM-DD'),
   });
 
@@ -16,11 +19,12 @@ const useWorkList = () => {
   });
 
   const works = async (workListSearchArgs: UiWorkListSearchArgs) => {
+    if (!safeParseIfErrorToast(WorksInputSchema().safeParse(workListSearchArgs))) {
+      return;
+    }
+
     const { apolloQuery } = useApolloQuery<WorksQuery, QueryWorksArgs>(WORKS_QUERY, {
-      input: {
-        startDate: workListSearchArgs.stratDate,
-        endDate: workListSearchArgs.endDate,
-      },
+      input: workListSearchArgs,
     });
 
     const result = await apolloQuery();

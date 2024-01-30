@@ -1,8 +1,11 @@
 import { useApolloQuery } from '@/composables/use.apollo.query';
+import { useValidator } from '@/composables/validator';
 import { NAME_SUGGESTIONS_QUERY } from '@/graphql/operations/namer.operation';
 import type { UiNamerFormArgs } from '@/ui/namer.ui';
 import type { NameSuggestionsQuery, QueryNameSuggestionsArgs } from '@support/shared/types';
+import { NameSuggestionsInputSchema } from '@support/shared/validators';
 import { ref } from 'vue';
+const { safeParseIfErrorToast } = useValidator();
 
 const useNamer = () => {
   const namerFormArgs = ref<UiNamerFormArgs>({
@@ -15,6 +18,12 @@ const useNamer = () => {
   const nameSuggestionsArgs = ref<string>();
 
   const nameSuggestions = async (namerFormArgs: UiNamerFormArgs) => {
+    if (!safeParseIfErrorToast(NameSuggestionsInputSchema().safeParse(namerFormArgs))) {
+      return;
+    }
+
+    nameSuggestionsArgs.value = '';
+
     const { apolloQuery } = useApolloQuery<NameSuggestionsQuery, QueryNameSuggestionsArgs>(NAME_SUGGESTIONS_QUERY, {
       input: namerFormArgs,
     });
