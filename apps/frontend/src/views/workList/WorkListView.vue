@@ -29,7 +29,7 @@ watch(
   () => dates.value,
   (cur, _) => {
     workListSearchArgs.value = {
-      stratDate: toTimeString({
+      startDate: toTimeString({
         dateTime: String(dates.value?.at(0) ?? today('YYYY-MM-DD')),
         outFormat: 'YYYY-MM-DD',
       }),
