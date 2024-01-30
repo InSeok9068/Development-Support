@@ -1,1 +1,13 @@
-directive @constraint on FIELD_DEFINITION | ARGUMENT_DEFINITION | INPUT_FIELD_DEFINITION
+directive @constraint(
+  format: String
+  min: Int
+  max: Int
+  gt: Int
+  gte: Int
+  lt: Int
+  lte: Int
+  regex: String
+  includes: String
+  startsWith: String
+  endsWith: String
+) on ARGUMENT_DEFINITION | INPUT_FIELD_DEFINITION
