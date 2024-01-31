@@ -2,3 +2,23 @@ enum Source {
   GeekNews
   Yozm
 }
+
+enum NameSuggestionsLang {
+  Java
+  JavaScript
+  TypeScript
+}
+
+enum NameSuggestionsType {
+  Class
+  Method
+  Variable
+  Url
+}
+
+enum NameSuggestionsCrud {
+  Create
+  Read
+  Update
+  Delete
+}
