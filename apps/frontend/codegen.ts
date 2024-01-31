@@ -6,12 +6,16 @@ const config: CodegenConfig = {
   generates: {
     '../../packages/shared/types/index.ts': {
       plugins: ['typescript', 'typescript-operations'],
+      config: {
+        enumsAsConst: true,
+      },
     },
     '../../packages/shared/validators/index.ts': {
       plugins: ['typescript-validation-schema'],
       config: {
         importFrom: '../types',
         useTypeImports: true,
+        enumsAsTypes: true,
         notAllowEmptyString: true,
         schema: 'zod',
         directives: {

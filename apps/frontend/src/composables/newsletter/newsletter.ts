@@ -6,9 +6,7 @@ import type { Newsletter, NewslettersQuery, QueryNewslettersArgs } from '@suppor
 import { ref } from 'vue';
 
 const useNewsletter = () => {
-  const newslettersSearchArgs = ref<UiNewslettersSearchArgs>({
-    source: '',
-  });
+  const newslettersSearchArgs = ref<UiNewslettersSearchArgs>({});
 
   const newsletterListArgs = ref<UiNewsletterListArgs>({
     item: [] as UiNewsletterItemArgs[],

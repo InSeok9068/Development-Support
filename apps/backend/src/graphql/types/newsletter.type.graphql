@@ -1,7 +1,7 @@
 type Newsletter {
   id: ID!
   title: String!
-  source: String!
+  source: Source!
   sourceUniqueKey: String
   sourceLink: String
   originLink: String
@@ -19,12 +19,12 @@ type Mutation {
 }
 
 input NewslettersInput {
-  source: String
+  source: Source
 }
 
 input CreateNewsletterInput {
   title: String!
-  source: String!
+  source: Source!
   sourceUniqueKey: String
   sourceLink: String
   originLink: String

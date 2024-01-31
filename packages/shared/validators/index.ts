@@ -4,6 +4,7 @@ import type {
   CreateTodayWorkItemInput,
   NameSuggestionsInput,
   NewslettersInput,
+  Source,
   SuggestionsInput,
   UpdateTodayWorkItemForTransferInput,
   UpdateTodayWorkItemInput,
@@ -21,10 +22,12 @@ export const isDefinedNonNullAny = (v: any): v is definedNonNullAny => v !== und
 
 export const definedNonNullAnySchema = z.any().refine((v) => isDefinedNonNullAny(v));
 
+export const SourceSchema = z.enum(['GeekNews', 'Yozm']);
+
 export function CreateNewsletterInputSchema(): z.ZodObject<Properties<CreateNewsletterInput>> {
   return z.object({
     originLink: z.string().nullish(),
-    source: z.string().min(1),
+    source: SourceSchema,
     sourceLink: z.string().nullish(),
     sourceUniqueKey: z.string().nullish(),
     summary: z.string().nullish(),
@@ -54,7 +57,7 @@ export function NameSuggestionsInputSchema(): z.ZodObject<Properties<NameSuggest
 
 export function NewslettersInputSchema(): z.ZodObject<Properties<NewslettersInput>> {
   return z.object({
-    source: z.string().nullish(),
+    source: SourceSchema.nullish(),
   });
 }
 

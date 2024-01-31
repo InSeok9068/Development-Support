@@ -16,7 +16,7 @@ export type Scalars = {
 
 export type CreateNewsletterInput = {
   originLink?: InputMaybe<Scalars['String']['input']>;
-  source: Scalars['String']['input'];
+  source: Source;
   sourceLink?: InputMaybe<Scalars['String']['input']>;
   sourceUniqueKey?: InputMaybe<Scalars['String']['input']>;
   summary?: InputMaybe<Scalars['String']['input']>;
@@ -70,7 +70,7 @@ export type Newsletter = {
   createdAt: Scalars['String']['output'];
   id: Scalars['ID']['output'];
   originLink?: Maybe<Scalars['String']['output']>;
-  source: Scalars['String']['output'];
+  source: Source;
   sourceLink?: Maybe<Scalars['String']['output']>;
   sourceUniqueKey?: Maybe<Scalars['String']['output']>;
   summary?: Maybe<Scalars['String']['output']>;
@@ -79,7 +79,7 @@ export type Newsletter = {
 };
 
 export type NewslettersInput = {
-  source?: InputMaybe<Scalars['String']['input']>;
+  source?: InputMaybe<Source>;
 };
 
 export type Query = {
@@ -113,6 +113,12 @@ export type QueryWorksArgs = {
   input: WorksInput;
 };
 
+export const Source = {
+  GeekNews: 'GeekNews',
+  Yozm: 'Yozm',
+} as const;
+
+export type Source = (typeof Source)[keyof typeof Source];
 export type SuggestionsInput = {
   title: Scalars['String']['input'];
   uid?: InputMaybe<Scalars['ID']['input']>;
@@ -187,7 +193,7 @@ export type NewslettersQuery = {
     __typename?: 'Newsletter';
     id: string;
     title: string;
-    source: string;
+    source: Source;
     sourceLink?: string | null;
     originLink?: string | null;
   } | null> | null;

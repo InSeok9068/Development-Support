@@ -1,11 +1,13 @@
+import { Source } from '@support/shared/types';
+
 export interface UiNewslettersSearchArgs {
-  source?: string;
+  source?: Source;
 }
 
 export interface UiNewsletterItemArgs {
   id: string;
   title: string;
-  source?: string;
+  source?: Source;
   sourceLink?: string;
   originLink?: string;
 }
