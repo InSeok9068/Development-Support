@@ -12,7 +12,6 @@ const resolvers = {
 
   Mutation: {
     nowScrapingNewsletters: async (_: unknown) => {
-      await delay(2000);
       await newsletterScrapAction();
     },
   },
