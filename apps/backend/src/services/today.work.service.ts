@@ -18,9 +18,6 @@ const work = async (input: WorkInput) => {
         },
       },
     },
-    include: {
-      workItems: {},
-    },
   });
   return work;
 };
