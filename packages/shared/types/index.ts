@@ -59,10 +59,10 @@ export type MutationUpdateTodayWorkItemForTransferArgs = {
 };
 
 export const NameSuggestionsCrud = {
-  Create: 'Create',
-  Delete: 'Delete',
-  Read: 'Read',
-  Update: 'Update',
+  Create: 'CREATE',
+  Delete: 'DELETE',
+  Read: 'READ',
+  Update: 'UPDATE',
 } as const;
 
 export type NameSuggestionsCrud = (typeof NameSuggestionsCrud)[keyof typeof NameSuggestionsCrud];
@@ -74,17 +74,17 @@ export type NameSuggestionsInput = {
 };
 
 export const NameSuggestionsLang = {
-  Java: 'Java',
-  JavaScript: 'JavaScript',
-  TypeScript: 'TypeScript',
+  Java: 'JAVA',
+  JavaScript: 'JAVA_SCRIPT',
+  TypeScript: 'TYPE_SCRIPT',
 } as const;
 
 export type NameSuggestionsLang = (typeof NameSuggestionsLang)[keyof typeof NameSuggestionsLang];
 export const NameSuggestionsType = {
-  Class: 'Class',
-  Method: 'Method',
-  Url: 'Url',
-  Variable: 'Variable',
+  Class: 'CLASS',
+  Method: 'METHOD',
+  Url: 'URL',
+  Variable: 'VARIABLE',
 } as const;
 
 export type NameSuggestionsType = (typeof NameSuggestionsType)[keyof typeof NameSuggestionsType];
@@ -135,8 +135,8 @@ export type QueryWorksArgs = {
 };
 
 export const Source = {
-  GeekNews: 'GeekNews',
-  Yozm: 'Yozm',
+  GeekNews: 'GEEK_NEWS',
+  Yozm: 'YOZM',
 } as const;
 
 export type Source = (typeof Source)[keyof typeof Source];

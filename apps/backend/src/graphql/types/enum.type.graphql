@@ -1,24 +1,24 @@
 enum Source {
-  GeekNews
-  Yozm
+  GEEK_NEWS
+  YOZM
 }
 
 enum NameSuggestionsLang {
-  Java
-  JavaScript
-  TypeScript
+  JAVA
+  JAVA_SCRIPT
+  TYPE_SCRIPT
 }
 
 enum NameSuggestionsType {
-  Class
-  Method
-  Variable
-  Url
+  CLASS
+  METHOD
+  VARIABLE
+  URL
 }
 
 enum NameSuggestionsCrud {
-  Create
-  Read
-  Update
-  Delete
+  CREATE
+  READ
+  UPDATE
+  DELETE
 }

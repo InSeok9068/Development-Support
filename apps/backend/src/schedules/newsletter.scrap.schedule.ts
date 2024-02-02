@@ -1,12 +1,13 @@
 import { createNewsletter } from '@/services/newsletter.service';
+import { Source } from '@support/shared/types';
 import { delay } from '@support/shared/utils/time.util';
 import { CronJob } from 'cron';
 import puppeteer from 'puppeteer';
 
 const newsletterScrapAction = async () => {
-  for (const source of ['GeekNews']) {
+  for (const source of ['GEEK_NEWS']) {
     switch (source) {
-      case 'GeekNews': {
+      case Source.GeekNews: {
         const browser = await puppeteer.launch({ headless: 'new', args: ['--no-sandbox', '--disable-setuid-sandbox'] });
         const page = await browser.newPage();
         await page.goto('https://news.hada.io');

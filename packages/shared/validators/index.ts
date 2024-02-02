@@ -25,13 +25,13 @@ export const isDefinedNonNullAny = (v: any): v is definedNonNullAny => v !== und
 
 export const definedNonNullAnySchema = z.any().refine((v) => isDefinedNonNullAny(v));
 
-export const NameSuggestionsCrudSchema = z.enum(['Create', 'Delete', 'Read', 'Update']);
+export const NameSuggestionsCrudSchema = z.enum(['CREATE', 'DELETE', 'READ', 'UPDATE']);
 
-export const NameSuggestionsLangSchema = z.enum(['Java', 'JavaScript', 'TypeScript']);
+export const NameSuggestionsLangSchema = z.enum(['JAVA', 'JAVA_SCRIPT', 'TYPE_SCRIPT']);
 
-export const NameSuggestionsTypeSchema = z.enum(['Class', 'Method', 'Url', 'Variable']);
+export const NameSuggestionsTypeSchema = z.enum(['CLASS', 'METHOD', 'URL', 'VARIABLE']);
 
-export const SourceSchema = z.enum(['GeekNews', 'Yozm']);
+export const SourceSchema = z.enum(['GEEK_NEWS', 'YOZM']);
 
 export function CreateNewsletterInputSchema(): z.ZodObject<Properties<CreateNewsletterInput>> {
   return z.object({
