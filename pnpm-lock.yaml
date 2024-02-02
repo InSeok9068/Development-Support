@@ -90,6 +90,9 @@ importers:
       cross-env:
         specifier: ^7.0.3
         version: 7.0.3
+      dataloader:
+        specifier: ^2.2.2
+        version: 2.2.2
       dotenv:
         specifier: ^16.4.1
         version: 16.4.1
@@ -4317,7 +4320,6 @@ packages:
 
   /dataloader@2.2.2:
     resolution: {integrity: sha512-8YnDaaf7N3k/q5HnTJVuzSyLETjoZjVmHc4AeKAzOvKHEFQKcn64OKBfzHYtE9zGjctNM7V9I0MfnUVLpi7M5g==}
-    dev: true
 
   /dayjs@1.11.10:
     resolution: {integrity: sha512-vjAczensTgRcqDERK0SR2XMwsF/tSvnvlv6VcF2GIhg6Sx4yOIt/irsr1RDJsKiIyBzJDpCoXiWWq28MqH2cnQ==}

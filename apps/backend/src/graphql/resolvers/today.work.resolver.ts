@@ -5,10 +5,11 @@ import {
   suggestions,
   updateTodayWorkItem,
   updateTodayWorkItemForTransfer,
-  workItems,
+  workItemsBatch,
   works,
 } from '@/services/today.work.service';
 import { getUid } from '@/utils/header.util';
+import { WorkItem } from '@prisma/client';
 import {
   MutationCreateTodayWorkItemArgs,
   MutationDeleteTodayWorkItemArgs,
@@ -17,6 +18,24 @@ import {
   QuerySuggestionsArgs,
   QueryWorksArgs,
 } from '@support/shared/types';
+import DataLoader from 'dataloader';
+
+const batchWorkItems = new DataLoader(
+  async (ids: readonly number[]) => {
+    const workItems = await workItemsBatch(ids as number[]);
+    const workItemMap: Record<number, WorkItem[]> = {};
+    workItems.forEach((workItem) => {
+      if (!workItemMap[workItem.workId]) {
+        workItemMap[workItem.workId] = [];
+      }
+      workItemMap[workItem.workId].push(workItem);
+    });
+    return ids.map((id) => workItemMap[id]);
+  },
+  {
+    cache: false,
+  },
+);
 
 const resolvers = {
   Query: {
@@ -31,8 +50,8 @@ const resolvers = {
   },
 
   Work: {
-    workItems: async (parent: { id: number }, _: unknown) => {
-      return await workItems(parent.id);
+    workItems: async (parent: { id: number }) => {
+      return await batchWorkItems.load(parent.id);
     },
   },
 

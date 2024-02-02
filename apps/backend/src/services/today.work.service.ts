@@ -47,6 +47,17 @@ const workItems = async (id: number) => {
   return workItems;
 };
 
+const workItemsBatch = async (ids: number[]) => {
+  const workItems = await prisma.workItem.findMany({
+    where: {
+      workId: {
+        in: ids,
+      },
+    },
+  });
+  return workItems;
+};
+
 const createTodayWorkItem = async (input: CreateTodayWorkItemInput) => {
   const now = dayjs(input.date);
   const date = {
@@ -245,5 +256,6 @@ export {
   updateTodayWorkItemForTransfer,
   work,
   workItems,
+  workItemsBatch,
   works,
 };
