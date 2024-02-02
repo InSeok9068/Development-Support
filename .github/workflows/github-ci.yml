@@ -91,6 +91,10 @@ jobs:
         run: pnpm install
         working-directory: ${{ env.project-working-directory }}
 
+      - name: backend prisma generate
+        run: npm run prisma:generate
+        working-directory: ${{ env.backend-working-directory }}
+
       - name: backend npm build
         run: npm run build
         working-directory: ${{ env.backend-working-directory }}
