@@ -64,16 +64,16 @@ const useTodayWork = () => {
     const result = await apolloQuery();
 
     todayWorkListArgs.value = {
-      item: result.data?.works?.map((work) => {
+      item: result.data.works?.map((work) => {
         return {
           id: Number(work?.id),
           title: work?.title,
           time: work?.time,
-          subItem: work?.workItems?.map((item) => {
+          subItem: work?.workItems.map((item) => {
             return {
-              itemId: Number(item?.itemId),
-              content: item?.content,
-              time: item?.time,
+              itemId: Number(item.itemId),
+              content: item.content,
+              time: item.time,
             };
           }),
         };

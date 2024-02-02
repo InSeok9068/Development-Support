@@ -2,7 +2,10 @@ import { z } from 'zod';
 import type {
   CreateNewsletterInput,
   CreateTodayWorkItemInput,
+  NameSuggestionsCrud,
   NameSuggestionsInput,
+  NameSuggestionsLang,
+  NameSuggestionsType,
   NewslettersInput,
   Source,
   SuggestionsInput,
@@ -21,6 +24,12 @@ type definedNonNullAny = {};
 export const isDefinedNonNullAny = (v: any): v is definedNonNullAny => v !== undefined && v !== null;
 
 export const definedNonNullAnySchema = z.any().refine((v) => isDefinedNonNullAny(v));
+
+export const NameSuggestionsCrudSchema = z.enum(['Create', 'Delete', 'Read', 'Update']);
+
+export const NameSuggestionsLangSchema = z.enum(['Java', 'JavaScript', 'TypeScript']);
+
+export const NameSuggestionsTypeSchema = z.enum(['Class', 'Method', 'Url', 'Variable']);
 
 export const SourceSchema = z.enum(['GeekNews', 'Yozm']);
 

@@ -34,11 +34,17 @@ const works = async (input: WorksInput) => {
         lte: Number(dayjs(input.endDate).format('YYYYMMDD')),
       },
     },
-    include: {
-      workItems: {},
-    },
   });
   return works;
+};
+
+const workItems = async (id: number) => {
+  const workItems = await prisma.workItem.findMany({
+    where: {
+      workId: id,
+    },
+  });
+  return workItems;
 };
 
 const createTodayWorkItem = async (input: CreateTodayWorkItemInput) => {
@@ -238,5 +244,6 @@ export {
   updateTodayWorkItem,
   updateTodayWorkItemForTransfer,
   work,
+  workItems,
   works,
 };

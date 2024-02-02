@@ -5,7 +5,7 @@ type Work {
   time: Int!
   createdAt: String!
   updatedAt: String!
-  workItems: [WorkItem]
+  workItems: [WorkItem!]!
 }
 
 type WorkItem {

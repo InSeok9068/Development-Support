@@ -58,6 +58,14 @@ export type MutationUpdateTodayWorkItemForTransferArgs = {
   input: UpdateTodayWorkItemForTransferInput;
 };
 
+export const NameSuggestionsCrud = {
+  Create: 'Create',
+  Delete: 'Delete',
+  Read: 'Read',
+  Update: 'Update',
+} as const;
+
+export type NameSuggestionsCrud = (typeof NameSuggestionsCrud)[keyof typeof NameSuggestionsCrud];
 export type NameSuggestionsInput = {
   crud: Scalars['String']['input'];
   input: Scalars['String']['input'];
@@ -65,6 +73,21 @@ export type NameSuggestionsInput = {
   type: Scalars['String']['input'];
 };
 
+export const NameSuggestionsLang = {
+  Java: 'Java',
+  JavaScript: 'JavaScript',
+  TypeScript: 'TypeScript',
+} as const;
+
+export type NameSuggestionsLang = (typeof NameSuggestionsLang)[keyof typeof NameSuggestionsLang];
+export const NameSuggestionsType = {
+  Class: 'Class',
+  Method: 'Method',
+  Url: 'Url',
+  Variable: 'Variable',
+} as const;
+
+export type NameSuggestionsType = (typeof NameSuggestionsType)[keyof typeof NameSuggestionsType];
 export type Newsletter = {
   __typename?: 'Newsletter';
   createdAt: Scalars['String']['output'];
@@ -87,8 +110,6 @@ export type Query = {
   nameSuggestions: Scalars['String']['output'];
   newsletters?: Maybe<Array<Maybe<Newsletter>>>;
   suggestions?: Maybe<Array<Maybe<Work>>>;
-  user?: Maybe<User>;
-  users?: Maybe<Array<Maybe<User>>>;
   work?: Maybe<Work>;
   works?: Maybe<Array<Maybe<Work>>>;
 };
@@ -137,15 +158,6 @@ export type UpdateTodayWorkItemInput = {
   title: Scalars['String']['input'];
 };
 
-export type User = {
-  __typename?: 'User';
-  email: Scalars['String']['output'];
-  id: Scalars['ID']['output'];
-  password: Scalars['String']['output'];
-  userId: Scalars['String']['output'];
-  username: Scalars['String']['output'];
-};
-
 export type Work = {
   __typename?: 'Work';
   createdAt: Scalars['String']['output'];
@@ -154,7 +166,7 @@ export type Work = {
   time: Scalars['Int']['output'];
   title: Scalars['String']['output'];
   updatedAt: Scalars['String']['output'];
-  workItems?: Maybe<Array<Maybe<WorkItem>>>;
+  workItems: Array<WorkItem>;
 };
 
 export type WorkInput = {
@@ -219,14 +231,14 @@ export type WorksQuery = {
     time: number;
     createdAt: string;
     updatedAt: string;
-    workItems?: Array<{
+    workItems: Array<{
       __typename?: 'WorkItem';
       itemId: string;
       content: string;
       time: number;
       createdAt: string;
       updatedAt: string;
-    } | null> | null;
+    }>;
   } | null> | null;
 };
 

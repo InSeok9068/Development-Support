@@ -30,15 +30,15 @@ const useWorkList = () => {
     const result = await apolloQuery();
 
     workListArgs.value = {
-      item: result.data?.works!.flatMap((work) =>
-        work!.workItems!.map((item) => ({
+      item: result.data.works!.flatMap((work) =>
+        work!.workItems.map((item) => ({
           date: toMillisecondString({
             dateTime: item!.createdAt,
             outFormat: 'YYYY-MM-DD',
           }),
           title: work!.title,
-          content: item!.content,
-          time: item!.time,
+          content: item.content,
+          time: item.time,
         })),
       ),
     };

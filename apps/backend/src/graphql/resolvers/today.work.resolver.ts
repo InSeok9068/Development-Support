@@ -5,6 +5,7 @@ import {
   suggestions,
   updateTodayWorkItem,
   updateTodayWorkItemForTransfer,
+  workItems,
   works,
 } from '@/services/today.work.service';
 import { getUid } from '@/utils/header.util';
@@ -26,6 +27,12 @@ const resolvers = {
     suggestions: async (_: unknown, args: QuerySuggestionsArgs, { headers }: { headers: any }) => {
       args.input.uid = getUid(headers);
       return await suggestions(args.input);
+    },
+  },
+
+  Work: {
+    workItems: async (parent: { id: number }, _: unknown) => {
+      return await workItems(parent.id);
     },
   },
 
