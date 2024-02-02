@@ -5,7 +5,7 @@
     "test": "cross-env NODE_ENV=development vitest",
     "test:ui": "cross-env NODE_ENV=development vitest --ui",
     "dev": "cross-env NODE_ENV=development nodemon --exec ts-node -r tsconfig-paths/register src/app.ts",
-    "start": "tsc && prisma generate && cross-env NODE_ENV=production ts-node -r tsconfig-paths/register dist/app.js",
+    "start": "prisma generate && tsc && cross-env NODE_ENV=production ts-node -r tsconfig-paths/register dist/app.js",
     "build": "tsc",
     "lint": "eslint \"src/**/*.{ts,js}\"",
     "lint:fix": "eslint \"src/**/*.{ts,js}\" --fix",
