@@ -1,3 +1,4 @@
+import { redis } from '@/configs';
 import { createNewsletter } from '@/services/newsletter.service';
 import { Source } from '@support/shared/types';
 import { delay } from '@support/shared/utils/time.util';
@@ -26,6 +27,7 @@ const newsletterScrapAction = async () => {
           });
         }
         await browser.close();
+        await redis.del(`newsletters:${args.input.source ?? ''}`);
         break;
       }
       default:
