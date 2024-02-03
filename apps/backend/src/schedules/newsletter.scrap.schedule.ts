@@ -27,7 +27,7 @@ const newsletterScrapAction = async () => {
           });
         }
         await browser.close();
-        await redis.del(`newsletters:${args.input.source ?? ''}`);
+        await redis.del(`newsletters:${source}`);
         break;
       }
       default:
