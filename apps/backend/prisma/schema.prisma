@@ -7,14 +7,43 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model User {
-  id        Int      @id @default(autoincrement())
-  userId    String   @unique
-  password  String
-  username  String
-  email     String   @unique
+model Menu {
+  id           Int        @id @default(autoincrement())
+  label        String
+  icon         String?
+  to           String?
+  component    String?
+  class        String?
+  url          String?
+  target       String?
+  badge        String?
+  preventExact Boolean    @default(false)
+  order        Int        @default(0)
+  parentId     Int?
+  parent       Menu?      @relation("MenuToMenu", fields: [parentId], references: [id])
+  children     Menu[]     @relation("MenuToMenu")
+  menuRoles    MenuRole[]
+  createdAt    DateTime   @default(now())
+  updatedAt    DateTime   @default(now())
+}
+
+model Role {
+  id        Int        @id @default(autoincrement())
+  name      String
+  menuRoles MenuRole[]
+  createdAt DateTime   @default(now())
+  updatedAt DateTime   @default(now())
+}
+
+model MenuRole {
+  menu      Menu     @relation(fields: [menuId], references: [id])
+  menuId    Int
+  role      Role     @relation(fields: [roleId], references: [id])
+  roleId    Int
   createdAt DateTime @default(now())
   updatedAt DateTime @default(now())
+
+  @@id([menuId, roleId])
 }
 
 model Work {
@@ -27,9 +56,9 @@ model Work {
   week      Int
   time      Int        @default(0)
   tag       String?
+  workItems WorkItem[]
   createdAt DateTime   @default(now())
   updatedAt DateTime   @default(now())
-  workItems WorkItem[]
 }
 
 model WorkItem {
