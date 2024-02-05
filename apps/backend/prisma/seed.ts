@@ -3,9 +3,9 @@ import { PrismaClient } from '@prisma/client';
 const prisma = new PrismaClient();
 
 async function seed() {
-  await prisma.menu.deleteMany({});
-  await prisma.role.deleteMany({});
   await prisma.menuRole.deleteMany({});
+  await prisma.role.deleteMany({});
+  await prisma.menu.deleteMany({});
 
   const seedMenus = [
     {
