@@ -2,6 +2,7 @@ import { z } from 'zod';
 import type {
   CreateNewsletterInput,
   CreateTodayWorkItemInput,
+  MenuPermissionInput,
   MenusInput,
   NameSuggestionsCrud,
   NameSuggestionsInput,
@@ -52,6 +53,13 @@ export function CreateTodayWorkItemInputSchema(): z.ZodObject<Properties<CreateT
     tag: z.string().nullish(),
     time: z.number(),
     title: z.string().min(1),
+    uid: z.string().nullish(),
+  });
+}
+
+export function MenuPermissionInputSchema(): z.ZodObject<Properties<MenuPermissionInput>> {
+  return z.object({
+    to: z.string().min(1),
     uid: z.string().nullish(),
   });
 }

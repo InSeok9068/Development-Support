@@ -12,10 +12,22 @@ type Menu {
   children: [Menu]
 }
 
+type MenuPermissionResponse {
+  hasAccess: Boolean!
+  message: String
+  redirectUrl: String
+}
+
 type Query {
   menus(input: MenusInput): [Menu]
+  menuPermission(input: MenuPermissionInput!): MenuPermissionResponse!
 }
 
 input MenusInput {
   uid: ID
+}
+
+input MenuPermissionInput {
+  uid: ID
+  to: String!
 }

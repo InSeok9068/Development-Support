@@ -47,6 +47,18 @@ export type Menu = {
   url?: Maybe<Scalars['String']['output']>;
 };
 
+export type MenuPermissionInput = {
+  to: Scalars['String']['input'];
+  uid?: InputMaybe<Scalars['ID']['input']>;
+};
+
+export type MenuPermissionResponse = {
+  __typename?: 'MenuPermissionResponse';
+  hasAccess: Scalars['Boolean']['output'];
+  message?: Maybe<Scalars['String']['output']>;
+  redirectUrl?: Maybe<Scalars['String']['output']>;
+};
+
 export type MenusInput = {
   uid?: InputMaybe<Scalars['ID']['input']>;
 };
@@ -126,12 +138,17 @@ export type NewslettersInput = {
 
 export type Query = {
   __typename?: 'Query';
+  menuPermission: MenuPermissionResponse;
   menus?: Maybe<Array<Maybe<Menu>>>;
   nameSuggestions: Scalars['String']['output'];
   newsletters?: Maybe<Array<Maybe<Newsletter>>>;
   suggestions?: Maybe<Array<Maybe<Work>>>;
   work?: Maybe<Work>;
   works?: Maybe<Array<Maybe<Work>>>;
+};
+
+export type QueryMenuPermissionArgs = {
+  input: MenuPermissionInput;
 };
 
 export type QueryMenusArgs = {
@@ -258,6 +275,20 @@ export type MenusQuery = {
       } | null> | null;
     } | null> | null;
   } | null> | null;
+};
+
+export type MenuPermissionQueryVariables = Exact<{
+  input: MenuPermissionInput;
+}>;
+
+export type MenuPermissionQuery = {
+  __typename?: 'Query';
+  menuPermission: {
+    __typename?: 'MenuPermissionResponse';
+    hasAccess: boolean;
+    message?: string | null;
+    redirectUrl?: string | null;
+  };
 };
 
 export type NameSuggestionsQueryVariables = Exact<{

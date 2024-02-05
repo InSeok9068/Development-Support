@@ -41,4 +41,14 @@ const MENUS_QUERY = gql`
   }
 `;
 
-export { MENUS_QUERY };
+const MENU_PERMISSION_QUERY = gql`
+  query MenuPermission($input: MenuPermissionInput!) {
+    menuPermission(input: $input) {
+      hasAccess
+      message
+      redirectUrl
+    }
+  }
+`;
+
+export { MENUS_QUERY, MENU_PERMISSION_QUERY };

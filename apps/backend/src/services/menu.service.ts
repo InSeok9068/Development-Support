@@ -1,5 +1,5 @@
 import { prisma } from '@/configs';
-import { MenusInput } from '@support/shared/types';
+import { MenuPermissionInput, MenuPermissionResponse, MenusInput } from '@support/shared/types';
 
 const menus = async (input: MenusInput) => {
   const menus = await prisma.menu.findMany({
@@ -28,4 +28,16 @@ const menus = async (input: MenusInput) => {
   return menus;
 };
 
-export { menus };
+const menuPermission = async (input: MenuPermissionInput) => {
+  const menu = await prisma.menu.findMany({
+    where: {
+      to: input.to,
+    },
+  });
+
+  return {
+    hasAccess: !!menu,
+  } as MenuPermissionResponse;
+};
+
+export { menuPermission, menus };
