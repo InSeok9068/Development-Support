@@ -27,6 +27,7 @@ app.use(
 );
 app.use('/assets', express.static('public/assets'));
 app.use('/layout', express.static('public/layout'));
+app.use('/graphql/doc', express.static('public/graphiql/index.html'));
 app.use('/favicon.ico', express.static('public/favicon.ico'));
 app.use(morganMiddleware);
 app.use(errorMiddleware);
