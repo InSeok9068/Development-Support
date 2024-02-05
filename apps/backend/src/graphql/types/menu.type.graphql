@@ -1,0 +1,21 @@
+type Menu {
+  label: String!
+  icon: String
+  to: String
+  component: String
+  class: String
+  url: String
+  target: String
+  badge: String
+  preventExact: Boolean
+  order: Int!
+  children: [Menu]
+}
+
+type Query {
+  menus(input: MenusInput): [Menu]
+}
+
+input MenusInput {
+  uid: ID
+}

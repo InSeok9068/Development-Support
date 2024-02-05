@@ -32,6 +32,25 @@ export type CreateTodayWorkItemInput = {
   uid?: InputMaybe<Scalars['ID']['input']>;
 };
 
+export type Menu = {
+  __typename?: 'Menu';
+  badge?: Maybe<Scalars['String']['output']>;
+  children?: Maybe<Array<Maybe<Menu>>>;
+  class?: Maybe<Scalars['String']['output']>;
+  component?: Maybe<Scalars['String']['output']>;
+  icon?: Maybe<Scalars['String']['output']>;
+  label: Scalars['String']['output'];
+  order: Scalars['Int']['output'];
+  preventExact?: Maybe<Scalars['Boolean']['output']>;
+  target?: Maybe<Scalars['String']['output']>;
+  to?: Maybe<Scalars['String']['output']>;
+  url?: Maybe<Scalars['String']['output']>;
+};
+
+export type MenusInput = {
+  uid?: InputMaybe<Scalars['ID']['input']>;
+};
+
 export type Mutation = {
   __typename?: 'Mutation';
   createTodayWorkItem: Work;
@@ -107,11 +126,16 @@ export type NewslettersInput = {
 
 export type Query = {
   __typename?: 'Query';
+  menus?: Maybe<Array<Maybe<Menu>>>;
   nameSuggestions: Scalars['String']['output'];
   newsletters?: Maybe<Array<Maybe<Newsletter>>>;
   suggestions?: Maybe<Array<Maybe<Work>>>;
   work?: Maybe<Work>;
   works?: Maybe<Array<Maybe<Work>>>;
+};
+
+export type QueryMenusArgs = {
+  input?: InputMaybe<MenusInput>;
 };
 
 export type QueryNameSuggestionsArgs = {
@@ -187,6 +211,53 @@ export type WorksInput = {
   endDate: Scalars['String']['input'];
   startDate: Scalars['String']['input'];
   uid?: InputMaybe<Scalars['ID']['input']>;
+};
+
+export type MenusQueryVariables = Exact<{
+  input?: InputMaybe<MenusInput>;
+}>;
+
+export type MenusQuery = {
+  __typename?: 'Query';
+  menus?: Array<{
+    __typename?: 'Menu';
+    label: string;
+    icon?: string | null;
+    to?: string | null;
+    component?: string | null;
+    class?: string | null;
+    url?: string | null;
+    target?: string | null;
+    badge?: string | null;
+    preventExact?: boolean | null;
+    order: number;
+    children?: Array<{
+      __typename?: 'Menu';
+      label: string;
+      icon?: string | null;
+      to?: string | null;
+      component?: string | null;
+      class?: string | null;
+      url?: string | null;
+      target?: string | null;
+      badge?: string | null;
+      preventExact?: boolean | null;
+      order: number;
+      children?: Array<{
+        __typename?: 'Menu';
+        label: string;
+        icon?: string | null;
+        to?: string | null;
+        component?: string | null;
+        class?: string | null;
+        url?: string | null;
+        target?: string | null;
+        badge?: string | null;
+        preventExact?: boolean | null;
+        order: number;
+      } | null> | null;
+    } | null> | null;
+  } | null> | null;
 };
 
 export type NameSuggestionsQueryVariables = Exact<{

@@ -2,6 +2,7 @@ import { z } from 'zod';
 import type {
   CreateNewsletterInput,
   CreateTodayWorkItemInput,
+  MenusInput,
   NameSuggestionsCrud,
   NameSuggestionsInput,
   NameSuggestionsLang,
@@ -51,6 +52,12 @@ export function CreateTodayWorkItemInputSchema(): z.ZodObject<Properties<CreateT
     tag: z.string().nullish(),
     time: z.number(),
     title: z.string().min(1),
+    uid: z.string().nullish(),
+  });
+}
+
+export function MenusInputSchema(): z.ZodObject<Properties<MenusInput>> {
+  return z.object({
     uid: z.string().nullish(),
   });
 }

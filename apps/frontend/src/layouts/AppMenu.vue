@@ -8,30 +8,31 @@
 </template>
 
 <script setup>
-import { ref } from 'vue';
+import { MENUS_QUERY } from '@/graphql/operations/menu.operation';
+import { useQuery } from '@vue/apollo-composable';
+import { onMounted, ref } from 'vue';
 import AppMenuItem from './AppMenuItem.vue';
 
-const model = ref([
-  {
-    label: 'Home',
-    items: [
-      { label: '뉴스레터', icon: 'pi pi-fw pi-truck', to: '/newsletter' },
-      { label: '대시보드', icon: 'pi pi-fw pi-chart-line', to: '/dashboard' },
-    ],
-  },
-  {
-    label: 'Pages',
-    items: [
-      { label: '오늘 한일', icon: 'pi pi-fw pi-check-square', to: '/today-work' },
-      { label: '한일 목록', icon: 'pi pi-fw pi-list', to: '/work-list' },
-      { label: '이름 짓기', icon: 'pi pi-fw pi-pencil', to: '/namer' },
-    ],
-  },
-  {
-    label: 'Abouts',
-    items: [{ label: '기술 스펙', icon: 'pi pi-fw pi-server', to: '/tech-spec' }],
-  },
-]);
+const model = ref([]);
+
+onMounted(async () => {
+  const { onResult } = useQuery(MENUS_QUERY);
+  onResult((result) => {
+    if (!result.loading) {
+      const data = result.data;
+      if (data) {
+        model.value = data.menus.map((menu) => ({
+          label: menu.label,
+          items: menu.children.map((menu) => ({
+            label: menu.label,
+            icon: menu.icon,
+            to: menu.to,
+          })),
+        }));
+      }
+    }
+  });
+});
 </script>
 
 <style lang="scss" scoped></style>
