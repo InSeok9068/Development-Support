@@ -9,7 +9,7 @@ const newsletterScrapAction = async () => {
   for (const source of ['GEEK_NEWS']) {
     switch (source) {
       case Source.GeekNews: {
-        const browser = await puppeteer.launch({ headless: 'new', args: ['--no-sandbox', '--disable-setuid-sandbox'] });
+        const browser = await puppeteer.launch({ headless: true, args: ['--no-sandbox', '--disable-setuid-sandbox'] });
         const page = await browser.newPage();
         await page.goto('https://news.hada.io');
         await delay(500);
