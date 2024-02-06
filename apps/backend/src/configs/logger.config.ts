@@ -1,3 +1,4 @@
+import path from 'path';
 import winston from 'winston';
 import 'winston-daily-rotate-file';
 
@@ -36,13 +37,13 @@ const transports = [
   new winston.transports.Console(),
   new winston.transports.DailyRotateFile({
     level: 'error',
-    filename: `logs/%DATE%_error.log`,
+    filename: path.join(__dirname, '../../', `logs/%DATE%_error.log`),
     datePattern: 'YYYY-MM-DD',
     zippedArchive: true,
     maxFiles: 30,
   }),
   new winston.transports.DailyRotateFile({
-    filename: `logs/%DATE%_all.log`,
+    filename: path.join(__dirname, '../../', `logs/%DATE%_all.log`),
     datePattern: 'YYYY-MM-DD',
     zippedArchive: true,
     maxFiles: 14,
