@@ -22,3 +22,9 @@ enum NameSuggestionsCrud {
   UPDATE
   DELETE
 }
+
+enum ROLE {
+  ADMIN
+  USER
+  GUEST
+}

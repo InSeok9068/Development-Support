@@ -9,6 +9,7 @@ import type {
   NameSuggestionsLang,
   NameSuggestionsType,
   NewslettersInput,
+  Role,
   Source,
   SuggestionsInput,
   UpdateTodayWorkItemForTransferInput,
@@ -32,6 +33,8 @@ export const NameSuggestionsCrudSchema = z.enum(['CREATE', 'DELETE', 'READ', 'UP
 export const NameSuggestionsLangSchema = z.enum(['JAVA', 'JAVA_SCRIPT', 'TYPE_SCRIPT']);
 
 export const NameSuggestionsTypeSchema = z.enum(['CLASS', 'METHOD', 'URL', 'VARIABLE']);
+
+export const RoleSchema = z.enum(['ADMIN', 'GUEST', 'USER']);
 
 export const SourceSchema = z.enum(['GEEK_NEWS', 'YOZM']);
 

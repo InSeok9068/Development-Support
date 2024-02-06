@@ -175,6 +175,13 @@ export type QueryWorksArgs = {
   input: WorksInput;
 };
 
+export const Role = {
+  Admin: 'ADMIN',
+  Guest: 'GUEST',
+  User: 'USER',
+} as const;
+
+export type Role = (typeof Role)[keyof typeof Role];
 export const Source = {
   GeekNews: 'GEEK_NEWS',
   Yozm: 'YOZM',

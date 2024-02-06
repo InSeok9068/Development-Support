@@ -28,6 +28,7 @@ router.beforeResolve((to, from, next) => {
         if (result.data.menuPermission.hasAccess) {
           next();
         } else {
+          result.data.menuPermission.message && alert(result.data.menuPermission.message);
           next(result.data.menuPermission.redirectUrl ?? '/');
         }
       }

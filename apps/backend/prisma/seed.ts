@@ -38,12 +38,48 @@ async function seed() {
             label: '오늘 한일',
             icon: 'pi pi-fw pi-check-square',
             to: '/today-work',
+            menuRoles: {
+              create: [
+                {
+                  role: {
+                    connect: {
+                      id: 1,
+                    },
+                  },
+                },
+                {
+                  role: {
+                    connect: {
+                      id: 2,
+                    },
+                  },
+                },
+              ],
+            },
           },
           {
             id: 6,
             label: '한일 목록',
             icon: 'pi pi-fw pi-list',
             to: '/work-list',
+            menuRoles: {
+              create: [
+                {
+                  role: {
+                    connect: {
+                      id: 1,
+                    },
+                  },
+                },
+                {
+                  role: {
+                    connect: {
+                      id: 2,
+                    },
+                  },
+                },
+              ],
+            },
           },
           {
             id: 7,
@@ -102,7 +138,7 @@ async function seed() {
     },
     {
       id: 2,
-      name: 'USE',
+      name: 'USER',
     },
     {
       id: 3,

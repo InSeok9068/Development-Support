@@ -7,4 +7,6 @@ admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
 });
 
-export { admin };
+const firebaseAdmin = admin.app();
+
+export { firebaseAdmin };

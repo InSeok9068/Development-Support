@@ -5,11 +5,11 @@
       <span>개발 도우미</span>
     </router-link>
 
-    <Button class="p-link layout-menu-button layout-topbar-button" @click="onMenuToggle()">
+    <Button class="p-link layout-menu-button layout-topbar-button" text @click="onMenuToggle()">
       <i class="pi pi-bars"></i>
     </Button>
 
-    <Button class="p-link layout-topbar-menu-button layout-topbar-button" @click="onTopBarMenuButton()">
+    <Button class="p-link layout-topbar-menu-button layout-topbar-button" text @click="onTopBarMenuButton()">
       <i class="pi pi-ellipsis-v"></i>
     </Button>
 
@@ -19,7 +19,7 @@
           {{ `${authArgs.userName} 님` }}
         </p>
       </span>
-      <Button class="p-link layout-topbar-button" @click="toggleMenu">
+      <Button class="p-link layout-topbar-button" text @click="toggleMenu">
         <i class="pi pi-user"></i>
         <span>Profile</span>
       </Button>

@@ -1,5 +1,7 @@
 import { prisma } from '@/configs';
+import { getUserRole } from '@/services/auth.service';
 import { MenuPermissionInput, MenuPermissionResponse, MenusInput } from '@support/shared/types';
+import { parseRole } from '@support/shared/types/pares';
 
 const menus = async (input: MenusInput) => {
   const menus = await prisma.menu.findMany({
@@ -29,14 +31,25 @@ const menus = async (input: MenusInput) => {
 };
 
 const menuPermission = async (input: MenuPermissionInput) => {
-  const menu = await prisma.menu.findMany({
+  const role = await getUserRole(input.uid ?? '');
+  const menu = await prisma.menu.findFirstOrThrow({
     where: {
       to: input.to,
     },
+    include: {
+      menuRoles: true,
+    },
   });
 
+  let hasAccess = false;
+  hasAccess = menu.menuRoles.length === 0;
+  if (!hasAccess) {
+    hasAccess = !hasAccess && menu.menuRoles.some((menu) => menu.roleId === parseRole(role));
+  }
+
   return {
-    hasAccess: !!menu,
+    hasAccess,
+    message: !hasAccess ? '접근 불가능합니다.' : '',
   } as MenuPermissionResponse;
 };
 
