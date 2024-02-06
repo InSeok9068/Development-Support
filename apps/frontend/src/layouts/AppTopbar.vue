@@ -60,10 +60,12 @@ const items = ref([
       {
         label: '로그인',
         command: onClickLogin,
+        visible: () => (auth.currentUser ? false : true),
       },
       {
         label: '로그아웃',
         command: onClickLogout,
+        visible: () => (auth.currentUser ? true : false),
       },
     ],
   },
