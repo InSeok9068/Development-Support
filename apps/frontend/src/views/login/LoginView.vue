@@ -17,14 +17,11 @@
 </template>
 
 <script setup lang="ts">
-import { useAuth } from '@/composables/auth';
 import { auth } from '@/composables/firebase';
 import firebase from 'firebase/compat/app';
 import * as firebaseui from 'firebaseui';
 import 'firebaseui/dist/firebaseui.css';
-import { onMounted } from 'vue';
-import { ref } from 'vue';
-const { authArgs } = useAuth();
+import { onMounted, ref } from 'vue';
 const visible = ref(true);
 
 const uiConfig = {

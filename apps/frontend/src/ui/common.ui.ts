@@ -23,5 +23,5 @@ export interface UiAuthArgs {
   isAuth: boolean;
   requiredAuth: boolean;
   userName?: string;
-  uid?: string;
+  token?: string;
 }

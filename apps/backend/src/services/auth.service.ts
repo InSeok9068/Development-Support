@@ -20,4 +20,10 @@ const getUserRole = async (uid: string) => {
   }
 };
 
-export { getUserRole };
+const isAdmin = async (uid: string) => Role.Admin === (await getUserRole(uid));
+
+const isUser = async (uid: string) => Role.User === (await getUserRole(uid));
+
+const isGuest = async (uid: string) => Role.Guest === (await getUserRole(uid));
+
+export { getUserRole, isAdmin, isGuest, isUser };

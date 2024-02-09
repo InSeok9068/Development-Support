@@ -89,10 +89,10 @@ const isOutsideClicked = (event) => {
   );
 };
 
-auth.onAuthStateChanged((user) => {
+auth.onAuthStateChanged(async (user) => {
   if (user) {
     authArgs.value.isAuth = true;
-    authArgs.value.uid = user.uid;
+    authArgs.value.token = await user.getIdToken();
     authArgs.value.userName = user.displayName;
   } else {
     authArgs.value.isAuth = false;

@@ -5,18 +5,18 @@ const httpLink = new HttpLink({ uri: import.meta.env.VITE_GRAPHQL_URL });
 
 const authLink = new ApolloLink((operation, forward) => {
   // add the authorization to the headers
-  let uid = '';
+  let token = '';
 
   const auth = localStorage.getItem('auth');
   let authLocalStorage;
   if (auth) {
     authLocalStorage = JSON.parse(auth);
-    uid = authLocalStorage.authArgs.uid;
+    token = authLocalStorage.authArgs.token;
   }
 
   operation.setContext({
     headers: {
-      authorization: uid,
+      authorization: token,
     },
   });
   return forward(operation);
