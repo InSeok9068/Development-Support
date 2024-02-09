@@ -8,6 +8,7 @@ module.exports = {
       env_production: {
         NODE_ENV: 'production',
       },
+      cron_restart: '30 5 * * *', // 매일 새벽 5시 30분에 재시작
     },
   ],
 };
