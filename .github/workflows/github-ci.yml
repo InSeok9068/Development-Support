@@ -74,7 +74,7 @@ jobs:
             cd /home/ubuntu/Development-Support
             git pull
             pnpm install --frozen-lockfile
-            cd app/backend
+            cd apps/backend
             npm run prisma:generate
             npm run build
             tar -xvf /home/ubuntu/deploy/apps/backend/public.tar -C /home/ubuntu/Development-Support/apps/backend
