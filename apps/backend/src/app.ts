@@ -9,6 +9,7 @@ import { logger } from '@/configs';
 import { schema } from '@/graphql/schema';
 import { authMiddleware, errorMiddleware, limiterMiddleware, morganMiddleware } from '@/middlewares';
 import { newsletterScrapSchedule } from '@/schedules/newsletter.scrap.schedule';
+import { timeUtil } from '@support/shared/utils/time.util';
 import cors from 'cors';
 import express, { Express, Request, Response } from 'express';
 import { createHandler } from 'graphql-http/lib/use/express';
@@ -45,6 +46,10 @@ app.all(
     },
   }),
 );
+
+app.get('/logs*', async (req: Request, res: Response) => {
+  res.sendFile(path.join(__dirname, `../logs/${timeUtil.today('YYYY-MM-DD')}_all.log`));
+});
 
 app.get('/*', (_req: Request, res: Response) => {
   res.sendFile(path.join(__dirname, '../public/index.html'));
