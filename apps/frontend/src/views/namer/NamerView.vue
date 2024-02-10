@@ -4,7 +4,7 @@
       <div class="card">
         <form class="flex flex-column gap-5">
           <div class="flex align-items-center flex-wrap gap-3">
-            <span class="flex">LANG</span>
+            <span class="flex font-bold">LANG</span>
             <div class="flex align-items-center">
               <RadioButton v-model="namerFormArgs.lang" input-id="class" name="lang" value="java" />
               <label for="class" class="ml-2">Java</label>
@@ -15,7 +15,7 @@
             </div>
           </div>
           <div class="flex align-items-center flex-wrap gap-3">
-            <span class="flex">TYPE</span>
+            <span class="flex font-bold">TYPE</span>
             <div class="flex align-items-center">
               <RadioButton v-model="namerFormArgs.type" input-id="class" name="type" value="class" />
               <label for="class" class="ml-2">Class</label>
@@ -34,7 +34,7 @@
             </div>
           </div>
           <div class="flex align-items-center flex-wrap gap-3">
-            <span class="flex">CRUD</span>
+            <span class="flex font-bold">CRUD</span>
             <div class="flex align-items-center">
               <RadioButton v-model="namerFormArgs.crud" input-id="create" name="crud" value="create" />
               <label for="create" class="ml-2">Create</label>

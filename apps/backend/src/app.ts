@@ -36,7 +36,7 @@ app.use(errorMiddleware);
 
 app.all(
   '/graphql',
-  [authMiddleware, limiterMiddleware],
+  [limiterMiddleware, authMiddleware],
   createHandler({
     schema,
     context: ({ headers }) => ({ headers }),
@@ -47,7 +47,7 @@ app.all(
   }),
 );
 
-app.get('/logs*', async (req: Request, res: Response) => {
+app.get('/logs*', limiterMiddleware, async (req: Request, res: Response) => {
   res.sendFile(path.join(__dirname, `../logs/${timeUtil.today('YYYY-MM-DD')}_all.log`));
 });
 
