@@ -110,5 +110,6 @@
       "@/*": ["./src/*"]
     }
   },
-  "exclude": ["./prisma", "./codegen.ts", "./playground", "./vitest.config.ts"] // 설정 파일 및 예시 파일 제거
+  "include": ["./src/**/*"],
+  "exclude": ["./src/__tests__"]
 }
