@@ -8,7 +8,7 @@ const authMiddleware = async (req: Request, res: Response, next: NextFunction) =
       req.headers.uid = decodedToken.uid;
     } catch (err) {
       if (err instanceof Error) {
-        return res.status(401).json({ errors: [{ message: err.message }] });
+        return res.status(403).json({ errors: [{ message: err.message }] });
       }
     }
   }
