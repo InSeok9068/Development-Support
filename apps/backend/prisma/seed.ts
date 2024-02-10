@@ -129,6 +129,28 @@ async function seed() {
         ],
       },
     },
+    {
+      id: 10,
+      label: 'Prime Help',
+      children: {
+        create: [
+          {
+            id: 11,
+            label: 'Prime Vue',
+            icon: 'pi pi-fw pi-prime',
+            url: 'https://primevue.org/autocomplete/',
+            target: '_blank',
+          },
+          {
+            id: 12,
+            label: 'Prime Flex',
+            icon: 'pi pi-fw pi-prime',
+            url: 'https://primeflex.org/installation',
+            target: '_blank',
+          },
+        ],
+      },
+    },
   ];
 
   const seedRoles = [

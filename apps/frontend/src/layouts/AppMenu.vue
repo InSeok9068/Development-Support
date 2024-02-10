@@ -27,6 +27,8 @@ onMounted(async () => {
             label: menu.label,
             icon: menu.icon,
             to: menu.to,
+            url: menu.url,
+            target: menu.target,
           })),
         }));
       }
