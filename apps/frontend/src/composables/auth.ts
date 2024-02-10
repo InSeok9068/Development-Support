@@ -4,5 +4,11 @@ import { storeToRefs } from 'pinia';
 export const useAuth = () => {
   const { authArgs } = storeToRefs(useAuthStore());
 
-  return { authArgs };
+  const initAuthArgs = () => {
+    authArgs.value = {
+      isAuth: false,
+    };
+  };
+
+  return { authArgs, initAuthArgs };
 };

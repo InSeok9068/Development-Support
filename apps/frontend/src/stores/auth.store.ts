@@ -7,7 +7,6 @@ export const useAuthStore = defineStore(
   () => {
     const authArgs = ref<UiAuthArgs>({
       isAuth: false,
-      requiredAuth: false,
     });
 
     return { authArgs };

@@ -21,7 +21,6 @@ export interface UiDialogArgs {
 
 export interface UiAuthArgs {
   isAuth: boolean;
-  requiredAuth: boolean;
   userName?: string;
   token?: string;
 }

@@ -35,7 +35,7 @@ import { usePlugin } from '@/composables/plugin';
 import { useLayout } from '@/layouts/composables/layout';
 import { computed, onBeforeUnmount, onMounted, ref } from 'vue';
 import { useRouter } from 'vue-router';
-const { authArgs } = useAuth();
+const { authArgs, initAuthArgs } = useAuth();
 const router = useRouter();
 const { $navi } = usePlugin();
 const { onMenuToggle } = useLayout();
@@ -50,7 +50,8 @@ const onClickLogin = () => {
 
 const onClickLogout = () => {
   auth.signOut();
-  $navi.newsletter(router).newsletter().go();
+  initAuthArgs();
+  $navi.index(router).index().go();
 };
 
 const items = ref([

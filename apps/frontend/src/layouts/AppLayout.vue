@@ -34,7 +34,7 @@ import AppSidebar from './AppSidebar.vue';
 import AppTopbar from './AppTopbar.vue';
 
 const { layoutConfig, layoutState, isSidebarActive } = useLayout();
-const { authArgs } = useAuth();
+const { authArgs, initAuthArgs } = useAuth();
 
 const outsideClickListener = ref(null);
 
@@ -95,9 +95,7 @@ auth.onAuthStateChanged(async (user) => {
     authArgs.value.token = await user.getIdToken();
     authArgs.value.userName = user.displayName;
   } else {
-    authArgs.value.isAuth = false;
-    authArgs.value.uid = '';
-    authArgs.value.userName = '';
+    initAuthArgs();
   }
 });
 </script>
