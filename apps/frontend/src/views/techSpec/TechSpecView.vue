@@ -56,7 +56,7 @@
             </tr>
             <tr>
               <th>Message Queue</th>
-              <td>Redis Pub/Sub</td>
+              <td>BullMQ (Redis)</td>
             </tr>
           </tbody>
         </table>
