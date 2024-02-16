@@ -26,7 +26,7 @@ API Interface : GraphQL
 
 Cache System : Redis
 
-Message Queue : Redis Pub/Sub
+Message Queue : BullMQ (Redis)
 
 Package Manager : Pnpm
 
