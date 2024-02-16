@@ -39,13 +39,11 @@ const transports = [
     level: 'error',
     filename: path.join(__dirname, '../../', `logs/%DATE%_error.log`),
     datePattern: 'YYYY-MM-DD',
-    zippedArchive: true,
     maxFiles: '7d',
   }),
   new winston.transports.DailyRotateFile({
     filename: path.join(__dirname, '../../', `logs/%DATE%_all.log`),
     datePattern: 'YYYY-MM-DD',
-    zippedArchive: true,
     maxFiles: '7d',
   }),
 ];
