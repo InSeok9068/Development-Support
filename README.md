@@ -14,7 +14,7 @@ Backend Framework : Express
 
 Frontend Framework : VueJS
 
-CSS Framework : PrimeVue
+CSS Framework : PrimeVue + PrimeFlex
 
 RDB Database : SQLite
 
