@@ -71,6 +71,10 @@ jobs:
       backend-working-directory: /home/ubuntu/Development-Support/apps/backend
       frontend-working-directory: /home/ubuntu/Development-Support/apps/frontend
 
+    strategy:
+      matrix:
+        node-version: [18.19.1]
+
     steps:
       - name: git pull
         run: |
