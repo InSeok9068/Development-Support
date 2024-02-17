@@ -2,9 +2,11 @@ module.exports = {
   root: true,
   env: {
     es6: true,
+    node: true,
+    browser: true,
   },
   plugins: ['@typescript-eslint'],
-  extends: ['plugin:@typescript-eslint/recommended', 'prettier'],
+  extends: ['eslint:recommended', 'plugin:@typescript-eslint/recommended', 'prettier'],
   parserOptions: {
     ecmaVersion: '2022',
     sourceType: 'module',
