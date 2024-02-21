@@ -47,7 +47,7 @@ Authentication : Firebase
 ### 글로벌 패키지 다운로드
 
 ```shell
-npm i -g pnpm turbo rimraf
+npm i -g pnpm turbo rimraf nodemon pm2 ts-node
 ```
 
 ### 패키지 다운로드
