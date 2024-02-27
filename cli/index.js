@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 
 import { checkbox, confirm, input, select } from '@inquirer/prompts';
+import Table from 'cli-table3';
 import { program } from 'commander';
 import figlet from 'figlet';
 import fs from 'fs-extra';
@@ -105,7 +106,9 @@ program
     });
 
     const filterFileActions = fileActions.filter((fileAction) => option.includes(fileAction.option));
-    filterFileActions.forEach((a) => console.log(a.action(fileName)));
+    const table = new Table();
+    filterFileActions.forEach((a) => table.push(['경로', a.action(fileName)]));
+    console.log(table.toString());
 
     const ok = await confirm({
       message: '해당 경로로 파일을 생성하시겠습니까?',
