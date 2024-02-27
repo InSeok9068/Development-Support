@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 
 import { checkbox, confirm, input, select } from '@inquirer/prompts';
+import boxen from 'boxen';
 import Table from 'cli-table3';
 import { program } from 'commander';
 import figlet from 'figlet';
@@ -118,7 +119,7 @@ program
       filterFileActions.forEach((fileAction) => {
         fs.ensureFile(fileAction.action(fileName));
       });
-      console.log('파일 생성이 완료되었습니다.');
+      console.log(boxen('파일 생성이 완료되었습니다.', { padding: 1 }));
     }
   });
 
