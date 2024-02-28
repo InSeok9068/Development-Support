@@ -28,7 +28,7 @@ const fileActions = [
     path: './apps/backend/src/services',
     option: 1,
     action: function (fileName) {
-      return `${this.path}/${fileName.toLowerCase()}.services.ts`;
+      return `${this.path}/${fileName.toLowerCase()}.service.ts`;
     },
   },
   {
