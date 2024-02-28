@@ -22,14 +22,14 @@
     "clean": "rimraf node_modules"
   },
   "dependencies": {
-    "@bull-board/express": "^5.14.1",
+    "@bull-board/express": "^5.14.2",
     "@google-cloud/translate": "^8.1.0",
     "@graphql-tools/load-files": "^7.0.0",
     "@graphql-tools/merge": "^9.0.3",
     "@graphql-tools/schema": "^10.0.3",
     "@prisma/client": "^5.10.2",
     "axios": "^1.6.7",
-    "bullmq": "^5.3.3",
+    "bullmq": "^5.4.0",
     "cors": "^2.8.5",
     "cron": "^3.1.6",
     "cross-env": "^7.0.3",
