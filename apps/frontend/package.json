@@ -21,8 +21,8 @@
     "@apollo/client": "^3.9.5",
     "@vue/apollo-composable": "4.0.1",
     "axios": "^1.6.7",
-    "chart.js": "^4.4.1",
-    "firebase": "^10.8.0",
+    "chart.js": "^4.4.2",
+    "firebase": "^10.8.1",
     "firebaseui": "^6.1.0",
     "graphql": "^16.8.1",
     "pinia": "^2.1.7",
@@ -30,7 +30,7 @@
     "primeflex": "^3.3.1",
     "primeicons": "^6.0.1",
     "primevue": "^3.49.1",
-    "vue": "^3.4.20",
+    "vue": "^3.4.21",
     "vue-router": "^4.3.0"
   },
   "devDependencies": {
@@ -42,7 +42,7 @@
     "@vitejs/plugin-vue": "^5.0.4",
     "@vue/test-utils": "^2.4.4",
     "@vue/tsconfig": "^0.5.1",
-    "autoprefixer": "^10.4.17",
+    "autoprefixer": "^10.4.18",
     "eslint-plugin-vue": "^9.22.0",
     "graphql-codegen-typescript-validation-schema": "^0.12.1",
     "npm-run-all": "^4.1.5",
@@ -52,6 +52,6 @@
     "vite": "^5.1.4",
     "vite-plugin-remove-console": "^2.2.0",
     "vue-eslint-parser": "^9.4.2",
-    "vue-tsc": "^1.8.27"
+    "vue-tsc": "^2.0.2"
   }
 }
