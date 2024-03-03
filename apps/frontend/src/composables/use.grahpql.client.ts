@@ -25,7 +25,7 @@ const authLink = new ApolloLink((operation, forward) => {
 const unauthorizedLink = onError(({ networkError }) => {
   if (networkError) {
     if ((networkError as any)?.statusCode === 401) location.href = '/login';
-    if ((networkError as any)?.statusCode === 403) setTimeout(() => location.reload(), 1000);
+    if ((networkError as any)?.statusCode === 403) setTimeout(() => location.reload(), 3000);
   }
 });
 
