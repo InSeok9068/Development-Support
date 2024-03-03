@@ -52,6 +52,6 @@
     "vite": "^5.1.4",
     "vite-plugin-remove-console": "^2.2.0",
     "vue-eslint-parser": "^9.4.2",
-    "vue-tsc": "^2.0.2"
+    "vue-tsc": "^2.0.3"
   }
 }

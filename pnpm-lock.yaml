@@ -273,8 +273,8 @@ importers:
         specifier: ^9.4.2
         version: 9.4.2(eslint@8.57.0)
       vue-tsc:
-        specifier: ^2.0.2
-        version: 2.0.2(typescript@5.3.3)
+        specifier: ^2.0.3
+        version: 2.0.3(typescript@5.3.3)
 
   cli:
     dependencies:
@@ -3591,8 +3591,8 @@ packages:
     resolution: {integrity: sha512-LgPscpE3Vs0x96PzSSB4IGVSZXZBZHpfxs+ZA1d+VEPwHdOXowy/Y2CsvCAIFrf+ssVU1pD1jidj505EpUnfbA==}
     dev: false
 
-  /@vue/language-core@2.0.2(typescript@5.3.3):
-    resolution: {integrity: sha512-MT8pGTFouwDOS/ton1OqyW2MtTv02I8kEymvD05lW3NM8HJf63Xu9sZc0nh5SGZN35EFdnSsD+emhRKRzHLEug==}
+  /@vue/language-core@2.0.3(typescript@5.3.3):
+    resolution: {integrity: sha512-hnVF/Q3cD2v+EFD4pD1YdITGBcdM38P18SYqilVQDezKw5RobWny4BwIckWGS1fJmUstsO9mTX30ZOyzyR2Q+Q==}
     peerDependencies:
       typescript: '*'
     peerDependenciesMeta:
@@ -9495,15 +9495,15 @@ packages:
       magic-string: 0.30.7
       minimatch: 9.0.3
       resolve: 1.22.8
-      unplugin: 1.7.1
+      unplugin: 1.8.0
       vue: 3.4.21(typescript@5.3.3)
     transitivePeerDependencies:
       - rollup
       - supports-color
     dev: true
 
-  /unplugin@1.7.1:
-    resolution: {integrity: sha512-JqzORDAPxxs8ErLV4x+LL7bk5pk3YlcWqpSNsIkAZj972KzFZLClc/ekppahKkOczGkwIG6ElFgdOgOlK4tXZw==}
+  /unplugin@1.8.0:
+    resolution: {integrity: sha512-yGEQsodWICmgt7asHF7QzqDZYeEP9h14vyd9Lul98UnYf29pLZZLwI09z2QdTjwU/FCkum1SRvsK7cx232X8NA==}
     dependencies:
       acorn: 8.11.3
       chokidar: 3.6.0
@@ -9805,14 +9805,14 @@ packages:
       he: 1.2.0
     dev: true
 
-  /vue-tsc@2.0.2(typescript@5.3.3):
-    resolution: {integrity: sha512-y/McoUhK62cJdI9m8xTCADOELPczi/EhLcjwq84xTqmsqEFugM7vOy5l7X/2ZNdMKopg74jVn2Nd4GdUxPMGWw==}
+  /vue-tsc@2.0.3(typescript@5.3.3):
+    resolution: {integrity: sha512-aMJqbgLiKDAwAglWqMoGf1Ez6Wwqhlk2MDxEjFGziiLW0A+tHOWE1+YQJZQ1Vm6zaENPA2KJAubFhaR988UvGg==}
     hasBin: true
     peerDependencies:
       typescript: '*'
     dependencies:
       '@volar/typescript': 2.1.0
-      '@vue/language-core': 2.0.2(typescript@5.3.3)
+      '@vue/language-core': 2.0.3(typescript@5.3.3)
       semver: 7.6.0
       typescript: 5.3.3
     dev: true
