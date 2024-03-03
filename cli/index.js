@@ -11,6 +11,7 @@ console.log(figlet.textSync('Development Support CLI'));
 
 const fileActions = [
   {
+    name: '(Backend) GrahpQL 스키마',
     path: './apps/backend/src/graphql/types',
     option: 1,
     action: function (fileName) {
@@ -18,6 +19,7 @@ const fileActions = [
     },
   },
   {
+    name: '(Backend) GrahpQL 리졸버',
     path: './apps/backend/src/graphql/resolvers',
     option: 1,
     action: function (fileName) {
@@ -25,6 +27,7 @@ const fileActions = [
     },
   },
   {
+    name: '(Backend) 서비스',
     path: './apps/backend/src/services',
     option: 1,
     action: function (fileName) {
@@ -32,6 +35,7 @@ const fileActions = [
     },
   },
   {
+    name: '(Fronted) GraphQL 오퍼레이션',
     path: './apps/frontend/src/graphql/operations',
     option: 1,
     action: function (fileName) {
@@ -39,6 +43,7 @@ const fileActions = [
     },
   },
   {
+    name: '(Fronted) View 화면',
     path: './apps/frontend/src/views',
     option: 2,
     action: function (fileName) {
@@ -46,6 +51,7 @@ const fileActions = [
     },
   },
   {
+    name: '(Fronted) View 유형',
     path: './apps/frontend/src/ui',
     option: 2,
     action: function (fileName) {
@@ -53,6 +59,7 @@ const fileActions = [
     },
   },
   {
+    name: '(Fronted) View 로직',
     path: './apps/frontend/src/composables',
     option: 2,
     action: function (fileName) {
@@ -60,6 +67,7 @@ const fileActions = [
     },
   },
   {
+    name: '(Fronted) URL 라우터',
     path: './apps/frontend/src/router/url',
     option: 3,
     action: function (fileName) {
@@ -108,7 +116,7 @@ program
 
     const filterFileActions = fileActions.filter((fileAction) => option.includes(fileAction.option));
     const table = new Table();
-    filterFileActions.forEach((a) => table.push(['경로', a.action(fileName)]));
+    filterFileActions.forEach((a) => table.push([a.name, a.action(fileName)]));
     console.log(table.toString());
 
     const ok = await confirm({
