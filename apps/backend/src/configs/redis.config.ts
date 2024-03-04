@@ -8,6 +8,7 @@ const connection = {
 
 const redis = createClient({
   url: process.env.REDIS_URL,
+  pingInterval: 100000,
 });
 
 (async () => {
