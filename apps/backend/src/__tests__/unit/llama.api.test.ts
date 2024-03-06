@@ -1,5 +1,5 @@
 import { llamaApiCompletions } from '@/services/llama.api.service';
-import { describe, test } from 'vitest';
+import { describe, expect, test } from 'vitest';
 
 describe('Llama API 테스트', () => {
   test('/v1/completions', async () => {
@@ -7,5 +7,7 @@ describe('Llama API 테스트', () => {
       prompt: '\n\n### Instructions:\nWhat is the capital of France?\n\n### Response:\n',
       stop: ['\n', '###'],
     });
+
+    expect(result.choices[0].text).toBeTypeOf('string');
   });
 });

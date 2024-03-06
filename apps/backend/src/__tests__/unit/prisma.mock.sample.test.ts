@@ -1,7 +1,7 @@
+import { prisma } from '@/configs/__mocks__/prisma.config';
 import { test, vi } from 'vitest';
-import { prisma } from '../configs/__mocks__/prisma.config';
 
-vi.mock('../configs/prisma.config');
+vi.mock('@/configs/prisma.config');
 
 test('Prisma Mock Sample Code', async () => {
   const resultWork = {
@@ -19,4 +19,12 @@ test('Prisma Mock Sample Code', async () => {
   };
 
   prisma.work.findUniqueOrThrow.mockResolvedValue(resultWork);
+
+  console.log(
+    await prisma.work.findUniqueOrThrow({
+      where: {
+        id: 1,
+      },
+    }),
+  );
 });
