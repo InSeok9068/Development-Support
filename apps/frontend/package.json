@@ -3,6 +3,7 @@
   "description": "개발 도우미 (프론트엔드)",
   "scripts": {
     "test": "vitest",
+    "test:integration": "vitest",
     "test:ui": "vitest --ui",
     "dev": "vite --host --port 3000",
     "preview": "vite preview",

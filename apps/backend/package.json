@@ -2,7 +2,8 @@
   "name": "development-support-backend",
   "description": "개발 도우미 (백엔드)",
   "scripts": {
-    "test": "cross-env NODE_ENV=development vitest",
+    "test": "cross-env NODE_ENV=development vitest /unit",
+    "test:integration": "cross-env NODE_ENV=development vitest /integration",
     "test:ui": "cross-env NODE_ENV=development vitest --ui",
     "dev": "cross-env NODE_ENV=development nodemon --exec ts-node -r tsconfig-paths/register src/app.ts",
     "start": "pm2 start ecosystem.config.js --env production",
