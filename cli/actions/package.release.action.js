@@ -1,4 +1,5 @@
 import { execSync } from 'child_process';
+import { Listr } from 'listr2';
 
 const packageNames = [];
 const packageReleases = [];
@@ -14,22 +15,31 @@ const packageReleaseAction = async () => {
     packageInfo.devDependencies && packageNames.push(...Object.keys(packageInfo.devDependencies));
   });
 
-  for (const packageName of packageNames) {
-    let packageRelease = '';
-    try {
-      packageRelease = execSync(`npm view ${packageName} time`, {
-        encoding: 'utf-8',
-      });
-    } catch (error) {
-      continue;
-    }
+  const tasks = new Listr(
+    packageNames.map((packageName) => ({
+      title: packageName,
+      task: () => {
+        try {
+          const packageRelease = execSync(`npm view ${packageName} time`, {
+            encoding: 'utf-8',
+          });
+          const modifiedRegex = /modified: '([^']+)'/;
+          const match = packageRelease.match(modifiedRegex);
+          if (match) {
+            packageReleases.push({ packageName, releases: match[1] });
+          }
+        } catch (error) {
+          /* empty */
+        }
+      },
+    })),
+    {
+      concurrent: true,
+      exitOnError: false,
+    },
+  );
 
-    const modifiedRegex = /modified: '([^']+)'/;
-    const match = packageRelease.match(modifiedRegex);
-    if (match) {
-      packageReleases.push({ packageName, releases: match[1] });
-    }
-  }
+  await tasks.run();
 
   console.log(packageReleases);
 };
