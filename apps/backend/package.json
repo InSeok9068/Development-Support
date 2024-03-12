@@ -4,7 +4,7 @@
   "scripts": {
     "test": "cross-env NODE_ENV=development vitest /unit",
     "test:integration": "cross-env NODE_ENV=development vitest /integration",
-    "test:ui": "cross-env NODE_ENV=development vitest --ui",
+    "test:ui": "cross-env NODE_ENV=development vitest /unit --ui",
     "dev": "cross-env NODE_ENV=development nodemon --exec ts-node -r tsconfig-paths/register src/app.ts",
     "start": "pm2 start ecosystem.config.js --env production",
     "build": "tsc",
@@ -23,7 +23,7 @@
     "clean": "rimraf node_modules"
   },
   "dependencies": {
-    "@bull-board/express": "^5.14.2",
+    "@bull-board/express": "^5.15.0",
     "@google-cloud/translate": "^8.1.0",
     "@graphql-tools/load-files": "^7.0.0",
     "@graphql-tools/merge": "^9.0.3",
