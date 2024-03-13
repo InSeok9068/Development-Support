@@ -55,4 +55,4 @@ const logger = winston.createLogger({
   transports,
 });
 
-export { logger };
+export { logger, level };

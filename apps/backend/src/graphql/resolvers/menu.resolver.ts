@@ -1,5 +1,5 @@
+import { CustomContext } from '@/graphql/custom.context';
 import { menuPermission, menus } from '@/services/menu.service';
-import { getUid } from '@/utils/header.util';
 import { QueryMenuPermissionArgs, QueryMenusArgs } from '@support/shared/types';
 
 const resolvers = {
@@ -11,8 +11,8 @@ const resolvers = {
         },
       );
     },
-    menuPermission: async (_: unknown, args: QueryMenuPermissionArgs, { headers }: { headers: any }) => {
-      args.input.uid = getUid(headers);
+    menuPermission: async (_: unknown, args: QueryMenuPermissionArgs, context: CustomContext) => {
+      args.input.uid = context.uid;
       return await menuPermission(args.input);
     },
   },

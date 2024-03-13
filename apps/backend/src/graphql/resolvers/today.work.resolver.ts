@@ -1,3 +1,4 @@
+import { CustomContext } from '@/graphql/custom.context';
 import {
   createTodayWorkItem,
   deleteTodayWorkItem,
@@ -8,7 +9,6 @@ import {
   workItemsBatch,
   works,
 } from '@/services/today.work.service';
-import { getUid } from '@/utils/header.util';
 import { WorkItem } from '@prisma/client';
 import {
   MutationCreateTodayWorkItemArgs,
@@ -39,12 +39,12 @@ const batchWorkItems = new DataLoader(
 
 const resolvers = {
   Query: {
-    works: async (_: unknown, args: QueryWorksArgs, { headers }: { headers: any }) => {
-      args.input.uid = getUid(headers);
+    works: async (_: unknown, args: QueryWorksArgs, context: CustomContext) => {
+      args.input.uid = context.uid;
       return await works(args.input);
     },
-    suggestions: async (_: unknown, args: QuerySuggestionsArgs, { headers }: { headers: any }) => {
-      args.input.uid = getUid(headers);
+    suggestions: async (_: unknown, args: QuerySuggestionsArgs, context: CustomContext) => {
+      args.input.uid = context.uid;
       return await suggestions(args.input);
     },
   },
@@ -56,8 +56,8 @@ const resolvers = {
   },
 
   Mutation: {
-    createTodayWorkItem: async (_: unknown, args: MutationCreateTodayWorkItemArgs, { headers }: { headers: any }) => {
-      args.input.uid = getUid(headers);
+    createTodayWorkItem: async (_: unknown, args: MutationCreateTodayWorkItemArgs, context: CustomContext) => {
+      args.input.uid = context.uid;
       return await createTodayWorkItem(args.input);
     },
     updateTodayWorkItem: async (_: unknown, args: MutationUpdateTodayWorkItemArgs) => {
@@ -69,8 +69,8 @@ const resolvers = {
     deleteTodayWorkItem: async (_: unknown, args: MutationDeleteTodayWorkItemArgs) => {
       return await deleteTodayWorkItem(Number(args.itemId));
     },
-    sendWeeklyReport: (_: unknown, _args: unknown, { headers }: { headers: any }) => {
-      return sendWeeklyReport(getUid(headers));
+    sendWeeklyReport: (_: unknown, _args: unknown, context: CustomContext) => {
+      return sendWeeklyReport(context.uid);
     },
   },
 };
