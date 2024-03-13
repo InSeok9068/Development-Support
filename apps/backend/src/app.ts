@@ -39,7 +39,7 @@ app.use(morganMiddleware);
 app.use(errorMiddleware);
 app.use(yoga.graphqlEndpoint, [limiterMiddleware, authMiddleware], yoga);
 
-app.get('/logs*', limiterMiddleware, (_req: Request, res: Response) => {
+app.get('/logs', limiterMiddleware, (_req: Request, res: Response) => {
   res.sendFile(path.join(__dirname, `../logs/${timeUtil.today('YYYY-MM-DD')}_all.log`));
 });
 

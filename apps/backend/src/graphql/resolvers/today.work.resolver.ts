@@ -39,12 +39,12 @@ const batchWorkItems = new DataLoader(
 
 const resolvers = {
   Query: {
-    works: async (_: unknown, args: QueryWorksArgs, context: CustomContext) => {
-      args.input.uid = context.uid;
+    works: async (_: unknown, args: QueryWorksArgs, ctx: CustomContext) => {
+      args.input.uid = ctx.uid;
       return await works(args.input);
     },
-    suggestions: async (_: unknown, args: QuerySuggestionsArgs, context: CustomContext) => {
-      args.input.uid = context.uid;
+    suggestions: async (_: unknown, args: QuerySuggestionsArgs, ctx: CustomContext) => {
+      args.input.uid = ctx.uid;
       return await suggestions(args.input);
     },
   },
@@ -56,8 +56,8 @@ const resolvers = {
   },
 
   Mutation: {
-    createTodayWorkItem: async (_: unknown, args: MutationCreateTodayWorkItemArgs, context: CustomContext) => {
-      args.input.uid = context.uid;
+    createTodayWorkItem: async (_: unknown, args: MutationCreateTodayWorkItemArgs, ctx: CustomContext) => {
+      args.input.uid = ctx.uid;
       return await createTodayWorkItem(args.input);
     },
     updateTodayWorkItem: async (_: unknown, args: MutationUpdateTodayWorkItemArgs) => {
@@ -69,8 +69,8 @@ const resolvers = {
     deleteTodayWorkItem: async (_: unknown, args: MutationDeleteTodayWorkItemArgs) => {
       return await deleteTodayWorkItem(Number(args.itemId));
     },
-    sendWeeklyReport: (_: unknown, _args: unknown, context: CustomContext) => {
-      return sendWeeklyReport(context.uid);
+    sendWeeklyReport: (_: unknown, _args: unknown, ctx: CustomContext) => {
+      return sendWeeklyReport(ctx.uid);
     },
   },
 };
