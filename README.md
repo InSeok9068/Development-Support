@@ -10,7 +10,7 @@ Server : Oracle Cloud
 
 Language : TypeScript
 
-Backend Framework : Express
+Backend Framework : GraphQL Yoga
 
 Frontend Framework : VueJS
 

@@ -18,7 +18,7 @@
             </tr>
             <tr>
               <th>Backend Framework</th>
-              <td>Express</td>
+              <td>GraphQL Yoga</td>
             </tr>
             <tr>
               <th>Frontend Framework</th>
