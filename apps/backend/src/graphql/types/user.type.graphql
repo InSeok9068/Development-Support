@@ -1,0 +1,7 @@
+type User {
+  uid: ID!
+  email: String
+  phoneNumber: String
+  createdAt: String!
+  updatedAt: String!
+}

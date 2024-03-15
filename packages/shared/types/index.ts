@@ -206,6 +206,15 @@ export type UpdateTodayWorkItemInput = {
   title: Scalars['String']['input'];
 };
 
+export type User = {
+  __typename?: 'User';
+  createdAt: Scalars['String']['output'];
+  email?: Maybe<Scalars['String']['output']>;
+  phoneNumber?: Maybe<Scalars['String']['output']>;
+  uid: Scalars['ID']['output'];
+  updatedAt: Scalars['String']['output'];
+};
+
 export type Work = {
   __typename?: 'Work';
   createdAt: Scalars['String']['output'];

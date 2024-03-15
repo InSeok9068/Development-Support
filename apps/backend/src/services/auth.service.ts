@@ -1,9 +1,8 @@
-import { Role } from '@support/shared/types';
-import { UserRecord } from 'firebase-admin/lib/auth/user-record';
+import { Role, User } from '@support/shared/types';
 
 const adminEmail = ['dlstjr9068@gmail.com'];
 
-const getUserRole = async (user: UserRecord) => {
+const getUserRole = async (user: User) => {
   if (user) {
     if (user) {
       if (adminEmail.includes(user.email!)) {
