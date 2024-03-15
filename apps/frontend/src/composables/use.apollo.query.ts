@@ -29,11 +29,13 @@ const useApolloQuery = <TResult = any, TVariables extends OperationVariables = O
       });
       onError((error) => {
         loading.value = false;
+        const message = (error.graphQLErrors[0].extensions.originalError as any).message;
         toast.value = {
           ...toast.value,
-          detail: error.message,
+          detail: message ?? error.message,
         };
         console.error(error);
+        console.error(error.graphQLErrors);
         reject(error);
       });
     });
