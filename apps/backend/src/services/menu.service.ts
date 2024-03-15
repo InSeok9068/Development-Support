@@ -1,6 +1,5 @@
 import { prisma } from '@/configs';
-import { getUserRole } from '@/services/auth.service';
-import { MenuPermissionInput, MenuPermissionResponse, MenusInput } from '@support/shared/types';
+import { MenuPermissionInput, MenuPermissionResponse, MenusInput, Role } from '@support/shared/types';
 import { parseRole } from '@support/shared/types/pares';
 
 const menus = async (input: MenusInput) => {
@@ -30,8 +29,7 @@ const menus = async (input: MenusInput) => {
   return menus;
 };
 
-const menuPermission = async (input: MenuPermissionInput) => {
-  const role = await getUserRole(input.uid ?? '');
+const menuPermission = async (input: MenuPermissionInput, role: Role) => {
   const menu = await prisma.menu.findFirstOrThrow({
     where: {
       to: input.to,

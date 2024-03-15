@@ -1,11 +1,10 @@
-import { admin } from '@/configs';
 import { Role } from '@support/shared/types';
+import { UserRecord } from 'firebase-admin/lib/auth/user-record';
 
 const adminEmail = ['dlstjr9068@gmail.com'];
 
-const getUserRole = async (uid: string) => {
-  if (uid) {
-    const user = await admin.auth().getUser(uid);
+const getUserRole = async (user: UserRecord) => {
+  if (user) {
     if (user) {
       if (adminEmail.includes(user.email!)) {
         return Role.Admin;
@@ -20,10 +19,4 @@ const getUserRole = async (uid: string) => {
   }
 };
 
-const isAdmin = async (uid: string) => Role.Admin === (await getUserRole(uid));
-
-const isUser = async (uid: string) => Role.User === (await getUserRole(uid));
-
-const isGuest = async (uid: string) => Role.Guest === (await getUserRole(uid));
-
-export { getUserRole, isAdmin, isGuest, isUser };
+export { getUserRole };

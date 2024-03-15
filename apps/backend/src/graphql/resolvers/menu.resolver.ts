@@ -12,8 +12,7 @@ const resolvers = {
       );
     },
     menuPermission: async (_: unknown, args: QueryMenuPermissionArgs, ctx: CustomContext) => {
-      args.input.uid = ctx.uid;
-      return await menuPermission(args.input);
+      return await menuPermission(args.input, ctx.role);
     },
   },
 };

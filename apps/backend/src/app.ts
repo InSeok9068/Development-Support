@@ -8,19 +8,30 @@ dotenv.config({ path: path.join(__dirname, '..', `.env.${process.env.NODE_ENV}`)
 import { logger } from '@/configs';
 import { context } from '@/graphql/custom.context';
 import { schema } from '@/graphql/schema';
-import { authMiddleware, errorMiddleware, limiterMiddleware, morganMiddleware } from '@/middlewares';
+import {
+  authMiddleware,
+  errorMiddleware,
+  limiterMiddleware,
+  morganMiddleware,
+  permissionMiddleware,
+} from '@/middlewares';
 import { newsletterScrapSchedule } from '@/schedules/newsletter.scrap.schedule';
+import { EnvelopArmor } from '@escape.tech/graphql-armor';
 import { timeUtil } from '@support/shared/utils/time.util';
 import cors from 'cors';
 import express, { Express, Request, Response } from 'express';
+import { applyMiddleware } from 'graphql-middleware';
 import { createYoga } from 'graphql-yoga';
 import helmet from 'helmet';
 
 const app: Express = express();
 const port = process.env.PORT || 4000;
+const armor = new EnvelopArmor();
+const protection = armor.protect();
 const yoga = createYoga({
-  schema,
+  schema: applyMiddleware(schema, permissionMiddleware),
   context,
+  plugins: [...protection.plugins],
 });
 
 // 설정
