@@ -19,7 +19,7 @@ type MenuPermissionResponse {
 }
 
 type Query {
-  menus(input: MenusInput): [Menu]
+  menus(input: MenusInput): [Menu]!
   menuPermission(input: MenuPermissionInput!): MenuPermissionResponse!
 }
 
