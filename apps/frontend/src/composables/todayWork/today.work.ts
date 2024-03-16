@@ -9,7 +9,6 @@ import {
   UPDATE_TODAY_WORK_ITEM_FOR_TRANSFER,
   WORKS_QUERY,
 } from '@/graphql/operations/today.work.operation';
-import { type UiTodayWorkItemArgs, type UiTodayWorkSuggestions } from '@/ui/today.work.ui';
 import {
   type CreateTodayWorkItemInput,
   type CreateTodayWorkItemMutationVariables,
@@ -37,15 +36,15 @@ const useTodayWork = () => {
     date: timeUtil.today('YYYY-MM-DD'),
   });
 
-  const todayWorkListArgs = ref<UiTodayWorkItemArgs[]>([]);
+  const todayWorkListArgs = ref<WorksQuery>();
 
   const todayWorkSearchArgs = ref<WorksInput>({
     startDate: timeUtil.today('YYYY-MM-DD'),
     endDate: timeUtil.today('YYYY-MM-DD'),
   });
 
-  const suggestionsArgs = ref<UiTodayWorkSuggestions>({
-    suggestion: [],
+  const suggestionsArgs = ref<SuggestionsQuery>({
+    suggestions: [],
   });
 
   const works = async (searchArgs: WorksInput) => {
@@ -53,18 +52,7 @@ const useTodayWork = () => {
       input: searchArgs,
     });
 
-    const result = await apolloQuery();
-
-    todayWorkListArgs.value = result.data.works.map((work) => ({
-      id: Number(work?.id),
-      title: work?.title,
-      time: work?.time,
-      subItem: work?.workItems.map((item) => ({
-        itemId: Number(item.itemId),
-        content: item.content,
-        time: item.time,
-      })),
-    })) as UiTodayWorkItemArgs[];
+    todayWorkListArgs.value = (await apolloQuery()).data;
   };
 
   const createTodayWorkItem = async (input: CreateTodayWorkItemInput) => {
@@ -130,11 +118,7 @@ const useTodayWork = () => {
       },
     });
 
-    const result = await apolloQuery();
-
-    suggestionsArgs.value = {
-      suggestion: result.data?.suggestions?.map((suggestion) => suggestion?.title) as string[],
-    };
+    suggestionsArgs.value = (await apolloQuery()).data;
   };
 
   return {

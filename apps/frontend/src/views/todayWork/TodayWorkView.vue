@@ -8,7 +8,7 @@
             v-model="todayWorkInputArgs.title"
             class="flex-column"
             placeholder="제목"
-            :suggestions="suggestionsArgs.suggestion"
+            :suggestions="suggestionsArgs.suggestions.map((suggestion) => suggestion?.title)"
             @complete="onCompleteSuggestions"
           />
           <Textarea v-model="todayWorkInputArgs.content" auto-resize rows="5" placeholder="내용" />
@@ -42,21 +42,21 @@
         <label class="font-bold text-lg block mb-2"> 오늘 한일 </label>
         <ul>
           <li
-            v-for="(item, index) in todayWorkListArgs"
+            v-for="(item, index) in todayWorkListArgs?.works"
             :key="index"
             class="mb-2"
-            @drop.prevent="onDrop($event, item.id)"
+            @drop.prevent="onDrop($event, Number(item?.id))"
             @dragenter.prevent
             @dragover.prevent
           >
-            <span class="text-lg font-bold">{{ `${item.title} ` }}</span>
-            <span class="text-lg font-bold text-red-700">{{ `[${item.time}H]` }}</span>
+            <span class="text-lg font-bold">{{ `${item?.title} ` }}</span>
+            <span class="text-lg font-bold text-red-700">{{ `[${item?.time}H]` }}</span>
             <div
-              v-for="(subItem, subIndex) in item.subItem"
+              v-for="(subItem, subIndex) in item?.workItems"
               :key="subIndex"
               class="flex align-items-center gap-1"
               draggable="true"
-              @dragstart="onDragStart($event, subItem.itemId)"
+              @dragstart="onDragStart($event, Number(subItem.itemId))"
             >
               <span class="flex">
                 {{ `${subIndex + 1}) ${subItem.content} [${subItem.time}H]` }}
@@ -65,13 +65,13 @@
                 icon="pi pi-file-edit"
                 text
                 severity="help"
-                @click.prevent.stop="onClickItemSelect(subItem.itemId)"
+                @click.prevent.stop="onClickItemSelect(Number(subItem.itemId))"
               />
               <Button
                 icon="pi pi-eraser"
                 text
                 severity="danger"
-                @click.prevent.stop="onClickItemRemove(subItem.itemId)"
+                @click.prevent.stop="onClickItemRemove(Number(subItem.itemId))"
               />
             </div>
           </li>
