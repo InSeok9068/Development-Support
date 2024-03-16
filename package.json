@@ -33,8 +33,8 @@
     "@support/prettier-config-custom": "workspace:*",
     "@support/shared": "workspace:*",
     "@types/lodash": "^4.17.0",
-    "@types/node": "^20.11.27",
-    "@vitest/ui": "^1.3.1",
+    "@types/node": "^20.11.28",
+    "@vitest/ui": "^1.4.0",
     "eslint": "^8.57.0",
     "husky": "^9.0.11",
     "lint-staged": "^15.2.2",
@@ -42,7 +42,7 @@
     "ts-node": "^10.9.2",
     "turbo": "^1.12.5",
     "typescript": "^5.4.2",
-    "vitest": "^1.3.1"
+    "vitest": "^1.4.0"
   },
   "lint-staged": {
     "*.{js,ts}": [
