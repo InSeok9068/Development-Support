@@ -18,8 +18,8 @@ type WorkItem {
 
 type Query {
   work(input: WorkInput): Work
-  works(input: WorksInput!): [Work]
-  suggestions(input: SuggestionsInput!): [Work]
+  works(input: WorksInput!): [Work]!
+  suggestions(input: SuggestionsInput!): [Work]!
 }
 
 type Mutation {

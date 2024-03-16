@@ -24,7 +24,7 @@
       <div class="card flex align-items-center flex-column md:flex-row gap-2">
         <div class="flex">
           <Calendar
-            v-model="todayWorkSearchArgs.date"
+            v-model="todayWorkSearchArgs.startDate"
             show-icon
             date-format="yy-mm-dd"
             @date-select="works(todayWorkSearchArgs)"
@@ -42,7 +42,7 @@
         <label class="font-bold text-lg block mb-2"> 오늘 한일 </label>
         <ul>
           <li
-            v-for="(item, index) in todayWorkListArgs.item"
+            v-for="(item, index) in todayWorkListArgs"
             :key="index"
             class="mb-2"
             @drop.prevent="onDrop($event, item.id)"
@@ -107,7 +107,7 @@ const onClickRegist = () => {
     title: todayWorkInputArgs.value.title,
     content: todayWorkInputArgs.value.content,
     time: todayWorkInputArgs.value.time,
-    date: todayWorkSearchArgs.value.date,
+    date: todayWorkSearchArgs.value.startDate,
   } as CreateTodayWorkItemInput);
 
   todayWorkInputArgsClear();
@@ -139,17 +139,20 @@ const onCompleteSuggestions = async (event: any) => {
 };
 
 const onClickCalendarPre = () => {
-  todayWorkSearchArgs.value.date = $time.minusTime(todayWorkSearchArgs.value.date, 1, 'day', 'YYYY-MM-DD');
+  todayWorkSearchArgs.value.startDate = $time.minusTime(todayWorkSearchArgs.value.startDate, 1, 'day', 'YYYY-MM-DD');
+  todayWorkSearchArgs.value.endDate = $time.minusTime(todayWorkSearchArgs.value.endDate, 1, 'day', 'YYYY-MM-DD');
   works(todayWorkSearchArgs.value);
 };
 
 const onClickCalendarNext = () => {
-  todayWorkSearchArgs.value.date = $time.plusTime(todayWorkSearchArgs.value.date, 1, 'day', 'YYYY-MM-DD');
+  todayWorkSearchArgs.value.startDate = $time.plusTime(todayWorkSearchArgs.value.startDate, 1, 'day', 'YYYY-MM-DD');
+  todayWorkSearchArgs.value.endDate = $time.plusTime(todayWorkSearchArgs.value.endDate, 1, 'day', 'YYYY-MM-DD');
   works(todayWorkSearchArgs.value);
 };
 
 const todayWorkInputArgsClear = () => {
   todayWorkInputArgs.value = {
+    ...todayWorkInputArgs.value,
     title: '',
     content: '',
     time: 1,

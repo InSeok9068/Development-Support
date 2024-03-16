@@ -6,7 +6,7 @@
     </div>
   </div>
   <div class="card col-12">
-    <DataTable :value="workListArgs.item" show-gridlines paginator :rows="5" :rows-per-page-options="[5, 10, 20, 50]">
+    <DataTable :value="workListArgs" show-gridlines paginator :rows="5" :rows-per-page-options="[5, 10, 20, 50]">
       <Column field="date" header="일자" sortable></Column>
       <Column field="title" header="제목" sortable></Column>
       <Column field="content" header="내용" sortable></Column>

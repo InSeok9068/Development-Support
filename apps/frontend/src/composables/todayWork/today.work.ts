@@ -9,13 +9,7 @@ import {
   UPDATE_TODAY_WORK_ITEM_FOR_TRANSFER,
   WORKS_QUERY,
 } from '@/graphql/operations/today.work.operation';
-import {
-  type UiTodayWorkInputArgs,
-  type UiTodayWorkItemArgs,
-  type UiTodayWorkListArgs,
-  type UiTodayWorkSearchArgs,
-  type UiTodayWorkSuggestions,
-} from '@/ui/today.work.ui';
+import { type UiTodayWorkItemArgs, type UiTodayWorkSuggestions } from '@/ui/today.work.ui';
 import {
   type CreateTodayWorkItemInput,
   type CreateTodayWorkItemMutationVariables,
@@ -27,58 +21,50 @@ import {
   type UpdateTodayWorkItemForTransferMutationVariables,
   type Work,
   type WorkItem,
+  type WorksInput,
   type WorksQuery,
 } from '@support/shared/types';
+import { timeUtil } from '@support/shared/utils';
 import { CreateTodayWorkItemInputSchema, UpdateTodayWorkItemForTransferInputSchema } from '@support/shared/validators';
-import dayjs from 'dayjs';
 import { ref } from 'vue';
 const { safeParseIfErrorToast } = useValidator();
 
 const useTodayWork = () => {
-  const todayWorkInputArgs = ref<UiTodayWorkInputArgs>({
+  const todayWorkInputArgs = ref<CreateTodayWorkItemInput>({
     title: '',
     content: '',
     time: 1,
+    date: timeUtil.today('YYYY-MM-DD'),
   });
 
-  const todayWorkListArgs = ref<UiTodayWorkListArgs>({
-    item: [],
-  });
+  const todayWorkListArgs = ref<UiTodayWorkItemArgs[]>([]);
 
-  const todayWorkSearchArgs = ref<UiTodayWorkSearchArgs>({
-    date: dayjs().format('YYYY-MM-DD'),
+  const todayWorkSearchArgs = ref<WorksInput>({
+    startDate: timeUtil.today('YYYY-MM-DD'),
+    endDate: timeUtil.today('YYYY-MM-DD'),
   });
 
   const suggestionsArgs = ref<UiTodayWorkSuggestions>({
     suggestion: [],
   });
 
-  const works = async (searchArgs: UiTodayWorkSearchArgs) => {
+  const works = async (searchArgs: WorksInput) => {
     const { apolloQuery } = useApolloQuery<WorksQuery, QueryWorksArgs>(WORKS_QUERY, {
-      input: {
-        startDate: searchArgs.date,
-        endDate: searchArgs.date,
-      },
+      input: searchArgs,
     });
 
     const result = await apolloQuery();
 
-    todayWorkListArgs.value = {
-      item: result.data.works?.map((work) => {
-        return {
-          id: Number(work?.id),
-          title: work?.title,
-          time: work?.time,
-          subItem: work?.workItems.map((item) => {
-            return {
-              itemId: Number(item.itemId),
-              content: item.content,
-              time: item.time,
-            };
-          }),
-        };
-      }) as UiTodayWorkItemArgs[],
-    };
+    todayWorkListArgs.value = result.data.works.map((work) => ({
+      id: Number(work?.id),
+      title: work?.title,
+      time: work?.time,
+      subItem: work?.workItems.map((item) => ({
+        itemId: Number(item.itemId),
+        content: item.content,
+        time: item.time,
+      })),
+    })) as UiTodayWorkItemArgs[];
   };
 
   const createTodayWorkItem = async (input: CreateTodayWorkItemInput) => {

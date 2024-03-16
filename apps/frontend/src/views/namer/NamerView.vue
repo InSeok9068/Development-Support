@@ -71,9 +71,7 @@
 </template>
 
 <script setup lang="ts">
-import { useDialog } from '@/composables/dialog';
 import { useNamer } from '@/composables/namer/namer';
-const { dialog } = useDialog();
 const { nameSuggestions, namerFormArgs, nameSuggestionsArgs } = useNamer();
 
 const onSubmit = () => {

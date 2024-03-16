@@ -67,7 +67,7 @@ export type Mutation = {
   __typename?: 'Mutation';
   createTodayWorkItem: Work;
   deleteTodayWorkItem: WorkItem;
-  nowScrapingNewsletters?: Maybe<Array<Maybe<Newsletter>>>;
+  nowScrapingNewsletters: Array<Maybe<Newsletter>>;
   sendWeeklyReport: Scalars['Boolean']['output'];
   updateTodayWorkItem: Work;
   updateTodayWorkItemForTransfer: Work;
@@ -141,10 +141,10 @@ export type Query = {
   menuPermission: MenuPermissionResponse;
   menus?: Maybe<Array<Maybe<Menu>>>;
   nameSuggestions: Scalars['String']['output'];
-  newsletters?: Maybe<Array<Maybe<Newsletter>>>;
-  suggestions?: Maybe<Array<Maybe<Work>>>;
+  newsletters: Array<Maybe<Newsletter>>;
+  suggestions: Array<Maybe<Work>>;
   work?: Maybe<Work>;
-  works?: Maybe<Array<Maybe<Work>>>;
+  works: Array<Maybe<Work>>;
 };
 
 export type QueryMenuPermissionArgs = {
@@ -319,21 +319,21 @@ export type NewslettersQueryVariables = Exact<{
 
 export type NewslettersQuery = {
   __typename?: 'Query';
-  newsletters?: Array<{
+  newsletters: Array<{
     __typename?: 'Newsletter';
     id: string;
     title: string;
     source: Source;
     sourceLink?: string | null;
     originLink?: string | null;
-  } | null> | null;
+  } | null>;
 };
 
 export type NowScrapingNewslettersMutationVariables = Exact<{ [key: string]: never }>;
 
 export type NowScrapingNewslettersMutation = {
   __typename?: 'Mutation';
-  nowScrapingNewsletters?: Array<{ __typename?: 'Newsletter'; id: string } | null> | null;
+  nowScrapingNewsletters: Array<{ __typename?: 'Newsletter'; id: string } | null>;
 };
 
 export type WorksQueryVariables = Exact<{
@@ -342,7 +342,7 @@ export type WorksQueryVariables = Exact<{
 
 export type WorksQuery = {
   __typename?: 'Query';
-  works?: Array<{
+  works: Array<{
     __typename?: 'Work';
     id: string;
     title: string;
@@ -357,7 +357,7 @@ export type WorksQuery = {
       createdAt: string;
       updatedAt: string;
     }>;
-  } | null> | null;
+  } | null>;
 };
 
 export type CreateTodayWorkItemMutationVariables = Exact<{
@@ -406,5 +406,5 @@ export type SuggestionsQueryVariables = Exact<{
 
 export type SuggestionsQuery = {
   __typename?: 'Query';
-  suggestions?: Array<{ __typename?: 'Work'; title: string } | null> | null;
+  suggestions: Array<{ __typename?: 'Work'; title: string } | null>;
 };

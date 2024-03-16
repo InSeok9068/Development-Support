@@ -1,9 +1,3 @@
-export interface UiTodayWorkInputArgs {
-  title: string;
-  content: string;
-  time: number;
-}
-
 export interface UiTodayWorkSubItemArgs {
   itemId: number;
   content: string;
@@ -15,14 +9,6 @@ export interface UiTodayWorkItemArgs {
   title: string;
   time: number;
   subItem: UiTodayWorkSubItemArgs[];
-}
-
-export interface UiTodayWorkListArgs {
-  item: UiTodayWorkItemArgs[];
-}
-
-export interface UiTodayWorkSearchArgs {
-  date: string;
 }
 
 export interface UiTodayWorkSuggestions {

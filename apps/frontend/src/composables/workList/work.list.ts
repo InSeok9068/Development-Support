@@ -1,24 +1,22 @@
 import { useApolloQuery } from '@/composables/use.apollo.query';
 import { useValidator } from '@/composables/validator';
 import { WORKS_QUERY } from '@/graphql/operations/today.work.operation';
-import type { UiWorkItemArgs, UiWorkListArgs, UiWorkListSearchArgs } from '@/ui/work.list.ui';
-import type { QueryWorksArgs, WorksQuery } from '@support/shared/types';
+import type { UiWorkItemArgs } from '@/ui/work.list.ui';
+import type { QueryWorksArgs, WorksInput, WorksQuery } from '@support/shared/types';
 import { timeUtil, toMillisecondString } from '@support/shared/utils/time.util';
 import { WorksInputSchema } from '@support/shared/validators';
 import { ref } from 'vue';
 const { safeParseIfErrorToast } = useValidator();
 
 const useWorkList = () => {
-  const workListSearchArgs = ref<UiWorkListSearchArgs>({
+  const workListSearchArgs = ref<WorksInput>({
     startDate: timeUtil.today('YYYY-MM-DD'),
     endDate: timeUtil.today('YYYY-MM-DD'),
   });
 
-  const workListArgs = ref<UiWorkListArgs>({
-    item: [] as UiWorkItemArgs[],
-  });
+  const workListArgs = ref<UiWorkItemArgs[]>([]);
 
-  const works = async (workListSearchArgs: UiWorkListSearchArgs) => {
+  const works = async (workListSearchArgs: WorksInput) => {
     if (!safeParseIfErrorToast(WorksInputSchema().safeParse(workListSearchArgs))) {
       return;
     }
@@ -29,19 +27,17 @@ const useWorkList = () => {
 
     const result = await apolloQuery();
 
-    workListArgs.value = {
-      item: result.data.works!.flatMap((work) =>
-        work!.workItems.map((item) => ({
-          date: toMillisecondString({
-            dateTime: item!.createdAt,
-            outFormat: 'YYYY-MM-DD',
-          }),
-          title: work!.title,
-          content: item.content,
-          time: item.time,
-        })),
-      ),
-    };
+    workListArgs.value = result.data.works.flatMap((work) =>
+      work!.workItems.map((item) => ({
+        date: toMillisecondString({
+          dateTime: item!.createdAt,
+          outFormat: 'YYYY-MM-DD',
+        }),
+        title: work!.title,
+        content: item.content,
+        time: item.time,
+      })),
+    );
   };
 
   return {
