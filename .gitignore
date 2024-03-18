@@ -23,7 +23,7 @@ dist
 **/.pnpm-debug.log*
 
 # Vite Workspace
-**/vite.config.mts.timestamp-*
+**/vite.config.*.timestamp-*
 
 ### Backend
 
