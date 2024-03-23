@@ -6,7 +6,7 @@
   "dependencies": {
     "@inquirer/prompts": "^4.3.0",
     "boxen": "^7.1.1",
-    "cli-table3": "^0.6.3",
+    "cli-table3": "^0.6.4",
     "commander": "^12.0.0",
     "figlet": "^1.7.0",
     "fs-extra": "^11.2.0",
