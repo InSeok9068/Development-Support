@@ -4,9 +4,9 @@ import { NAME_SUGGESTIONS_QUERY } from '@/graphql/operations/namer.operation';
 import type { NameSuggestionsInput, NameSuggestionsQuery, QueryNameSuggestionsArgs } from '@support/shared/types';
 import { NameSuggestionsInputSchema } from '@support/shared/validators';
 import { ref } from 'vue';
-const { safeParseIfErrorToast } = useValidator();
-
 const useNamer = () => {
+  const { safeParseIfErrorToast } = useValidator();
+
   const namerFormArgs = ref<NameSuggestionsInput>({
     lang: '',
     type: '',

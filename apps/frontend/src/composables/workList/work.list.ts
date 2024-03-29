@@ -6,9 +6,10 @@ import type { QueryWorksArgs, WorksInput, WorksQuery } from '@support/shared/typ
 import { timeUtil, toMillisecondString } from '@support/shared/utils/time.util';
 import { WorksInputSchema } from '@support/shared/validators';
 import { ref } from 'vue';
-const { safeParseIfErrorToast } = useValidator();
 
 const useWorkList = () => {
+  const { safeParseIfErrorToast } = useValidator();
+
   const workListSearchArgs = ref<WorksInput>({
     startDate: timeUtil.today('YYYY-MM-DD'),
     endDate: timeUtil.today('YYYY-MM-DD'),

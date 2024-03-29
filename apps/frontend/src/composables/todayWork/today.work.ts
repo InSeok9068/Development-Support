@@ -26,9 +26,10 @@ import {
 import { timeUtil } from '@support/shared/utils';
 import { CreateTodayWorkItemInputSchema, UpdateTodayWorkItemForTransferInputSchema } from '@support/shared/validators';
 import { ref } from 'vue';
-const { safeParseIfErrorToast } = useValidator();
 
 const useTodayWork = () => {
+  const { safeParseIfErrorToast } = useValidator();
+
   const todayWorkInputArgs = ref<CreateTodayWorkItemInput>({
     title: '',
     content: '',

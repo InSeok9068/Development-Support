@@ -17,13 +17,14 @@ import type { OperationVariables } from '@apollo/client/core/types';
 import { useMutation, type UseMutationOptions } from '@vue/apollo-composable';
 import type { ReactiveFunction } from '@vue/apollo-composable/dist/util/ReactiveFunction.js';
 import type { Ref } from 'vue';
-const { toast } = useToast();
-const { loading } = useLoading();
 
 const useApolloMutation = <TResult = any, TVariables extends OperationVariables = OperationVariables>(
   document: DocumentParameter<TResult, TVariables>,
   options?: OptionsParameter<TResult, TVariables>,
 ) => {
+  const { toast } = useToast();
+  const { loading } = useLoading();
+
   const { mutate } = useMutation(document, {
     fetchPolicy: 'network-only',
     ...options,
