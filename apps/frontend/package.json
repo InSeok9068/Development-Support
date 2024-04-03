@@ -19,7 +19,7 @@
     "clean": "rimraf node_modules"
   },
   "dependencies": {
-    "@apollo/client": "^3.9.9",
+    "@apollo/client": "^3.9.10",
     "@vue/apollo-composable": "4.0.2",
     "axios": "^1.6.8",
     "chart.js": "^4.4.2",
