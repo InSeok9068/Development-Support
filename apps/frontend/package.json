@@ -21,6 +21,7 @@
   "dependencies": {
     "@apollo/client": "^3.9.10",
     "@vue/apollo-composable": "4.0.2",
+    "@vueuse/core": "^10.9.0",
     "axios": "^1.6.8",
     "chart.js": "^4.4.2",
     "firebase": "^10.10.0",
