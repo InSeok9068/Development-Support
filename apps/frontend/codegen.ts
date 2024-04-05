@@ -18,6 +18,11 @@ const config: CodegenConfig = {
         enumsAsTypes: true,
         notAllowEmptyString: true,
         schema: 'zod',
+        scalars: {
+          JSON: 'string',
+          UUID: 'string',
+          Date: 'string',
+        },
         directives: {
           constraint: {
             format: {

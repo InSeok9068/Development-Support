@@ -139,7 +139,7 @@ export type NewslettersInput = {
 export type Query = {
   __typename?: 'Query';
   menuPermission: MenuPermissionResponse;
-  menus?: Maybe<Array<Maybe<Menu>>>;
+  menus: Array<Maybe<Menu>>;
   nameSuggestions: Scalars['String']['output'];
   newsletters: Array<Maybe<Newsletter>>;
   suggestions: Array<Maybe<Work>>;
@@ -252,7 +252,7 @@ export type MenusQueryVariables = Exact<{
 
 export type MenusQuery = {
   __typename?: 'Query';
-  menus?: Array<{
+  menus: Array<{
     __typename?: 'Menu';
     label: string;
     icon?: string | null;
@@ -290,7 +290,7 @@ export type MenusQuery = {
         order: number;
       } | null> | null;
     } | null> | null;
-  } | null> | null;
+  } | null>;
 };
 
 export type MenuPermissionQueryVariables = Exact<{
