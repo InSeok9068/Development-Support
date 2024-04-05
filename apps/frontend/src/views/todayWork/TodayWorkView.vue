@@ -24,7 +24,7 @@
       <div class="card flex align-items-center flex-column md:flex-row gap-2">
         <div class="flex">
           <Calendar
-            v-model="todayWorkSearchArgs.startDate"
+            v-model="todayWorkSearchArgs.date"
             show-icon
             date-format="yy-mm-dd"
             @date-select="works(todayWorkSearchArgs)"
@@ -85,6 +85,7 @@
 import { usePlugin } from '@/composables/plugin';
 import { useTodayWork } from '@/composables/todayWork/today.work';
 import type { CreateTodayWorkItemInput, UpdateTodayWorkItemForTransferInput } from '@support/shared/types';
+import dayjs from 'dayjs';
 import { onMounted } from 'vue';
 const {
   todayWorkInputArgs,
@@ -107,7 +108,7 @@ const onClickRegist = () => {
     title: todayWorkInputArgs.value.title,
     content: todayWorkInputArgs.value.content,
     time: todayWorkInputArgs.value.time,
-    date: todayWorkSearchArgs.value.startDate,
+    date: todayWorkSearchArgs.value.date.toISOString(),
   } as CreateTodayWorkItemInput);
 
   todayWorkInputArgsClear();
@@ -139,14 +140,12 @@ const onCompleteSuggestions = async (event: any) => {
 };
 
 const onClickCalendarPre = () => {
-  todayWorkSearchArgs.value.startDate = $time.minusTime(todayWorkSearchArgs.value.startDate, 1, 'day', 'YYYY-MM-DD');
-  todayWorkSearchArgs.value.endDate = $time.minusTime(todayWorkSearchArgs.value.endDate, 1, 'day', 'YYYY-MM-DD');
+  todayWorkSearchArgs.value.date = dayjs(todayWorkSearchArgs.value.date).subtract(1, 'day').toDate();
   works(todayWorkSearchArgs.value);
 };
 
 const onClickCalendarNext = () => {
-  todayWorkSearchArgs.value.startDate = $time.plusTime(todayWorkSearchArgs.value.startDate, 1, 'day', 'YYYY-MM-DD');
-  todayWorkSearchArgs.value.endDate = $time.plusTime(todayWorkSearchArgs.value.endDate, 1, 'day', 'YYYY-MM-DD');
+  todayWorkSearchArgs.value.date = dayjs(todayWorkSearchArgs.value.date).add(1, 'day').toDate();
   works(todayWorkSearchArgs.value);
 };
 
