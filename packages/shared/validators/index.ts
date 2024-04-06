@@ -10,6 +10,7 @@ import type {
   NameSuggestionsType,
   NewslettersInput,
   Role,
+  SampleType,
   Source,
   SuggestionsInput,
   UpdateTodayWorkItemForTransferInput,
@@ -85,6 +86,15 @@ export function NameSuggestionsInputSchema(): z.ZodObject<Properties<NameSuggest
 export function NewslettersInputSchema(): z.ZodObject<Properties<NewslettersInput>> {
   return z.object({
     source: SourceSchema.nullish(),
+  });
+}
+
+export function SampleTypeSchema(): z.ZodObject<Properties<SampleType>> {
+  return z.object({
+    email: z.string().email().min(1),
+    number1: z.number().min(1).max(5),
+    number2: z.number().lt(1).gt(5),
+    url: z.string().url().min(1),
   });
 }
 

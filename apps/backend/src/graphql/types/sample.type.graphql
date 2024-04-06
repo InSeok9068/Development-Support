@@ -1,0 +1,6 @@
+input SampleType {
+  email: String! @constraint(format: "email")
+  url: String! @constraint(format: "url")
+  number1: Int! @constraint(min: 1, max: 5)
+  number2: Int! @constraint(lt: 1, gt: 5)
+}

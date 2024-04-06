@@ -249,6 +249,13 @@ export const Role = {
 } as const;
 
 export type Role = (typeof Role)[keyof typeof Role];
+export type SampleType = {
+  email: Scalars['String']['input'];
+  number1: Scalars['Int']['input'];
+  number2: Scalars['Int']['input'];
+  url: Scalars['String']['input'];
+};
+
 export const Source = {
   GeekNews: 'GEEK_NEWS',
   Yozm: 'YOZM',
