@@ -8,7 +8,10 @@ import path from 'path';
 const typesArray = loadFilesSync(path.join(__dirname, '/types/*.graphql'));
 const resolversArray = loadFilesSync(path.join(__dirname, '/resolvers/*.ts'));
 
-const typeDefs = mergeTypeDefs([...scalarTypeDefs, typesArray]);
+const typeDefs = mergeTypeDefs([
+  ...scalarTypeDefs.filter((scalar) => ['scalar Date', 'scalar DateTime'].includes(scalar)),
+  typesArray,
+]);
 const resolvers = mergeResolvers(resolversArray);
 
 export const schema = makeExecutableSchema({ typeDefs, resolvers });

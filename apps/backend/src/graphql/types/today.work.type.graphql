@@ -3,8 +3,8 @@ type Work {
   title: String!
   tag: String
   time: Int!
-  createdAt: String!
-  updatedAt: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
   workItems: [WorkItem!]!
 }
 
@@ -12,8 +12,8 @@ type WorkItem {
   itemId: ID!
   time: Int!
   content: String!
-  createdAt: String!
-  updatedAt: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
 }
 
 type Query {
@@ -37,8 +37,8 @@ input WorkInput {
 
 input WorksInput {
   uid: ID
-  startDate: String!
-  endDate: String!
+  startDate: DateTime!
+  endDate: DateTime!
 }
 
 input SuggestionsInput {
@@ -52,7 +52,7 @@ input CreateTodayWorkItemInput {
   tag: String
   content: String!
   time: Int!
-  date: String!
+  date: DateTime!
 }
 
 input UpdateTodayWorkItemInput {

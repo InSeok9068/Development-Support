@@ -24,7 +24,7 @@
       <div class="card flex align-items-center flex-column md:flex-row gap-2">
         <div class="flex">
           <Calendar
-            v-model="todayWorkSearchArgs.date"
+            v-model="todayWorkSearchArgs.startDate"
             show-icon
             date-format="yy-mm-dd"
             @date-select="works(todayWorkSearchArgs)"
@@ -108,7 +108,7 @@ const onClickRegist = () => {
     title: todayWorkInputArgs.value.title,
     content: todayWorkInputArgs.value.content,
     time: todayWorkInputArgs.value.time,
-    date: todayWorkSearchArgs.value.date.toISOString(),
+    date: todayWorkSearchArgs.value.startDate,
   } as CreateTodayWorkItemInput);
 
   todayWorkInputArgsClear();
@@ -140,12 +140,14 @@ const onCompleteSuggestions = async (event: any) => {
 };
 
 const onClickCalendarPre = () => {
-  todayWorkSearchArgs.value.date = dayjs(todayWorkSearchArgs.value.date).subtract(1, 'day').toDate();
+  todayWorkSearchArgs.value.startDate = dayjs(todayWorkSearchArgs.value.startDate).subtract(1, 'day').toDate();
+  todayWorkSearchArgs.value.endDate = dayjs(todayWorkSearchArgs.value.endDate).subtract(1, 'day').toDate();
   works(todayWorkSearchArgs.value);
 };
 
 const onClickCalendarNext = () => {
-  todayWorkSearchArgs.value.date = dayjs(todayWorkSearchArgs.value.date).add(1, 'day').toDate();
+  todayWorkSearchArgs.value.startDate = dayjs(todayWorkSearchArgs.value.startDate).add(1, 'day').toDate();
+  todayWorkSearchArgs.value.endDate = dayjs(todayWorkSearchArgs.value.endDate).add(1, 'day').toDate();
   works(todayWorkSearchArgs.value);
 };
 

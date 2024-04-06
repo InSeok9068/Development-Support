@@ -18,7 +18,6 @@
 
 <script setup lang="ts">
 import { useWorkList } from '@/composables/workList/work.list';
-import { toTimeString, today } from '@support/shared/utils/time.util';
 import { onMounted, ref, watch } from 'vue';
 const { works, workListSearchArgs, workListArgs } = useWorkList();
 
@@ -29,14 +28,8 @@ watch(
   () => dates.value,
   (cur, _) => {
     workListSearchArgs.value = {
-      startDate: toTimeString({
-        dateTime: String(dates.value?.at(0) ?? today('YYYY-MM-DD')),
-        outFormat: 'YYYY-MM-DD',
-      }),
-      endDate: toTimeString({
-        dateTime: String(dates.value?.at(1) ?? today('YYYY-MM-DD')),
-        outFormat: 'YYYY-MM-DD',
-      }),
+      startDate: dates.value?.at(0) ?? new Date(),
+      endDate: dates.value?.at(1) ?? new Date(),
     };
   },
 );

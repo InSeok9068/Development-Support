@@ -4,13 +4,8 @@ import type {
   CreateTodayWorkItemInput,
   MenuPermissionInput,
   MenusInput,
-  NameSuggestionsCrud,
   NameSuggestionsInput,
-  NameSuggestionsLang,
-  NameSuggestionsType,
   NewslettersInput,
-  Role,
-  Source,
   SuggestionsInput,
   UpdateTodayWorkItemForTransferInput,
   UpdateTodayWorkItemInput,
@@ -52,7 +47,7 @@ export function CreateNewsletterInputSchema(): z.ZodObject<Properties<CreateNews
 export function CreateTodayWorkItemInputSchema(): z.ZodObject<Properties<CreateTodayWorkItemInput>> {
   return z.object({
     content: z.string().min(1),
-    date: z.string().min(1),
+    date: z.date(),
     tag: z.string().nullish(),
     time: z.number(),
     title: z.string().min(1),
@@ -123,8 +118,8 @@ export function WorkInputSchema(): z.ZodObject<Properties<WorkInput>> {
 
 export function WorksInputSchema(): z.ZodObject<Properties<WorksInput>> {
   return z.object({
-    endDate: z.string().min(1),
-    startDate: z.string().min(1),
+    endDate: z.date(),
+    startDate: z.date(),
     uid: z.string().nullish(),
   });
 }

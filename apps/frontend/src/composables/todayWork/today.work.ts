@@ -9,7 +9,6 @@ import {
   UPDATE_TODAY_WORK_ITEM_FOR_TRANSFER,
   WORKS_QUERY,
 } from '@/graphql/operations/today.work.operation';
-import type { UiWorksInputArgs } from '@/ui/today.work.ui';
 import {
   type CreateTodayWorkItemInput,
   type CreateTodayWorkItemMutationVariables,
@@ -21,9 +20,9 @@ import {
   type UpdateTodayWorkItemForTransferMutationVariables,
   type Work,
   type WorkItem,
+  type WorksInput,
   type WorksQuery,
 } from '@support/shared/types';
-import { timeUtil } from '@support/shared/utils';
 import { CreateTodayWorkItemInputSchema, UpdateTodayWorkItemForTransferInputSchema } from '@support/shared/validators';
 import { ref } from 'vue';
 
@@ -34,25 +33,23 @@ const useTodayWork = () => {
     title: '',
     content: '',
     time: 1,
-    date: timeUtil.today('YYYY-MM-DD'),
+    date: new Date(),
   });
 
   const todayWorkListArgs = ref<WorksQuery>();
 
-  const todayWorkSearchArgs = ref<UiWorksInputArgs>({
-    date: new Date(),
+  const todayWorkSearchArgs = ref<WorksInput>({
+    startDate: new Date(),
+    endDate: new Date(),
   });
 
   const suggestionsArgs = ref<SuggestionsQuery>({
     suggestions: [],
   });
 
-  const works = async (searchArgs: UiWorksInputArgs) => {
+  const works = async (searchArgs: WorksInput) => {
     const { apolloQuery } = useApolloQuery<WorksQuery, QueryWorksArgs>(WORKS_QUERY, {
-      input: {
-        startDate: searchArgs.date.toISOString(),
-        endDate: searchArgs.date.toISOString(),
-      },
+      input: searchArgs,
     });
 
     todayWorkListArgs.value = (await apolloQuery()).data;

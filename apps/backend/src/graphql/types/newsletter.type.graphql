@@ -6,8 +6,8 @@ type Newsletter {
   sourceLink: String
   originLink: String
   summary: String
-  createdAt: String!
-  updatedAt: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
 }
 
 type Query {

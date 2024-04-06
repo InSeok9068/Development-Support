@@ -12,6 +12,8 @@ export type Scalars = {
   Boolean: { input: boolean; output: boolean };
   Int: { input: number; output: number };
   Float: { input: number; output: number };
+  Date: { input: Date; output: Date };
+  DateTime: { input: Date; output: Date };
 };
 
 export type CreateNewsletterInput = {
@@ -25,7 +27,7 @@ export type CreateNewsletterInput = {
 
 export type CreateTodayWorkItemInput = {
   content: Scalars['String']['input'];
-  date: Scalars['String']['input'];
+  date: Scalars['DateTime']['input'];
   tag?: InputMaybe<Scalars['String']['input']>;
   time: Scalars['Int']['input'];
   title: Scalars['String']['input'];
@@ -121,7 +123,7 @@ export const NameSuggestionsType = {
 export type NameSuggestionsType = (typeof NameSuggestionsType)[keyof typeof NameSuggestionsType];
 export type Newsletter = {
   __typename?: 'Newsletter';
-  createdAt: Scalars['String']['output'];
+  createdAt: Scalars['DateTime']['output'];
   id: Scalars['ID']['output'];
   originLink?: Maybe<Scalars['String']['output']>;
   source: Source;
@@ -129,7 +131,7 @@ export type Newsletter = {
   sourceUniqueKey?: Maybe<Scalars['String']['output']>;
   summary?: Maybe<Scalars['String']['output']>;
   title: Scalars['String']['output'];
-  updatedAt: Scalars['String']['output'];
+  updatedAt: Scalars['DateTime']['output'];
 };
 
 export type NewslettersInput = {
@@ -208,21 +210,21 @@ export type UpdateTodayWorkItemInput = {
 
 export type User = {
   __typename?: 'User';
-  createdAt: Scalars['String']['output'];
+  createdAt: Scalars['DateTime']['output'];
   email?: Maybe<Scalars['String']['output']>;
   phoneNumber?: Maybe<Scalars['String']['output']>;
   uid: Scalars['ID']['output'];
-  updatedAt: Scalars['String']['output'];
+  updatedAt: Scalars['DateTime']['output'];
 };
 
 export type Work = {
   __typename?: 'Work';
-  createdAt: Scalars['String']['output'];
+  createdAt: Scalars['DateTime']['output'];
   id: Scalars['ID']['output'];
   tag?: Maybe<Scalars['String']['output']>;
   time: Scalars['Int']['output'];
   title: Scalars['String']['output'];
-  updatedAt: Scalars['String']['output'];
+  updatedAt: Scalars['DateTime']['output'];
   workItems: Array<WorkItem>;
 };
 
@@ -234,15 +236,15 @@ export type WorkInput = {
 export type WorkItem = {
   __typename?: 'WorkItem';
   content: Scalars['String']['output'];
-  createdAt: Scalars['String']['output'];
+  createdAt: Scalars['DateTime']['output'];
   itemId: Scalars['ID']['output'];
   time: Scalars['Int']['output'];
-  updatedAt: Scalars['String']['output'];
+  updatedAt: Scalars['DateTime']['output'];
 };
 
 export type WorksInput = {
-  endDate: Scalars['String']['input'];
-  startDate: Scalars['String']['input'];
+  endDate: Scalars['DateTime']['input'];
+  startDate: Scalars['DateTime']['input'];
   uid?: InputMaybe<Scalars['ID']['input']>;
 };
 
@@ -347,15 +349,15 @@ export type WorksQuery = {
     id: string;
     title: string;
     time: number;
-    createdAt: string;
-    updatedAt: string;
+    createdAt: Date;
+    updatedAt: Date;
     workItems: Array<{
       __typename?: 'WorkItem';
       itemId: string;
       content: string;
       time: number;
-      createdAt: string;
-      updatedAt: string;
+      createdAt: Date;
+      updatedAt: Date;
     }>;
   } | null>;
 };

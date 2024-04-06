@@ -1,5 +1,5 @@
 export interface UiWorkItemArgs {
-  date: string;
+  date: Date;
   title: string;
   content: string;
   time: number;

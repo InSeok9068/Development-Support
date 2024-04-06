@@ -3,7 +3,6 @@ import { useValidator } from '@/composables/validator';
 import { WORKS_QUERY } from '@/graphql/operations/today.work.operation';
 import type { UiWorkItemArgs } from '@/ui/work.list.ui';
 import type { QueryWorksArgs, WorksInput, WorksQuery } from '@support/shared/types';
-import { timeUtil, toMillisecondString } from '@support/shared/utils/time.util';
 import { WorksInputSchema } from '@support/shared/validators';
 import { ref } from 'vue';
 
@@ -11,8 +10,8 @@ const useWorkList = () => {
   const { safeParseIfErrorToast } = useValidator();
 
   const workListSearchArgs = ref<WorksInput>({
-    startDate: timeUtil.today('YYYY-MM-DD'),
-    endDate: timeUtil.today('YYYY-MM-DD'),
+    startDate: new Date(),
+    endDate: new Date(),
   });
 
   const workListArgs = ref<UiWorkItemArgs[]>([]);
@@ -30,10 +29,7 @@ const useWorkList = () => {
 
     workListArgs.value = result.data.works.flatMap((work) =>
       work!.workItems.map((item) => ({
-        date: toMillisecondString({
-          dateTime: item.createdAt,
-          outFormat: 'YYYY-MM-DD',
-        }),
+        date: item.createdAt,
         title: work!.title,
         content: item.content,
         time: item.time,

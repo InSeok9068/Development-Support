@@ -23,8 +23,8 @@ const customContext = async (ctx: YogaInitialContext) => {
       uid: decodedToken.uid,
       email: decodedToken.email,
       phoneNumber: decodedToken.phone_number,
-      createdAt: '',
-      updatedAt: '',
+      createdAt: new Date(),
+      updatedAt: new Date(),
     };
     uid = user.uid;
     role = await getUserRole(user);
