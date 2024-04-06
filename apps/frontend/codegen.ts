@@ -1,10 +1,5 @@
 import type { CodegenConfig } from '@graphql-codegen/cli';
 
-const scalars = {
-  Date: 'Date',
-  DateTime: 'Date',
-};
-
 const config: CodegenConfig = {
   schema: '../backend/mergeSchema.graphql',
   documents: './src/graphql/operations/*',
@@ -13,7 +8,10 @@ const config: CodegenConfig = {
       plugins: ['typescript', 'typescript-operations'],
       config: {
         enumsAsConst: true,
-        scalars,
+        scalars: {
+          Date: 'Date',
+          DateTime: 'Date',
+        },
       },
     },
     '../../packages/shared/validators/index.ts': {
@@ -52,4 +50,5 @@ const config: CodegenConfig = {
     },
   },
 };
+
 export default config;
