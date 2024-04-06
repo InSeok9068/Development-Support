@@ -144,7 +144,7 @@ async function seed() {
           {
             id: 12,
             label: 'Prime Flex',
-            icon: 'pi pi-fw pi-prime',
+            icon: 'pi pi-fw pi-book',
             url: 'https://primeflex.org/installation',
             target: '_blank',
           },
