@@ -1,3 +1,4 @@
+import { useDialog } from '@/composables/dialog';
 import { MENU_PERMISSION_QUERY } from '@/graphql/operations/menu.operation';
 import type { MenuPermissionQuery, QueryMenuPermissionArgs } from '@support/shared/types';
 import { useQuery } from '@vue/apollo-composable';
@@ -10,6 +11,7 @@ const router = createRouter({
 });
 
 router.beforeResolve((to, from, next) => {
+  const { dialog } = useDialog();
   const openRoutes = ['/', '/login'];
 
   if (openRoutes.includes(to.path)) {
@@ -28,7 +30,13 @@ router.beforeResolve((to, from, next) => {
         if (result.data.menuPermission.hasAccess) {
           next();
         } else {
-          result.data.menuPermission.message && alert(result.data.menuPermission.message);
+          if (result.data.menuPermission.message) {
+            dialog.value = {
+              ...dialog.value,
+              message: result.data.menuPermission.message,
+            };
+          }
+
           next(result.data.menuPermission.redirectUrl ?? '/');
         }
       }
