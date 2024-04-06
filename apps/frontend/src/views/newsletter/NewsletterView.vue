@@ -1,6 +1,6 @@
 <template>
   <div class="card col-12">
-    <div class="flex justify-content-end">
+    <div class="justify-content-end flex">
       <Button label="스크랩 NOW" size="small" @click="onClickNowScrapingNewsletters()" />
     </div>
     <TabView>

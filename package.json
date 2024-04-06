@@ -31,6 +31,7 @@
   },
   "devDependencies": {
     "@support/eslint-config-custom": "workspace:*",
+    "@support/prettier-config-custom": "workspace:*",
     "@support/shared": "workspace:*",
     "@types/lodash": "^4.17.0",
     "@types/node": "^20.12.5",

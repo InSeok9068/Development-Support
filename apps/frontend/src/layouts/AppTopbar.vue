@@ -14,7 +14,7 @@
     </Button>
 
     <div class="layout-topbar-menu" :class="topbarMenuClasses">
-      <span class="flex align-items-center font-bold">
+      <span class="align-items-center flex font-bold">
         <p v-show="!!authArgs.userName">
           {{ `${authArgs.userName} 님` }}
         </p>

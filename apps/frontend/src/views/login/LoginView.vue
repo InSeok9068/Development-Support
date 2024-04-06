@@ -1,14 +1,14 @@
 <template>
   <Dialog v-model:visible="visible" modal>
     <template #container="{ closeCallback }">
-      <div class="flex flex-column align-items-center gap-2 bg-white p-5">
+      <div class="flex-column align-items-center flex gap-2 bg-white p-5">
         <span class="text-xl font-bold">로그인</span>
         <div>
           <div id="firebaseui-auth-container" class="w-20rem md:w-25rem" />
         </div>
         <Button
           label="Cancel"
-          class="p-3 w-full"
+          class="w-full p-3"
           @click="$navi.newsletter($router).newsletter().go() && closeCallback"
         />
       </div>

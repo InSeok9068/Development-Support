@@ -1,0 +1,6 @@
+{
+  "name": "@support/prettier-config-custom",
+  "scripts": {
+    "clean": "rimraf node_modules"
+  }
+}
