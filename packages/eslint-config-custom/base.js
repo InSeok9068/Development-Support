@@ -10,6 +10,7 @@ export default tseslint.config(
       globals: {
         ...globals.node,
         ...globals.browser,
+        ...globals.es2021,
       },
       parserOptions: {
         project: true,

@@ -8,6 +8,7 @@ export default [
       globals: {
         ...globals.node,
         ...globals.browser,
+        ...globals.es2021,
       },
     },
   },
