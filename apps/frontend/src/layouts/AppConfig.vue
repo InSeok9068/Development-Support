@@ -1,6 +1,6 @@
 <template>
   <button class="layout-config-button p-link" type="button" @click="onConfigButtonClick()">
-    <i class="pi pi-cog"></i>
+    <i class="pi pi-cog" />
   </button>
 
   <Sidebar
@@ -17,14 +17,14 @@
         class="p-button-text p-button-rounded w-2rem h-2rem mr-2"
         :disabled="layoutConfig.scale.value === scales[0]"
         @click="decrementScale()"
-      ></Button>
+      />
       <div class="flex gap-2 align-items-center">
         <i
           v-for="s in scales"
           :key="s"
           class="pi pi-circle-fill text-300"
           :class="{ 'text-primary-500': s === layoutConfig.scale.value }"
-        ></i>
+        />
       </div>
       <Button
         icon="pi pi-plus"
@@ -33,29 +33,19 @@
         class="p-button-text p-button-rounded w-2rem h-2rem ml-2"
         :disabled="layoutConfig.scale.value === scales[scales.length - 1]"
         @click="incrementScale()"
-      ></Button>
+      />
     </div>
 
     <template v-if="!simple">
       <h5>Menu Type</h5>
       <div class="flex">
         <div class="field-radiobutton flex-1">
-          <RadioButton
-            v-model="layoutConfig.menuMode.value"
-            name="menuMode"
-            value="static"
-            input-id="mode1"
-          ></RadioButton>
+          <RadioButton v-model="layoutConfig.menuMode.value" name="menuMode" value="static" input-id="mode1" />
           <label for="mode1">Static</label>
         </div>
 
         <div class="field-radiobutton flex-1">
-          <RadioButton
-            v-model="layoutConfig.menuMode.value"
-            name="menuMode"
-            value="overlay"
-            input-id="mode2"
-          ></RadioButton>
+          <RadioButton v-model="layoutConfig.menuMode.value" name="menuMode" value="overlay" input-id="mode2" />
           <label for="mode2">Overlay</label>
         </div>
       </div>
@@ -70,7 +60,7 @@
             name="inputStyle"
             value="outlined"
             input-id="outlined_input"
-          ></RadioButton>
+          />
           <label for="outlined_input">Outlined</label>
         </div>
         <div class="field-radiobutton flex-1">
@@ -79,13 +69,13 @@
             name="inputStyle"
             value="filled"
             input-id="filled_input"
-          ></RadioButton>
+          />
           <label for="filled_input">Filled</label>
         </div>
       </div>
 
       <h5>Ripple Effect</h5>
-      <InputSwitch v-model="layoutConfig.ripple.value"></InputSwitch>
+      <InputSwitch v-model="layoutConfig.ripple.value" />
     </template>
 
     <h5>Bootstrap</h5>

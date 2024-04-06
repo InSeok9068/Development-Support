@@ -1,6 +1,8 @@
 <template>
   <li :class="{ 'layout-root-menuitem': root, 'active-menuitem': isActiveMenu }">
-    <div v-if="root && item.visible !== false" class="layout-menuitem-root-text">{{ item.label }}</div>
+    <div v-if="root && item.visible !== false" class="layout-menuitem-root-text">
+      {{ item.label }}
+    </div>
     <a
       v-if="(!item.to || item.items) && item.visible !== false"
       :href="item.url"
@@ -9,9 +11,9 @@
       tabindex="0"
       @click="itemClick($event, item, index)"
     >
-      <i :class="item.icon" class="layout-menuitem-icon"></i>
+      <i :class="item.icon" class="layout-menuitem-icon" />
       <span class="layout-menuitem-text">{{ item.label }}</span>
-      <i v-if="item.items" class="pi pi-fw pi-angle-down layout-submenu-toggler"></i>
+      <i v-if="item.items" class="pi pi-fw pi-angle-down layout-submenu-toggler" />
     </a>
     <router-link
       v-if="item.to && !item.items && item.visible !== false"
@@ -20,9 +22,9 @@
       :to="item.to"
       @click="itemClick($event, item, index)"
     >
-      <i :class="item.icon" class="layout-menuitem-icon"></i>
+      <i :class="item.icon" class="layout-menuitem-icon" />
       <span class="layout-menuitem-text">{{ item.label }}</span>
-      <i v-if="item.items" class="pi pi-fw pi-angle-down layout-submenu-toggler"></i>
+      <i v-if="item.items" class="pi pi-fw pi-angle-down layout-submenu-toggler" />
     </router-link>
     <Transition v-if="item.items && item.visible !== false" name="layout-submenu">
       <ul v-show="root ? true : isActiveMenu" class="layout-submenu">
@@ -33,7 +35,7 @@
           :item="child"
           :parent-item-key="itemKey"
           :root="false"
-        ></AppMenuItem>
+        />
       </ul>
     </Transition>
   </li>

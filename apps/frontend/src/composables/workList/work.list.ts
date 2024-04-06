@@ -31,7 +31,7 @@ const useWorkList = () => {
     workListArgs.value = result.data.works.flatMap((work) =>
       work!.workItems.map((item) => ({
         date: toMillisecondString({
-          dateTime: item!.createdAt,
+          dateTime: item.createdAt,
           outFormat: 'YYYY-MM-DD',
         }),
         title: work!.title,

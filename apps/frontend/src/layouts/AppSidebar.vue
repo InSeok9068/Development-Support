@@ -1,5 +1,5 @@
 <template>
-  <AppMenu></AppMenu>
+  <AppMenu />
 </template>
 
 <script setup>

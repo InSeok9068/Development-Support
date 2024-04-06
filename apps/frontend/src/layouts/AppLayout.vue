@@ -1,17 +1,17 @@
 <template>
   <div class="layout-wrapper" :class="containerClass">
-    <AppTopbar></AppTopbar>
+    <AppTopbar />
     <div class="layout-sidebar">
-      <AppSidebar></AppSidebar>
+      <AppSidebar />
     </div>
     <div class="layout-main-container">
       <div class="layout-main">
-        <router-view></router-view>
+        <router-view />
       </div>
-      <AppFooter></AppFooter>
-      <AppConfig></AppConfig>
+      <AppFooter />
+      <AppConfig />
     </div>
-    <div class="layout-mask"></div>
+    <div class="layout-mask" />
     <AppConfirmDialog />
     <AppDialog />
     <AppToast />

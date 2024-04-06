@@ -6,11 +6,11 @@
     </router-link>
 
     <Button class="p-link layout-menu-button layout-topbar-button" text @click="onMenuToggle()">
-      <i class="pi pi-bars"></i>
+      <i class="pi pi-bars" />
     </Button>
 
     <Button class="p-link layout-topbar-menu-button layout-topbar-button" text @click="onTopBarMenuButton()">
-      <i class="pi pi-ellipsis-v"></i>
+      <i class="pi pi-ellipsis-v" />
     </Button>
 
     <div class="layout-topbar-menu" :class="topbarMenuClasses">
@@ -20,7 +20,7 @@
         </p>
       </span>
       <Button class="p-link layout-topbar-button" text @click="toggleMenu">
-        <i class="pi pi-user"></i>
+        <i class="pi pi-user" />
         <span>Profile</span>
       </Button>
       <Menu ref="menu" :model="items" :popup="true" />

@@ -6,7 +6,7 @@
     <TabView>
       <TabPanel header="전체">
         <DataTable :value="newsletterListArgs?.newsletters" paginator :rows="20" :rows-per-page-options="[20, 50, 100]">
-          <Column field="source" header="소스"></Column>
+          <Column field="source" header="소스" />
           <Column field="title" header="제목">
             <template #body="slotProps">
               <a :href="slotProps.data.sourceLink" target="_blank" rel="noopener noreferrer">{{
@@ -22,7 +22,7 @@
                 severity="help"
                 rounded
                 @click="aiSummary(slotProps.data.id)"
-              ></Button>
+              />
             </template>
           </Column>
         </DataTable>

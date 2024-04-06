@@ -1,3 +1,5 @@
 module.exports = {
-  ...require('@support/prettier-config-custom/base'),
+  printWidth: 120,
+  singleQuote: true,
+  plugins: [],
 };

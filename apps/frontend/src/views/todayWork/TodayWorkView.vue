@@ -16,7 +16,7 @@
           <div class="flex align-items-center justify-content-between flex-row">
             <span v-for="(item, index) in 8" :key="index">{{ item }}H</span>
           </div>
-          <Button label="등록" @click.prevent.stop="onClickRegist()"></Button>
+          <Button label="등록" @click.prevent.stop="onClickRegist()" />
         </div>
       </div>
     </div>
@@ -35,7 +35,7 @@
           <Button icon="pi pi-caret-right" @click.prevent.stop="onClickCalendarNext()" />
         </div>
         <div class="flex">
-          <Button label="주간보고서 전송" @click.prevent.stop="onClickRegist()"></Button>
+          <Button label="주간보고서 전송" @click.prevent.stop="onClickRegist()" />
         </div>
       </div>
       <div class="card">
