@@ -23,7 +23,7 @@
     "clean": "rimraf node_modules"
   },
   "dependencies": {
-    "@bull-board/express": "^5.15.3",
+    "@bull-board/express": "^5.15.5",
     "@escape.tech/graphql-armor": "^2.4.0",
     "@google-cloud/translate": "^8.2.0",
     "@graphql-tools/load-files": "^7.0.0",

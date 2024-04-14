@@ -67,8 +67,8 @@ importers:
   apps/backend:
     dependencies:
       '@bull-board/express':
-        specifier: ^5.15.3
-        version: 5.15.3
+        specifier: ^5.15.5
+        version: 5.15.5
       '@escape.tech/graphql-armor':
         specifier: ^2.4.0
         version: 2.4.0
@@ -264,8 +264,8 @@ importers:
         specifier: ^10.4.19
         version: 10.4.19(postcss@8.4.38)
       eslint-plugin-vue:
-        specifier: ^9.24.1
-        version: 9.24.1(eslint@9.0.0)
+        specifier: ^9.25.0
+        version: 9.25.0(eslint@9.0.0)
       graphql-codegen-typescript-validation-schema:
         specifier: ^0.14.1
         version: 0.14.1(graphql@16.8.1)
@@ -975,30 +975,30 @@ packages:
       '@babel/helper-validator-identifier': 7.22.20
       to-fast-properties: 2.0.0
 
-  /@bull-board/api@5.15.3(@bull-board/ui@5.15.3):
-    resolution: {integrity: sha512-tlEYOI6Hp0ZGozDCtKQEFgvzTKXj+drKStHJm86s1TcUZlsnMjzR0BUxu5CW6EB3tS3MtPLJH5RQCmUq0UEiiQ==}
+  /@bull-board/api@5.15.5(@bull-board/ui@5.15.5):
+    resolution: {integrity: sha512-s3x0f+0s4nwndBM+QSROMVKiDyE/vaaouQCsxRWOFqneLCkM+Ro2wF6fkhmFkZMjouoBbS8rCFGaIZ+8uttYtg==}
     peerDependencies:
-      '@bull-board/ui': 5.15.3
+      '@bull-board/ui': 5.15.5
     dependencies:
-      '@bull-board/ui': 5.15.3
+      '@bull-board/ui': 5.15.5
       redis-info: 3.1.0
     dev: false
 
-  /@bull-board/express@5.15.3:
-    resolution: {integrity: sha512-2xoXOHh8XhRGMc+APt8/i1F645St9vpgndItY2WGTXieJroHNtTwH0CuDrItLlWPVsg1KRN5BCAhexbJkC3a2w==}
+  /@bull-board/express@5.15.5:
+    resolution: {integrity: sha512-vnoWyjkHgMDfAZkriGd3chf/1g08Gc5Bz0SGb08eaQEjlzIRps1mYPp0YKYCcm0d9U0vOZa038X5xPKCRPpnZg==}
     dependencies:
-      '@bull-board/api': 5.15.3(@bull-board/ui@5.15.3)
-      '@bull-board/ui': 5.15.3
+      '@bull-board/api': 5.15.5(@bull-board/ui@5.15.5)
+      '@bull-board/ui': 5.15.5
       ejs: 3.1.10
       express: 4.19.2
     transitivePeerDependencies:
       - supports-color
     dev: false
 
-  /@bull-board/ui@5.15.3:
-    resolution: {integrity: sha512-wCXk+s4cSszZe0p0sYYxZPLSKafFQNPsUypTvpAh3IC2p4fr6F/wUBGb1kBMspRkFC19l5yFCD5qPHVlAR0QKw==}
+  /@bull-board/ui@5.15.5:
+    resolution: {integrity: sha512-TSXgqBDI3ig6ez6yHArGzpwCuA/rhQewv0KOUAvPzssgX4HqfkatrV7gTuTM+XJe7/sLiXnBiryV7SRV0hgRMg==}
     dependencies:
-      '@bull-board/api': 5.15.3(@bull-board/ui@5.15.3)
+      '@bull-board/api': 5.15.5(@bull-board/ui@5.15.5)
     dev: false
 
   /@colors/colors@1.5.0:
@@ -5481,8 +5481,8 @@ packages:
       source-map: 0.6.1
     dev: false
 
-  /eslint-plugin-vue@9.24.1(eslint@9.0.0):
-    resolution: {integrity: sha512-wk3SuwmS1pZdcuJlokGYEi/buDOwD6KltvhIZyOnpJ/378dcQ4zchu9PAMbbLAaydCz1iYc5AozszcOOgZIIOg==}
+  /eslint-plugin-vue@9.25.0(eslint@9.0.0):
+    resolution: {integrity: sha512-tDWlx14bVe6Bs+Nnh3IGrD+hb11kf2nukfm6jLsmJIhmiRQ1SUaksvwY9U5MvPB0pcrg0QK0xapQkfITs3RKOA==}
     engines: {node: ^14.17.0 || >=16.0.0}
     peerDependencies:
       eslint: ^6.2.0 || ^7.0.0 || ^8.0.0 || ^9.0.0
@@ -9585,8 +9585,8 @@ packages:
   /through@2.3.8:
     resolution: {integrity: sha512-w89qg7PI8wAdvX60bMDP+bFoD5Dvhm9oLheFp5O4a2QF0cSBGsBX4qZmadPMvVqlLJBBci+WqGGOAPvcDeNSVg==}
 
-  /tinybench@2.6.0:
-    resolution: {integrity: sha512-N8hW3PG/3aOoZAN5V/NSAEDz0ZixDSSt5b/a05iqtpgfLWMSVuCo7w0k2vVvEjdrIoeGqZzweX2WlyioNIHchA==}
+  /tinybench@2.7.0:
+    resolution: {integrity: sha512-Qgayeb106x2o4hNzNjsZEfFziw8IbKqtbXBjVh7VIZfBxfD5M4gWtpyx5+YTae2gJ6Y6Dz/KLepiv16RFeQWNA==}
     dev: true
 
   /tinypool@0.8.3:
@@ -10259,7 +10259,7 @@ packages:
       picocolors: 1.0.0
       std-env: 3.7.0
       strip-literal: 2.1.0
-      tinybench: 2.6.0
+      tinybench: 2.7.0
       tinypool: 0.8.3
       vite: 5.2.8(@types/node@20.12.7)(sass@1.75.0)
       vite-node: 1.5.0(@types/node@20.12.7)
