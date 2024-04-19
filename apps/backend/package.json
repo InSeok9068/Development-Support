@@ -23,7 +23,7 @@
     "clean": "rimraf node_modules"
   },
   "dependencies": {
-    "@bull-board/express": "^5.15.5",
+    "@bull-board/express": "^5.16.0",
     "@escape.tech/graphql-armor": "^2.4.0",
     "@google-cloud/translate": "^8.2.0",
     "@graphql-tools/load-files": "^7.0.0",
@@ -31,7 +31,7 @@
     "@graphql-tools/schema": "^10.0.3",
     "@prisma/client": "^5.12.1",
     "axios": "^1.6.8",
-    "bullmq": "^5.7.1",
+    "bullmq": "^5.7.2",
     "cors": "^2.8.5",
     "cron": "^3.1.7",
     "cross-env": "^7.0.3",
