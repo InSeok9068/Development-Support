@@ -78,7 +78,7 @@ jobs:
           git pull
 
       - name: project install dependencies
-        run: pnpm install
+        run: pnpm install --frozen-lockfile
         working-directory: ${{ env.project-working-directory }}
 
       - name: backend prisma generate
