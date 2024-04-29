@@ -24,8 +24,8 @@
     "cli": "node ./cli"
   },
   "dependencies": {
-    "dayjs": "^1.11.10",
-    "globals": "^15.0.0",
+    "dayjs": "^1.11.11",
+    "globals": "^15.1.0",
     "lodash": "^4.17.21",
     "zod": "^3.23.4"
   },
