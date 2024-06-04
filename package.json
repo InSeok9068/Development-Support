@@ -25,31 +25,32 @@
   },
   "dependencies": {
     "dayjs": "^1.11.11",
-    "globals": "^15.1.0",
+    "globals": "^15.3.0",
     "lodash": "^4.17.21",
-    "zod": "^3.23.5"
+    "zod": "^3.23.8"
   },
   "devDependencies": {
-    "@eslint/js": "^9.1.1",
+    "@eslint/js": "^9.4.0",
     "@support/eslint-config-custom": "workspace:*",
     "@support/prettier-config-custom": "workspace:*",
     "@support/shared": "workspace:*",
-    "@types/lodash": "^4.17.0",
-    "@types/node": "^20.12.7",
-    "@vitest/ui": "^1.5.2",
-    "eslint": "^9.1.1",
+    "@types/lodash": "^4.17.4",
+    "@types/node": "^20.14.1",
+    "@vitest/ui": "^1.6.0",
+    "eslint": "^9.4.0",
     "husky": "^9.0.11",
-    "lint-staged": "^15.2.2",
-    "prettier": "^3.2.5",
+    "lint-staged": "^15.2.5",
+    "prettier": "^3.3.0",
     "ts-node": "^10.9.2",
     "turbo": "^1.13.3",
     "typescript": "^5.4.5",
-    "vitest": "^1.5.2"
+    "vitest": "^1.6.0"
   },
   "lint-staged": {
     "*.{js,ts,vue}": [
       "eslint --fix",
       "prettier --write"
     ]
-  }
+  },
+  "packageManager": "pnpm@8.15.3+sha1.64838798f519c18029c1e8a1310e16101fc2eda0"
 }
