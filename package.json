@@ -24,27 +24,27 @@
     "cli": "node ./cli"
   },
   "dependencies": {
-    "dayjs": "^1.11.11",
-    "globals": "^15.4.0",
+    "dayjs": "^1.11.12",
+    "globals": "^15.8.0",
     "lodash": "^4.17.21",
     "zod": "^3.23.8"
   },
   "devDependencies": {
-    "@eslint/js": "^9.4.0",
+    "@eslint/js": "^9.7.0",
     "@support/eslint-config-custom": "workspace:*",
     "@support/prettier-config-custom": "workspace:*",
     "@support/shared": "workspace:*",
-    "@types/lodash": "^4.17.5",
-    "@types/node": "^20.14.2",
-    "@vitest/ui": "^1.6.0",
-    "eslint": "^9.4.0",
-    "husky": "^9.0.11",
+    "@types/lodash": "^4.17.7",
+    "@types/node": "^20.14.11",
+    "@vitest/ui": "^2.0.3",
+    "eslint": "^9.7.0",
+    "husky": "^9.1.1",
     "lint-staged": "^15.2.7",
-    "prettier": "^3.3.2",
+    "prettier": "^3.3.3",
     "ts-node": "^10.9.2",
-    "turbo": "^2.0.3",
-    "typescript": "^5.4.5",
-    "vitest": "^1.6.0"
+    "turbo": "^2.0.9",
+    "typescript": "^5.5.3",
+    "vitest": "^2.0.3"
   },
   "lint-staged": {
     "*.{js,ts,vue}": [
